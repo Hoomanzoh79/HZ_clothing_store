@@ -46,6 +46,11 @@ INSTALLED_APPS = [
     # my apps
     'accounts',
     'pages',
+
+    # third party apps
+    'allauth',
+    'allauth.account',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -135,9 +140,32 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CustomUser settings
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+# Login and Logout settings
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
 # crispy forms settings
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # static settings
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# all auth settings
+SITE_ID = 1
+AUTHENTICATION_BACKENDS = [
+    # Needed to log in by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# all auth customization
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True

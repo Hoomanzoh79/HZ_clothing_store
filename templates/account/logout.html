@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+{% extends '_base.html' %}
+{% block page_title %}Login{% endblock %}
+
+{% block content %}
+    <h1>Logout</h1>
+    <h2>Are you sure you want to log out?</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">yes I'm sure</button>
+    </form>
+
+{% endblock %}
+</html>
