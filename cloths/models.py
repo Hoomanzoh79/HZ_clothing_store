@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Cloths(models.Model):
+class Cloth(models.Model):
     SEASON_CHOICES = [('winter', 'winter'),
                        ('summer', 'summer'),
                        ('fall', 'fall'), ]

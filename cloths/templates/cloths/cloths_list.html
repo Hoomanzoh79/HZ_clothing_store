@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+{% extends '_base.html' %}
+{% load i18n %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>{% block page_title %}Cloths List{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+
+    <div class="product-lists-top">
+        <div class="product__filter-wrap">
+            <div class="row align-items-center">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                    <div class="product__filter d-sm-flex align-items-center">
+                        <div class="product__col">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="FourCol-tab" data-bs-toggle="tab"
+                                            data-bs-target="#FourCol" type="button" role="tab" aria-controls="FourCol"
+                                            aria-selected="true">
+                                        <i class="fal fa-th"></i>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="FiveCol-tab" data-bs-toggle="tab"
+                                            data-bs-target="#FiveCol" type="button" role="tab" aria-controls="FiveCol"
+                                            aria-selected="false">
+                                        <i class="fal fa-list"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product__result pl-60">
+                            <p>نمایش 1-20 از 29 نتیجه</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                    <div class="product__filter-right d-flex align-items-center justify-content-md-end">
+                        <div class="product__sorting product__show-no">
+                            <select>
+                                <option>10</option>
+                                <option>20</option>
+                                <option>30</option>
+                                <option>40</option>
+                            </select>
+                        </div>
+                        <div class="product__sorting product__show-position ml-20">
+                            <select>
+                                <option>آخرین</option>
+                                <option>جدید</option>
+                                <option>آینده</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content" id="productGridTabContent">
+    <div class="tab-pane fade  show active" id="FourCol" role="tabpanel" aria-labelledby="FourCol-tab">
+    <div class="tp-wrapper">
+    <div class="row g-0">
+    {% for cloth in cloths %}
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+            <div class="product__item product__item-d">
+                <div class="product__thumb fix">
+                    <div class="product-image w-img">
+                        <a href="product-details.html">
+                            <img src="assets/img/product/tp-2.jpg" alt="product">
+                        </a>
+                    </div>
+                    <div class="product-action">
+                        <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId">
+                            <i class="fal fa-eye"></i>
+                            <i class="fal fa-eye"></i>
+                        </a>
+                        <a href="#" class="icon-box icon-box-1">
+                            <i class="fal fa-heart"></i>
+                            <i class="fal fa-heart"></i>
+                        </a>
+                        <a href="#" class="icon-box icon-box-1">
+                            <i class="fal fa-layer-group"></i>
+                            <i class="fal fa-layer-group"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="product__content-3">
+                    <h6><a href="product-details.html">پیراهن بسکتبال زرد سایز مردانه</a></h6>
+                    <div class="rating mb-5">
+                        <span>(01 نظر)</span>
+                    </div>
+                    <div class="price mb-10">
+                        <span>{{ cloth.price }} تومان</span>
+                    </div>
+                </div>
+                <div class="product__add-cart-s text-center">
+                    <button type="button" class="cart-btn d-flex mb-10 align-items-center justify-content-center w-100">
+                        افزودن به سبد
+                    </button>
+                    <button type="button" class="wc-checkout d-flex align-items-center justify-content-center w-100"
+                            data-bs-toggle="modal" data-bs-target="#productModalId">
+                        مشاهده سریع
+                    </button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+</html>
