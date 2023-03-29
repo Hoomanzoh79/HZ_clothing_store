@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en" dir="rtl">
+{% extends '_base.html' %}
+{% load static %}
+{% load i18n %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>{% block page_title %}{{ cloth.title }} detail{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+
+    <!-- product-details-start -->
+    <div class="product-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="product__details-nav d-sm-flex align-items-start">
+                        <div class="product__details-thumb">
+                            <div class="tab-content" id="productThumbContent">
+                                <div class="tab-pane fade show active" id="thumbOne" role="tabpanel"
+                                     aria-labelledby="thumbOne-tab">
+                                    <div class="product__details-nav-thumb w-img">
+                                        <img src="{% static 'img/product/nav/product-nav-big-1.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="thumbTwo" role="tabpanel" aria-labelledby="thumbTwo-tab">
+                                    <div class="product__details-nav-thumb w-img">
+                                        <img src="assets/img/product/nav/product-nav-big-3.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="thumbThree" role="tabpanel"
+                                     aria-labelledby="thumbThree-tab">
+                                    <div class="product__details-nav-thumb w-img">
+                                        <img src="assets/img/product/nav/product-nav-big-2.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 mt-3">
+                    <div class="product__details-content">
+                        <h6> {{ cloth.title }}</h6>
+                        <div class="pd-rating mb-10">
+                            <span>(01 نظر)</span>
+                        </div>
+                        <div class="price mb-10">
+                            <span>{{ cloth.price }} تومان</span>
+                        </div>
+                        <div class="features-des mb-20 mt-10">
+                            <ul>
+                                <li><a href="product-details.html"><i class="fas fa-circle"></i>{{ cloth.description }}
+                                </a></li>
+                            </ul>
+                        </div>
+                        <div class="product-stock mb-20">
+                            <h5>موجودی: <span> 940 موجود</span></h5>
+                        </div>
+                        <div class="cart-option mb-15">
+                            <div class="product-quantity mr-20">
+                                <div class="cart-plus-minus p-relative"><input type="text" value="1">
+                                    <div class="dec qtybutton">-</div>
+                                    <div class="inc qtybutton">+</div>
+                                </div>
+                            </div>
+                            <a href="cart.html" class="cart-btn">افزودن به سبد</a>
+                        </div>
+                        <div class="product-tag-area mt-15">
+                            <div class="product_info">
+                                    <span class="posted_in">
+                                        <span class="title">دسته بندی :</span>
+                                        <a href="#">{{ cloth.season }}</a>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product-details-end -->
+
+    <!-- product-details-des-start -->
+    <div class="product-details-des mt-40 mb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="product__details-des-tab">
+                        <ul class="nav nav-tabs" id="productDesTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="des-tab" data-bs-toggle="tab" data-bs-target="#des"
+                                        type="button" role="tab" aria-controls="des" aria-selected="true">توضیحات
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="aditional-tab" data-bs-toggle="tab"
+                                        data-bs-target="#aditional" type="button" role="tab" aria-controls="aditional"
+                                        aria-selected="false">اطلاعات تکمیلی
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review"
+                                        type="button" role="tab" aria-controls="review" aria-selected="false">نظرات (1)
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="prodductDesTaContent">
+                <div class="tab-pane fade active show" id="des" role="tabpanel" aria-labelledby="des-tab">
+                    <div class="product__details-des-wrapper">
+                        <p class="des-text mb-35">طراحی شده توسط Hans J. Wegner در سال 1949 به عنوان یکی از اولین مدل
+                            هایی که به طور ویژه برای Carl Hansen & Son ایجاد شد و از سال 1950 تولید شد. آخرین مورد از
+                            سری صندلی های Wegner که بر اساس الهام از صندلی های چینی قدیمی طراحی شده است. رویه به آرامی
+                            گرد همراه با پشتی و صندلی، انواع موقعیت‌های نشستن راحت را ارائه می‌دهد، که هم برای بازدید
+                            طولانی مدت از میز ناهارخوری و هم برای استراحت آرام ایده‌آل است.</p>
+                        <h6 class="des-sm-title">گذرگاه استاندارد، که از سال 1500 استفاده می شود..</h6>
+                        <p class="des-text mb-35">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+                            از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                            برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
+                            باشد. </p>
+                        <div class="features-des-image text-center">
+                            <img src="assets/img/features-product/product-content-1.jpg" alt="">
+                        </div>
+                        <div class="product-des-section mb-90">
+                            <h5 class="des-section mb-30">دریافت 30% نقدی روزانه
+                                <br> بازگشت با کارت عضویت.</h5>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط
+                                فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای
+                                زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با
+                                نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو
+                                در زبان فارسی ایجاد کرد..</p>
+                        </div>
+                        <div class="row mb-80">
+                            <div class="col-xl-6">
+                                <div class="des-single mb-30 text-center">
+                                    <div class="features-des-image text-center">
+                                        <img src="assets/img/features-product/product-content-2.jpg" alt="">
+                                    </div>
+                                    <h5 class="des-section">دریافت 30% نقدی روزانه
+                                        <br> بازگشت با کارت عضویت.</h5>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم <br> از صنعت چاپ و با استفاده از
+                                        طراحان گرافیک است..</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="des-single text-center mb-30">
+                                    <div class="features-des-image">
+                                        <img src="assets/img/features-product/product-content-3.jpg" alt="">
+                                    </div>
+                                    <h5 class="des-section text-center">دریافت 70% نقدی روزانه
+                                        <br> بازگشت با کارت عضویت.</h5>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم <br> از صنعت چاپ و با استفاده از
+                                        طراحان گرافیک است..</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="features-des-image features-des-image-2 text-center mb-50 w-img">
+                            <img src="assets/img/features-product/product-content-4.jpg" alt="">
+                        </div>
+                        <div class="des-sm-features">
+                            <div class="des-sm-fet text-center mb-30">
+                                <img src="assets/img/features-product/product-content-5.png" alt="">
+                                <span>زاویه فوق العاده عریض</span>
+                            </div>
+                            <div class="des-sm-fet text-center mb-30">
+                                <img src="assets/img/features-product/product-content-6.png" alt="">
+                                <span>تمرکز زنده</span>
+                            </div>
+                        </div>
+                        <p class="des-text mb-35">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+                            از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                            برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+                            کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا
+                            با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو
+                            در زبان فارسی ایجاد کرد. </p>
+                        <h6 class="des-sm-title">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+                            از طراحان گرافیک است. </p>
+                            <p class="des-text mb-25">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                                لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                                کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و
+                                متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
+                                طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. </p>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="aditional" role="tabpanel" aria-labelledby="aditional-tab">
+                    <div class="product__desc-info">
+                        <ul>
+                            <li>
+                                <h6>وزن</h6>
+                                <span>2 lbs</span>
+                            </li>
+                            <li>
+                                <h6>باعاد</h6>
+                                <span>12 × 16 × 19 in</span>
+                            </li>
+                            <li>
+                                <h6>محصول</h6>
+                                <span>این محصول را در mellatweb.com خریداری کنید</span>
+                            </li>
+                            <li>
+                                <h6>رنگ</h6>
+                                <span>سیاه, سفید</span>
+                            </li>
+                            <li>
+                                <h6>اندازه</h6>
+                                <span>S, M, L, XL</span>
+                            </li>
+                            <li>
+                                <h6>مدل</h6>
+                                <span>جدید	</span>
+                            </li>
+                            <li>
+                                <h6>ارسال</h6>
+                                <span>استاندارد: ت5,95</span>
+                            </li>
+                            <li>
+                                <h6>اطلاعات</h6>
+                                <span>شستشو با ماشین لباسشویی تا دمای 40 درجه سانتیگراد/86 درجه فارنهایت با چرخه ملایم</span>
+                            </li>
+                            <li>
+                                <h6>برند</h6>
+                                <span>سامسونگ</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                    <div class="product__details-review">
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="review-rate">
+                                    <h5>5.00</h5>
+                                    <div class="review-star">
+                                        <a href="#"><i class="fas fa-star"></i></a>
+                                        <a href="#"><i class="fas fa-star"></i></a>
+                                        <a href="#"><i class="fas fa-star"></i></a>
+                                        <a href="#"><i class="fas fa-star"></i></a>
+                                        <a href="#"><i class="fas fa-star"></i></a>
+                                    </div>
+                                    <span class="review-count">01 نظر</span>
+                                </div>
+                            </div>
+                            <div class="col-xl-8">
+                                <div class="review-des-infod">
+                                    <h6>1 نظر برای "<span>هدفون روی گوش بلوتوث بی سیم</span>"</h6>
+                                    <div class="review-details-des">
+                                        <div class="author-image mr-15">
+                                            <a href="#"><img src="assets/img/author/author-sm-1.jpg" alt=""></a>
+                                        </div>
+                                        <div class="review-details-content">
+                                            <div class="str-info">
+                                                <div class="review-star mr-15">
+                                                    <a href="#"><i class="fas fa-star"></i></a>
+                                                    <a href="#"><i class="fas fa-star"></i></a>
+                                                    <a href="#"><i class="fas fa-star"></i></a>
+                                                    <a href="#"><i class="fas fa-star"></i></a>
+                                                    <a href="#"><i class="fas fa-star"></i></a>
+                                                </div>
+                                                <div class="add-review-option">
+                                                    <a href="#">افزودن نظر</a>
+                                                </div>
+                                            </div>
+                                            <div class="name-date mb-30">
+                                                <h6> مدیر – <span> 2 دی 1400</span></h6>
+                                            </div>
+                                            <p>یک صندلی سبک که به راحتی در اطراف میز ناهارخوری و اتاق حرکت می کند. اما
+                                                درد در فیلم برای نقد کردن سخت است <br> لذت میل به فرار از درد است و درد
+                                                نتیجه هیچ.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="product__details-comment ">
+                                    <div class="comment-title mb-20">
+                                        <h3>ارسال نظر</h3>
+                                        <p>آدرس ایمیل شما منتشر نخواهد شد. فیلدهای الزامی علامت گذاری شده اند *</p>
+                                    </div>
+                                    <div class="comment-rating mb-20">
+                                        <span>امتیاز</span>
+                                        <ul>
+                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="comment-input-box">
+                                        <form action="#">
+                                            <div class="row">
+                                                <div class="col-xxl-6 col-xl-6">
+                                                    <div class="comment-input">
+                                                        <input type="text" placeholder="نام شما">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xxl-6 col-xl-6">
+                                                    <div class="comment-input">
+                                                        <input type="email" placeholder="ایمیل شما">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xxl-12">
+                                                    <textarea placeholder="تمتیاز شما"
+                                                              class="comment-input comment-textarea"></textarea>
+                                                </div>
+                                                <div class="col-xxl-12">
+                                                    <div class="comment-agree d-flex align-items-center mb-25">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                   id="flexCheckDefault">
+                                                            <label class="form-check-label" for="flexCheckDefault">
+                                                                برای دفعه بعد که نظر می دهم نام، ایمیل و وب سایت من را
+                                                                در این مرورگر ذخیره کنید.
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xxl-12">
+                                                    <div class="comment-submit">
+                                                        <button type="submit" class="cart-btn">ارسال</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product-details-des-end -->
+
+{% endblock %}
+</html>

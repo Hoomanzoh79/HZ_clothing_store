@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 
 class Cloth(models.Model):
@@ -21,4 +22,5 @@ class Cloth(models.Model):
     def __str__(self):
         return self.title
 
-
+    def get_absolute_url(self):
+        return reverse('cloth_detail', args=[self.id])

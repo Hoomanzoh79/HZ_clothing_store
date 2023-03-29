@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
+<html lang="en" dir="rtl">
 {% extends '_base.html' %}
 {% load i18n %}
 <head>
@@ -68,7 +68,7 @@
             <div class="product__item product__item-d">
                 <div class="product__thumb fix">
                     <div class="product-image w-img">
-                        <a href="product-details.html">
+                        <a href="{{ cloth.get_absolute_url }}">
                             <img src="assets/img/product/tp-2.jpg" alt="product">
                         </a>
                     </div>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <div class="product__content-3">
-                    <h6><a href="product-details.html">پیراهن بسکتبال زرد سایز مردانه</a></h6>
+                    <h6><a href="{{ cloth.get_absolute_url }}">پیراهن بسکتبال زرد سایز مردانه</a></h6>
                     <div class="rating mb-5">
                         <span>(01 نظر)</span>
                     </div>
@@ -100,10 +100,12 @@
                     <button type="button" class="cart-btn d-flex mb-10 align-items-center justify-content-center w-100">
                         افزودن به سبد
                     </button>
-                    <button type="button" class="wc-checkout d-flex align-items-center justify-content-center w-100"
-                            data-bs-toggle="modal" data-bs-target="#productModalId">
-                        مشاهده سریع
-                    </button>
+                    <a href="{{ cloth.get_absolute_url }}">
+                        <button type="button" class="wc-checkout d-flex align-items-center justify-content-center w-100"
+                                data-bs-toggle="modal" data-bs-target="#productModalId">
+                            مشاهده ی محصول
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
