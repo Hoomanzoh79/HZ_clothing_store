@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
+{% load i18n %}
 
 <!-- Mirrored from mwhtml.ir/dukamarket/dukamarket/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Mar 2022 03:59:45 GMT -->
 <head>
@@ -39,7 +40,8 @@
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
                         <div class="header__info">
                             <div class="logo">
-                                <a href="index.html" class="logo-image"><img src="assets/img/logo/logo1.svg" alt="logo"></a>
+                                <a href="{% url 'cloths_list' %}" class="logo-image">
+                                    <img src="{% static 'img/logo/logo.png' %}" alt="logo" width="120" height="120"></a>
                             </div>
                         </div>
                     </div>
@@ -71,14 +73,27 @@
                     </div>
                     <div class="col-xl-3 col-lg-5 col-md-8 col-sm-8">
                         <div class="header-action">
-                            <div class="block-userlink">
-                                <a class="icon-link" href="my-account.html">
-                                    <i class="flaticon-user"></i>
-                                    <span class="text">
-                                    <span class="sub">ورود </span>
-                                    حساب من </span>
-                                </a>
-                            </div>
+                            {% if user.is_authenticated %}
+                                <div class="block-userlink">
+                                    <a class="icon-link" href="{% url 'account_logout' %}">
+                                        <i class="flaticon-user"></i>
+                                        <span class="text">
+                                    <span class="sub">{% trans 'Hi' %}</span>
+                                        <span>{{ user.username }}</span>
+                                    </a>
+                                </div>
+                            {% else %}
+                                <div class="block-userlink">
+                                    <a class="icon-link" href="{% url 'account_login' %}">
+                                        <i class="flaticon-user"></i>
+                                        <span class="text">
+                                    <span class="sub">ورود به حساب</span>
+                                    </a>
+                                    <a href="{% url 'account_signup' %}" class="icon-link mt-2" >
+                                        <span>ثبت نام نکرده اید؟</span>
+                                    </a>
+                                </div>
+                            {% endif %}
                             <div class="block-cart action">
                                 <a class="icon-link" href="cart.html">
                                     <i class="flaticon-shopping-bag"></i>
@@ -332,138 +347,8 @@
                         <div class="main-menu d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <li>
-                                        <a href="index.html" class="active">خانه <i class="far fa-angle-down"></i></a>
-                                        <ul class="megamenu-1">
-                                            <li><a href="index.html">صفحات خانه</a>
-                                                <ul class="mega-item">
-                                                    <li><a href="index.html" class="active">خانه یک</a></li>
-                                                    <li><a href="index-2.html">خانه دو</a></li>
-                                                    <li><a href="index-3.html">خانه سه</a></li>
-                                                    <li><a href="product-details.html">فروشگاه 3 ستون</a></li>
-                                                    <li><a href="product-details.html">فروشگاه 4 ستون</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="shop.html">صفحات محصول</a>
-                                                <ul class="mega-item">
-                                                    <li><a href="product-details.html">جزئیات محصول</a></li>
-                                                    <li><a href="product-details.html">محصول دو</a></li>
-                                                    <li><a href="product-details.html">محصول سه</a></li>
-                                                    <li><a href="product-details.html">محصول متغیر</a></li>
-                                                    <li><a href="product-details.html">محصول خارجی</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="shop.html">سایر صفحات</a>
-                                                <ul class="mega-item">
-                                                    <li><a href="product-details.html">علاقه مندی</a></li>
-                                                    <li><a href="product-details.html">سبد خرید</a></li>
-                                                    <li><a href="product-details.html">تسویه حساب</a></li>
-                                                    <li><a href="product-details.html">ورود</a></li>
-                                                    <li><a href="product-details.html">ثبت نام</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="shop.html">تلفن و تبلت</a>
-                                                <ul class="mega-item">
-                                                    <li><a href="product-details.html">دسته بندی 1</a></li>
-                                                    <li><a href="product-details.html">دسته بندی 2</a></li>
-                                                    <li><a href="product-details.html">دسته بندی 3</a></li>
-                                                    <li><a href="product-details.html">دسته بندی 4</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="shop.html">تلفن و تبلت</a>
-                                                <ul class="mega-item">
-                                                    <li><a href="product-details.html">دسته بندی 1</a></li>
-                                                    <li><a href="product-details.html">دسته بندی 2</a></li>
-                                                    <li><a href="product-details.html">دسته بندی 3</a></li>
-                                                    <li><a href="product-details.html">دسته بندی 4</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about.html">درباره ما</a></li>
-                                    <li class="has-mega"><a href="shop.html">فروشگاه <i
-                                            class="far fa-angle-down"></i></a>
-                                        <div class="mega-menu">
-                                            <div class="container container-mega">
-                                                <ul>
-                                                    <li>
-                                                        <ul>
-                                                            <li class="title"><a href="shop.html">طرح فروشگاه</a></li>
-                                                            <li><a href="shop.html">صفحه بندی</a></li>
-                                                            <li><a href="shop.html">بارگذاری آژاکس</a></li>
-                                                            <li><a href="shop.html">اسکرول بی نهایت</a></li>
-                                                            <li><a href="shop.html">سایدبار راست</a></li>
-                                                            <li><a href="shop.html">سایدبار چپ</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <ul>
-                                                            <li class="title"><a href="shop.html">صفحات فروشگاه</a></li>
-                                                            <li><a href="shop.html">نمایش لیستی</a></li>
-                                                            <li><a href="shop.html">محصولات کوچک</a></li>
-                                                            <li><a href="shop.html">محصولات بزرگ</a></li>
-                                                            <li><a href="shop.html">فروشگاه — 3 آیتم</a></li>
-                                                            <li><a href="shop.html">فروشگاه — 4 آیتم</a></li>
-                                                            <li><a href="shop.html">فروشگاه — 5 آیتم</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <ul>
-                                                            <li class="title"><a href="shop.html">طرح بندی محصول</a>
-                                                            </li>
-                                                            <li><a href="shop.html">توضیحات چسبنده</a></li>
-                                                            <li><a href="shop.html">کاروسل محصول</a></li>
-                                                            <li><a href="shop.html">گالری مدرن</a></li>
-                                                            <li><a href="shop.html">تصویر چپ</a></li>
-                                                            <li><a href="shop.html">تصویر راست</a></li>
-                                                            <li><a href="shop.html">تصویر پایین</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <ul>
-                                                            <li class="title"><a href="shop.html">بسکتبال</a></li>
-                                                            <li><a href="shop.html">شرق همپتون فلیس</a></li>
-                                                            <li><a href="shop.html">فکسون بوم کم</a></li>
-                                                            <li><a href="shop.html">انواع کلمات</a></li>
-                                                            <li><a href="shop.html">کائوریت لوبورتیس</a></li>
-                                                            <li><a href="shop.html">زوم نایک کورت</a></li>
-                                                            <li><a href="shop.html">زوم هوا نایک کورت</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <ul>
-                                                            <li class="title"><a href="shop.html">بسکتبال</a></li>
-                                                            <li><a href="shop.html">شرق همپتون فلیس</a></li>
-                                                            <li><a href="shop.html">فکسون بوم کم</a></li>
-                                                            <li><a href="shop.html">انواع کلمات</a></li>
-                                                            <li><a href="shop.html">کائوریت لوبورتیس</a></li>
-                                                            <li><a href="shop.html">زوم نایک کورت</a></li>
-                                                            <li><a href="shop.html">زوم هوا نایک کورت</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="mega-image hover-effect"
-                                                        style="background-image: url(assets/img/bg/menu-item.jpg);">
-                                                        <ul>
-                                                            <li><a href="shop.html">
-                                                                <h4>دوربین <br> پرفروش سال</h4>
-                                                                <h5>4K</h5>
-                                                                <h6>تخفیف تا <span>60% </span></h6>
-                                                            </a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="offer mt-40">
-                                                <p><b>30% تخفیف</b> ارسال اولین سفارش شما با کد: <b>DUKA-SALE30</b></p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li><a href="blog.html">وبلاگ <i class="far fa-angle-down"></i></a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">وبلاگ</a></li>
-                                            <li><a href="blog-details.html">جزئیات وبلاگ</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="{% url 'cloths_list' %}">خانه</a></li>
+                                    <li><a href="{% url 'about_us' %}">درباره ما</a></li>
                                     <li>
                                         <a href="about.html">صفحات <i class="far fa-angle-down"></i></a>
                                         <ul class="submenu">
@@ -480,11 +365,6 @@
                                 </ul>
                             </nav>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-9">
-                    <div class="shopeing-text text-sm-end">
-                        <p>120 دلار بیشتر خرج کنید و ارسال رایگان دریافت کنید!</p>
                     </div>
                 </div>
             </div>

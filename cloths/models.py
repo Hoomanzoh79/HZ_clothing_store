@@ -1,5 +1,6 @@
 from django.db import models
 from django.shortcuts import reverse
+from django.contrib.auth import get_user_model
 
 
 class Cloth(models.Model):
@@ -24,3 +25,16 @@ class Cloth(models.Model):
 
     def get_absolute_url(self):
         return reverse('cloth_detail', args=[self.id])
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments')
+    cloth = models.ForeignKey(Cloth, on_delete=models.CASCADE, related_name='comments')
+    body = models.TextField()
+    active = models.BooleanField(default=True)
+
+    datetime_created = models.DateTimeField(auto_now_add=True)
+    datetime_modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.cloth}: {self.body}'
