@@ -3,6 +3,7 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load i18n %}
+{% load crispy_forms_tags %}
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>{% block page_title %}{{ cloth.title }} detail{% endblock %}</title>
@@ -20,20 +21,11 @@
                             <div class="tab-content" id="productThumbContent">
                                 <div class="tab-pane fade show active" id="thumbOne" role="tabpanel"
                                      aria-labelledby="thumbOne-tab">
-                                    <div class="product__details-nav-thumb w-img">
-                                        <img src="{% static 'img/product/nav/product-nav-big-1.jpg' %}" alt="">
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="thumbTwo" role="tabpanel" aria-labelledby="thumbTwo-tab">
-                                    <div class="product__details-nav-thumb w-img">
-                                        <img src="assets/img/product/nav/product-nav-big-3.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="thumbThree" role="tabpanel"
-                                     aria-labelledby="thumbThree-tab">
-                                    <div class="product__details-nav-thumb w-img">
-                                        <img src="assets/img/product/nav/product-nav-big-2.jpg" alt="">
-                                    </div>
+                                    {% if cloth.cover %}
+                                        <div class="product__details-nav-thumb w-img">
+                                            <img src="{{ cloth.cover.url }}" alt="" width="500" height="500">
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -53,9 +45,6 @@
                                 <li><a href="product-details.html"><i class="fas fa-circle"></i>{{ cloth.description }}
                                 </a></li>
                             </ul>
-                        </div>
-                        <div class="product-stock mb-20">
-                            <h5>موجودی: <span> 940 موجود</span></h5>
                         </div>
                         <div class="cart-option mb-15">
                             <div class="product-quantity mr-20">
@@ -90,7 +79,8 @@
                 <ul class="nav nav-tabs" id="productDesTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review"
-                                type="button" role="tab" aria-controls="review" aria-selected="false">نظرات ({{ cloth.comments.count }})
+                                type="button" role="tab" aria-controls="review" aria-selected="false">نظرات
+                            ({{ cloth.comments.count }})
                         </button>
                     </li>
                 </ul>
@@ -102,25 +92,28 @@
             <div class="row">
                 <div class="col-xl-8">
                     <div class="review-des-infod">
-                        <h6>{{ cloth.comments.count }} نظر برای "<span>{{ cloth.title }}</span>"</h6>
-                        {% for comment in cloth.comments.all %}
-                            <div class="container">
-                                <div class="row">
-                                    <div class="review-details-des">
-                                        <div class="author-image mr-15">
-                                            <a href="#"><img src="assets/img/author/author-sm-1.jpg" alt=""></a>
-                                        </div>
-                                        <div class="review-details-content">
-                                            <div class="name-date mb-30">
-                                                <h6> {{ comment.author }} <span> {{ comment.datetime_created }}</span>
-                                                </h6>
+                        <ul class="review__list">
+                            {% for comment in cloth.comments.all %}
+                                <li class="review__item">
+                                    <div class="review__container">
+                                        <div class="review__text">
+                                            <div class="d-flex flex-sm-row flex-row">
+                                                <div>
+                                                    <div class="review__meta">
+                                                        <span class="review__published-date">{{ comment.datetime_created }}</span>
+                                                        <span class="review__dash">-</span>
+                                                        <strong class="review__author px-4">{{ comment.author.username }}</strong>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <p>{{ comment.body }}</p>
+                                            <p class="review__description text-right px-4">
+                                                {{ comment.body }}
+                                            </p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        {% endfor %}
+                                </li>
+                            {% endfor %}
+                        </ul>
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="product__details-comment ">
@@ -128,15 +121,14 @@
                                         <h3>ارسال نظر</h3>
                                     </div>
                                     <div class="comment-input-box">
-                                        <form action="#">
+                                        <form action="{% url 'comment_create' cloth.id %}" method="post">
+                                            {% csrf_token %}
                                             <div class="row">
-                                                <div class="col-xxl-12">
-                                                    <textarea placeholder="نظر شما"
-                                                              class="comment-input comment-textarea"></textarea>
-                                                </div>
+                                                {{ comment_form|crispy }}
                                                 <div class="col-xxl-12">
                                                     <div class="comment-submit">
-                                                        <button type="submit" class="cart-btn">ارسال</button>
+                                                        <button type="submit" class="btn btn-success mt-3">ارسال
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>

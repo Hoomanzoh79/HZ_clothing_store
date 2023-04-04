@@ -67,11 +67,13 @@
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
             <div class="product__item product__item-d">
                 <div class="product__thumb fix">
-                    <div class="product-image w-img">
-                        <a href="{{ cloth.get_absolute_url }}">
-                            <img src="assets/img/product/tp-2.jpg" alt="product">
-                        </a>
-                    </div>
+                    {% if cloth.cover %}
+                        <div class="product-image w-img">
+                            <a href="{{ cloth.get_absolute_url }}">
+                                <img src="{{ cloth.cover.url }}" alt="product" width="300" height="300">
+                            </a>
+                        </div>
+                    {% endif %}
                     <div class="product-action">
                         <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId">
                             <i class="fal fa-eye"></i>
@@ -87,7 +89,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="product__content-3">
+                <div class="product__content-3 ">
                     <h6><a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a></h6>
                     <div class="rating mb-5">
                         <span>(01 نظر)</span>

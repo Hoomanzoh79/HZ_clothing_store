@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'crispy_forms',
+    'crispy_bootstrap4',
     'multiselectfield',
 ]
 
@@ -149,6 +150,7 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # crispy forms settings
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 
 # static settings
 STATIC_URL = 'static/'
@@ -172,3 +174,7 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+
+# media files
+MEDIA_ROOT = str(BASE_DIR.joinpath('media/'))
+MEDIA_URL = '/media/'

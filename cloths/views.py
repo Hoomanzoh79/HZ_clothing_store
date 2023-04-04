@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.views import generic
-from .models import Cloth
+from .models import Cloth,Comment
 from .forms import CommentForm
 
 
@@ -19,3 +19,18 @@ class ClothDetailView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['comment_form'] = CommentForm()
         return context
+
+
+class CommentCreateView(generic.CreateView):
+    model = Comment
+    form_class = CommentForm
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.author = self.request.user
+
+        cloth_id = int(self.kwargs['cloth_id'])
+        cloth = get_object_or_404(Cloth, id=cloth_id)
+        obj.cloth = cloth
+        
+        return super().form_valid(form)

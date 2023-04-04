@@ -16,6 +16,7 @@ class Cloth(models.Model):
     active = models.BooleanField(default=True)
     season = models.CharField(max_length=6, choices=SEASON_CHOICES)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
+    cover = models.ImageField(upload_to='cloth/cloth_covers', blank=True)
 
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
@@ -38,3 +39,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'{self.cloth}: {self.body}'
+
+    def get_absolute_url(self):
+        return reverse('cloth_detail', args=[self.cloth.id])
