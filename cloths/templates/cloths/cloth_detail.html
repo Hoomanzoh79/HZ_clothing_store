@@ -4,6 +4,7 @@
 {% load static %}
 {% load i18n %}
 {% load crispy_forms_tags %}
+{% load comment_tags %}
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>{% block page_title %}{{ cloth.title }} detail{% endblock %}</title>
@@ -35,7 +36,7 @@
                     <div class="product__details-content">
                         <h6> {{ cloth.title }}</h6>
                         <div class="pd-rating mb-10">
-                            <span>({{ cloth.comments.count }} نظر)</span>
+                            <span>({{ cloth.comments.all|only_active_comments|length }} نظر)</span>
                         </div>
                         <div class="price mb-10">
                             <span>{{ cloth.price }} تومان</span>
@@ -80,7 +81,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review"
                                 type="button" role="tab" aria-controls="review" aria-selected="false">نظرات
-                            ({{ cloth.comments.count }})
+                            ({{ cloth.comments.all|only_active_comments|length }})
                         </button>
                     </li>
                 </ul>
@@ -93,7 +94,7 @@
                 <div class="col-xl-8">
                     <div class="review-des-infod">
                         <ul class="review__list">
-                            {% for comment in cloth.comments.all %}
+                            {% for comment in cloth.comments.all|only_active_comments %}
                                 <li class="review__item">
                                     <div class="review__container">
                                         <div class="review__text">

@@ -28,6 +28,11 @@ class Cloth(models.Model):
         return reverse('cloth_detail', args=[self.id])
 
 
+class ActiveCommentsManager(models.Manager):
+    def get_queryset(self):
+        return super(ActiveCommentsManager, self).get_queryset().filter(active=True)
+
+
 class Comment(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments')
     cloth = models.ForeignKey(Cloth, on_delete=models.CASCADE, related_name='comments')
@@ -40,5 +45,11 @@ class Comment(models.Model):
     def __str__(self):
         return f'{self.cloth}: {self.body}'
 
+    # manager
+    objects = models.Manager()
+    active_comments_manager = ActiveCommentsManager()
+
     def get_absolute_url(self):
         return reverse('cloth_detail', args=[self.cloth.id])
+
+
