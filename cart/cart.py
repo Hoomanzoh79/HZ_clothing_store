@@ -34,7 +34,7 @@ class Cart:
 
     def __iter__(self):
         cloth_ids = self.cart.keys()
-        cloths = Cloth.objects.filter(id_in=cloth_ids)
+        cloths = Cloth.objects.filter(id__in=cloth_ids)
         cart = self.cart.copy()
         for cloth in cloths:
             cart[str(cloth.id)]['cloth_obj'] = cloth

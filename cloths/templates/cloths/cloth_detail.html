@@ -48,13 +48,18 @@
                             </ul>
                         </div>
                         <div class="cart-option mb-15">
+                            <form action="{% url 'cart:cart_add' cloth.id %}" method="post">
+                                {% csrf_token %}
                             <div class="product-quantity mr-20">
-                                <div class="cart-plus-minus p-relative"><input type="text" value="1">
+                                <div class="cart-plus-minus p-relative"><input type="text" value="1" name="quantity">
                                     <div class="dec qtybutton">-</div>
                                     <div class="inc qtybutton">+</div>
                                 </div>
+                                <button class="cart-btn" type="submit">
+                                    add to cart
+                                </button>
                             </div>
-                            <a href="cart.html" class="cart-btn">افزودن به سبد</a>
+                            </form>
                         </div>
                         <div class="product-tag-area mt-15">
                             <div class="product_info">
