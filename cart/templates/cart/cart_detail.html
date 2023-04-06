@@ -13,7 +13,8 @@
 
     <main>
         <!-- page-banner-area-start -->
-        <div class="page-banner-area page-banner-height-2" data-background="{% static 'img/banner/page-banner-4.jpg' %}">
+        <div class="page-banner-area page-banner-height-2"
+             data-background="{% static 'img/banner/page-banner-4.jpg' %}">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -60,20 +61,26 @@
                                     </thead>
                                     <tbody>
                                     {% for item in cart %}
-                                    <tr>
-                                        <td class="product-thumbnail"><a href="shop-details.html"><img
-                                                src="assets/img/cart/shop-p-10.jpg" alt=""></a></td>
-                                        <td class="product-name"><a href="shop-details.html">{{ item.cloth_obj.title }}</a></td>
-                                        <td class="product-price"><span class="amount">ت{{ item.cloth_obj.price }}</span></td>
-                                        <td class="product-quantity">
-                                            <div class="cart-plus-minus"><input type="text" value="1">
-                                                <div class="dec qtybutton">-</div>
-                                                <div class="inc qtybutton">+</div>
-                                            </div>
-                                        </td>
-                                        <td class="product-subtotal"><span class="amount">ت130.00</span></td>
-                                        <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
-                                    </tr>
+                                        <tr>
+                                            <td class="product-thumbnail"><a
+                                                    href="{% url 'cloth_detail' item.cloth_obj.id %}"><img
+                                                    src="{{ item.cloth_obj.cover.url }}" alt=""></a></td>
+                                            <td class="product-name"><a
+                                                    href="{% url 'cloth_detail' item.cloth_obj.id %}">{{ item.cloth_obj.title }}</a>
+                                            </td>
+                                            <td class="product-price"><span
+                                                    class="amount">ت{{ item.cloth_obj.price }}</span></td>
+                                            <td class="product-quantity">
+                                                <div class="cart-plus-minus"><input type="text" value="1">
+                                                    <div class="dec qtybutton">-</div>
+                                                    <div class="inc qtybutton">+</div>
+                                                </div>
+                                            </td>
+                                            <td class="product-subtotal"><span class="amount">ت130.00</span></td>
+                                            <td class="product-remove"><a
+                                                    href="{% url 'cart:cart_remove' item.cloth_obj.id %}"><i
+                                                    class="fa fa-times"></i></a></td>
+                                        </tr>
                                     {% endfor %}
                                     </tbody>
                                 </table>
@@ -81,13 +88,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="coupon-all">
-                                        <div class="coupon">
-                                            <input id="coupon_code" class="input-text" name="coupon_code" value=""
-                                                   placeholder="کد تخفیف" type="text">
-                                            <button class="tp-btn-h1" name="apply_coupon" type="submit">اعمال
-                                                کد
-                                            </button>
-                                        </div>
+                                        <a class="tp-btn-h1" href="checkout.html">تسویه حساب</a>
                                         <div class="coupon2">
                                             <button class="tp-btn-h1" name="update_cart" type="submit">بروزرسانی سبد
                                             </button>
@@ -101,9 +102,7 @@
                                         <h2>مجموع سبد</h2>
                                         <ul class="mb-20">
                                             <li>جمع <span>ت250.00</span></li>
-                                            <li>جمعا <span>ت250.00</span></li>
                                         </ul>
-                                        <a class="tp-btn-h1" href="checkout.html">تسویه حساب</a>
                                     </div>
                                 </div>
                             </div>

@@ -21,3 +21,9 @@ def add_to_cart_view(request, cloth_id):
 
     return redirect('cart:cart_detail')
 
+
+def remove_from_cart_view(request,cloth_id):
+    cart = Cart(request)
+    cloth = get_object_or_404(Cloth, id=cloth_id)
+    cart.remove(cloth)
+    return redirect('cart:cart_detail')
