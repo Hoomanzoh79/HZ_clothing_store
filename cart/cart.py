@@ -12,12 +12,14 @@ class Cart:
 
         self.cart = cart
 
-    def add(self, cloth, quantity=1):
+    def add(self, cloth, quantity=1, replace_current_quantity=False):
         cloth_id = str(cloth.id)
 
         if cloth_id not in self.cart:
-            self.cart[cloth_id] = {'quantity': quantity}
+            self.cart[cloth_id] = {'quantity': 0}
 
+        if replace_current_quantity:
+            self.cart[cloth_id]['quantity'] = quantity
         else:
             self.cart[cloth_id]['quantity'] += quantity
 

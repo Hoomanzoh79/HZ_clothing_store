@@ -46,7 +46,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <form action="#">
                             <div class="table-content table-responsive">
                                 <table class="table">
                                     <thead>
@@ -71,12 +70,26 @@
                                             <td class="product-price"><span
                                                     class="amount">ت{{ item.cloth_obj.price }}</span></td>
                                             <td class="product-quantity">
-                                                <div class="cart-plus-minus"><input type="text" value="1">
-                                                    <div class="dec qtybutton">-</div>
-                                                    <div class="inc qtybutton">+</div>
-                                                </div>
+                                                <form action="{% url 'cart:cart_add' item.cloth_obj.id %}"
+                                                      method="post">
+                                                    {% csrf_token %}
+                                                    <div class="cart-plus-minus"><input
+                                                                                        class="quantity-input"
+                                                                                        name="quantity"
+                                                                                        id="qty-1"
+                                                                                        value={{ item.quantity }}
+                                                                                                min="1">
+                                                        <div class="dec qtybutton">-</div>
+                                                        <div class="inc qtybutton">+</div>
+                                                        {{ item.update_quantity_form.inplace }}
+                                                    </div>
+                                                    <button class="tp-btn-h1 mt-3" name="update_cart" type="submit">
+                                                        بروزرسانی تعداد
+                                                    </button>
+                                                </form>
                                             </td>
-                                            <td class="product-subtotal"><span class="amount">ت130.00</span></td>
+                                            <td class="product-subtotal"><span
+                                                    class="amount">ت{{ item.total_price }}</span></td>
                                             <td class="product-remove"><a
                                                     href="{% url 'cart:cart_remove' item.cloth_obj.id %}"><i
                                                     class="fa fa-times"></i></a></td>
@@ -90,8 +103,6 @@
                                     <div class="coupon-all">
                                         <a class="tp-btn-h1" href="checkout.html">تسویه حساب</a>
                                         <div class="coupon2">
-                                            <button class="tp-btn-h1" name="update_cart" type="submit">بروزرسانی سبد
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -101,12 +112,11 @@
                                     <div class="cart-page-total">
                                         <h2>مجموع سبد</h2>
                                         <ul class="mb-20">
-                                            <li>جمع <span>ت250.00</span></li>
+                                            <li>ت{{ cart.get_total_price }} <span>جمع</span></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>

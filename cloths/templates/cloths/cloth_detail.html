@@ -50,15 +50,16 @@
                         <div class="cart-option mb-15">
                             <form action="{% url 'cart:cart_add' cloth.id %}" method="post">
                                 {% csrf_token %}
-                            <div class="product-quantity mr-20">
-                                <div class="cart-plus-minus p-relative"><input type="text" value="1" name="quantity">
-                                    <div class="dec qtybutton">-</div>
-                                    <div class="inc qtybutton">+</div>
+                                <div class="product-quantity mr-20">
+                                    <div class="cart-plus-minus p-relative"><input type="text" value="1"
+                                                                                   name="quantity">
+                                        <div class="dec qtybutton">-</div>
+                                        <div class="inc qtybutton">+</div>
+                                    </div>
+                                    <button class="tp-btn-h1 mt-3" name="update_cart" type="submit">
+                                        Add to cart
+                                    </button>
                                 </div>
-                                <button class="cart-btn" type="submit">
-                                    add to cart
-                                </button>
-                            </div>
                             </form>
                         </div>
                         <div class="product-tag-area mt-15">
@@ -66,6 +67,8 @@
                                     <span class="posted_in">
                                         <span class="title">دسته بندی :</span>
                                         <a href="#">{{ cloth.season }}</a>
+                                        <span>,</span>
+                                        <a href="#">{{ cloth.gender }}</a>
                                     </span>
                             </div>
                         </div>
