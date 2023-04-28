@@ -8,9 +8,11 @@ defusedxml==0.7.1
 Django==4.0.2
 django-allauth==0.53.1
 django-crispy-forms==2.0
+django-jalali-date==1.0.1
 django-multiselectfield==0.1.12
 environs==9.5.0
 idna==3.4
+jdatetime==4.1.1
 marshmallow==3.19.0
 oauthlib==3.2.2
 packaging==23.0

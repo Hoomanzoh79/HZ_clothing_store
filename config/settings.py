@@ -48,9 +48,11 @@ INSTALLED_APPS = [
     'pages',
     'cloths',
     'cart',
+    'persian_translate',
 
 
     # third party apps
+    'jalali_date',
     'allauth',
     'allauth.account',
     'crispy_forms',

@@ -5,6 +5,7 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 {% load comment_tags %}
+{% load jalali_tags %}
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>{% block page_title %}{{ cloth.title }} detail{% endblock %}</title>
@@ -108,8 +109,8 @@
                                         <div class="review__text">
                                             <div class="d-flex flex-sm-row flex-row">
                                                 <div>
-                                                    <div class="review__meta">
-                                                        <span class="review__published-date">{{ comment.datetime_created }}</span>
+                                                    <div class="review__meta" dir="ltr">
+                                                        <span class="review__published-date">{{ comment.datetime_created|to_jalali:'%Y / %B / %d'}}</span>
                                                         <span class="review__dash">-</span>
                                                         <strong class="review__author px-4">{{ comment.author.username }}</strong>
                                                     </div>
