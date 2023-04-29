@@ -6,6 +6,7 @@
 {% load crispy_forms_tags %}
 {% load comment_tags %}
 {% load jalali_tags %}
+{% load persian_number_translate %}
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>{% block page_title %}{{ cloth.title }} detail{% endblock %}</title>
@@ -37,10 +38,10 @@
                     <div class="product__details-content">
                         <h6> {{ cloth.title }}</h6>
                         <div class="pd-rating mb-10">
-                            <span>({{ cloth.comments.all|only_active_comments|length }} نظر)</span>
+                            <span>({{ cloth.comments.all|only_active_comments|length|translate_number }} نظر)</span>
                         </div>
                         <div class="price mb-10">
-                            <span>{{ cloth.price }} تومان</span>
+                            <span>{{ cloth.price|translate_number }} تومان</span>
                         </div>
                         <div class="features-des mb-20 mt-10">
                             <ul>
@@ -90,7 +91,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review"
                                 type="button" role="tab" aria-controls="review" aria-selected="false">نظرات
-                            ({{ cloth.comments.all|only_active_comments|length }})
+                            ({{ cloth.comments.all|only_active_comments|length|translate_number }})
                         </button>
                     </li>
                 </ul>

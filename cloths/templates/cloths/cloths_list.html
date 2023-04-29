@@ -3,6 +3,8 @@
 {% extends '_base.html' %}
 {% load i18n %}
 {% load comment_tags %}
+{% load persian_number_translate %}
+{% load humanize %}
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>{% block page_title %}Cloths List{% endblock %}</title>
@@ -93,10 +95,10 @@
                 <div class="product__content-3 ">
                     <h6><a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a></h6>
                     <div class="rating mb-5">
-                        <span>({{ cloth.comments.all|only_active_comments|length }} نظر)</span>
+                        <span>({{ cloth.comments.all|only_active_comments|length|translate_number }} نظر)</span>
                     </div>
                     <div class="price mb-10">
-                        <span>{{ cloth.price }} تومان</span>
+                        <span>{{ cloth.price|intcomma:False|translate_number }} تومان</span>
                     </div>
                 </div>
                 <div class="product__add-cart-s text-center">
