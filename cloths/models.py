@@ -1,6 +1,8 @@
 from django.db import models
 from django.shortcuts import reverse
 from django.contrib.auth import get_user_model
+from django.utils import timezone
+from ckeditor.fields import RichTextField
 
 
 class Cloth(models.Model):
@@ -11,14 +13,14 @@ class Cloth(models.Model):
                       ('female', 'female'), ]
 
     title = models.CharField(max_length=50)
-    description = models.TextField(blank=True, null=True)
+    description = RichTextField(blank=True)
     price = models.PositiveIntegerField(default=True)
     active = models.BooleanField(default=True)
     season = models.CharField(max_length=6, choices=SEASON_CHOICES)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
     cover = models.ImageField(upload_to='cloth/cloth_covers', blank=True)
 
-    datetime_created = models.DateTimeField(auto_now_add=True)
+    datetime_created = models.DateTimeField(default=timezone.now)
     datetime_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):

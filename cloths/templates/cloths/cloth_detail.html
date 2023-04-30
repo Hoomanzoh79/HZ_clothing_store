@@ -7,6 +7,7 @@
 {% load comment_tags %}
 {% load jalali_tags %}
 {% load persian_number_translate %}
+{% load humanize %}
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>{% block page_title %}{{ cloth.title }} detail{% endblock %}</title>
@@ -41,12 +42,12 @@
                             <span>({{ cloth.comments.all|only_active_comments|length|translate_number }} نظر)</span>
                         </div>
                         <div class="price mb-10">
-                            <span>{{ cloth.price|translate_number }} تومان</span>
+                            <span>{{ cloth.price|intcomma:False|translate_number }} تومان</span>
                         </div>
                         <div class="features-des mb-20 mt-10">
                             <ul>
-                                <li><a href="product-details.html"><i class="fas fa-circle"></i>{{ cloth.description }}
-                                </a></li>
+                                <li><p href="product-details.html"><i class="fas fa-circle"></i>{{ cloth.description|safe }}
+                                </p></li>
                             </ul>
                         </div>
                         <div class="cart-option mb-15">

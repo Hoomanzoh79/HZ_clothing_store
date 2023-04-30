@@ -1,9 +1,10 @@
 from django.contrib import admin
 from .models import Cloth, Comment
+from jalali_date.admin import ModelAdminJalaliMixin
 
 
 @admin.register(Cloth)
-class ClothAdmin(admin.ModelAdmin):
+class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ['title', 'price', 'active', 'season', 'gender', ]
 
 

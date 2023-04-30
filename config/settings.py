@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
 
     # third party apps
+    'ckeditor',
     'jalali_date',
     'allauth',
     'allauth.account',
@@ -159,6 +160,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 # static settings
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # all auth settings
 SITE_ID = 1
