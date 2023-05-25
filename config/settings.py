@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'cloths',
     'cart',
     'persian_translate',
+    'orders',
 
 
     # third party apps
