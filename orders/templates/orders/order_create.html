@@ -1,0 +1,71 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_title %} order create {% endblock %}
+{% block content %}
+    <main>
+        <!-- checkout-area-start -->
+        <section class="checkout-area pb-85">
+            <div class="container mt-3">
+                <div class="row">
+                <div class="col-lg-6">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-success">submit order</button>
+                    </form>
+                </div>
+                    <div class="col-lg-6 mt-35">
+                        <div class="your-order mb-30 ">
+                            <h3>سفارش شما</h3>
+                            <div class="your-order-table table-responsive">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th class="product-name">محصول</th>
+                                        <th class="product-total">مجموع</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in cart %}
+                                        <tr class="cart_item">
+                                            <td class="product-name">
+                                                {{ item.cloth_obj.title }}<strong class="product-quantity">
+                                                * {{ item.quantity }}</strong>
+                                            </td>
+                                            <td class="product-total">
+                                                <span class="amount">{{ item.cloth_obj.price }}</span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                    <tr class="cart-subtotal">
+                                        <th>مجموع سبد</th>
+                                        <td><span class="amount">ت215.00</span></td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th>مجموع سفارش</th>
+                                        <td><strong><span class="amount">ت215.00</span></strong>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                            <div class="payment-method">
+                                <div class="order-button-payment mt-20">
+                                    <button type="submit" class="tp-btn-h1">ثبت سفارش</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </section>
+        <!-- checkout-area-end -->
+
+    </main>
+{% endblock %}
