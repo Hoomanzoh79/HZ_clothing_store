@@ -3,6 +3,7 @@ from django.shortcuts import reverse
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from ckeditor.fields import RichTextField
+from multiselectfield import MultiSelectField
 
 
 class Cloth(models.Model):
@@ -11,6 +12,17 @@ class Cloth(models.Model):
                        ('fall', 'fall'), ]
     GENDER_CHOICES = [('male', 'male'),
                       ('female', 'female'), ]
+    
+    SIZE_CHOICES = (('XXS', 'XXS'),
+                    ('XS', 'XS'),
+                    ('S', 'S'),
+                    ('M', 'M'),
+                    ('XL', 'XL'),
+                    ('XXL', 'XXL'))
+    
+    sizes = MultiSelectField(choices=SIZE_CHOICES,
+                             max_choices=6,
+                             max_length=17,null=True)
 
     title = models.CharField(max_length=50)
     description = RichTextField(blank=True)
