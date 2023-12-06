@@ -53,16 +53,10 @@
                         <div class="cart-option mb-15">
                             <form action="{% url 'cart:cart_add' cloth.id %}" method="post">
                                 {% csrf_token %}
-                                <div class="product-quantity mr-20">
-                                    <div class="cart-plus-minus p-relative"><input type="text" value="1"
-                                                                                   name="quantity">
-                                        <div class="dec qtybutton">-</div>
-                                        <div class="inc qtybutton">+</div>
-                                    </div>
-                                    <button class="tp-btn-h1 mt-3" name="update_cart" type="submit">
-                                        Add to cart
-                                    </button>
-                                </div>
+                                {{ add_to_cart_form|crispy }}
+                                <button class="tp-btn-h1 mt-3" name="update_cart" type="submit">
+                                    Add to cart
+                                </button>
                             </form>
                         </div>
                         <div class="product-tag-area mt-15">

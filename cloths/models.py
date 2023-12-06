@@ -11,13 +11,14 @@ class Cloth(models.Model):
     SEASON_CHOICES = [('winter', 'winter'),
                        ('summer', 'summer'),
                        ('fall', 'fall'), ]
+    
     GENDER_CHOICES = [('male', 'male'),
                       ('female', 'female'), ]
     
-    SIZE_CHOICES = (('XXS', 'XXS'),
-                    ('XS', 'XS'),
+    SIZE_CHOICES = (
                     ('S', 'S'),
                     ('M', 'M'),
+                    ('L','L'),
                     ('XL', 'XL'),
                     ('XXL', 'XXL'))
     
@@ -41,6 +42,9 @@ class Cloth(models.Model):
 
     def get_absolute_url(self):
         return reverse('cloth_detail', args=[self.id])
+    
+    def available_sizes(self):
+        return tuple(self.sizes)
 
 
 class ActiveCommentsManager(models.Manager):
