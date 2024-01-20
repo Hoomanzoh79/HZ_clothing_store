@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en" dir="rtl">
 {% extends '_base.html' %}
+{% load static %}
 {% load i18n %}
 {% load comment_tags %}
 {% load persian_number_translate %}
@@ -11,109 +12,40 @@
 </head>
 <body>
 {% block content %}
+<!-- Content -->
+  <div id="content"> 
+    
+    <!-- New Arrival -->
+    <section class="padding-top-100 padding-bottom-100">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>new arrival</h4>
+          <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</span> </div>
+      </div>
+      
+      <!-- New Arrival -->
+      <div class="arrival-block"> 
 
-    <div class="product-lists-top">
-        <div class="product__filter-wrap">
-            <div class="row align-items-center">
-                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                    <div class="product__filter d-sm-flex align-items-center">
-                        <div class="product__col">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="FourCol-tab" data-bs-toggle="tab"
-                                            data-bs-target="#FourCol" type="button" role="tab" aria-controls="FourCol"
-                                            aria-selected="true">
-                                        <i class="fal fa-th"></i>
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="FiveCol-tab" data-bs-toggle="tab"
-                                            data-bs-target="#FiveCol" type="button" role="tab" aria-controls="FiveCol"
-                                            aria-selected="false">
-                                        <i class="fal fa-list"></i>
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="product__result pl-60">
-                            <p>نمایش 1-20 از 29 نتیجه</p>
-                        </div>
-                    </div>
+                <!-- Item -->
+                <div class="item"> 
+                  <!-- Images --> 
+                  <img class="img-1" src="{% static 'images/item-img-1-1.jpg' %}" alt=""> <img class="img-2" src="{% static 'images/item-img-1-1-1.jpg' %}" alt=""> 
+                  <!-- Overlay  -->
+                  <div class="overlay"> 
+                    <!-- Price --> 
+                    <span class="price"><small>$</small>299</span>
+                    <div class="position-center-center"> <a href="{% static 'images/item-img-1-1.jpg' %}" data-lighter><i class="icon-magnifier"></i></a> </div>
+                  </div>
+                  <!-- Item Name -->
+                  <div class="item-name"> <a href="#.">wooden chair</a>
+                    <p>Lorem ipsum dolor sit amet</p>
+                  </div>
                 </div>
-                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                    <div class="product__filter-right d-flex align-items-center justify-content-md-end">
-                        <div class="product__sorting product__show-no">
-                            <select>
-                                <option>10</option>
-                                <option>20</option>
-                                <option>30</option>
-                                <option>40</option>
-                            </select>
-                        </div>
-                        <div class="product__sorting product__show-position ml-20">
-                            <select>
-                                <option>آخرین</option>
-                                <option>جدید</option>
-                                <option>آینده</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="tab-content" id="productGridTabContent">
-    <div class="tab-pane fade  show active" id="FourCol" role="tabpanel" aria-labelledby="FourCol-tab">
-    <div class="tp-wrapper">
-    <div class="row g-0">
-    {% for cloth in cloths %}
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-            <div class="product__item product__item-d">
-                <div class="product__thumb fix">
-                    {% if cloth.cover %}
-                        <div class="product-image w-img">
-                            <a href="{{ cloth.get_absolute_url }}">
-                                <img src="{{ cloth.cover.url }}" alt="product" width="300" height="300">
-                            </a>
-                        </div>
-                    {% endif %}
-                    <div class="product-action">
-                        <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId">
-                            <i class="fal fa-eye"></i>
-                            <i class="fal fa-eye"></i>
-                        </a>
-                        <a href="#" class="icon-box icon-box-1">
-                            <i class="fal fa-heart"></i>
-                            <i class="fal fa-heart"></i>
-                        </a>
-                        <a href="#" class="icon-box icon-box-1">
-                            <i class="fal fa-layer-group"></i>
-                            <i class="fal fa-layer-group"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="product__content-3 ">
-                    <h6><a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a></h6>
-                    <div class="rating mb-5">
-                        <span>({{ cloth.comments.all|only_active_comments|length|translate_number }} نظر)</span>
-                    </div>
-                    <div class="price mb-10">
-                        <span>{{ cloth.price|intcomma:False|translate_number }} تومان</span>
-                    </div>
-                </div>
-                <div class="product__add-cart-s text-center">
-                    <button type="button" class="cart-btn d-flex mb-10 align-items-center justify-content-center w-100">
-                        افزودن به سبد
-                    </button>
-                    <a href="{{ cloth.get_absolute_url }}">
-                        <button type="button" class="wc-checkout d-flex align-items-center justify-content-center w-100"
-                                data-bs-toggle="modal" data-bs-target="#productModalId">
-                            مشاهده ی محصول
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
-{% endblock %}
+              </div>
+            </section>        
+{% endblock %}  
+</body>
 </html>
