@@ -2,7 +2,7 @@ from django import template
 register = template.Library()
 
 
-@register.filter
+@register.filter(name="translate_number")
 def translate_number(value):
     value = str(value)
     english_to_persian_table = str.maketrans('0123456789', '۰١٢٣٤٥٦٧٨٩')
