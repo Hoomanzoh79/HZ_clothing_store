@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
     'multiselectfield',
+    'rosetta',
 ]
 
 MIDDLEWARE = [
