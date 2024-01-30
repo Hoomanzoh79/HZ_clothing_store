@@ -41,7 +41,7 @@ body {
 	font-weight: normal;
 	position: relative;
 	font-size: 14px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: "IRANSansX", sans-serif;
 }
 /*=======================================================
       WRAPPER
@@ -57,7 +57,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 	color: #252525;
-	font-family: 'Montserrat', sans-serif;
+	font-family: "IRANSansX", sans-serif;
 	font-weight: bold;
 	letter-spacing: 0.5px;
 	text-transform: uppercase;
@@ -187,25 +187,25 @@ a:hover, a:focus {
 	transform: translate(-50%, -50%);
 }
 .font-playfair {
-	font-family: 'Playfair Display', serif;
+	font-family: "IRANSansX", sans-serif;
 }
 .font-montserrat {
-	font-family: 'Montserrat', sans-serif;
+	font-family: "IRANSansX", sans-serif;
 }
 .font-montserrat {
-	font-family: 'Montserrat', sans-serif;
+	font-family: "IRANSansX", sans-serif;
 }
 .font-hair-line {
-	font-family: 'montserrathairline';
+	font-family: "IRANSansX", sans-serif;
 }
 .font-light {
-	font-family: 'montserratlight';
+	font-family: "IRANSansX", sans-serif;
 }
 .font-regular {
-	font-family: 'montserratregular';
+	font-family: "IRANSansX", sans-serif;
 }
 .font-extra-bold {
-	font-family: 'montserratbold';
+	font-family: "IRANSansX", sans-serif;
 }
 .white-bg {
 	background: #fff !important;
@@ -361,7 +361,7 @@ section {
 	line-height: 24px;
 	letter-spacing: 0.1px;
 	color: #666666;
-	font-family: 'Playfair Display', serif;
+	font-family: "IRANSansX", sans-serif;
 }
 .heading.light-head h3 {
 	color: #fff;
@@ -1161,7 +1161,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	position: relative;
 }
 .simple-head h4 {
-	font-family: 'Playfair Display', serif;
+	font-family: "IRANSansX", sans-serif;
 	font-size: 28px;
 	color: #2d3a4b;
 	margin: 30px 0;
@@ -1314,7 +1314,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0 ); /* IE6-9 */
 }
 .arrival-block .item-name p {
-	font-family: 'Playfair Display', serif;
+	font-family: "IRANSansX", sans-serif;
 	font-size: 14px;
 	margin: 0px;
 }
