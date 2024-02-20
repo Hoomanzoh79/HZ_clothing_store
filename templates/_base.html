@@ -9,490 +9,1167 @@
 <meta name="description" content="">
 <meta name="author" content="M_Adnan">
 <title>{%block page_title %} {% endblock %}</title>
+<!-- Favicon -->
+<link rel="shortcut icon" href="{% static 'images/favicon.png'}" />
+<!-- Plugins CSS -->
+<link rel="stylesheet" href="{% static 'css/plugins.css' %}" />
+<!-- Main Style CSS -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
 
-<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
-<link rel="stylesheet" type="text/css" href="{% static 'rs-plugin/css/settings.css' %}" media="screen" />
-
-<!-- Bootstrap Core CSS -->
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'css/ionicons.min.css' %}" rel="stylesheet">
-<link href="{% static 'css/main.css' %}" rel="stylesheet">
-<link href="{% static 'css/style.css' %}" rel="stylesheet">
-<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
-
-<!-- JavaScripts -->
-<script src="{% static 'js/modernizr.js' %}"></script>
-
-<!-- Online Fonts -->
-<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
-<body dir="rtl">
 
-<!-- LOADER -->
-<div id="loader">
-  <div class="position-center-center">
-    <div class="ldr"></div>
-  </div>
-</div>
+<body class="template-index index-demo4">
+    <!-- Page Loader -->
+    <div id="pre-loader"><img src="{% staic 'images/loader.png'}" alt="" /></div>
+    <!-- End Page Loader -->
 
-<!-- Wrap -->
-<div id="wrap"> 
-  
-  <!-- header -->
-  <header>
-    <div class="sticky">
-      <div class="container"> 
-        
-        <!-- Logo -->
-        <div class="logo"> <a href="index.html"><img class="img-responsive" src="{% static 'images/logo.png' %}" alt="" ></a> </div>
-        <nav class="navbar ownmenu">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-open-btn" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"><i class="fa fa-navicon"></i></span> </button>
-          </div>
-          
-          <!-- NAV -->
-          <div class="collapse navbar-collapse" id="nav-open-btn">
-            <ul class="nav">
-              <li class="dropdown active"> <a href="#." class="dropdown-toggle" data-toggle="dropdown">{% trans 'Home' %}</a>
-                <ul class="dropdown-menu">
-                  <li> <a href="index.html">Index Default</a> </li>
-                  <li> <a href="index-1.html">Index 2</a> </li>
-                  <li> <a href="index-2.html">Index 3</a></li>
-                  <li> <a href="index-header-1.html">Index Header 1</a></li>
-                  <li> <a href="index-header-2.html">Index Header 2</a></li>
-                  <li> <a href="index-header-3.html">Index Header 3</a></li>
-                  <li> <a href="index-header-4.html">Index Header 4</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown">{% trans 'pages' %}</a>
-                <ul class="dropdown-menu">
-                  <li> <a href="shop_01.html">Shop 01 </a> </li>
-                  <li> <a href="shop_02.html">Shop 02</a> </li>
-                  <li> <a href="shop_03.html">Shop 03 </a> </li>
-                  <li> <a href="shop_04.html">Shop 04 </a> </li>
-                  <li> <a href="product-detail_01.html">Product Detail 01</a> </li>
-                  <li> <a href="product-detail_02.html">Product Detail 02</a> </li>
-                  <li> <a href="shopping-cart.html">Shopping Cart</a> </li>
-                  <li> <a href="checkout.html">Checkout</a> </li>
-                  <li> <a href="about-us_01.html">About 01</a> </li>
-                  <li> <a href="about-us_02.html">About 02</a> </li>
-                  <li> <a href="contact.html">Contact</a> </li>
-                  <li> <a href="blog-list_01.html">Blog List 01</a> </li>
-                  <li> <a href="blog-list_02.html">Blog List 02</a> </li>
-                  <li> <a href="blog-list_03.html">Blog List 03 </a> </li>
-                  <li> <a href="blog-detail_01.html">Blog Detail 01 </a> </li>
-                </ul>
-              </li>
-              <li> <a href="about-us_01.html">About </a> </li>
-              
-              <!-- Two Link Option -->
-              <li class="dropdown"> <a href="#." class="dropdown-toggle" data-toggle="dropdown">Designer</a>
-                <div class="dropdown-menu two-option">
-                  <div class="row">
-                    <ul class="col-sm-6">
-                      <li> <a href="shop_01.html">summer store</a></li>
-                      <li> <a href="shop_01.html"> sarees</a></li>
-                      <li> <a href="shop_01.html"> kurtas</a></li>
-                      <li> <a href="shop_01.html"> shorts & tshirts</a></li>
-                      <li> <a href="shop_01.html"> winter wear</a></li>
-                      <li> <a href="shop_01.html"> jeans</a></li>
-                      <li> <a href="shop_01.html"> bra</a></li>
-                      <li> <a href="shop_01.html"> babydools</a> </li>
-                    </ul>
-                    <ul class="col-sm-6">
-                      <li> <a href="shop_01.html">deodornts</a></li>
-                      <li> <a href="shop_01.html"> skin care</a></li>
-                      <li> <a href="shop_01.html"> make up</a></li>
-                      <li> <a href="shop_01.html"> watch</a></li>
-                      <li> <a href="shop_01.html"> siting bags</a></li>
-                      <li> <a href="shop_01.html"> totes</a></li>
-                      <li> <a href="shop_01.html"> gold rings</a></li>
-                      <li> <a href="shop_01.html"> jewellery</a> </li>
-                    </ul>
-                  </div>
+    <!--Page Wrapper-->
+    <div class="page-wrapper">
+        <!--Topbar-->
+        <div class="top-info-bar style1 d-none d-lg-block d-md-block">
+            <div class="topBar-slider-style1 alert fade show" role="alert">
+                <div class="item text-uppercase text-center d-flex align-items-center justify-content-center">
+                    <a href="#">این الگوی باورنکردنی را اکنون خریداری کنید! پایان فروش در</a>
+                    <!--Countdown Timer-->
+                    <div class="promo-counter days-time" data-countdown="2024/10/01"></div>
+                    <!--End Countdown Timer-->
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="an an-times-l"></i></button>
                 </div>
-              </li>
-              
-              <!-- MEGA MENU -->
-              <li class="dropdown megamenu"> <a href="#." class="dropdown-toggle" data-toggle="dropdown">store</a>
-                <div class="dropdown-menu">
-                  <div class="row"> 
-                    
-                    <!-- Shop Pages -->
-                    <div class="col-md-3">
-                      <h6>Shop Pages</h6>
-                      <ul>
-                        <li> <a href="shop_01.html">Shop 01 </a> </li>
-                        <li> <a href="shop_02.html">Shop 02</a> </li>
-                        <li> <a href="shop_03.html">Shop 03 </a> </li>
-                        <li> <a href="shop_04.html">Shop 04 </a> </li>
-                        <li> <a href="product-detail_01.html">Product Detail 01</a> </li>
-                        <li> <a href="product-detail_02.html">Product Detail 02</a> </li>
-                        <li> <a href="shopping-cart.html">Shopping Cart</a> </li>
-                        <li> <a href="checkout.html">Checkout</a> </li>
-                      </ul>
-                    </div>
-                    
-                    <!-- TOp Rate Products -->
-                    <div class="col-md-4">
-                      <h6>TOp Rate Products</h6>
-                      <div class="top-rated">
-                        <ul>
-                          <li>
-                            <div class="media-left">
-                              <div class="cart-img"> <a href="#"> <img class="media-object img-responsive" src="{% static 'images/cart-img-1.jpg' %}" alt="..."> </a> </div>
-                            </div>
-                            <div class="media-body">
-                              <h6 class="media-heading">WOOD CHAIR</h6>
-                              <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                              <span class="price">129.00 USD</span> </div>
-                          </li>
-                          <li>
-                            <div class="media-left">
-                              <div class="cart-img"> <a href="#"> <img class="media-object img-responsive" src="{% static 'images/cart-img-1.jpg' %}" alt="..."> </a> </div>
-                            </div>
-                            <div class="media-body">
-                              <h6 class="media-heading">STOOL</h6>
-                              <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                              <span class="price">129.00 USD</span> </div>
-                          </li>
-                          <li>
-                            <div class="media-left">
-                              <div class="cart-img"> <a href="#"> <img class="media-object img-responsive" src="{% static 'images/cart-img-1.jpg' %}" alt="..."> </a> </div>
-                            </div>
-                            <div class="media-body">
-                              <h6 class="media-heading">WOOD SPOON</h6>
-                              <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                              <span class="price">129.00 USD</span> </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    <!-- New Arrival -->
-                    <div class="col-md-5">
-                      <h5>NEW ARRIVAL 2016 <span>(Best Collection)</span></h5>
-                      <img class="nav-img" src="{% static 'images/nav-img.png' %}" alt="" >
-                      <p>Lorem ipsum dolor sit amet,<br>
-                        consectetur adipiscing elit. <br>
-                        Donec faucibus maximus<br>
-                        vehicula.</p>
-                      <a href="#." class="btn btn-small btn-round">SHOP NOW</a> </div>
-                  </div>
+                <div class="item text-center d-flex align-items-center justify-content-center">
+                    تا <b class="mx-2 blueText">80% تخفیف</b> در کل فروشگاه! عجله کن! <a href="shop-top-filter.html" class="btn btn-small mx-2">اکنون خرید کنید</a> <button type="button" class="btn-close" data-bs-dismiss ="alert" aria-label="Close"><i class="an an-times-l"></i></button>
                 </div>
-              </li>
-              <li> <a href="contact.html"> contact</a> </li>
-            </ul>
-          </div>
-          
-          <!-- Nav Right -->
-          <div class="nav-right">
-            <ul class="navbar-right">
-              
-              <!-- USER INFO -->
-              <li class="dropdown user-acc"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" ><i class="icon-user"></i> </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <h6>HELLO! Jhon Smith</h6>
-                  </li>
-                  <li><a href="#">MY CART</a></li>
-                  <li><a href="#">ACCOUNT INFO</a></li>
-                  <li><a href="#">LOG OUT</a></li>
-                </ul>
-              </li>
-              
-              <!-- USER BASKET -->
-              <li class="dropdown user-basket"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="icon-basket-loaded"></i> </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <div class="media-left">
-                      <div class="cart-img"> <a href="#"> <img class="media-object img-responsive" src="{% static 'images/cart-img-1.jpg' %}" alt="..."> </a> </div>
-                    </div>
-                    <div class="media-body">
-                      <h6 class="media-heading">WOOD CHAIR</h6>
-                      <span class="price">129.00 USD</span> <span class="qty">QTY: 01</span> </div>
-                  </li>
-                  <li>
-                    <div class="media-left">
-                      <div class="cart-img"> <a href="#"> <img class="media-object img-responsive" src="{% static 'images/cart-img-1.jpg' %}" alt="..."> </a> </div>
-                    </div>
-                    <div class="media-body">
-                      <h6 class="media-heading">WOOD STOOL</h6>
-                      <span class="price">129.00 USD</span> <span class="qty">QTY: 01</span> </div>
-                  </li>
-                  <li>
-                    <h5 class="text-center">SUBTOTAL: 258.00 USD</h5>
-                  </li>
-                  <li class="margin-0">
-                    <div class="row">
-                      <div class="col-xs-6"> <a href="shopping-cart.html" class="btn">VIEW CART</a></div>
-                      <div class="col-xs-6 "> <a href="checkout.html" class="btn">CHECK OUT</a></div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              
-              <!-- SEARCH BAR -->
-              <li class="dropdown"> <a href="javascript:void(0);" class="search-open"><i class=" icon-magnifier"></i></a>
-                <div class="search-inside animated bounceInUp"> <i class="icon-close search-close"></i>
-                  <div class="search-overlay"></div>
-                  <div class="position-center-center">
-                    <div class="search">
-                      <form>
-                        <input type="search" placeholder="Search Shop">
-                        <button type="submit"><i class="icon-check"></i></button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </header>
-  
-  <!--======= HOME MAIN SLIDER =========-->
-  <section class="home-slider"> 
-    
-    <!-- SLIDE Start -->
-    <div class="tp-banner-container">
-      <div class="tp-banner">
-        <ul>
-          <!-- SLIDE  -->
-          <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
-            <!-- MAIN IMAGE --> 
-            <img src="{% static 'images/slide-bg-1.jpg' %}"  alt="slider"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-            <!-- LAYERS --> 
-            <!-- LAYER NR. 1 -->
-            <div class="tp-caption font-playfair sfb tp-resizeme" 
-                data-x="left" data-hoffset="0" 
-                data-y="center" data-voffset="-200" 
-                data-speed="800" 
-                data-start="500" 
-                data-easing="Power3.easeInOut" 
-                data-splitin="none" 
-                data-splitout="none" 
-                data-elementdelay="0.1" 
-                data-endelementdelay="0.1" 
-                data-endspeed="300" 
-                style="z-index: 7; font-size:18px; color:#fff; max-width: auto; max-height: auto; white-space: nowrap;">The Latest Product from ecoshop</div>
-            <!-- LAYER NR. 2 -->
-            <div class="tp-caption sfl font-extra-bold tp-resizeme" 
-                data-x="left" data-hoffset="0" 
-                data-y="center" data-voffset="-120" 
-                data-speed="800" 
-                data-start="800" 
-                data-easing="Power3.easeInOut" 
-                data-splitin="none" 
-                data-splitout="none" 
-                data-elementdelay="0.07" 
-                data-endelementdelay="0.1" 
-                data-endspeed="300" 
-                style="z-index: 6; font-size:80px; color:#2d3a4b; text-transform:uppercase; white-space: nowrap;"><small class="font-regular">$</small>299 </div>
-            <!-- LAYER NR. 2 -->
-            <div class="tp-caption sfr font-extra-bold tp-resizeme" 
-                data-x="left" data-hoffset="0" 
-                data-y="center" data-voffset="0" 
-                data-speed="800" 
-                data-start="800" 
-                data-easing="Power3.easeInOut" 
-                data-splitin="chars" 
-                data-splitout="none" 
-                data-elementdelay="0.07" 
-                data-endelementdelay="0.1" 
-                data-endspeed="300" 
-                style="z-index: 6; font-size:120px; color:#fff; text-transform:uppercase; white-space: nowrap;">featured </div>
-            <!-- LAYER NR. 2 -->
-            <div class="tp-caption sfr font-extra-bold tp-resizeme" 
-                data-x="left" data-hoffset="0" 
-                data-y="center" data-voffset="110" 
-                data-speed="800" 
-                data-start="1300" 
-                data-easing="Power3.easeInOut" 
-                data-splitin="chars" 
-                data-splitout="none" 
-                data-elementdelay="0.07" 
-                data-endelementdelay="0.1" 
-                data-endspeed="300" 
-                style="z-index: 6; font-size:120px; color:#fff; text-transform:uppercase; white-space: nowrap;">cycle </div>
-            <!-- LAYER NR. 4 -->
-            <div class="tp-caption lfb tp-resizeme" 
-                data-x="left" data-hoffset="0" 
-                data-y="center" data-voffset="240" 
-                data-speed="800" 
-                data-start="2200" 
-                data-easing="Power3.easeInOut" 
-                data-elementdelay="0.1" 
-                data-endelementdelay="0.1" 
-                data-endspeed="300" 
-                data-scrolloffset="0"
-                style="z-index: 8;"><a href="#." class="btn">SHOP NOW</a> </div>
-          </li>
-          
-          <!-- SLIDE  -->
-          <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
-            <!-- MAIN IMAGE --> 
-            <img src="{% static 'images/slide-bg-2.jpg' %}"  alt="slider"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-            <!-- LAYERS --> 
-            <!-- LAYER NR. 1 -->
-            <div class="tp-caption font-playfair sfb tp-resizeme" 
-                data-x="center" data-hoffset="0" 
-                data-y="center" data-voffset="-150" 
-                data-speed="800" 
-                data-start="500" 
-                data-easing="Power3.easeInOut" 
-                data-splitin="none" 
-                data-splitout="none" 
-                data-elementdelay="0.1" 
-                data-endelementdelay="0.1" 
-                data-endspeed="300" 
-                style="z-index: 7; font-size:18px; color:#fff; max-width: auto; max-height: auto; white-space: nowrap;">The Latest Product from ecoshop</div>
-            <!-- LAYER NR. 2 -->
-            <div class="tp-caption sfr font-regular tp-resizeme letter-space-4" 
-                data-x="center" data-hoffset="0" 
-                data-y="center" data-voffset="-50" 
-                data-speed="800" 
-                data-start="800" 
-                data-easing="Power3.easeInOut" 
-                data-splitin="chars" 
-                data-splitout="none" 
-                data-elementdelay="0.07" 
-                data-endelementdelay="0.1" 
-                data-endspeed="300" 
-                style="z-index: 6; font-size:78px; color:#fff; text-transform:uppercase; white-space: nowrap;">look beautiful </div>
-            <!-- LAYER NR. 2 -->
-            <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" 
-                data-x="center" data-hoffset="0" 
-                data-y="center" data-voffset="60" 
-                data-speed="800" 
-                data-start="1300" 
-                data-easing="Power3.easeInOut" 
-                data-splitin="chars" 
-                data-splitout="none" 
-                data-elementdelay="0.07" 
-                data-endelementdelay="0.1" 
-                data-endspeed="300" 
-                style="z-index: 6; font-size:140px; color:#fff; text-transform:uppercase; white-space: nowrap;">this season </div>
-            <!-- LAYER NR. 4 -->
-            <div class="tp-caption sfb font-extra-bold tp-resizeme" 
-                data-x="center" data-hoffset="120"
-                data-y="center" data-voffset="200"
-                data-speed="800" 
-                data-start="2200" 
-                data-easing="Power3.easeInOut" 
-                data-splitin="none" 
-                data-splitout="none" 
-                data-elementdelay="0.07" 
-                data-endelementdelay="0.1" 
-                data-endspeed="300" 
-                style="z-index: 6; font-size:60px; color:#fff; text-transform:uppercase; white-space: nowrap;"><small class="font-regular">$</small> 299 </div>
-            <!-- LAYER NR. 4 -->
-            <div class="tp-caption lfb tp-scrollbelowslider tp-resizeme" 
-                data-x="center" data-hoffset="-120" 
-                data-y="center" data-voffset="200" 
-                data-speed="800" 
-                data-start="2200" 
-                data-easing="Power3.easeInOut" 
-                data-elementdelay="0.1" 
-                data-endelementdelay="0.1" 
-                data-endspeed="300" 
-                data-scrolloffset="0"
-                style="z-index: 8;"><a href="#." class="btn">BUY NOW</a> </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  {% block content %}
-
-  {% endblock %}
-  <!--======= FOOTER =========-->
-  <footer>
-    <div class="container"> 
-      
-      <!-- ABOUT Location -->
-      <div class="col-md-3">
-        <div class="about-footer"> <img class="margin-bottom-30" src="{% static 'images/logo-foot.png' %}" alt="" >
-          <p><i class="icon-pointer"></i> Street No. 12, Newyork 12, <br>
-            MD - 123, USA.</p>
-          <p><i class="icon-call-end"></i> 1.800.123.456789</p>
-          <p><i class="icon-envelope"></i> info@ecoshop.com</p>
+            </div>
         </div>
-      </div>
-      
-      <!-- HELPFUL LINKS -->
-      <div class="col-md-3">
-        <h6>HELPFUL LINKS</h6>
-        <ul class="link">
-          <li><a href="#."> Products</a></li>
-          <li><a href="#."> Find a Store</a></li>
-          <li><a href="#."> Features</a></li>
-          <li><a href="#."> Privacy Policy</a></li>
-          <li><a href="#."> Blog</a></li>
-          <li><a href="#."> Press Kit </a></li>
-        </ul>
-      </div>
-      
-      <!-- SHOP -->
-      <div class="col-md-3">
-        <h6>SHOP</h6>
-        <ul class="link">
-          <li><a href="#."> About Us</a></li>
-          <li><a href="#."> Career</a></li>
-          <li><a href="#."> Shipping Methods</a></li>
-          <li><a href="#."> Contact</a></li>
-          <li><a href="#."> Support</a></li>
-          <li><a href="#."> Retailer</a></li>
-        </ul>
-      </div>
-      
-      <!-- MY ACCOUNT -->
-      <div class="col-md-3">
-        <h6>MY ACCOUNT</h6>
-        <ul class="link">
-          <li><a href="#."> Login</a></li>
-          <li><a href="#."> My Account</a></li>
-          <li><a href="#."> My Cart</a></li>
-          <li><a href="#."> Wishlist</a></li>
-          <li><a href="#."> Checkout</a></li>
-        </ul>
-      </div>
-      
-      <!-- Rights -->
-      
-      <div class="rights">
-        <p>©  2016 ecoshop All right reserved. </p>
-        <div class="scroll"> <a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a> </div>
-      </div>
-    </div>
-  </footer>
-  
-  <!--======= RIGHTS =========--> 
-  
-</div>
-<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script> 
-<script src="{% static 'js/bootstrap.min.js' %}"></script> 
-<script src="{% static 'js/own-menu.js' %}"></script> 
-<script src="{% static 'js/jquery.lighter.js' %}"></script> 
-<script src="{% static 'js/owl.carousel.min.js' %}"></script> 
+        <!--End Topbar-->
 
-<!-- SLIDER REVOLUTION 4.x SCRIPTS  --> 
-<script type="text/javascript" src="{% static 'rs-plugin/js/jquery.tp.t.min.js' %}"></script> 
-<script type="text/javascript" src="{% static 'rs-plugin/js/jquery.tp.min.js' %}"></script> 
-<script src="{% static 'js/main.js' %}"></script> 
-<script src="{% static 'js/main.js' %}"></script>
-</body>
+        <!--Header-->
+        <header id="header" class="header header-main mih-70 d-flex align-items-center header-4">
+            <div class="container">        
+                <div class="row">
+                    <!--Logo / Menu Toggle-->
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-2 align-self-center justify-content-start d-flex">
+                        <!--Mobile Toggle-->
+                        <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open me-3 d-lg-none"><i class="icon an an-times-l"></i><i class="icon an an-bars-l"></i></button>
+                        <!--End Mobile Toggle-->
+                        <!--Logo-->
+                        <div class="logo"><a href="index.html"><img class="logo-img" src="{% static 'images/logo-demo-4.svg' %}" alt="الگوی  بوت استرپ 5 تجارت الکترونیک چند منظوره بهینه" title="الگوی  بوت استرپ 5 تجارت الکترونیک چند منظوره بهینه" /><span class="logo-txt d-none">اپتیمال</span></a></div>
+                        <!--End Logo-->
+                    </div>
+                    <!--End Logo / Menu Toggle-->
+                    <!--Main Navigation Desktop-->
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-7 align-self-center d-menu-col">
+                        <nav class="grid__item" id="AccessibleNav">
+                            <ul id="siteNav" class="site-nav medium left hidearrow">
+                                <li class="lvl1 parent megamenu"><a href="#;">خانه <i class="an an-angle-down-l"></i></a>
+                                    <div class="megamenu style1">
+                                        <div class="row">
+                                            <div class="col-md-8 col-lg-8">
+                                                <div class="row">
+                                                    <div class="lvl-1 col-md-5 col-lg-4">
+                                                        <a href="#" class="site-nav lvl-1 menu-title">سبک‌های صفحه اصلی</a>
+                                                         <ul class="subLinks">
+                                                             <li class="lvl-2"><a href="index.html" class="site-nav lvl-2">صفحه اصلی 01 - پیش‌فرض</a></li>
+                                                             <li class="lvl-2"><a href="index-demo2.html" class="site-nav lvl-2">صفحه اصلی 02 - حداقل</a></li>
+                                                             <li class="lvl-2"><a href="index-demo3.html" class="site-nav lvl-2">صفحه اصلی 03 - رنگارنگ</a></li>
+                                                             <li class="lvl-2"><a href="index-demo4.html" class="site-nav lvl-2">صفحه اصلی 04 - مدرن</a></li>
+                                                             <li class="lvl-2"><a href="index-demo5.html" class="site-nav lvl-2">خانه 05 - لباس کودکان</a></li>
+                                                             <li class="lvl-2"><a href="index-demo6.html" class="site-nav lvl-2">صفحه اصلی 06 - تک محصول</a></li>
+                                                             <li class="lvl-2"><a href="index-demo7.html" class="site-nav lvl-2">صفحه اصلی 07 - زرق و برق</a></li>
+                                                             <li class="lvl-2"><a href="index-demo8.html" class="site-nav lvl-2">صفحه اصلی 08 - ساده</a></li>
+                                                             <li class="lvl-2"><a href="index-demo9.html" class="site-nav lvl-2">صفحه اصلی 09 - جالب <span class="lbl nm_label1">جدید</span> </a></li>
+                                                             <li class="lvl-2"><a href="index-demo10.html" class="site-nav lvl-2">خانه 10 - لوازم آرایشی</a></li>
+                                                         </ul>
+                                                    </div>
+                                                    <div class="lvl-1 col-md-5 col-lg-4">
+                                                        <a href="#" class="site-nav lvl-1 menu-title">سبک‌های صفحه اصلی</a>
+                                                         <ul class="subLinks">
+                                                             <li class="lvl-2"><a href="index-demo11.html" class="site-nav lvl-2">خانه 11 - حیوانات خانگی <span class="lbl nm_label3">مطرح</span> </a></li>
+                                                             <li class="lvl-2"><a href="index-demo12.html" class="site-nav lvl-2">صفحه اصلی 12 - ابزار و قطعات</a></li>
+                                                             <li class="lvl-2"><a href="index-demo13.html" class="site-nav lvl-2">خانه 13 - ساعت <span class="lbl nm_label1">جدید</span> </a></li>
+                                                             <li class="lvl-2"><a href="index-demo14.html" class="site-nav lvl-2">خانه 14 - غذا</a></li>
+                                                             <li class="lvl-2"><a href="index-demo15.html" class="site-nav lvl-2">صفحه 15 - کریسمس</a></li>
+                                                             <li class="lvl-2"><a href="index-demo16.html" class="site-nav lvl-2">خانه 16 - قاب تلفن</a></li>
+                                                             <li class="lvl-2"><a href="index-demo17.html" class="site-nav lvl-2">خانه 17 - جواهرات</a></li>
+                                                             <li class="lvl-2"><a href="index-demo18.html" class="site-nav lvl-2">خانه 18 - کیف <span class="lbl nm_label3">مطرح</span> </a></li>
+                                                             <li class="lvl-2"><a href="index-demo19.html" class="site-nav lvl-2">خانه 19 - لباس شنا</a></li>
+                                                             <li class="lvl-2"><a href="index-demo20.html" class="site-nav lvl-2">خانه 20 - مبلمان <span class="lbl nm_label2">جدید</span> </a></li>
+                                                         </ul>
+                                                    </div>
+                                                    <div class="lvl-1 col-md-5 col-lg-4">
+                                                        <a href="#" class="site-nav lvl-1 menu-title">سبک‌های صفحه اصلی</a>
+                                                         <ul class="subLinks">
+                                                             <li class="lvl-2"><a href="index-demo21.html" class="site-nav lvl-2">خانه 21 - لوازم مهمانی</a></li>
+                                                             <li class="lvl-2"><a href="index-demo22.html" class="site-nav lvl-2">صفحه اصلی 22 - دیجیتال</a></li>
+                                                             <li class="lvl-2"><a href="index-demo23.html" class="site-nav lvl-2">صفحه اصلی 23 - فاشیون</a></li>
+                                                             <li class="lvl-2"><a href="index-demo24.html" class="site-nav lvl-2">صفحه اصلی 24 - زرق و برق</a></li>
+                                                             <li class="lvl-2"><a href="index-demo25.html" class="site-nav lvl-2">خانه 25 - کفش <span class="lbl nm_label2">جدید</span> </a></li>
+                                                             <li class="lvl-2"><a href="index-demo26.html" class="site-nav lvl-2">صفحه 26 - کتابها <span class="lbl nm_label2">جدید</span> </a></li>
+                                                             <li class="lvl-2"><a href="index-demo27.html" class="site-nav lvl-2">صفحه 27 - یوگا <span class="lbl nm_label2">جدید</span> </a></li>
+                                                         </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-lg-4">
+                                                <div class="row mm-Banners">
+                                                    <div class="col-md-12 col-lg-12 imageCol text-center">
+                                                        <div class="menubox position-relative">
+                                                            <a href="index-demo6.html" class="mb-0"><img class="blur-up lazyload" src="{% static 'images/megamenu/megamenu-banner8.png' %}" data-src="{% static 'images/megamenu/megamenu-banner8.png' %}" alt="image"/></a>
+                                                            <p class="position-absolute bottom-0 start-50 translate-middle-x"><a href="index-demo6.html" class="title text-uppercase">طرح بندی محصول واحد</a></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="lvl1 parent megamenu"><a href="#;">فروشگاه <i class="an an-angle-down-l"></i></a>
+                                    <div class="megamenu style4">
+                                        <div class="row">
+                                            <div class="lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">صفحه دسته</a>
+                                                <ul class="subLinks">
+                                                    <li class="lvl-2"><a href="category-2columns.html" class="site-nav lvl-2">2 ستون با استایل 1</a></li>
+                                                    <li class="lvl-2"><a href="category-3columns.html" class="site-nav lvl-2">3 ستون با استایل 2</a></li>
+                                                    <li class="lvl-2"><a href="category-4columns.html" class="site-nav lvl-2">4 ستون با استایل 3</a></li>
+                                                    <li class="lvl-2"><a href="category-5columns.html" class="site-nav lvl-2">5 ستون با استایل 4</a></li>
+                                                    <li class="lvl-2"><a href="category-6columns.html" class="site-nav lvl-2">6 ستون با پهنای کامل</a></li>
+                                                    <li class="lvl-2"><a href="category-7columns.html" class="site-nav lvl-2">7 ستون</a></li>
+                                                    <li class="lvl-2"><a href="empty-category.html" class="site-nav lvl-2">دسته خالی</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">صفحه فروشگاه</a>
+                                                <ul class="subLinks">
+                                                    <li class="lvl-2"><a href="shop-left-sidebar.html" class="site-nav lvl-2">نوار کناری سمت چپ</a></li>
+                                                    <li class="lvl-2"><a href="shop-right-sidebar.html" class="site-nav lvl-2">نوار کناری سمت راست</a></li>
+                                                    <li class="lvl-2"><a href="shop-top-filter.html" class="site-nav lvl-2">فیلتر برتر</a></li>
+                                                    <li class="lvl-2"><a href="shop-fullwidth.html" class="site-nav lvl-2">تمام صفحه</a></li>
+                                                    <li class="lvl-2"><a href="shop-no-sidebar.html" class="site-nav lvl-2">بدون فیلتر</a></li>
+                                                    <li class="lvl-2"><a href="shop-listview-sidebar.html" class="site-nav lvl-2">نمایش فهرست</a></li>
+                                                    <li class="lvl-2"><a href="shop-listview-drawer.html" class="site-nav lvl-2">کشو نمایش فهرست</a></li>
+                                                    <li class="lvl-2"><a href="shop-category-slideshow.html" class="site-nav lvl-2">نمایش اسلاید دسته</a></li>
+                                                    <li class="lvl-2"><a href="shop-heading-with-banner.html" class="site-nav lvl-2">عنوان با بنر</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">صفحه فروشگاه</a>
+                                                <ul class="subLinks">
+                                                    <li class="lvl-2"><a href="shop-sub-collections.html" class="site-nav lvl-2">فهرست زیر مجموعه <span class="lbl nm_label5"> داغ</span> </a></li>
+                                                    <li class="lvl-2"><a href="shop-masonry-grid.html" class="site-nav lvl-2">خرید شبکه بنایی</a></li>
+                                                    <li class="lvl-2"><a href="shop-left-sidebar.html" class="site-nav lvl-2">شمارش معکوس خرید</a></li>
+                                                    <li class="lvl-2"><a href="shop-hover-info.html" class="site-nav lvl-2">اطلاعات شناور فروشگاه</a></li>
+                                                    <li class="lvl-2"><a href="shop-right-sidebar.html" class="site-nav lvl-2">پیمایش بی نهایت</a></li>
+                                                    <li class="lvl-2"><a href="shop-fullwidth.html" class="site-nav lvl-2">صفحه بندی کلاسیک</a></li>
+                                                    <li class="lvl-2"><a href="shop-swatches-style.html" class="site-nav lvl-2">سبک نمونه</a></li>
+                                                    <li class="lvl-2"><a href="shop-grid-style.html" class="site-nav lvl-2">سبک شبکه</a></li>
+                                                    <li class="lvl-2"><a href="shop-search-results.html" class="site-nav lvl-2">نتایج جستجو</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">خرید صفحه دیگر</a>
+                                                <ul class="subLinks">
+                                                    <li class="lvl-2"><a href="my-wishlist.html" class="site-nav lvl-2">علاقمندی ها استایل 1</a></li>
+                                                    <li class="lvl-2"><a href="my-wishlist-style2.html" class="site-nav lvl-2"> علاقمندی ها استایل 2</a></li>
+                                                    <li class="lvl-2"><a href="compare-style1.html" class="site-nav lvl-2">صفحه مقایسه استایل 1</a></li>
+                                                    <li class="lvl-2"><a href="compare-style2.html" class="site-nav lvl-2">صفحه مقایسه استایل 2</a></li>
+                                                    <li class="lvl-2"><a href="cart-style1.html" class="site-nav lvl-2">صفحه سبد خرید استایل 1</a></li>
+                                                    <li class="lvl-2"><a href="cart-style2.html" class="site-nav lvl-2">صفحه سبد خرید استایل 2</a></li>
+                                                    <li class="lvl-2"><a href="checkout-style1.html" class="site-nav lvl-2"> صفحه پرداخت استایل 1</a></li>
+                                                    <li class="lvl-2"><a href="checkout-style2.html" class="site-nav lvl-2">صفحه پرداخت استایل 2</a></li>
+                                                    <li class="lvl-2"><a href="checkout-success.html" class="site-nav lvl-2">خروج با موفقیت</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="row clear mt-4">
+                                            <div class="col-md-3 col-lg-3">
+                                                <a href="shop-left-sidebar.html"><img src="{% static 'images/megamenu/megamenu-banner4-1.jpg' %}" data-src="{% static 'images/megamenu/megamenu-banner4-1.jpg' %}" alt="image"/></a>
+                                            </div>
+                                            <div class="col-md-3 col-lg-3">
+                                                <a href="shop-left-sidebar.html"><img src="{% static 'images/megamenu/megamenu-banner4-2.jpg' %}" data-src="{% static 'images/megamenu/megamenu-banner4-2.jpg' %}" alt="image"/></a>
+                                            </div>
+                                            <div class="col-md-3 col-lg-3">
+                                                <a href="shop-left-sidebar.html"><img src="{% static 'images/megamenu/megamenu-banner4-3.jpg' %}" data-src="{% static 'images/megamenu/megamenu-banner4-3.jpg' %}" alt="image"/></a>
+                                            </div>
+                                            <div class="col-md-3 col-lg-3">
+                                                <a href="shop-left-sidebar.html"><img src="{% static 'images/megamenu/megamenu-banner4-4.jpg' %}" data-src="{% static 'images/megamenu/megamenu-banner4-4.jpg' %}" alt="image"/></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="lvl1 parent megamenu"><a href="#;">محصولات <i class="an an-angle-down-l"></i></a>
+                                    <div class="megamenu style2">
+                                        <div class="row">
+                                            <div class="lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">انواع محصول</a>
+                                                <ul class="subLinks">
+                                                    <li class="lvl-2"><a href="product-standard.html" class="site-nav lvl-2">محصول ساده</a></li>
+                                                    <li class="lvl-2"><a href="product-variable.html" class="site-nav lvl-2">محصول متغیر</a></li>
+                                                    <li class="lvl-2"><a href="product-grouped.html" class="site-nav lvl-2">محصول گروهی</a></li>
+                                                    <li class="lvl-2"><a href="product-external-affiliate.html" class="site-nav lvl-2">خارجی / محصول مشابه</a></li>
+                                                    <li class="lvl-2"><a href="product-outofstock.html" class="site-nav lvl-2">محصول خارج از انبار</a></li>
+                                                    <li class="lvl-2"><a href="product-layout1.html" class="site-nav lvl-2">محصول جدید</a></li>
+                                                    <li class="lvl-2"><a href="product-layout2.html" class="site-nav lvl-2">فروش محصول </a></li>
+                                                    <li class="lvl-2"><a href="product-layout1.html" class="site-nav lvl-2">تصویر متغیر</a></li>
+                                                    <li class="lvl-2"><a href="product-accordian.html" class="site-nav lvl-2">انتخاب متغیر</a></li>
+                                                    <li class="lvl-2"><a href="prodcut-360-degree-view.html" class="site-nav lvl-2">نمایش 360 درجه</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">صفحه محصول</a>
+                                                <ul class="subLinks">
+                                                    <li class="lvl-2"><a href="product-layout1.html" class="site-nav lvl-2">طرح بندی محصول 1</a></li>
+                                                    <li class="lvl-2"><a href="product-layout2.html" class="site-nav lvl-2">طرح بندی محصول 2</a></li>
+                                                    <li class="lvl-2"><a href="product-layout3.html" class="site-nav lvl-2">طرح بندی محصول 3</a></li>
+                                                    <li class="lvl-2"><a href="product-layout4.html" class="site-nav lvl-2">طرح بندی محصول 4</a></li>
+                                                    <li class="lvl-2"><a href="product-layout5.html" class="site-nav lvl-2">طرح بندی محصول 5</a></li>
+                                                    <li class="lvl-2"><a href="product-layout6.html" class="site-nav lvl-2">طرح بندی محصول 6</a></li>
+                                                    <li class="lvl-2"><a href="product-layout7.html" class="site-nav lvl-2">طرح بندی محصول 7</a></li>
+                                                    <li class="lvl-2"><a href="product-accordian.html" class="site-nav lvl-2">آکاردئون محصول</a></li>
+                                                    <li class="lvl-2"><a href="product-tabs-left.html" class="site-nav lvl-2">برگه‌های محصول سمت چپ</a></li>
+                                                    <li class="lvl-2"><a href="product-tabs-center.html" class="site-nav lvl-2">برگه‌های محصول وسط</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1 menu-title">بهترین برندها</a>
+                                                <div class="menu-brand-logo">
+                                                    <a href="brands-style2.html"><img src="{% static 'images/logo/brandlogo1.png' %}" alt="image"/></a>
+                                                    <a href="brands-style2.html"><img src="{% static 'images/logo/brandlogo2.png' %}" alt="image"/></a>
+                                                    <a href="brands-style2.html"><img src="{% static 'images/logo/brandlogo3.png' %}" alt="image"/></a>
+                                                </div>
+                                                <div class="menu-brand-logo">
+                                                    <a href="brands-style2.html"><img src="{% static 'images/logo/brandlogo4.png' %}" alt="image"/></a>
+                                                    <a href="brands-style2.html"><img src="{% static 'images/logo/brandlogo5.png' %}" alt="image"/></a>
+                                                    <a href="brands-style2.html"><img src="{% static 'images/logo/brandlogo6.png' %}" alt="image"/></a>
+                                                </div>
+                                            </div>
+                                            <div class="lvl-1 col-md-3 col-lg-3 p-0">
+                                                <a href="shop-left-sidebar.html"><img src="{% static 'images/megamenu/megamenu-banner3.jpg' %}" alt="image"/></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="lvl1 parent megamenu"><a href="#">ویژگی ها <i class="an an-angle-down-l"></i><span class="navLbl new">جدید</span></a>
+                                    <div class="megamenu style4">
+                                        <div class="row shop-grid-5">
+                                            <div class="lvl-1 col-md-3 col-lg-3 col-xl-2 item"><a href="#" class="site-nav lvl-1 menu-title">صفحات فروشنده</a>
+                                                <ul class="subLinks">
+                                                    <li><a href="vendor-dashboard.html" class="site-nav">داشبورد فروشنده</a></li>
+                                                    <li><a href="vendor-profile.html" class="site-nav">پنل کاربری فروشنده</a></li>
+                                                    <li><a href="vendor-uploads.html" class="site-nav">آپلودهای فروشنده</a></li>
+                                                    <li><a href="vendor-tracking.html" class="site-nav">جستجو فروشنده</a></li>
+                                                    <li><a href="vendor-service.html" class="site-nav">سرویس فروشنده</a></li>
+                                                    <li><a href="vendor-settings.html" class="site-nav last">تنظیمات فروشنده</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="lvl-1 col-md-3 col-lg-3 col-xl-2 item"><a href="#" class="site-nav lvl-1 menu-title">استایل ایمیل</a>
+                                                <ul class="subLinks">
+                                                    <li><a target="_blank" href="email-template/email-order-success1.html" class="site-nav">موفقیت سفارش 1</a></li>
+                                                    <li><a target="_blank" href="email-template/email-order-success2.html" class="site-nav">موفقیت سفارش 2</a></li>
+                                                    <li><a target="_blank" href="email-template/email-invoice-template1.html" class="site-nav">الگوی فاکتور 1</a></li>
+                                                    <li><a target="_blank" href="email-template/email-invoice-template2.html" class="site-nav last">استایل فاکتور 2</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="lvl-1 col-md-3 col-lg-3 col-xl-2 item"><a href="#" class="site-nav lvl-1 menu-title">استایل ایمیل</a>
+                                                <ul class="subLinks">
+                                                    <li class="lvl-2"><a target="_blank" href="email-template/email-forgot-password.html" class="site-nav">بازنشانی رمز عبور ایمیل</a></li >
+                                                    <li class="lvl-2"><a target="_blank" href="email-template/email-confirmation.html" class="site-nav">تأیید ایمیل</a></li>
+                                                    <li class="lvl-2"><a target="_blank" href="email-template/email-promotional1.html" class="site-nav">تبلیغات ایمیل 1</a></li>
+                                                    <li class="lvl-2"><a target="_blank" href="email-template/email-promotional2.html" class="site-nav last">ایمیل تبلیغاتی 2</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="lvl-1 col-md-3 col-lg-3 col-xl-2 item"><a href="#" class="site-nav lvl-1 menu-title">عناصر</a>
+                                                <ul class="subLinks">
+                                                    <li class="lvl-2"><a href="elements-typography.html" class="site-nav lvl-2">تایپوگرافی</a></li>
+                                                    <li class="lvl-2"><a href="elements-buttons.html" class="site-nav lvl-2">دکمه‌ها</a></li>
+                                                    <li class="lvl-2"><a href="elements-titles.html" class="site-nav lvl-2">عناوین</a></li>
+                                                    <li class="lvl-2"><a href="elements-banner-styles.html" class="site-nav lvl-2">سبک های بنر</a></li>
+                                                    <li class="lvl-2"><a href="elements-testimonial.html" class="site-nav lvl-2">توصیه نامه</a></li>
+                                                    <li class="lvl-2"><a href="elements-accordions.html" class="site-nav lvl-2">آکاردئون</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="lvl-1 col-md-3 col-lg-3 col-xl-2 item"><a href="#" class="site-nav lvl-1 menu-title">عناصر</a>
+                                                <ul class="subLinks">
+                                                    <li class="lvl-2"><a href="elements-icons.html" class="site-nav lvl-2">نمادها</a></li>
+                                                    <li class="lvl-2"><a href="elements-blog-posts.html" class="site-nav lvl-2">پست های وبلاگ</a></li>
+                                                    <li class="lvl-2"><a href="elements-product.html" class="site-nav lvl-2">محصول</a></li>
+                                                    <li class="lvl-2"><a href="elements-product-tab.html" class="site-nav lvl-2">برگه محصول</a></li>
+                                                    <li class="lvl-2"><a href="elements-top-info-bar.html" class="site-nav lvl-2">نوار اطلاعات ویژه</a></li>
+                                                    <li class="lvl-2"><a href="elements-top-promo-bar.html" class="site-nav lvl-2">نوار تبلیغاتی ویژه</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="row clear mt-4">
+                                            <div class="col-md-3 col-lg-3">
+                                                <img src="{% static 'images/megamenu/megamenu-store.png' %}" data-src="{% static 'images/megamenu/megamenu-store.png' %}" alt="image"/>
+                                            </div>
+                                            <div class="col-md-3 col-lg-3">
+                                                <img src="{% static 'images/megamenu/megamenu-elements.png' %}" data-src="{% static 'images/megamenu/megamenu-elements.png' %}" alt="image"/>
+                                            </div>
+                                            <div class="col-md-3 col-lg-3">
+                                                <img src="{% static 'images/megamenu/megamenu-pages.png' %}" data-src="{% static 'images/megamenu/megamenu-pages.png' %}" alt="image"/>
+                                            </div>
+                                            <div class="col-md-3 col-lg-3">
+                                                <img src="{% static 'images/megamenu/megamenu-fast.png' %}" data-src="{% static 'images/megamenu/megamenu-fast.png' %}" alt="image"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="lvl1 parent dropdown"><a href="#;">برگه ها <i class="an an-angle-down-l"></i></a>
+                                    <ul class="dropdown">
+                                        <li><a href="aboutus-style1.html" class="site-nav">درباره ما <i class="an an-angle-right-l"></i></a>
+                                            <ul class="dropdown">
+                                                <li><a href="aboutus-style1.html" class="site-nav">درباره ما استایل 1</a></li>
+                                                <li><a href="aboutus-style2.html" class="site-nav">درباره ما استایل 2</a></li>
+                                                <li><a href="aboutus-style3.html" class="site-nav last">درباره ما استایل 3</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact-style1.html" class="site-nav">تماس با ما <i class="an an-angle-right-l"></i></a>
+                                            <ul class="dropdown">
+                                                <li><a href="contact-style1.html" class="site-nav">تماس با ما استایل 1</a></li>
+                                                <li><a href="contact-style2.html" class="site-nav last">تماس با ما استایل 2</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="lookbook-2columns.html" class="site-nav">ستون ها <i class="an an-angle-right-l"></i></a>
+                                            <ul class="dropdown">
+                                                <li><a href="lookbook-2columns.html" class="site-nav">2 ستون</a></li>
+                                                <li><a href="lookbook-3columns.html" class="site-nav">3 ستون</a></li>
+                                                <li><a href="lookbook-4columns.html" class="site-nav">4 ستون</a></li>
+                                                <li><a href="lookbook-5columns.html" class="site-nav">5 ستون + پهنای کامل</a></li>
+                                                <li><a href="lookbook-shop.html" class="site-nav last">فروشگاه با ستون کامل</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="faqs-style1.html" class="site-nav">سوالات متداول <i class="an an-angle-right-l"></i></a>
+                                            <ul class="dropdown">
+                                                <li><a href="faqs-style1.html" class="site-nav">سوالات استایل 1</a></li>
+                                                <li><a href="faqs-style2.html" class="site-nav last">سوالات استیل 2</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="brands-style1.html" class="site-nav">برندها <i class="an an-angle-right-l"></i></a>
+                                            <ul class="dropdown">
+                                                <li><a href="brands-style1.html" class="site-nav">برندها استایل 1</a></li>
+                                                <li><a href="brands-style2.html" class="site-nav last">برندها استایل 2</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="my-account.html" class="site-nav">حساب من <i class="an an-angle-right-l"></i></a>
+                                            <ul class="dropdown">
+                                                <li><a href="my-account.html" class="site-nav">حساب من</a></li>
+                                                <li><a href="login-sliding-style.html" class="site-nav">نمایش اسلاید ورود به سیستم</a></li>
+                                                <li><a href="login.html" class="site-nav">ورود به سیستم</a></li>
+                                                <li><a href="register.html" class="site-nav">ثبت نام</a></li>
+                                                <li><a href="forgot-password.html" class="site-nav">گذرواژه را فراموش کرده‌اید</a></li>
+                                                <li><a href="change-password.html" class="site-nav last">تغییر رمز عبور</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#" class="site-nav">صفحات خالی <i class="an an-angle-right-l"></i></a>
+                                            <ul class="dropdown">
+                                                <li><a href="empty-category.html" class="site-nav">دسته خالی</a></li>
+                                                <li><a href="empty-cart.html" class="site-nav">سبد خالی</a></li>
+                                                <li><a href="empty-compare.html" class="site-nav">مقایسه خالی</a></li>
+                                                <li><a href="empty-wishlist.html" class="site-nav">فهرست علاقمندی خالی</a></li>
+                                                <li><a href="empty-search.html" class="site-nav last">جستجوی خالی</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="error-404.html" class="site-nav">خطای 404 </a></li>
+                                         <li><a href="cms-page.html" class="site-nav">صفحه CMS</a></li>
+                                         <li><a href="elements-icons.html" class="site-nav">نمادها</a></li>
+                                         <li><a href="coming-soon.html" class="site-nav">به زودی <span class="lbl nm_label2">جدید</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="lvl1 parent dropdown"><a href="#;">وبلاگ <i class="an an-angle-down-l"></i></a>
+                                    <ul class="dropdown">
+                                        <li><a href="blog-left-sidebar.html" class="site-nav">نوار کناری چپ</a></li>
+                                        <li><a href="blog-right-sidebar.html" class="site-nav">نوار کناری سمت راست</a></li>
+                                        <li><a href="blog-fullwidth.html" class="site-nav">عریض کامل</a></li>
+                                        <li><a href="blog-masonry.html" class="site-nav">سبک وبلاگ سنگ تراشی</a></li>
+                                        <li><a href="blog-2columns.html" class="site-nav">2 ستون</a></li>
+                                        <li><a href="blog-3columns.html" class="site-nav">3 ستون</a></li>
+                                        <li><a href="blog-4columns.html" class="site-nav">4 ستون</a></li>
+                                        <li><a href="blog-single-post.html" class="site-nav last">صفحه مقاله</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--End Main Navigation Desktop-->
+                    <!--Right Action-->
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-3 align-self-center icons-col d-flex justify-content-end">
+                        <!--Search-->
+                        <div class="site-search iconset"><i class="icon an an-search-l d-block d-lg-none"></i><span class="text d-none d-lg-flex">جستجو</span></div>
+                        <!--End Search-->
+                        <!--Setting Dropdown-->
+                        <div class="user-link iconset"><i class="icon an an-user d-block d-lg-none"></i><span class="tooltip-label">پنل کاربری</span></div>
+                        <div id="userLinks">
+                            <ul class="user-links">
+                                <li><a href="login.html">ورود به سیستم</a></li>
+                                <li><a href="register.html">ثبت نام</a></li>
+                                <li><a href="my-wishlist.html">لیست علاقمندی</a></li>
+                                <li><a href="compare-style1.html">مقایسه</a></li>
+                            </ul>
+                        </div>
+                        <!--End Setting Dropdown-->
+                        <!--Minicart Drawer-->
+                        <div class="header-cart iconset">
+                            <a href="#" class="site-header__cart btn-minicart" data-bs-toggle="modal" data-bs-target="#minicart-drawer">
+                                <i class="icon an an-sq-bag"></i><span class="site-cart-count counter d-flex-center justify-content-center position-absolute translate-middle rounded-circle">2</span><span class="tooltip-label">سبد خرید</span>
+                            </a>
+                        </div>
+                        <!--End Minicart Drawer-->
+                        <!--Setting Dropdown-->
+                        <div class="setting-link iconset pe-0"><i class="icon an an-right-bar-s"></i><span class="tooltip-label">تنظیمات</span></div>
+                        <div id="settingsBox">
+                            <div class="currency-picker">
+                                <span class="ttl">ارز را انتخاب کنید</span>
+                                <ul id="currencies" class="cnrLangList">
+                                    <li class="selected">
+                                        <a href="#;" class="active">تومان</a>
+                                    </li>
+                                    <li>
+                                        <a href="#;">ین</a>
+                                    </li>
+                                    <li>
+                                        <a href="#;">ریال</a>
+                                    </li>
+                                    <li>
+                                        <a href="#;">دلار</a>
+                                    </li>
+                                    <li>
+                                        <a href="#;">روپیه</a>
+                                    </li>
+                                    <li>
+                                        <a href="#;">یورو</a>
+                                    </li>
+                                    <li>
+                                        <a href="#;">پوند</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="language-picker">
+                                <span class="ttl">انتخاب زبان</span>
+                                <ul id="language" class="cnrLangList">
+                                    <li><a href="#" class="active">انگلیسی</a></li><li><a href="#">فرانسوی</a></li><li><a href="#">آلمانی</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--End Setting Dropdown-->
+                    </div>
+                    <!--End Right Action-->
+                </div>
+            </div>
+            <!--Search Popup-->
+            <div id="search-popup" class="search-drawer">
+                <div class="container">
+                    <span class="closeSearch an an-times-l"></span>
+                    <form class="form minisearch" id="header-search" action="#" method="get">
+                        <label class="label"><span>جستجو</span></label>
+                        <div class="control">
+                            <div class="searchField">
+                                <div class="search-category">
+                                    <select id="rgsearch-category" name="rgsearch[category]" data-default="All Categories">
+                                        <option value="00" label="همه دسته بندی ها" selected="selected">همه دسته بندی ها</option>
+                                        <optgroup id="rgsearch-shop" label="فروشگاه">
+                                            <option value="0">- همه</option>
+                                            <option value="1">- مرد</option>
+                                            <option value="2">- زن</option>
+                                            <option value="3">- کفش</option>
+                                            <option value="4">- بلوز</option>
+                                            <option value="5">- پولیور</option>
+                                            <option value="6">- کیف</option>
+                                            <option value="7">- جواهرات</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="input-box">
+                                    <button type="submit" title="Search" class="action search" disabled=""><i class="icon an an-search-l"></i></button>
+                                    <input type="text" name="q" value="" placeholder="جستجو بر اساس کلمه کلیدی یا #" class="input-text">
+                                </div>
+                            </div>
+                        </div>
+                    </form>         
+                </div>
+            </div>
+            <!--End Search Popup-->
+        </header>
+        <!--End Header-->
+        <!--Mobile Menu-->
+        <div class="mobile-nav-wrapper" role="navigation">
+            <div class="closemobileMenu"><i class="icon an an-times-l pull-right"></i> بستن منو</div>
+            <ul id="MobileNav" class="mobile-nav">
+                <li class="lvl1 parent megamenu"><a href="index.html">خانه <i class="an an-plus-l"></i></a>
+                    <ul>
+                        <li><a href="#" class="site-nav">استایل های صفحه اصلی <i class="an an-plus-l"></i></a>
+                            <ul>
+                                <li class="lvl-2"><a href="index.html" class="site-nav">صفحه اصلی 01 - پیش‌فرض</a></li>
+                                <li class="lvl-2"><a href="index-demo2.html" class="site-nav">صفحه اصلی 02 - حداقل</a></li>
+                                <li class="lvl-2"><a href="index-demo3.html" class="site-nav">صفحه اصلی 03 - رنگارنگ</a></li>
+                                <li class="lvl-2"><a href="index-demo4.html" class="site-nav">صفحه اصلی 04 - مدرن</a></li>
+                                <li class="lvl-2"><a href="index-demo5.html" class="site-nav">خانه 05 - لباس کودکان</a></li>
+                                <li class="lvl-2"><a href="index-demo6.html" class="site-nav">صفحه اصلی 06 - تک محصول</a></li>
+                                <li class="lvl-2"><a href="index-demo7.html" class="site-nav">صفحه اصلی 07 - زرق و برق</a></li>
+                                <li class="lvl-2"><a href="index-demo8.html" class="site-nav">صفحه اصلی 08 - ساده</a></li>
+                                <li class="lvl-2"><a href="index-demo9.html" class="site-nav">صفحه اصلی 09 - جالب <span class="lbl nm_label1">داغ</span></a> </li>
+                                <li class="lvl-2"><a href="index-demo10.html" class="site-nav last">صفحه 10 - لوازم آرایشی</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="site-nav">سبک‌های خانگی <i class="an an-plus-l"></i></a>
+                            <ul>
+                                <li class="lvl-2"><a href="index-demo11.html" class="site-nav">خانه 11 - حیوانات خانگی <span class="lbl nm_label3">مطرح</span></a> </li>
+                                <li class="lvl-2"><a href="index-demo12.html" class="site-nav">صفحه اصلی 12 - ابزار و قطعات</a></li>
+                                <li class="lvl-2"><a href="index-demo13.html" class="site-nav">صفحه اصلی 13 - ساعت <span class="lbl nm_label1">جدید</span></a> </li>
+                                <li class="lvl-2"><a href="index-demo14.html" class="site-nav">خانه 14 - غذا</a></li>
+                                <li class="lvl-2"><a href="index-demo15.html" class="site-nav">صفحه 15 - کریسمس</a></li>
+                                <li class="lvl-2"><a href="index-demo16.html" class="site-nav">خانه 16 - استایل تلفن</a></li>
+                                <li class="lvl-2"><a href="index-demo17.html" class="site-nav">خانه 17 - جواهرات</a></li>
+                                <li class="lvl-2"><a href="index-demo18.html" class="site-nav">خانه 18 - کیف <span class="lbl nm_label3">مطرح</span></a> </li>
+                                <li class="lvl-2"><a href="index-demo19.html" class="site-nav">خانه 19 - لباس شنا</a></li>
+                                <li class="lvl-2"><a href="index-demo20.html" class="site-nav last">خانه 20 - مبلمان <span class="lbl nm_label2">جدید</span></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="site-nav">سبک‌های خانگی <i class="an an-plus-l"></i></a>
+                            <ul>
+                                <li class="lvl-2"><a href="index-demo21.html" class="site-nav">خانه 21 - لوازم مهمانی</a></li>
+                                <li class="lvl-2"><a href="index-demo22.html" class="site-nav">صفحه اصلی 22 - دیجیتال</a></li>
+                                <li class="lvl-2"><a href="index-demo23.html" class="site-nav">صفحه 23 - فاشیون</a></li>
+                                <li class="lvl-2"><a href="index-demo24.html" class="site-nav">صفحه اصلی 24 - زرق و برق</a></li>
+                                <li class="lvl-2"><a href="index-demo25.html" class="site-nav">خانه 25 - کفش <span class="lbl nm_label2">جدید</span></a> </li>
+                                <li class="lvl-2"><a href="index-demo26.html" class="site-nav">صفحه اصلی 26 - کتابها <span class="lbl nm_label2">جدید</span></a> </li>
+                                <li class="lvl-2"><a href="index-demo27.html" class="site-nav last">صفحه 27 - یوگا <span class="lbl nm_label2">جدید</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="lvl1 parent megamenu"><a href="#">فروشگاه <i class="an an-plus-l"></i></a>
+                    <ul>
+                        <li><a href="#" class="site-nav">صفحه دسته <i class="an an-plus-l"></i></a>
+                            <ul>
+                                <li><a href="category-2columns.html" class="site-nav">2 ستون با استایل 1</a></li>
+                                <li><a href="category-3columns.html" class="site-nav">3 ستون با استایل 2</a></li>
+                                <li><a href="category-4columns.html" class="site-nav">4 ستون با استایل 3</a></li>
+                                <li><a href="category-5columns.html" class="site-nav">5 ستون با استایل 4</a></li>
+                                <li><a href="category-6columns.html" class="site-nav">6 ستون با پهنای کامل</a></li>
+                                <li><a href="category-7columns.html" class="site-nav">7 ستون</a></li>
+                                <li><a href="empty-category.html" class="site-nav last">دسته خالی</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="site-nav">صفحه خرید <i class="an an-plus-l"></i></a>
+                            <ul>
+                                <li><a href="shop-left-sidebar.html" class="site-nav">نوار کناری چپ</a></li>
+                                <li><a href="shop-right-sidebar.html" class="site-nav">نوار کناری سمت راست</a></li>
+                                <li><a href="shop-top-filter.html" class="site-nav">فیلتر برتر</a></li>
+                                <li><a href="shop-fullwidth.html" class="site-nav">تمام صفحه</a></li>
+                                <li><a href="shop-no-sidebar.html" class="site-nav">بدون فیلتر</a></li>
+                                <li><a href="shop-listview-sidebar.html" class="site-nav">نمایش فهرست</a></li>
+                                <li><a href="shop-listview-drawer.html" class="site-nav">کشو نمایش فهرست</a></li>
+                                <li><a href="shop-category-slideshow.html" class="site-nav">نمایش اسلاید دسته</a></li>
+                                <li><a href="shop-heading-with-banner.html" class="site-nav last">عنوان با بنر</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="site-nav">صفحه خرید <i class="an an-plus-l"></i></a>
+                            <ul>
+                                <li><a href="shop-sub-collections.html" class="site-nav">فهرست مجموعه‌های فرعی <span class="lbl nm_label5"> جدید</span></a></li>
+                                <li><a href="shop-masonry-grid.html" class="site-nav">خرید شبکه بنایی</a></li>
+                                <li><a href="shop-left-sidebar.html" class="site-nav">شمارش معکوس خرید</a></li>
+                                <li><a href="shop-hover-info.html" class="site-nav">اطلاعات نشانگر فروشگاه</a></li>
+                                <li><a href="shop-right-sidebar.html" class="site-nav">پیمایش بی نهایت</a></li>
+                                <li><a href="shop-fullwidth.html" class="site-nav">صفحه‌بندی کلاسیک</a></li>
+                                <li><a href="shop-swatches-style.html" class="site-nav">استایل نمونه</a></li>
+                                <li><a href="shop-grid-style.html" class="site-nav">استایل شبکه</a></li>
+                                <li><a href="shop-search-results.html" class="site-nav last">نتایج جستجو</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="site-nav">خرید صفحه دیگر <i class="an an-plus-l"></i></a>
+                            <ul>
+                                <li><a href="my-wishlist.html" class="site-nav">استایل فهرست آرزوهای من 1</a></li>
+                                <li><a href="my-wishlist-style2.html" class="site-nav">استایل فهرست خواسته‌های من 2</a></li>
+                                <li><a href="compare-style1.html" class="site-nav">مقایسه استایل صفحه 1</a></li>
+                                <li><a href="compare-style2.html" class="site-nav">مقایسه استایل صفحه 2</a></li>
+                                <li><a href="cart-style1.html" class="site-nav">استایل صفحه سبد خرید1</a></li>
+                                <li><a href="cart-style2.html" class="site-nav">استایل صفحه سبد خرید 2</a></li>
+                                <li><a href="checkout-style1.html" class="site-nav">استایل صفحه تسویه حساب1</a></li>
+                                <li><a href="checkout-style2.html" class="site-nav">صفحه پرداخت استایل 2</a></li>
+                                <li><a href="checkout-success.html" class="site-nav last">خروج با موفقیت</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="lvl1 parent megamenu"><a href="#">محصولات <i class="an an-plus-l"></i></a>
+                    <ul>
+                        <li><a href="product-standard.html" class="site-nav">انواع محصول<i class="an an-plus-l"></i></a>
+                            <ul>
+                                <li><a href="product-standard.html" class="site-nav">محصول ساده</a></li>
+                                <li><a href="product-variable.html" class="site-nav">محصول متغیر</a></li>
+                                <li><a href="product-grouped.html" class="site-nav">محصول گروه‌بندی‌شده</a></li>
+                                <li><a href="product-external-affiliate.html" class="site-nav">محصول خارجی / وابسته</a></li>
+                                <li><a href="product-outofstock.html" class="site-nav">محصول موجود در انبار</a></li>
+                                <li><a href="product-layout1.html" class="site-nav">محصول جدید</a></li>
+                                <li><a href="product-layout2.html" class="site-nav">محصول فروش</a></li>
+                                <li><a href="product-layout1.html" class="site-nav">تصویر متغیر</a></li>
+                                <li><a href="product-accordian.html" class="site-nav">انتخاب متغیر</a></li>
+                                <li><a href="prodcut-360-degree-view.html" class="site-nav last">نمایش 360 درجه</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="product-layout1.html" class="site-nav">انواع صفحه محصول <i class="an an-plus-l"></i></a>
+                            <ul>
+                                <li><a href="product-layout1.html" class="site-nav">طرح بندی محصول1</a></li>
+                                <li><a href="product-layout2.html" class="site-nav">طرح بندی محصول 2</a></li>
+                                <li><a href="product-layout3.html" class="site-nav">طرح بندی محصول 3</a></li>
+                                <li><a href="product-layout4.html" class="site-nav">طرح بندی محصول 4</a></li>
+                                <li><a href="product-layout5.html" class="site-nav">طرح بندی محصول 5</a></li>
+                                <li><a href="product-layout6.html" class="site-nav">طرح بندی محصول6</a></li>
+                                <li><a href="product-layout7.html" class="site-nav">طرح بندی محصول 7</a></li>
+                                <li><a href="product-accordian.html" class="site-nav">آکاردئون محصول</a></li>
+                                <li><a href="product-tabs-left.html" class="site-nav">برگه‌های محصول سمت چپ</a></li>
+                                <li><a href="product-tabs-center.html" class="site-nav last">مرکز برگه‌های محصول</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="lvl1 parent megamenu"><a href="#">ویژگی ها <i class="an an-plus-l"></i><span class="lbl nm_label1">جدید</span></a>
+                    <ul>
+                        <li><a href="#" class="site-nav">صفحات فروشنده <i class="an an-plus-l"></i></a>
+                            <ul>
+                                <li><a href="vendor-dashboard.html" class="site-nav">داشبورد فروشنده</a></li>
+                                <li><a href="vendor-profile.html" class="site-nav">نمایه فروشنده</a></li>
+                                <li><a href="vendor-uploads.html" class="site-nav">آپلودهای فروشنده</a></li>
+                                <li><a href="vendor-tracking.html" class="site-nav">ردیابی فروشنده</a></li>
+                                <li><a href="vendor-service.html" class="site-nav">سرویس فروشنده</a></li>
+                                <li><a href="vendor-settings.html" class="site-nav last">تنظیمات فروشنده</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="site-nav">استایل ایمیل <i class="an an-plus-l"></i></a>
+                            <ul>
+                                <li><a target="_blank" href="email-template/email-order-success1.html" class="site-nav">موفقیت سفارش 1</a></li>
+                                <li><a target="_blank" href="email-template/email-order-success2.html" class="site-nav">موفقیت سفارش 2</a></li>
+                                <li><a target="_blank" href="email-template/email-invoice-template1.html" class="site-nav">استایل فاکتور 1</a></li>
+                                <li><a target="_blank" href="email-template/email-invoice-template2.html" class="site-nav last">استایل فاکتور 2</a></li>
+                                <li><a target="_blank" href="email-template/email-forgot-password.html" class="site-nav">بازنشانی رمز عبور ایمیل</a></li>
+                                <li><a target="_blank" href="email-template/email-confirmation.html" class="site-nav">تأیید نامه</a></li>
+                                <li><a target="_blank" href="email-template/email-promotional1.html" class="site-nav">تبلیغات ایمیل 1</a></li>
+                                <li><a target="_blank" href="email-template/email-promotional2.html" class="site-nav last">ایمیل تبلیغاتی 2</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="site-nav">عناصر <i class="an an-plus-l"></i></a>
+                            <ul>
+                                <li><a href="elements-typography.html" class="site-nav">تایپوگرافی</a></li>
+                                <li><a href="elements-buttons.html" class="site-nav">دکمه‌ها</a></li>
+                                <li><a href="elements-titles.html" class="site-nav">عناوین</a></li>
+                                <li><a href="elements-banner-styles.html" class="site-nav">سبک‌های بنر</a></li>
+                                <li><a href="elements-testimonial.html" class="site-nav">توصیه نامه</a></li>
+                                <li><a href="elements-accordions.html" class="site-nav">آکاردئون</a></li>
+                                <li><a href="elements-icons.html" class="site-nav">نمادها</a></li>
+                                <li><a href="elements-blog-posts.html" class="site-nav">پست های وبلاگ</a></li>
+                                <li><a href="elements-product.html" class="site-nav">محصول</a></li>
+                                <li><a href="elements-product-tab.html" class="site-nav">برگه محصول</a></li>
+                                <li><a href="elements-top-info-bar.html" class="site-nav">نوار اطلاعات برتر</a></li>
+                                <li><a href="elements-top-promo-bar.html" class="site-nav last">نوار تبلیغاتی برتر</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="lvl1 parent megamenu"><a href="#">برگه ها <i class="an an-plus-l"></i></a>
+                    <ul>
+                        <li><a href="aboutus-style1.html" class="site-nav">درباره ما <i class="an an-plus-l"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="aboutus-style1.html" class="site-nav">درباره ما استایل 1</a></li>
+                                <li><a href="aboutus-style2.html" class="site-nav">درباره ما استایل 2</a></li>
+                                <li><a href="aboutus-style3.html" class="site-nav last">درباره ما استایل 3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact-style1.html" class="site-nav">تماس با ما <i class="an an-plus-l"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="contact-style1.html" class="site-nav">تماس با ما استایل 1</a></li>
+                                <li><a href="contact-style2.html" class="site-nav last">تماس با ما استایل 2</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="lookbook-2columns.html" class="site-nav">ستون ها <i class="an an-plus-l"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="lookbook-2columns.html" class="site-nav">2 ستون</a></li>
+                                <li><a href="lookbook-3columns.html" class="site-nav">3 ستون</a></li>
+                                <li><a href="lookbook-4columns.html" class="site-nav">4 ستون</a></li>
+                                <li><a href="lookbook-5columns.html" class="site-nav">5 ستون + پهنای کامل</a></li>
+                                <li><a href="lookbook-shop.html" class="site-nav last">فروشگاه با ستون</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="faqs-style1.html" class="site-nav">سؤالات متداول <i class="an an-plus-l"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="faqs-style1.html" class="site-nav">سؤالات متداول استایل 1</a></li>
+                                <li><a href="faqs-style2.html" class="site-nav last">سؤالات متداول استایل 2</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="brands-style1.html" class="site-nav">برندها <i class="an an-plus-l"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="brands-style1.html" class="site-nav">برندها استایل 1</a></li>
+                                <li><a href="brands-style2.html" class="site-nav last">برندها استایل 2</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="my-account.html" class="site-nav">حساب من <i class="an an-plus-l"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="my-account.html" class="site-nav">حساب من</a></li>
+                                <li><a href="login-sliding-style.html" class="site-nav">نمایش اسلاید ورود به سیستم</a></li>
+                                <li><a href="login.html" class="site-nav">ورود به سیستم</a></li>
+                                <li><a href="register.html" class="site-nav">ثبت نام</a></li>
+                                <li><a href="forgot-password.html" class="site-nav">گذرواژه را فراموش کرده‌اید</a></li>
+                                <li><a href="change-password.html" class="site-nav last">تغییر رمز عبور</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="site-nav">صفحات خالی <i class="an an-plus-l"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="empty-category.html" class="site-nav">دسته خالی</a></li>
+                                <li><a href="empty-cart.html" class="site-nav">سبد خالی</a></li>
+                                <li><a href="empty-compare.html" class="site-nav">مقایسه خالی</a></li>
+                                <li><a href="empty-wishlist.html" class="site-nav">فهرست تمایلات خالی</a></li>
+                                <li><a href="empty-search.html" class="site-nav last">جستجوی خالی</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="error-404.html" class="site-nav">خطای 404 </a></li>
+                        <li><a href="cms-page.html" class="site-nav">صفحه CMS</a></li>
+                        <li><a href="elements-icons.html" class="site-nav">نمادها</a></li>
+                        <li><a href="coming-soon.html" class="site-nav last">به زودی <span class="lbl nm_label2">جدید</span></a></li>
+                    </ul>
+                </li>
+                <li class="lvl1 parent megamenu"><a href="blog-left-sidebar.html">وبلاگ <i class="an an-plus-l"></i></a>
+                    <ul>
+                        <li><a href="blog-left-sidebar.html" class="site-nav">نوار کناری چپ</a></li>
+                        <li><a href="blog-right-sidebar.html" class="site-nav">نوار کناری سمت راست</a></li>
+                        <li><a href="blog-fullwidth.html" class="site-nav">عریض کامل</a></li>
+                        <li><a href="blog-masonry.html" class="site-nav">سبک وبلاگ سنگ تراشی</a></li>
+                        <li><a href="blog-2columns.html" class="site-nav">2 ستون</a></li>
+                        <li><a href="blog-3columns.html" class="site-nav">3 ستون</a></li>
+                        <li><a href="blog-4columns.html" class="site-nav">4 ستون</a></li>
+                        <li><a href="blog-single-post.html" class="site-nav last">صفحه مقاله</a></li>
+                    </ul>
+                </li>
+                <li class="acLink"></li>
+                <li class="lvl1 bottom-link"><a href="login.html">ورود به سیستم</a></li>
+                <li class="lvl1 bottom-link"><a href="register.html">ثبت نام</a></li>
+                <li class="lvl1 bottom-link"><a href="my-wishlist.html">لیست آرزوها</a></li>
+                <li class="lvl1 bottom-link"><a href="compare-style1.html">مقایسه</a></li>
+                <li class="help bottom-link"><span>نیاز به کمک دارید؟</span><br>تماس بگیرید: 6789 345 912 98+</li>
+            </ul>
+        </div>
+        <!--End Mobile Menu-->
+
+        <!--Page Wrapper-->
+        <div id="page-content">
+            <!--Home slider-->
+            <section class="slideshow slideshow-wrapper">
+                <div class="home-slideshow">
+                    <div class="slide">
+                        <div class="lazyload">
+                            <img class="lazyload desktop-hide" data-src="{% static 'images/slideshow/demo4-banner1.jpg' %}" src="{% static 'images/slideshow/demo4-banner1.jpg' %}" alt="HIGH CONVERTING" title="HIGH CONVERTING" />
+                            <img class="lazyload mobile-hide" data-src="{% static 'images/slideshow/demo4-banner1-m.jpg' %}" src="{% static 'images/slideshow/demo4-banner1-m.jpg %'}" alt="HIGH CONVERTING" title="HIGH CONVERTING" />
+                            <div class="container">
+                                <div class="slideshow-content slideshow-overlay middle-right d-flex justify-content-center align-items-center">
+                                    <div class="slideshow-content-in text-left">
+                                        <div class="wrap-caption style1">
+                                            <h2 class="h1 mega-title ss-mega-title fs-1 text-capitalize">بهینه زنان<br>فروشگاه فاشیون</h2>
+                                             <span class="mega-subtitle fs-4 ss-sub-title d-md-block d-lg-block d-none">دوستش دارم، احساسش کن، از آن لذت ببر</span>
+                                             <div class="ss-btnWrap mt-3 mt-md-4 d-block">
+                                                 <a class="btn btn-lg btn-primary" href="shop-top-filter.html">خرید مجموعه</a>
+                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="slide">
+                        <div class="lazyload">
+                            <img class="lazyload desktop-hide" data-src="{% static 'images/slideshow/demo4-banner2.jpg' %}" src="{% static 'images/slideshow/demo4-banner2.jpg' %}" alt="MAKING BRAND VISIBLE" title="MAKING BRAND VISIBLE" />
+                            <img class="lazyload mobile-hide" data-src="{% static 'images/slideshow/demo4-banner2-m.jpg' %}" src="{% static 'images/slideshow/demo4-banner2-m.jpg' %}" alt="MAKING BRAND VISIBLE" title="MAKING BRAND VISIBLE" />
+                            <div class="slideshow-content slideshow-overlay middle-left container d-flex justify-content-center align-items-center">
+                                <div class="slideshow-content-in text-left">
+                                    <div class="wrap-caption style1">
+                                        <p class="ss-small-title fs-4 mb-1 d-md-block d-lg-block d-none">پیشنهاد ویژه</p>
+                                         <h2 class="mega-title ss-mega-title fs-1 text-capitalize">پاکسازی نهایی<br>تا 70% تخفیف</h2>
+                                         <div class="ss-btnWrap mt-3 mt-md-4 d-block">
+                                             <a class="btn btn-lg btn-primary" href="shop-top-filter.html">برترین های زنانه</a>
+                                             <a class="btn btn-lg btn-primary" href="shop-top-filter.html">پایین زنان</a>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </section>
+            <!--End Home slider-->
+
+            <!--Store Feature-->
+            <section class="store-features style2">
+                <div class="container">
+                    <div class="row store-info">
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-center mb-2 mb-md-0">
+                            <i class="an an-free-delivery"></i>
+                            <div class="detail">
+                                <h5 class="fs-6 fw-normal text-uppercase mb-0">ارسال رایگان و بازگشت</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-center mb-2 mb-md-0">
+                            <i class="an an-shield"></i>
+                            <div class="detail">
+                                <h5 class="fs-6 fw-normal text-uppercase mb-0">پرداخت امن</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-center">
+                            <i class="an an-dollar mb-1"></i>
+                            <div class="detail">
+                                <h5 class="fs-6 fw-normal text-uppercase mb-0 ">ضمانت پول</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-center">
+                            <i class="an an-chat mb-1"></i>
+                            <div class="detail">
+                                <h5 class="fs-6 fw-normal text-uppercase mb-0">سوالی دارید؟</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--End Store Feature-->
+
+{% block content %}
+
+{% endblock %}
+
+            <!--Footer-->
+            <div class="footer footer-4">
+              <div class="footer-top clearfix">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+                              <h4 class="h4">اطلاعات</h4>
+                               <ul>
+                                   <li><a href="my-account.html">حساب من</a></li>
+                                   <li><a href="aboutus-style1.html">درباره ما</a></li>
+                                   <li><a href="login.html">ورود به سیستم</a></li>
+                                   <li><a href="privacy-policy.html">خط مشی رازداری</a></li>
+                                   <li><a href="#">شرایط و ضوابط</a></li>
+                               </ul>
+                          </div>
+                          <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+                              <h4 class="h4">فروشگاه سریع</h4>
+                               <ul>
+                                   <li><a href="#">زنان</a></li>
+                                   <li><a href="#">مردان</a></li>
+                                   <li><a href="#">کودکان</a></li>
+                                   <li><a href="#">لباس ورزشی</a></li>
+                                   <li><a href="#">فروش</a></li>
+                               </ul>
+                          </div>
+                          <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+                              <h4 class="h4">خدمات مشتری</h4>
+                               <ul>
+                                   <li><a href="#">اطلاعات شخصی را درخواست کنید</a></li>
+                                   <li><a href="faqs-style1.html">سؤالات متداول</a></li>
+                                   <li><a href="contact-style1.html">با ما تماس بگیرید</a></li>
+                                   <li><a href="#">سفارش‌ها و بازگشت‌ها</a></li>
+                                   <li><a href="#">مرکز پشتیبانی</a></li>
+                               </ul>
+                          </div>
+                          <div class="col-12 col-sm-12 col-md-3 col-lg-3 social-icons-col">
+                              <h4 class="h4">در ارتباط بمانید</h4>
+                               <ul class="d-flex flex-column">
+                                   <li><a href="#" class="d-flex-center"><i class="an an-facebook" aria-hidden="true"></i> <span>فیس بوک</span> </a></li>
+                                   <li><a href="#" class="d-flex-center"><i class="an an-twitter" aria-hidden="true"></i> <span>تویتر</span> </a></li>
+                                   <li><a href="#" class="d-flex-center"><i class="an an-pinterest-p" aria-hidden="true"></i> <span>پینترست</span></a></li>
+                                   <li><a href="#" class="d-flex-center"><i class="an an-instagram" aria-hidden="true"></i> <span>اینستاگرام</span> </a></li>
+                                   <li><a href="#" class="d-flex-center"><i class="an an-whatsapp" aria-hidden="true"></i> <span>واتساپ</span> </a></li>
+                               </ul>
+                          </div>
+                      </div>                
+                  </div>
+              </div>
+              <div class="footer-bottom clearfix">
+                  <div class="container">
+                      <div class="d-flex-center flex-column justify-content-md-between flex-md-row-reverse">
+                          <img src="{% static 'images/payment.png' %}" alt="Paypal Visa Payments"/>
+                          <div class="copytext">&copy; 2023 بهینه. تمامی حقوق محفوظ است.</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!--End Footer-->
+
+          <!--Scoll Top-->
+          <span id="site-scroll" class="textbase" title="بالا"><i class="an an-long-arrow-alt-right" aria-hidden="true"></i>برو بالا</span>
+          <!--End Scoll Top-->
+
+          <!--MiniCart Drawer-->
+          <div class="minicart-right-drawer modal right fade" id="minicart-drawer">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div id="cart-drawer" class="block block-cart">
+                          <div class="minicart-header">
+                              <a href="javascript:void(0);" class="close-cart" data-bs-dismiss="modal" aria-label="Close"><i class="an an-times-r" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="left" title="Close"></i></a>
+                              <h4 class="fs-6 text-black">سبد خرید شما (2 مورد)</h4>
+                          </div>
+                          <div class="minicart-content">
+                              <ul class="clearfix">
+                                  <li class="item d-flex justify-content-center align-items-center">
+                                      <a class="product-image" href="product-layout1.html">
+                                          <img class="blur-up lazyload" src="{% static 'images/products/cart-product-img1.jpg' %}" data-src="{% static 'images/products/cart-product-img1.jpg' %}" alt="image" title="">
+                                      </a>
+                                      <div class="product-details">
+                                          <a class="product-title" href="product-layout1.html">تاپ برش گل</a>
+                                           <div class="variant-cart mb-1">سیاه / XL</div>
+                                          <div class="priceRow">
+                                              <div class="product-price">
+                                                  <span class="money">59تومان </span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="qtyDetail text-center">
+                                          <div class="wrapQtyBtn">
+                                              <div class="qtyField">
+                                                  <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon an an-minus-r" aria-hidden="true"></i></a>
+                                                  <input type="text" name="quantity" value="1" class="qty rounded-0">
+                                                  <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon an an-plus-l" aria-hidden="true"></i></a>
+                                              </div>
+                                          </div>
+                                          <a href="#" class="edit-i remove"><i class="icon an an-edit-l" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش"></i></a>
+                                          <a href="#" class="remove"><i class="an an-times-r" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف"></i></a>
+                                      </div>
+                                  </li>
+                                  <li class="item d-flex justify-content-center align-items-center">
+                                      <a class="product-image" href="product-layout1.html">
+                                          <img class="blur-up lazyload" src="{% static 'images/products/cart-product-img2.jpg' %}" data-src="{% static 'images/products/cart-product-img2.jpg' %}" alt="image" title="">
+                                      </a>
+                                      <div class="product-details">
+                                          <a class="product-title" href="product-layout1.html">تی شرت های یقه V</a>
+                                           <div class="variant-cart mb-1">آبی / XL</div>
+                                          <div class="priceRow">
+                                              <div class="product-price">
+                                                  <span class="money">119 تومان </span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="qtyDetail text-center">
+                                          <div class="wrapQtyBtn">
+                                              <div class="qtyField">
+                                                  <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon an an-minus-r" aria-hidden="true"></i></a>
+                                                  <input type="text" name="quantity" value="1" class="qty rounded-0">
+                                                  <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon an an-plus-l" aria-hidden="true"></i></a>
+                                              </div>
+                                          </div>
+                                          <a href="#" class="edit-i remove"><i class="icon an an-edit-l" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش"></i></a>
+                                          <a href="#" class="remove"><i class="an an-times-r" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف"></i></a>
+                                      </div>
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="minicart-bottom text-black">
+                              <div class="shipinfo text-center mb-3 text-uppercase">
+                                  <p class="freeShipMsg"><i class="an an-truck fs-5 me-2 align-middle"></i>صرف <b>119 تومان </b> بیشتر برای ارسال رایگان</p>
+                              </div>
+                              <div class="subtotal">
+                                  <span>مجموع:</span>
+                                  <span class="product-price">93تومان </span>
+                              </div>
+                              <a href="checkout-style2.html" class="w-100 p-2 my-2 btn btn-secondary progress-to-checkout">ادامه به پرداخت</a>
+                              <a href="cart-style2.html" class="w-100 btn btn-outline-primary cart-btn">مشاهده سبد خرید</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!--End MiniCart Drawer-->
+          <div class="modalOverly"></div>
+
+          <!--Quickview Popup-->
+          <div class="loadingBox"><div class="an-spin"><i class="icon an an-spinner4"></i></div></div>
+          <div id="quickView-modal" class="mfp-with-anim mfp-hide">
+              <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+              <div class="row">
+                  <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-3 mb-md-0">
+                      <!--Model thumbnail -->
+                      <div id="quickView" class="carousel slide">
+                          <!-- Image Slide carousel items -->
+                          <div class="carousel-inner">
+                              <div class="item carousel-item active" data-bs-slide-number="0">
+                                  <img class="blur-up lazyload" data-src="{% static 'images/products/product-5.jpg' %}" src="{% static 'images/products/product-5.jpg' %}" alt="image" title="" />
+                              </div>
+                              <div class="item carousel-item" data-bs-slide-number="1">
+                                  <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-1.jpg' %}" src="{% static 'images/products/product-5-1.jpg' %}" alt="image" title="" />
+                              </div>
+                              <div class="item carousel-item" data-bs-slide-number="2">
+                                  <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-2.jpg' %}" src="{% static 'images/products/product-5-2.jpg' %}" alt="image" title="" />
+                              </div>
+                              <div class="item carousel-item" data-bs-slide-number="3">
+                                  <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-3.jpg' %}" src="{% static 'images/products/product-5-3.jpg' %}" alt="image" title="" />
+                              </div>
+                              <div class="item carousel-item" data-bs-slide-number="4">
+                                  <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-4.jpg' %}" src="{% static 'images/products/product-5-4.jpg' %}" alt="image" title="" />
+                              </div>
+                          </div>
+                          <!-- End Image Slide carousel items -->
+                          <!-- Thumbnail image -->
+                          <div class="model-thumbnail-img">
+                              <!-- Thumbnail slide -->
+                              <div class="carousel-indicators list-inline">
+                                  <div class="list-inline-item active" id="carousel-selector-0" data-bs-slide-to="0" data-bs-target="#quickView">
+                                      <img class="blur-up lazyload" data-src="{% static 'images/products/product-5.jpg' %}" src="{% static 'images/products/product-5.jpg' %}" alt="image" title="" />
+                                  </div>
+                                  <div class="list-inline-item" id="carousel-selector-1" data-bs-slide-to="1" data-bs-target="#quickView">
+                                      <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-1.jpg' %}" src="{% static 'images/products/product-5-1.jpg' %}" alt="image" title="" />
+                                  </div>
+                                  <div class="list-inline-item" id="carousel-selector-2" data-bs-slide-to="2" data-bs-target="#quickView">
+                                      <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-2.jpg' %}" src="{% static 'images/products/product-5-2.jpg' %}" alt="image" title="" />
+                                  </div>
+                                  <div class="list-inline-item" id="carousel-selector-3" data-bs-slide-to="3" data-bs-target="#quickView">
+                                      <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-3.jpg' %}" src="{% static 'images/products/product-5-3.jpg' %}" alt="image" title="" />
+                                  </div>
+                                  <div class="list-inline-item" id="carousel-selector-4" data-bs-slide-to="4" data-bs-target="#quickView">
+                                      <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-4.jpg' %}" src="{% static 'images/products/product-5-4.jpg' %}" alt="image" title="" />
+                                  </div>
+                              </div>
+                              <!-- End Thumbnail slide -->
+                              <!-- Carousel arrow button -->
+                              <a class="carousel-control-prev carousel-arrow" href="#quickView" data-bs-target="#quickView" data-bs-slide="prev"><i class="icon an-3x an an-angle-left"></i><span class="visually-hidden">قبلی</span></a>
+                              <a class="carousel-control-next carousel-arrow" href="#quickView" data-bs-target="#quickView" data-bs-slide="next"><i class="icon an-3x an an-angle-right"></i><span class="visually-hidden">بعدی</span></a>
+                              <!-- End Carousel arrow button -->
+                          </div>
+                          <!-- End Thumbnail image -->
+                      </div>
+                      <!--End Model thumbnail -->
+                      <div class="text-center mt-3"><a href="product-layout1.html">مشاهده جزئیات بیشتر</a></div>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                      <h2 class="product-title">پنجره نمایش سریع محصول</h2>
+                       <div class="product-review d-flex-center mb-2">
+                           <div class="rating"><i class="icon an an-star"></i><i class="icon an an-star"></i><i class="icon an an-star "></i><i class="icon an an-star"></i><i class="icon an an-star-o"></i></div>
+                           <div class="reviews ms-2"><a href="#">5 نظر</a></div>
+                       </div>
+                       <div class="product-info">
+                          <p class="product-vendor">فروشنده: <span class="fw-normal"><a href="#" class="fw-normal">بهینه</a></span></p>
+                          <p class="product-type">نوع محصول: <span class="fw-normal">برترین‌ها</span></p>
+                          <p class="product-sku">شناسه: <span class="fw-normal">50-ABC</span></p>
+                      </div>
+                      <div class="pro-stockLbl my-2">
+                          <span class="d-flex-center stockLbl instock"><i class="icon an an-check-cil"></i><span> موجود است</span></span>
+                          <span class="d-flex-center stockLbl preorder d-none"><i class="icon an an-clock-r"></i><span> اکنون پیش‌سفارش دهید</span></span>
+                          <span class="d-flex-center stockLbl outstock d-none"><i class="icon an an-times-cil"></i> <span>فروخته شد</span></span>
+                          <span class="d-flex-center stockLbl lowstock d-none" data-qty="15"><i class="icon an an-exclamation-cir"></i><span> اکنون سفارش دهید، فقط <span class="items">10</span> باقی مانده است!</span></span>
+                      </div>
+                      <div class="pricebox">
+                          <span class="price old-price">400تومان </span><span class="price product-price__sale">300تومان </span>
+                      </div>
+                      <div class="sort-description">قالب Html چندمنظوره Bootstrap 5 که به شما و مشتریان شما یک تجربه خرید روان را می دهد که می تواند برای انواع فروشگاه ها مانند مد استفاده شود. </div>
+                      <form method="post" action="#" id="product_form--option" class="product-form">
+                          <div class="product-options d-flex-wrap">
+                              <div class="swatch clearfix swatch-0 option1">
+                                  <div class="product-form__item">
+                                      <label class="label d-flex">رنگ:<span class="required d-none">*</span> <span class="slVariant ms-1 fw-bold">مشکی</span></label>
+                                      <ul class="swatches-image swatches d-flex-wrap list-unstyled clearfix">
+                                          <li data-value="Black" class="swatch-element color available active">
+                                              <label class="rounded-0 swatchLbl small color black" title="مشکی"></label>
+                                              <span class="tooltip-label top">مشکی</span>
+                                          </li>
+                                          <li data-value="Green" class="swatch-element color available">
+                                              <label class="rounded-0 swatchLbl small color green" title="سبز"></label>
+                                              <span class="tooltip-label top">سبز</span>
+                                          </li>
+                                          <li data-value="Orange" class="swatch-element color available">
+                                              <label class="rounded-0 swatchLbl small color orange" title="نارنجی"></label>
+                                              <span class="tooltip-label top">نارنجی</span>
+                                          </li>
+                                          <li data-value="Blue" class="swatch-element color available">
+                                              <label class="rounded-0 swatchLbl small color blue" title="آبی"></label>
+                                              <span class="tooltip-label top">آبی</span>
+                                          </li>
+                                          <li data-value="Red" class="swatch-element color available">
+                                              <label class="rounded-0 swatchLbl small color red" title="قرمز"></label>
+                                              <span class="tooltip-label top">قرمز</span>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                              <div class="swatch clearfix swatch-1 option2">
+                                  <div class="product-form__item">
+                                      <label class="label">اندازه:<span class="required d-none">*</span> <span class="slVariant ms-1 fw-bold">XS</span></label>
+                                      <ul class="swatches-size d-flex-center list-unstyled clearfix swatch-1 option2">
+                                          <li data-value="XS" class="swatch-element xs available active">
+                                              <label class="swatchLbl rounded-0 medium" title="خیلی کوچک">XS</label>
+                                              <span class="tooltip-label">خیلی کوچک</span>
+                                          </li>
+                                          <li data-value="S" class="swatch-element s available">
+                                              <label class="swatchLbl rounded-0 medium" title="S">S</label>
+                                              <span class="tooltip-label">کوچک</span>
+                                          </li>
+                                          <li data-value="M" class="swatch-element m available">
+                                              <label class="swatchLbl rounded-0 medium" title="متوسط">M</label>
+                                              <span class="tooltip-label">متوسط</span>
+                                          </li>
+                                          <li data-value="L" class="swatch-element l available">
+                                              <label class="swatchLbl rounded-0 medium" title="L">L</label>
+                                              <span class="tooltip-label">بزرگ</span>
+                                          </li>
+                                          <li data-value="XL" class="swatch-element xl available">
+                                              <label class="swatchLbl rounded-0 medium" title="خیلی بزرگ">XL</label>
+                                              <span class="tooltip-label">خیلی بزرگ</span>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                              <div class="product-action d-flex-wrap w-100 mb-3 clearfix">
+                                  <div class="quantity">
+                                      <div class="qtyField rounded">
+                                          <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon an an-minus-r" aria-hidden="true"></i></a>
+                                          <input type="text" name="quantity" value="1" class="product-form__input qty rounded-0">
+                                          <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon an an-plus-l" aria-hidden="true"></i></a>
+                                      </div>
+                                  </div>                                
+                                  <div class="add-to-cart ms-3 fl-1">
+                                      <button type="button" class="btn button-cart rounded-0"><span>افزودن به سبد</span></button>
+                                  </div>
+                              </div>
+                          </div>
+                      </form>
+                      <div class="wishlist-btn d-flex-center">
+                          <a class="add-wishlist d-flex-center text-uppercase me-3" href="my-wishlist.html" title="Add to Wishlist"><i class="icon an an-heart-l me -1"></i> <span>افزودن به لیست علاقه مندی ها</span></a>
+                           <a class="add-compare d-flex-center text-uppercase" href="compare-style1.html" title="افزودن به مقایسه"><i class="icon an an-random-r me-2"></i> <span>افزودن به مقایسه</span></a>
+                      </div>
+                      <!-- Social Sharing -->
+                      <div class="social-sharing share-icon d-flex-center mx-0 mt-3">
+                          <span class="sharing-lbl me-2">اشتراک گذاری:</span>
+                          <a href="#" class="d-flex-center btn btn-link btn--share share-facebook" data-bs-toggle="tooltip" data-bs-placement="top" title="اشتراک گذاری در فیس بوک"><i class="icon an an-facebook mx-1"></i><span class="share-title d-none">فیس بوک</span></a>
+                          <a href="#" class="d-flex-center btn btn-link btn--share share-twitter" data-bs-toggle="tooltip" data-bs-placement="top" title="توییت در Twitter"><i class="icon an an-twitter mx-1"></i><span class="share-title d-none">توئیت</span></a>
+                          <a href="#" class="d-flex-center btn btn-link btn--share share-pinterest" data-bs-toggle="tooltip" data-bs-placement="top" title="پین کردن Pinterest"><i class="icon an an-pinterest-p mx-1"></i> <span class="share-title d-none">پین کنید</span></a>
+                          <a href="#" class="d-flex-center btn btn-link btn--share share-linkedin" data-bs-toggle="tooltip" data-bs-placement="top" title="اشتراک گذاری در اینستاگرام"><i class="icon an an-instagram mx-1"></i><span class="share-title d-none">اینستاگرام</span></a>
+                          <a href="#" class="d-flex-center btn btn-link btn--share share-whatsapp" data-bs-toggle="tooltip" data-bs-placement="top" title="اشتراک گذاری در WhatsApp"><i class="icon an an-whatsapp mx-1"></i><span class="share-title d-none">واتس اپ</span></a>
+                          <a href="#" class="d-flex-center btn btn-link btn--share share-email" data-bs-toggle="tooltip" data-bs-placement="top" title="اشتراک گذاری توسط ایمیل"><i class="icon an an-envelope-l mx-1"></i><span class="share-title d-none">ایمیل</span></a>
+                      </div>
+                      <!-- End Social Sharing -->
+                  </div>
+              </div>
+          </div>
+          <!--End Quickview Popup-->
+
+          <!--Addtocart Added Popup-->
+          <div id="pro-addtocart-popup" class="mfp-with-anim mfp-hide">
+              <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+              <div class="addtocart-inner text-center clearfix">
+                  <h4 class="title mb-3 text-success">با موفقیت به سبد خرید شما اضافه شد.</h4>
+                   <div class="pro-img mb-3">
+                       <img class="img-fluid blur-up lazyload" src="{% static 'images/products/add-to-cart-popup.jpg' %}" data-src="{% static 'images/products/add-to-cart-popup.jpg' %}" alt="با موفقیت به سبد خرید شما اضافه شد." title="با موفقیت به سبد خرید شما اضافه شد." />
+                   </div>
+                   <div class="pro-details">
+                       <h5 class="pro-name mb-0">لباس گلدار </h5>
+                       <p class="sku my-2">رنگ: خاکستری</p>
+                       <p class="mb-0 qty-total">1 X 113تومان </p>
+                       <div class="addcart-total bg-light mt-3 mb-3 p-2">
+                           مجموع: <b class="price">113تومان </b>
+                       </div>
+                       <div class="button-action">
+                           <a href="checkout-style1.html" class="btn btn-primary view-cart mx-1 rounded-0">رفتن به تسویه حساب</a>
+                           <a href="index.html" class="btn btn-secondary rounded-0">ادامه خرید</a>
+                       </div>
+                   </div>
+              </div>
+          </div>
+          <!-- End Addtocart Added Popup-->
+
+
+          <!-- Including Jquery -->
+          <script src="{% static 'js/vendor/jquery-min.js' %}"></script>
+          <script src="{% static 'js/vendor/js.cookie.js' %}"></script>
+          <!--Including Javascript-->
+          <script src="{% static 'assets/js/plugins.js' %}"></script>
+          <script src="{% static 'js/main.js' %}"></script>
+
+      </div>
+      <!--End Page Wrapper-->
 </html>

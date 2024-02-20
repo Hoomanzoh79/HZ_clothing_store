@@ -12,39 +12,9 @@
 </head>
 <body dir="rtl">
 {% block content %}
-<!-- Content -->
-  <div id="content"> 
-    
-    <!-- New Arrival -->
-    <section class="padding-top-100 padding-bottom-100">
-      <div class="container"> 
-        
-        <!-- Main Heading -->
-        <div class="heading text-center">
-          <h4>{% trans 'new products' %}</h4>
-          </div>
-      </div>
-      
-      <!-- New Arrival -->
-      <div class="arrival-block"> 
-                {% for cloth in cloths %}
-                <!-- Item -->
-                <div class="item"> 
-                  <!-- Images --> 
-                  <img class="img-1" src="{{ cloth.cover.url }}" alt=""> <img class="img-2" src="{{ cloth.cover.url }}" alt=""> 
-                  <!-- Overlay  -->
-                  <div class="overlay"> 
-                    <!-- Price --> 
-                    <span class="price"><small>$</small>{{ cloth.price|intcomma:False|translate_number }}</span>
-                    <div class="position-center-center"> <a href="{% static 'images/item-img-1-1.jpg' %}" data-lighter><i class="icon-magnifier"></i></a> </div>
-                  </div>
-                  <!-- Item Name -->
-                  <div class="item-name"> <a href="#.">{{cloth.title}}</a>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-            </section>        
+
+
+  
 {% endblock %}  
 </body>
 </html>
