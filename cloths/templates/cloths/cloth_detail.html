@@ -10,145 +10,226 @@
 {% load humanize %}
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>{% block page_title %}{{ cloth.title }} detail{% endblock %}</title>
+    <title>{% block page_title %}{% trans "details" %} {{ cloth.title }}{% endblock %}</title>
 </head>
 <body>
 {% block content %}
+    <!--Body Container-->
+    <div id="page-content">
+        <!--Breadcrumbs-->
+        <div class="breadcrumbs-wrapper text-uppercase">
+            <div class="container">
+                <div class="breadcrumbs"><a href="index.html" title="Back to the home page"></a><span>|</span><span
+                        class="fw-bold">{{ cloth.title }}</span></div>
+            </div>
+        </div>
+        <!--End Breadcrumbs-->
 
-    <!-- product-details-start -->
-    <div class="product-details">
+        <!--Main Content-->
         <div class="container">
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="product__details-nav d-sm-flex align-items-start">
-                        <div class="product__details-thumb">
-                            <div class="tab-content" id="productThumbContent">
-                                <div class="tab-pane fade show active" id="thumbOne" role="tabpanel"
-                                     aria-labelledby="thumbOne-tab">
-                                    {% if cloth.cover %}
-                                        <div class="product__details-nav-thumb w-img">
-                                            <img src="{{ cloth.cover.url }}" alt="" width="500" height="500">
+            <!--Product Content-->
+            <div class="product-single">
+                <div class="row">
+                    <div class="col-lg-7 col-md-6 col-sm-12 col-12">
+                        <div class="product-details-img product-horizontal-style clearfix mb-3 mb-md-0">
+                            <div class="zoompro-wrap product-zoom-right w-100 p-0">
+                                <div class="zoompro-span product-single-style2">
+                                    <img id="zoompro" class="zoompro" src="{{ cloth.cover.url }}"
+                                         data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
+                                </div>
+                            </div>
+                            <div class="product-thumb product-horizontal-thumb w-100 pt-2 mt-1">
+                                <div id="gallery" class="product-thumb-style2 overflow-hidden">
+                                    <img src="{{ cloth.cover.url }}"
+                                         data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-md-6 col-sm-12 col-12">
+                        <div class="wrap-product-info-bg">
+                            <!-- Product Info -->
+                            <div class="product-single__meta">
+                                <h1 class="product-single__title">{{ cloth.title }}</h1>
+                                <!-- Product Reviews -->
+                                {% if cloth.comments %}
+                                    <div class="product-review mb-2"><a
+                                            class="reviewLink d-flex-center justify-content-center"
+                                            href="#reviews"><i class="an an-star"></i><i
+                                            class="an an-star mx-1"></i><i class="an an-star"></i><i
+                                            class="an an-star mx-1"></i><i class="an an-star-o"></i><span
+                                            class="spr-badge-caption ms-2"> {% trans "comments" %} : {{ cloth.comments.count }}</span></a>
+                                    </div>
+                                {% endif %}
+                                <!-- End Product Reviews -->
+                                <!-- Product Info -->
+                                <!-- End Product Info -->
+                                <!-- Product Price -->
+                                <div class="product-single__price pb-1">
+                                    <span class="visually-hidden">قیمت عادی</span>
+                                    <span class="product-price__sale--single">
+                                    <span
+                                            class="product-price__price product-price__sale">{{ cloth.price|translate_number }} {% trans '$' %}</span>
+                                            </span>
+
+                                </div>
+                                <!-- End Product Price -->
+                            </div>
+                            <!-- End Product Info -->
+                            <!-- Product Form -->
+                            <form method="post" action="{% url "cart:cart_add" cloth.id %}"
+                                  class="product-form justify-content-center hidedropdown">
+                                {% csrf_token %}
+                                <!-- End Swatches Color -->
+                                <!-- Swatches Size -->
+                                <div class="swatch clearfix swatch-1 option2" data-option-index="1">
+                                    <div class="product-form__item">
+                                        <label class="label d-flex justify-content-center">{% trans 'size' %} : <span
+                                                class="required d-none">*</span><span
+                                                class="slVariant ms-1 fw-bold">{{ add_to_cart_form.size }}</span></label>
+                                    </div>
+                                </div>
+                                <!-- End Swatches Size -->
+                                <!-- Product Action -->
+                                <div class="product-action w-100 clearfix">
+                                    <div class="product-form__item--quantity d-flex-center justify-content-center mb-3">
+                                        <div class="qtyField">
+                                            <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                    class="icon an an-minus-r"
+                                                    aria-hidden="true"></i></a>
+                                            <input type="number" name="quantity" value="1"
+                                                   class="product-form__input qty rounded-0" min="1" max="30">
+                                            <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                    class="icon an an-plus-r"
+                                                    aria-hidden="true"></i></a>
                                         </div>
-                                    {% endif %}
+                                    </div>
+                                    <div class="product-form__item--submit">
+                                        <button type="submit" name="add"
+                                                class="btn rounded-0 product-form__cart-submit">
+                                            <span>به سبد خرید اضافه کنید</span></button>
+                                        <button type="submit" name="add"
+                                                class="btn rounded-0 product-form__sold-out d-none"
+                                                disabled="disabled">فروخته شده
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- End Product Action -->
+                            </form>
+                            <!-- End Product Form -->
+                            <!-- End Social Sharing -->
+                            <!-- Product Info -->
+                        </div>
+                    </div>
+                </div>
+                <!--Product Content-->
+
+                <!--Product Tabs-->
+                <div class="tabs-listing style2 mt-3 mt-md-10">
+                    <ul class="product-tabs style2 list-unstyled d-flex-wrap justify-content-right m-0 d-none d-md-flex">
+                        <li rel="description" class="button">
+                            <button type="button" class="btn rounded-10 btn-outline-info proceed-to-checkout">
+                                توضیحات
+                            </button>
+                        </li>
+                        <span style="display:inline-block; width: 5px;"></span>
+                        <li rel="reviews" class="button">
+                            <button type="button" class="btn rounded-0 btn-outline-success proceed-to-checkout">
+                                نظرات
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-container mt-3">
+                        <h3 class="tabs-ac-style d-md-none active" rel="description">توضیحات</h3>
+                        <div id="description" class="tab-content">
+                            <div class="product-description">
+                                <div class="row">
+                                    <p>{{ cloth.description|safe }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 mt-3">
-                    <div class="product__details-content">
-                        <h6> {{ cloth.title }}</h6>
-                        <div class="pd-rating mb-10">
-                            <span>({{ cloth.comments.all|only_active_comments|length|translate_number }} نظر)</span>
+                <h3 class="tabs-ac-style d-md-none" rel="reviews">نظر</h3>
+                <div id="reviews" class="tab-content">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="spr-header clearfix d-flex-center justify-content-center">
+                                <div class="product-review d-flex-center">
+                                    <a class="reviewLink d-flex-center" href="#"><i
+                                            class="icon an an-star fs-6"></i><i
+                                            class="icon an an-star mx-1 fs-6"></i><i
+                                            class="icon an an-star fs-6"></i><i
+                                            class="icon an an-star mx-1 fs-6"></i><i
+                                            class="icon an an-star-o fs-6"></i></a>
+                                    <span class="spr-summary-actions-togglereviews ms-2 fw-600">بر پایه 6 نظرات 234</span>
+                                </div>
+                                <div class="spr-summary-actions mt-3 mt-sm-0 d-none">
+                                    <a href="#"
+                                       class="spr-summary-actions-newreview write-review-btn btn rounded-0"><i
+                                            class="icon an-1x an an-pencil-alt me-2"></i>یک بررسی بنویسید</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="price mb-10">
-                            <span>{{ cloth.price|intcomma:False|translate_number }} تومان</span>
-                        </div>
-                        <div class="features-des mb-20 mt-10">
-                            <ul>
-                                <li><p href="product-details.html"><i class="fas fa-circle"></i>{{ cloth.description|safe }}
-                                </p></li>
-                            </ul>
-                        </div>
-                        <div class="cart-option mb-15">
-                            <form action="{% url 'cart:cart_add' cloth.id %}" method="post">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                            <form method="POST" action="{% url 'comment_create' cloth.id %}"
+                                  class="product-review-form new-review-form mb-4 d-block">
                                 {% csrf_token %}
-                                {{ add_to_cart_form|crispy }}
-                                <button class="tp-btn-h1 mt-3" name="update_cart" type="submit">
-                                    Add to cart
+                                <h4 class="spr-form-title text-uppercase">یک بررسی بنویسید</h4>
+                                <div class="spr-form-review-body form-group">
+                                    <label class="spr-form-label" for="message">بدنه بررسی </label>
+                                    <div class="spr-form-input">
+                                                <textarea class="spr-form-input spr-form-input-textarea rounded-0"
+                                                          id="message" name="body" rows="5"
+                                                          placeholder="نظرات خود را اینجا بنویسید"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit"
+                                        class="btn btn-primary rounded-0 spr-button spr-button-primary"
+                                        value="ارسال بررسی">ارسال
                                 </button>
                             </form>
                         </div>
-                        <div class="product-tag-area mt-15">
-                            <div class="product_info">
-                                    <span class="posted_in">
-                                        <span class="title">دسته بندی :</span>
-                                        <a href="#">{{ cloth.season }}</a>
-                                        <span>,</span>
-                                        <a href="#">{{ cloth.gender }}</a>
-                                    </span>
-                            </div>
-                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- product-details-end -->
-
-    <!-- product-details-des-start -->
-    <div class="product-details-des mt-40 mb-60">
-    <div class="container">
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="product__details-des-tab">
-                <ul class="nav nav-tabs" id="productDesTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review"
-                                type="button" role="tab" aria-controls="review" aria-selected="false">نظرات
-                            ({{ cloth.comments.all|only_active_comments|length|translate_number }})
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-        <div class="product__details-review">
-            <div class="row">
-                <div class="col-xl-8">
-                    <div class="review-des-infod">
-                        <ul class="review__list">
-                            {% for comment in cloth.comments.all|only_active_comments %}
-                                <li class="review__item">
-                                    <div class="review__container">
-                                        <div class="review__text">
-                                            <div class="d-flex flex-sm-row flex-row">
-                                                <div>
-                                                    <div class="review__meta" dir="ltr">
-                                                        <span class="review__published-date">{{ comment.datetime_created|to_jalali:'%Y / %B / %d'}}</span>
-                                                        <span class="review__dash">-</span>
-                                                        <strong class="review__author px-4">{{ comment.author.username }}</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p class="review__description text-right px-4">
-                                                {{ comment.body }}
-                                            </p>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                        <div class="spr-reviews">
+                            <h4 class="spr-form-title text-uppercase mb-3">{% trans 'customer comments on' %} {{ cloth.title }} </h4>
+                            <div class="review-inner">
+                                {% for comment in cloth.comments.all %}
+                                    <div class="spr-review">
+                                        <div class="spr-review-header">
+                                            <span class="spr-review-header-byline mb-1"><strong>{{ comment.author }}</strong> در <strong>{{ comment.datetime_created }}</strong></span>
+                                            <span class="product-review spr-starratings d-block mb-1"><span
+                                                    class="reviewLink"><i class="icon an an-star"></i><i
+                                                    class="icon an an-star mx-1"></i><i class="icon an an-star"></i><i
+                                                    class="icon an an-star mx-1"></i><i
+                                                    class="icon an an-star-o"></i></span></span>
+                                        </div>
+                                        <div class="spr-review-content">
+                                            <p class="spr-review-content-body">{{ comment.body }}</p>
                                         </div>
                                     </div>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="product__details-comment ">
-                                    <div class="comment-title mb-20">
-                                        <h3>ارسال نظر</h3>
-                                    </div>
-                                    <div class="comment-input-box">
-                                        <form action="{% url 'comment_create' cloth.id %}" method="post">
-                                            {% csrf_token %}
-                                            <div class="row">
-                                                {{ comment_form|crispy }}
-                                                <div class="col-xxl-12">
-                                                    <div class="comment-submit">
-                                                        <button type="submit" class="btn btn-success mt-3">ارسال
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- product-details-des-end -->
 
+        <h3 class="tabs-ac-style d-md-none" rel="addtional-tabs">برگه های اضافی</h3>
+        <div id="addtional-tabs" class="tab-content">
+            <p>شما می توانید برگه های مختلفی را برای هر محصول تنظیم کنید.</p>
+            <ul>
+                <li>در زمان خواب من راحت هستم.</li>
+                <li>برای تکانه های زندگی، نه کوزه نرم لاوریت مادی.</li>
+                <li>اجازه دهید که ما بمیریم.</li>
+                <li>به همین دلیل، بیمار باید با لبخند درمان شود.</li>
+            </ul>
+        </div>
+    </div>
+    <!--End Container-->
 {% endblock %}
+</body>
 </html>
