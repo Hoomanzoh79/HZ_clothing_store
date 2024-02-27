@@ -5,8 +5,10 @@ from .forms import CommentForm
 from cart.forms import AddToCartForm
 
 
-class IndexView(generic.TemplateView):
+class IndexView(generic.ListView):
+    queryset = Cloth.objects.filter(active=True)
     template_name = "index.html"
+    context_object_name = 'cloths'
 
 
 class ClothsListView(generic.ListView):
