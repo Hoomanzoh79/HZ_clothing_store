@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="fa" dir="rtl">
+<html lang="en" dir="rtl">
 {% extends '_base.html' %}
 {% load static %}
 {% load i18n %}
@@ -7,14 +7,101 @@
 {% load persian_number_translate %}
 {% load humanize %}
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>{% block page_title %}Cloths List{% endblock %}</title>
+    <!--Required Meta Tags-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="description">
+    <title>{% block page_title %}صفحه ی محصولات{% endblock %}</title>
 </head>
-<body dir="rtl">
+<body>
+
 {% block content %}
+    <section class="section product-slider tab-slider-product">
+        <!--Best Seller With Tabs-->
+        <div class="container">
+            <div class="tab_container">
+                <div id="tab1" class="tab_content grid-products">
+                    <div class="productSlider">
+                        <div class="item">
+                            {% for cloth in cloths %}
+                                <!-- start product image -->
+                                <div class="product-image">
+                                    <!-- start product image -->
+                                    <a href="{{ cloth.get_absolute_url }}" class="product-img">
+                                        <!-- image -->
+                                        {% if cloth.cover %}
+                                            <img class="primary blur-up lazyload"
+                                                 data-src="{{ cloth.cover.url }}"
+                                                 src="{{ cloth.cover.url }}" alt="image" title="">
+                                            <!-- End image -->
+                                            <!-- Hover image -->
+                                            <img class="hover blur-up lazyload"
+                                                 data-src="{{ cloth.cover.url }}"
+                                                 src="{{ cloth.cover.url }}" alt="image" title="">
+                                            <!-- End hover image -->
+                                            </a>
+                                        {% endif %}
+                                    <!-- end product image -->
 
-
-  
-{% endblock %}  
+                                    <!--Product Button-->
+                                    <div class="button-set style3">
+                                        <ul>
+                                            <li>
+                                                <!--Cart Button-->
+                                                <a class="btn-icon btn btn-addto-cart pro-quickshop-popup"
+                                                   href="#pro-quickshop1" data-bs-toggle="offcanvas"
+                                                   data-bs-target="#pro-quickshop1" aria-controls="pro-quickshop1">
+                                                    <i class="icon an an-cart-l"></i> <span class="tooltip-label left">خرید سریع</span>
+                                                </a>
+                                                <!--end Cart Button-->
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!--End Product Button-->
+                                </div>
+                                <!-- end product image -->
+                                <!--start product details -->
+                                <div class="product-details text-center">
+                                    <!-- product name -->
+                                    <div class="product-name text-uppercase">
+                                        <a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a>
+                                    </div>
+                                    <!-- End product name -->
+                                    <!-- product price -->
+                                    <div>
+                                        <span class="price">{{ cloth.price|translate_number }} {% trans '$' %}</span>
+                                    </div>
+                                    <!-- End product price -->
+                                    <!--Product Review-->
+                                    <div class="product-review"><i class="an an-star"></i> <i class="an an-star"></i> <i
+                                            class="an an-star"></i> <i class="an an-star"></i> <i
+                                            class="an an-star-o"></i></div>
+                                    <!--End Product Review-->
+                                </div>
+                                <!-- End product details -->
+                                </div>
+                                <div class="item">
+                                <!-- start product image -->
+                                <div class="product-image">
+                                    <!--Product Button-->
+                                    <div class="button-set style3">
+                                        <ul>
+                                            <li>
+                                                <!--Cart Button-->
+                                                <a class="btn-icon btn btn-addto-cart pro-addtocart-popup"
+                                                   href="#pro-addtocart-popup">
+                                                    <i class="icon an an-cart-l"></i> <span
+                                                        class="tooltip-label left">افزودن به سبد خرید</span>
+                                                </a>
+                                                <!--end Cart Button-->
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!--End Product Button-->
+                                </div>
+                            {% endfor %}
+    </section>
+{% endblock %}
 </body>
 </html>
