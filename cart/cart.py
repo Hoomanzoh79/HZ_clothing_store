@@ -19,7 +19,7 @@ class Cart:
 
         self.cart = cart
 
-    def add(self,cloth,size,quantity=1, replace_current_quantity=False):
+    def add(self, cloth, size, quantity=1, replace_current_quantity=False):
         """
         Add the specified product to the cart if it exists
         """
@@ -31,7 +31,7 @@ class Cart:
             self.cart[cloth_id]['quantity'] = quantity
         else:
             self.cart[cloth_id]['quantity'] += quantity
-        
+
         self.cart[cloth_id]['size'] = size
         messages.success(self.request, _('Product has been added successfully to the cart'))
 
@@ -74,11 +74,9 @@ class Cart:
         self.save()
 
     def get_total_price(self):
-        return sum(item['cloth_obj'].price*item['quantity'] for item in self.cart.values())
+        return sum(item['cloth_obj'].price * item['quantity'] for item in self.cart.values())
 
     def is_empty(self):
         if self.cart:
             return False
         return True
-
-

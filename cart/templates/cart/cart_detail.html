@@ -3,6 +3,7 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load i18n %}
+{% load persian_number_translate %}
 {% load crispy_forms_tags %}
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -10,176 +11,116 @@
 </head>
 <body>
 {% block content %}
+    <!--Main Content-->
+    <div class="container">
+        <!--Cart Page-->
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                <table>
+                    <thead class="cart__row cart__header small--hide">
+                    <tr>
+                        <th class="action">&nbsp;</th>
+                        <th colspan="2" class="text-start">محصول</th>
+                        <th class="text-center">قیمت</th>
+                        <th class="text-center">تعداد</th>
+                        <th class="text-center">جمع</th>
+                    </tr>
+                    </thead>
+                    {% for item in cart %}
+                        <tbody>
+                        <tr class="cart__row border-bottom line1 cart-flex border-top">
+                            <td class="cart-delete text-center small--hide"><a href="#"
+                                                                               class="btn btn--secondary cart__remove remove-icon position-static"
+                                                                               data-bs-toggle="tooltip"
+                                                                               data-bs-placement="top"
+                                                                               title="برداشتن مورد"><i
+                                    class="icon an an-times-r"></i></a></td>
+                            <td class="cart__image-wrapper cart-flex-item">
+                                <a href="{{ item.cloth_obj.get_absolute_url }}"><img
+                                        class="cart__image blur-up lazyload"
+                                        data-src="{{ item.cloth_obj.cover.url }}"
+                                        src="{{ item.cloth_obj.cover.url }}"
+                                        alt="تاپ روسری خواب غروب" width="80"/></a>
+                            </td>
+                            <td class="cart__meta small--text-left cart-flex-item">
+                                <div class="list-view-item__title">
+                                    <a href="{{ item.cloth_obj.cover.url }}">{{ item.cloth_obj.title }}</a>
+                                </div>
+                                <div class="cart__meta-text">
+                                    <br>سایز: {{ item.size }}<br> تعداد: {{ item.quantity }}
+                                </div>
+                                <div class="cart-price d-md-none">
+                                    <span class="money fw-500">{{ item.cloth_obj.price|translate_number }} {% trans '$' %} </span>
+                                </div>
+                            </td>
+                            <td class="cart__price-wrapper cart-flex-item text-center small--hide">
+                                <span class="money">{{ item.cloth_obj.price|translate_number }} {% trans '$' %} </span>
+                            </td>
+                            <td class="product-quantity">
+                                <div class="cart__qty d-flex justify-content-end justify-content-md-center">
+                                    <div class="qtyField">
+                                        <form action="{% url 'cart:cart_add' item.cloth_obj.id %}"
+                                              method="post" class="d-flex">
+                                            {% csrf_token %}
+                                            <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                    class="icon an an-minus-r" aria-hidden="true"></i></a>
+                                            <input type="number" name="quantity" value="{{ item.quantity }}" class="qty">
+                                            <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                    class="icon an an-plus-l" aria-hidden="true"></i></a>
+                                            {{ item.update_quantity_form.inplace }}
+                                            <button type="submit"
+                                                    class="btn btn--small d-inline-flex align-items-center rounded cart-continue ml-2">
+                                                <i class="me-1 icon an an-sync-ar d-none"></i>به روز رسانی سبد خرید
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <a href="#" title="حذف"
+                                   class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">برداشتن</a>
+                            </td>
+                            <td class="cart-price cart-flex-item text-center small--hide">
+                                <span class="money fw-500"> {{ item.total_price|translate_number }} </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-start pt-3">
+                            <a type="submit" href="{% url 'cloths_list' %}"
+                               class="btn btn--small d-inline-flex align-items-center rounded cart-continue ml-2">
+                                <i class="me-1 icon an an-sync-ar d-none"></i>به خرید ادامه دهید
+                            </a>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
 
-    <main>
-        <!-- page-banner-area-start -->
-        <div class="page-banner-area page-banner-height-2"
-             data-background="{% static 'img/banner/page-banner-4.jpg' %}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="page-banner-content text-center">
-                            <h4 class="breadcrumb-title">سبد شما</h4>
-                            <div class="breadcrumb-two">
-                                <nav>
-                                    <nav class="breadcrumb-trail breadcrumbs">
-                                        <ul class="breadcrumb-menu">
-                                            <li class="breadcrumb-trail">
-                                                <a href="index.html"><span>خانه</span></a>
-                                            </li>
-                                            <li class="trail-item">
-                                                <span>سبد خرید</span>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </nav>
-                            </div>
-                        </div>
+        <div class="row mt-2">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 cart__footer">
+                <div class="solid-border">
+                    <div class="row border-bottom pb-2 pt-2">
+                        <span class="col-6 col-sm-6 cart__subtotal-title"><strong>جمع کل سبد خرید : </strong></span>
+                        <span class="col-6 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">74 تومان </span></span>
                     </div>
+                    <p class="cart__shipping pt-0 m-0 fst-normal freeShipclaim"><i
+                            class="me-1 align-middle icon an an-truck-l"></i><b>ارسال رایگان</b> واجد شرایط</p>
+                    <div class="customCheckbox cart_tearm">
+                        <input type="checkbox" value="allen-vela" id="cart_tearm">
+                        <label for="cart_tearm">من با شرایط و ضوابط موافقم</label>
+                    </div>
+                    <a href="checkout-style1.html" id="cartCheckout" class="btn btn--small-wide rounded mt-4 checkout">به
+                        پرداخت ادامه دهید</a>
+                    <div class="paymnet-img"><img src="{% static 'images/payment-img.jpg' %}" alt="پرداخت"/></div>
                 </div>
             </div>
         </div>
-        <!-- page-banner-area-end -->
+        <!--End Cart Page-->
+    </div>
+    <!--End Main Content-->
 
-        <!-- cart-area-start -->
-        <section class="cart-area pt-120 pb-120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                            <div class="table-content table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th class="product-thumbnail">تصاویر</th>
-                                        <th class="cart-product-name">محصول</th>
-                                        <th class="product-price">قیمت واحد</th>
-                                        <th class="product-quantity">تعداد</th>
-                                        <th class="product-size">سایز</th>
-                                        <th class="product-subtotal">مجموع</th>
-                                        <th class="product-remove">حذف</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for item in cart %}
-                                        <tr>
-                                            <td class="product-thumbnail"><a
-                                                    href="{% url 'cloth_detail' item.cloth_obj.id %}"><img
-                                                    src="{{ item.cloth_obj.cover.url }}" alt=""></a></td>
-                                            <td class="product-name"><a
-                                                    href="{% url 'cloth_detail' item.cloth_obj.id %}">{{ item.cloth_obj.title }}</a>
-                                            </td>
-                                            <td class="product-price"><span
-                                                    class="amount">ت{{ item.cloth_obj.price }}</span></td>
-                                            <td class="product-quantity">
-                                                <form action="{% url 'cart:cart_add' item.cloth_obj.id %}"
-                                                      method="post">
-                                                    {% csrf_token %}
-                                                    <div class="cart-plus-minus"><input
-                                                                                        class="quantity-input"
-                                                                                        name="quantity"
-                                                                                        id="qty-1"
-                                                                                        value="{{ item.quantity }}"
-                                                                                                min="1">
-                                                        <div class="dec qtybutton">-</div>
-                                                        <div class="inc qtybutton">+</div>
-                                                        {{ item.update_quantity_form.inplace }}
-                                                    </div>
-                                                    <button class="tp-btn-h1 mt-3" name="update_cart" type="submit">
-                                                        بروزرسانی تعداد
-                                                    </button>
-                                                    <td class="product-size">
-                                                        <div>
-                                                            {{item.update_quantity_form.size}}
-                                                        </div>
-                                                    </td>
-                                                </td>
-                                            </form>
-                                            <td class="product-subtotal"><span
-                                                    class="amount">ت{{ item.total_price }}</span></td>
-                                            <td class="product-remove"><a
-                                                    href="{% url 'cart:cart_remove' item.cloth_obj.id %}"><i
-                                                    class="fa fa-times"></i></a></td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="coupon-all">
-                                        <a class="tp-btn-h1" href="checkout.html">تسویه حساب</a>
-                                        <div class="coupon2">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row justify-content-end">
-                                <div class="col-md-5">
-                                    <div class="cart-page-total">
-                                        <h2>مجموع سبد</h2>
-                                        <ul class="mb-20">
-                                            <li>ت{{ cart.get_total_price }} <span>جمع</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- cart-area-end -->
-
-        <!-- cta-area-start -->
-        <section class="cta-area d-ldark-bg pt-55 pb-10">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="cta-item cta-item-d mb-30">
-                            <h5 class="cta-title">دنبال کنید</h5>
-                            <p>ما یکپارچه سازی، بازاریابی و ردیابی وب سایت رسانه های اجتماعی شما را آسان می کنیم.</p>
-                            <div class="cta-social">
-                                <div class="social-icon">
-                                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-                                    <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
-                                    <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#" class="rss"><i class="fas fa-rss"></i></a>
-                                    <a href="#" class="dribbble"><i class="fab fa-dribbble"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="cta-item mb-30">
-                            <h5 class="cta-title">ثبت نام خبرنامه</h5>
-                            <p>به بیش از 60000 مشترک بپیوندید و هر شنبه یک کوپن تخفیف جدید دریافت کنید.</p>
-                            <div class="subscribe__form">
-                                <form action="#">
-                                    <input type="email" placeholder="آدرس ایمیل شما...">
-                                    <button>اشتراک</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="cta-item mb-30">
-                            <h5 class="cta-title">دانلود اپ</h5>
-                            <p>اپلیکیشن DukaMarket اکنون در اپ استور و گوگل پلی در دسترس است. اکنون آن را دریافت
-                                کنید.</p>
-                            <div class="cta-apps">
-                                <div class="apps-store">
-                                    <a href="#"><img src="{% static 'img/brand/app_ios.png' %}" alt=""></a>
-                                    <a href="#"><img src="{% static 'img/brand/app_android.png' %}" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <!-- cta-area-end -->
-
-    </main>
 {% endblock %}
+</body>
 </html>

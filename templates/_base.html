@@ -146,46 +146,6 @@
                         </a>
                     </div>
                     <!--End Minicart Drawer-->
-                    <!--Setting Dropdown-->
-                    <div class="setting-link iconset pe-0"><i class="icon an an-right-bar-s"></i><span
-                            class="tooltip-label">تنظیمات</span></div>
-                    <div id="settingsBox">
-                        <div class="currency-picker">
-                            <span class="ttl">ارز را انتخاب کنید</span>
-                            <ul id="currencies" class="cnrLangList">
-                                <li class="selected">
-                                    <a href="#;" class="active">تومان</a>
-                                </li>
-                                <li>
-                                    <a href="#;">ین</a>
-                                </li>
-                                <li>
-                                    <a href="#;">ریال</a>
-                                </li>
-                                <li>
-                                    <a href="#;">دلار</a>
-                                </li>
-                                <li>
-                                    <a href="#;">روپیه</a>
-                                </li>
-                                <li>
-                                    <a href="#;">یورو</a>
-                                </li>
-                                <li>
-                                    <a href="#;">پوند</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="language-picker">
-                            <span class="ttl">انتخاب زبان</span>
-                            <ul id="language" class="cnrLangList">
-                                <li><a href="#" class="active">انگلیسی</a></li>
-                                <li><a href="#">فرانسوی</a></li>
-                                <li><a href="#">آلمانی</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--End Setting Dropdown-->
                 </div>
                 <!--End Right Action-->
             </div>
@@ -517,520 +477,445 @@
 
     <!--Page Wrapper-->
     <div id="page-content">
-        <!--Home slider-->
-        <section class="slideshow slideshow-wrapper">
-            <div class="home-slideshow">
-                <div class="slide">
-                    <div class="lazyload">
-                        <img class="lazyload desktop-hide" data-src="{% static 'images/slideshow/demo4-banner1.jpg' %}"
-                             src="{% static 'images/slideshow/demo4-banner1.jpg' %}" alt="HIGH CONVERTING"
-                             title="HIGH CONVERTING"/>
-                        <img class="lazyload mobile-hide" data-src="{% static 'images/slideshow/demo4-banner1-m.jpg' %}"
-                             src="{% static 'images/slideshow/demo4-banner1-m.jpg %'}" alt="HIGH CONVERTING" title="HIGH CONVERTING" />
-                            <div class=" container">
-                        <div class="slideshow-content slideshow-overlay middle-right d-flex justify-content-center align-items-center">
-                            <div class="slideshow-content-in text-left">
-                                <div class="wrap-caption style1">
-                                    <h2 class="h1 mega-title ss-mega-title fs-1 text-capitalize">بهینه زنان<br>فروشگاه
-                                        فاشیون</h2>
-                                    <span class="mega-subtitle fs-4 ss-sub-title d-md-block d-lg-block d-none">دوستش دارم، احساسش کن، از آن لذت ببر</span>
-                                    <div class="ss-btnWrap mt-3 mt-md-4 d-block">
-                                        <a class="btn btn-lg btn-primary" href="shop-top-filter.html">خرید مجموعه</a>
+        {% if messages %}
+            <div class="container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}
+
+        {% endblock %}
+
+        {% include "footer.html" %}
+
+        <!--MiniCart Drawer-->
+        <div class="minicart-right-drawer modal right fade" id="minicart-drawer">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div id="cart-drawer" class="block block-cart">
+                        <div class="minicart-header">
+                            <a href="javascript:void(0);" class="close-cart" data-bs-dismiss="modal" aria-label="Close"><i
+                                    class="an an-times-r" aria-hidden="true" data-bs-toggle="tooltip"
+                                    data-bs-placement="left" title="Close"></i></a>
+                            <h4 class="fs-6 text-black">سبد خرید شما (2 مورد)</h4>
+                        </div>
+                        <div class="minicart-content">
+                            <ul class="clearfix">
+                                <li class="item d-flex justify-content-center align-items-center">
+                                    <a class="product-image" href="product-layout1.html">
+                                        <img class="blur-up lazyload"
+                                             src="{% static 'images/products/cart-product-img1.jpg' %}"
+                                             data-src="{% static 'images/products/cart-product-img1.jpg' %}" alt="image"
+                                             title="">
+                                    </a>
+                                    <div class="product-details">
+                                        <a class="product-title" href="product-layout1.html">تاپ برش گل</a>
+                                        <div class="variant-cart mb-1">سیاه / XL</div>
+                                        <div class="priceRow">
+                                            <div class="product-price">
+                                                <span class="money">59تومان </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="qtyDetail text-center">
+                                        <div class="wrapQtyBtn">
+                                            <div class="qtyField">
+                                                <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                        class="icon an an-minus-r" aria-hidden="true"></i></a>
+                                                <input type="text" name="quantity" value="1" class="qty rounded-0">
+                                                <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                        class="icon an an-plus-l" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="edit-i remove"><i class="icon an an-edit-l"
+                                                                             data-bs-toggle="tooltip"
+                                                                             data-bs-placement="top" title="ویرایش"></i></a>
+                                        <a href="#" class="remove"><i class="an an-times-r" data-bs-toggle="tooltip"
+                                                                      data-bs-placement="top" title="حذف"></i></a>
+                                    </div>
+                                </li>
+                                <li class="item d-flex justify-content-center align-items-center">
+                                    <a class="product-image" href="product-layout1.html">
+                                        <img class="blur-up lazyload"
+                                             src="{% static 'images/products/cart-product-img2.jpg' %}"
+                                             data-src="{% static 'images/products/cart-product-img2.jpg' %}" alt="image"
+                                             title="">
+                                    </a>
+                                    <div class="product-details">
+                                        <a class="product-title" href="product-layout1.html">تی شرت های یقه V</a>
+                                        <div class="variant-cart mb-1">آبی / XL</div>
+                                        <div class="priceRow">
+                                            <div class="product-price">
+                                                <span class="money">119 تومان </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="qtyDetail text-center">
+                                        <div class="wrapQtyBtn">
+                                            <div class="qtyField">
+                                                <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                        class="icon an an-minus-r" aria-hidden="true"></i></a>
+                                                <input type="text" name="quantity" value="1" class="qty rounded-0">
+                                                <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                        class="icon an an-plus-l" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="edit-i remove"><i class="icon an an-edit-l"
+                                                                             data-bs-toggle="tooltip"
+                                                                             data-bs-placement="top" title="ویرایش"></i></a>
+                                        <a href="#" class="remove"><i class="an an-times-r" data-bs-toggle="tooltip"
+                                                                      data-bs-placement="top" title="حذف"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="minicart-bottom text-black">
+                            <div class="shipinfo text-center mb-3 text-uppercase">
+                                <p class="freeShipMsg"><i class="an an-truck fs-5 me-2 align-middle"></i>صرف <b>119
+                                    تومان </b> بیشتر برای ارسال رایگان</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="blur-up lazyload">
-                    <img class="blur-up lazyload desktop-hide"
-                         data-src="{% static 'images/slideshow/demo4-banner2.jpg' %}"
-                         src="{% static 'images/slideshow/demo4-banner2.jpg' %}" alt="MAKING BRAND VISIBLE"
-                         title="MAKING BRAND VISIBLE"/>
-                    <img class="blur-up lazyload mobile-hide"
-                         data-src="{% static 'images/slideshow/demo4-banner2-m.jpg' %}"
-                         src="{% static 'images/slideshow/demo4-banner2-m.jpg' %}" alt="MAKING BRAND VISIBLE"
-                         title="MAKING BRAND VISIBLE"/>
-                    <div class="slideshow-content slideshow-overlay middle-left container d-flex justify-content-center align-items-center">
-                        <div class="slideshow-content-in text-left">
-                            <div class="wrap-caption style1">
-                                <p class="ss-small-title fs-4 mb-1 d-md-block d-lg-block d-none">پیشنهاد ویژه</p>
-                                <h2 class="mega-title ss-mega-title fs-1 text-capitalize">پاکسازی نهایی<br>تا 70% تخفیف
-                                </h2>
-                                <div class="ss-btnWrap mt-3 mt-md-4 d-block">
-                                    <a class="btn btn-lg btn-primary" href="shop-top-filter.html">برترین های زنانه</a>
-                                    <a class="btn btn-lg btn-primary" href="shop-top-filter.html">پایین زنان</a>
-                                </div>
+                            <div class="subtotal">
+                                <span>مجموع:</span>
+                                <span class="product-price">93تومان </span>
                             </div>
+                            <a href="checkout-style2.html"
+                               class="w-100 p-2 my-2 btn btn-secondary progress-to-checkout">ادامه
+                                به پرداخت</a>
+                            <a href="cart-style2.html" class="w-100 btn btn-outline-primary cart-btn">مشاهده سبد
+                                خرید</a>
                         </div>
                     </div>
                 </div>
             </div>
-    </div>
-    <!--End Home slider-->
-
-    <!--Store Feature-->
-    <section class="store-features style2">
-        <div class="container">
-            <div class="row store-info">
-                <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-center mb-2 mb-md-0">
-                    <i class="an an-free-delivery"></i>
-                    <div class="detail">
-                        <h5 class="fs-6 fw-normal text-uppercase mb-0">ارسال رایگان و بازگشت</h5>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-center mb-2 mb-md-0">
-                    <i class="an an-shield"></i>
-                    <div class="detail">
-                        <h5 class="fs-6 fw-normal text-uppercase mb-0">پرداخت امن</h5>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-center">
-                    <i class="an an-dollar mb-1"></i>
-                    <div class="detail">
-                        <h5 class="fs-6 fw-normal text-uppercase mb-0 ">ضمانت پول</h5>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-center">
-                    <i class="an an-chat mb-1"></i>
-                    <div class="detail">
-                        <h5 class="fs-6 fw-normal text-uppercase mb-0">سوالی دارید؟</h5>
-                    </div>
-                </div>
-            </div>
         </div>
-    </section>
-    <!--End Store Feature-->
+        <!--End MiniCart Drawer-->
+        <div class="modalOverly"></div>
 
-    {% if messages %}
-        <div class="container">
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
+        <!--Quickview Popup-->
+        <div class="loadingBox">
+            <div class="an-spin"><i class="icon an an-spinner4"></i></div>
         </div>
-    {% endif %}
-
-    {% block content %}
-
-    {% endblock %}
-
-    {% include "footer.html" %}
-
-    <!--MiniCart Drawer-->
-    <div class="minicart-right-drawer modal right fade" id="minicart-drawer">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div id="cart-drawer" class="block block-cart">
-                    <div class="minicart-header">
-                        <a href="javascript:void(0);" class="close-cart" data-bs-dismiss="modal" aria-label="Close"><i
-                                class="an an-times-r" aria-hidden="true" data-bs-toggle="tooltip"
-                                data-bs-placement="left" title="Close"></i></a>
-                        <h4 class="fs-6 text-black">سبد خرید شما (2 مورد)</h4>
-                    </div>
-                    <div class="minicart-content">
-                        <ul class="clearfix">
-                            <li class="item d-flex justify-content-center align-items-center">
-                                <a class="product-image" href="product-layout1.html">
-                                    <img class="blur-up lazyload"
-                                         src="{% static 'images/products/cart-product-img1.jpg' %}"
-                                         data-src="{% static 'images/products/cart-product-img1.jpg' %}" alt="image"
-                                         title="">
-                                </a>
-                                <div class="product-details">
-                                    <a class="product-title" href="product-layout1.html">تاپ برش گل</a>
-                                    <div class="variant-cart mb-1">سیاه / XL</div>
-                                    <div class="priceRow">
-                                        <div class="product-price">
-                                            <span class="money">59تومان </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="qtyDetail text-center">
-                                    <div class="wrapQtyBtn">
-                                        <div class="qtyField">
-                                            <a class="qtyBtn minus" href="javascript:void(0);"><i
-                                                    class="icon an an-minus-r" aria-hidden="true"></i></a>
-                                            <input type="text" name="quantity" value="1" class="qty rounded-0">
-                                            <a class="qtyBtn plus" href="javascript:void(0);"><i
-                                                    class="icon an an-plus-l" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="edit-i remove"><i class="icon an an-edit-l"
-                                                                         data-bs-toggle="tooltip"
-                                                                         data-bs-placement="top" title="ویرایش"></i></a>
-                                    <a href="#" class="remove"><i class="an an-times-r" data-bs-toggle="tooltip"
-                                                                  data-bs-placement="top" title="حذف"></i></a>
-                                </div>
-                            </li>
-                            <li class="item d-flex justify-content-center align-items-center">
-                                <a class="product-image" href="product-layout1.html">
-                                    <img class="blur-up lazyload"
-                                         src="{% static 'images/products/cart-product-img2.jpg' %}"
-                                         data-src="{% static 'images/products/cart-product-img2.jpg' %}" alt="image"
-                                         title="">
-                                </a>
-                                <div class="product-details">
-                                    <a class="product-title" href="product-layout1.html">تی شرت های یقه V</a>
-                                    <div class="variant-cart mb-1">آبی / XL</div>
-                                    <div class="priceRow">
-                                        <div class="product-price">
-                                            <span class="money">119 تومان </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="qtyDetail text-center">
-                                    <div class="wrapQtyBtn">
-                                        <div class="qtyField">
-                                            <a class="qtyBtn minus" href="javascript:void(0);"><i
-                                                    class="icon an an-minus-r" aria-hidden="true"></i></a>
-                                            <input type="text" name="quantity" value="1" class="qty rounded-0">
-                                            <a class="qtyBtn plus" href="javascript:void(0);"><i
-                                                    class="icon an an-plus-l" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="edit-i remove"><i class="icon an an-edit-l"
-                                                                         data-bs-toggle="tooltip"
-                                                                         data-bs-placement="top" title="ویرایش"></i></a>
-                                    <a href="#" class="remove"><i class="an an-times-r" data-bs-toggle="tooltip"
-                                                                  data-bs-placement="top" title="حذف"></i></a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="minicart-bottom text-black">
-                        <div class="shipinfo text-center mb-3 text-uppercase">
-                            <p class="freeShipMsg"><i class="an an-truck fs-5 me-2 align-middle"></i>صرف <b>119
-                                تومان </b> بیشتر برای ارسال رایگان</p>
-                        </div>
-                        <div class="subtotal">
-                            <span>مجموع:</span>
-                            <span class="product-price">93تومان </span>
-                        </div>
-                        <a href="checkout-style2.html" class="w-100 p-2 my-2 btn btn-secondary progress-to-checkout">ادامه
-                            به پرداخت</a>
-                        <a href="cart-style2.html" class="w-100 btn btn-outline-primary cart-btn">مشاهده سبد خرید</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--End MiniCart Drawer-->
-    <div class="modalOverly"></div>
-
-    <!--Quickview Popup-->
-    <div class="loadingBox">
-        <div class="an-spin"><i class="icon an an-spinner4"></i></div>
-    </div>
-    <div id="quickView-modal" class="mfp-with-anim mfp-hide">
-        <button title="Close (Esc)" type="button" class="mfp-close">×</button>
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-3 mb-md-0">
-                <!--Model thumbnail -->
-                <div id="quickView" class="carousel slide">
-                    <!-- Image Slide carousel items -->
-                    <div class="carousel-inner">
-                        <div class="item carousel-item active" data-bs-slide-number="0">
-                            <img class="blur-up lazyload" data-src="{% static 'images/products/product-5.jpg' %}"
-                                 src="{% static 'images/products/product-5.jpg' %}" alt="image" title=""/>
-                        </div>
-                        <div class="item carousel-item" data-bs-slide-number="1">
-                            <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-1.jpg' %}"
-                                 src="{% static 'images/products/product-5-1.jpg' %}" alt="image" title=""/>
-                        </div>
-                        <div class="item carousel-item" data-bs-slide-number="2">
-                            <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-2.jpg' %}"
-                                 src="{% static 'images/products/product-5-2.jpg' %}" alt="image" title=""/>
-                        </div>
-                        <div class="item carousel-item" data-bs-slide-number="3">
-                            <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-3.jpg' %}"
-                                 src="{% static 'images/products/product-5-3.jpg' %}" alt="image" title=""/>
-                        </div>
-                        <div class="item carousel-item" data-bs-slide-number="4">
-                            <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-4.jpg' %}"
-                                 src="{% static 'images/products/product-5-4.jpg' %}" alt="image" title=""/>
-                        </div>
-                    </div>
-                    <!-- End Image Slide carousel items -->
-                    <!-- Thumbnail image -->
-                    <div class="model-thumbnail-img">
-                        <!-- Thumbnail slide -->
-                        <div class="carousel-indicators list-inline">
-                            <div class="list-inline-item active" id="carousel-selector-0" data-bs-slide-to="0"
-                                 data-bs-target="#quickView">
+        <div id="quickView-modal" class="mfp-with-anim mfp-hide">
+            <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-3 mb-md-0">
+                    <!--Model thumbnail -->
+                    <div id="quickView" class="carousel slide">
+                        <!-- Image Slide carousel items -->
+                        <div class="carousel-inner">
+                            <div class="item carousel-item active" data-bs-slide-number="0">
                                 <img class="blur-up lazyload" data-src="{% static 'images/products/product-5.jpg' %}"
                                      src="{% static 'images/products/product-5.jpg' %}" alt="image" title=""/>
                             </div>
-                            <div class="list-inline-item" id="carousel-selector-1" data-bs-slide-to="1"
-                                 data-bs-target="#quickView">
+                            <div class="item carousel-item" data-bs-slide-number="1">
                                 <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-1.jpg' %}"
                                      src="{% static 'images/products/product-5-1.jpg' %}" alt="image" title=""/>
                             </div>
-                            <div class="list-inline-item" id="carousel-selector-2" data-bs-slide-to="2"
-                                 data-bs-target="#quickView">
+                            <div class="item carousel-item" data-bs-slide-number="2">
                                 <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-2.jpg' %}"
                                      src="{% static 'images/products/product-5-2.jpg' %}" alt="image" title=""/>
                             </div>
-                            <div class="list-inline-item" id="carousel-selector-3" data-bs-slide-to="3"
-                                 data-bs-target="#quickView">
+                            <div class="item carousel-item" data-bs-slide-number="3">
                                 <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-3.jpg' %}"
                                      src="{% static 'images/products/product-5-3.jpg' %}" alt="image" title=""/>
                             </div>
-                            <div class="list-inline-item" id="carousel-selector-4" data-bs-slide-to="4"
-                                 data-bs-target="#quickView">
+                            <div class="item carousel-item" data-bs-slide-number="4">
                                 <img class="blur-up lazyload" data-src="{% static 'images/products/product-5-4.jpg' %}"
                                      src="{% static 'images/products/product-5-4.jpg' %}" alt="image" title=""/>
                             </div>
                         </div>
-                        <!-- End Thumbnail slide -->
-                        <!-- Carousel arrow button -->
-                        <a class="carousel-control-prev carousel-arrow" href="#quickView" data-bs-target="#quickView"
-                           data-bs-slide="prev"><i class="icon an-3x an an-angle-left"></i><span
-                                class="visually-hidden">قبلی</span></a>
-                        <a class="carousel-control-next carousel-arrow" href="#quickView" data-bs-target="#quickView"
-                           data-bs-slide="next"><i class="icon an-3x an an-angle-right"></i><span
-                                class="visually-hidden">بعدی</span></a>
-                        <!-- End Carousel arrow button -->
-                    </div>
-                    <!-- End Thumbnail image -->
-                </div>
-                <!--End Model thumbnail -->
-                <div class="text-center mt-3"><a href="product-layout1.html">مشاهده جزئیات بیشتر</a></div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                <h2 class="product-title">پنجره نمایش سریع محصول</h2>
-                <div class="product-review d-flex-center mb-2">
-                    <div class="rating"><i class="icon an an-star"></i><i class="icon an an-star"></i><i
-                            class="icon an an-star "></i><i class="icon an an-star"></i><i
-                            class="icon an an-star-o"></i></div>
-                    <div class="reviews ms-2"><a href="#">5 نظر</a></div>
-                </div>
-                <div class="product-info">
-                    <p class="product-vendor">فروشنده: <span class="fw-normal"><a href="#"
-                                                                                  class="fw-normal">بهینه</a></span></p>
-                    <p class="product-type">نوع محصول: <span class="fw-normal">برترین‌ها</span></p>
-                    <p class="product-sku">شناسه: <span class="fw-normal">50-ABC</span></p>
-                </div>
-                <div class="pro-stockLbl my-2">
-                    <span class="d-flex-center stockLbl instock"><i
-                            class="icon an an-check-cil"></i><span> موجود است</span></span>
-                    <span class="d-flex-center stockLbl preorder d-none"><i class="icon an an-clock-r"></i><span> اکنون پیش‌سفارش دهید</span></span>
-                    <span class="d-flex-center stockLbl outstock d-none"><i class="icon an an-times-cil"></i> <span>فروخته شد</span></span>
-                    <span class="d-flex-center stockLbl lowstock d-none" data-qty="15"><i
-                            class="icon an an-exclamation-cir"></i><span> اکنون سفارش دهید، فقط <span
-                            class="items">10</span> باقی مانده است!</span></span>
-                </div>
-                <div class="pricebox">
-                    <span class="price old-price">400تومان </span><span
-                        class="price product-price__sale">300تومان </span>
-                </div>
-                <div class="sort-description">قالب Html چندمنظوره Bootstrap 5 که به شما و مشتریان شما یک تجربه خرید روان
-                    را می دهد که می تواند برای انواع فروشگاه ها مانند مد استفاده شود.
-                </div>
-                <form method="post" action="#" id="product_form--option" class="product-form">
-                    <div class="product-options d-flex-wrap">
-                        <div class="swatch clearfix swatch-0 option1">
-                            <div class="product-form__item">
-                                <label class="label d-flex">رنگ:<span class="required d-none">*</span> <span
-                                        class="slVariant ms-1 fw-bold">مشکی</span></label>
-                                <ul class="swatches-image swatches d-flex-wrap list-unstyled clearfix">
-                                    <li data-value="Black" class="swatch-element color available active">
-                                        <label class="rounded-0 swatchLbl small color black" title="مشکی"></label>
-                                        <span class="tooltip-label top">مشکی</span>
-                                    </li>
-                                    <li data-value="Green" class="swatch-element color available">
-                                        <label class="rounded-0 swatchLbl small color green" title="سبز"></label>
-                                        <span class="tooltip-label top">سبز</span>
-                                    </li>
-                                    <li data-value="Orange" class="swatch-element color available">
-                                        <label class="rounded-0 swatchLbl small color orange" title="نارنجی"></label>
-                                        <span class="tooltip-label top">نارنجی</span>
-                                    </li>
-                                    <li data-value="Blue" class="swatch-element color available">
-                                        <label class="rounded-0 swatchLbl small color blue" title="آبی"></label>
-                                        <span class="tooltip-label top">آبی</span>
-                                    </li>
-                                    <li data-value="Red" class="swatch-element color available">
-                                        <label class="rounded-0 swatchLbl small color red" title="قرمز"></label>
-                                        <span class="tooltip-label top">قرمز</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="swatch clearfix swatch-1 option2">
-                            <div class="product-form__item">
-                                <label class="label">اندازه:<span class="required d-none">*</span> <span
-                                        class="slVariant ms-1 fw-bold">XS</span></label>
-                                <ul class="swatches-size d-flex-center list-unstyled clearfix swatch-1 option2">
-                                    <li data-value="XS" class="swatch-element xs available active">
-                                        <label class="swatchLbl rounded-0 medium" title="خیلی کوچک">XS</label>
-                                        <span class="tooltip-label">خیلی کوچک</span>
-                                    </li>
-                                    <li data-value="S" class="swatch-element s available">
-                                        <label class="swatchLbl rounded-0 medium" title="S">S</label>
-                                        <span class="tooltip-label">کوچک</span>
-                                    </li>
-                                    <li data-value="M" class="swatch-element m available">
-                                        <label class="swatchLbl rounded-0 medium" title="متوسط">M</label>
-                                        <span class="tooltip-label">متوسط</span>
-                                    </li>
-                                    <li data-value="L" class="swatch-element l available">
-                                        <label class="swatchLbl rounded-0 medium" title="L">L</label>
-                                        <span class="tooltip-label">بزرگ</span>
-                                    </li>
-                                    <li data-value="XL" class="swatch-element xl available">
-                                        <label class="swatchLbl rounded-0 medium" title="خیلی بزرگ">XL</label>
-                                        <span class="tooltip-label">خیلی بزرگ</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-action d-flex-wrap w-100 mb-3 clearfix">
-                            <div class="quantity">
-                                <div class="qtyField rounded">
-                                    <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon an an-minus-r"
-                                                                                          aria-hidden="true"></i></a>
-                                    <input type="text" name="quantity" value="1"
-                                           class="product-form__input qty rounded-0">
-                                    <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon an an-plus-l"
-                                                                                         aria-hidden="true"></i></a>
+                        <!-- End Image Slide carousel items -->
+                        <!-- Thumbnail image -->
+                        <div class="model-thumbnail-img">
+                            <!-- Thumbnail slide -->
+                            <div class="carousel-indicators list-inline">
+                                <div class="list-inline-item active" id="carousel-selector-0" data-bs-slide-to="0"
+                                     data-bs-target="#quickView">
+                                    <img class="blur-up lazyload"
+                                         data-src="{% static 'images/products/product-5.jpg' %}"
+                                         src="{% static 'images/products/product-5.jpg' %}" alt="image" title=""/>
+                                </div>
+                                <div class="list-inline-item" id="carousel-selector-1" data-bs-slide-to="1"
+                                     data-bs-target="#quickView">
+                                    <img class="blur-up lazyload"
+                                         data-src="{% static 'images/products/product-5-1.jpg' %}"
+                                         src="{% static 'images/products/product-5-1.jpg' %}" alt="image" title=""/>
+                                </div>
+                                <div class="list-inline-item" id="carousel-selector-2" data-bs-slide-to="2"
+                                     data-bs-target="#quickView">
+                                    <img class="blur-up lazyload"
+                                         data-src="{% static 'images/products/product-5-2.jpg' %}"
+                                         src="{% static 'images/products/product-5-2.jpg' %}" alt="image" title=""/>
+                                </div>
+                                <div class="list-inline-item" id="carousel-selector-3" data-bs-slide-to="3"
+                                     data-bs-target="#quickView">
+                                    <img class="blur-up lazyload"
+                                         data-src="{% static 'images/products/product-5-3.jpg' %}"
+                                         src="{% static 'images/products/product-5-3.jpg' %}" alt="image" title=""/>
+                                </div>
+                                <div class="list-inline-item" id="carousel-selector-4" data-bs-slide-to="4"
+                                     data-bs-target="#quickView">
+                                    <img class="blur-up lazyload"
+                                         data-src="{% static 'images/products/product-5-4.jpg' %}"
+                                         src="{% static 'images/products/product-5-4.jpg' %}" alt="image" title=""/>
                                 </div>
                             </div>
-                            <div class="add-to-cart ms-3 fl-1">
-                                <button type="button" class="btn button-cart rounded-0"><span>افزودن به سبد</span>
-                                </button>
+                            <!-- End Thumbnail slide -->
+                            <!-- Carousel arrow button -->
+                            <a class="carousel-control-prev carousel-arrow" href="#quickView"
+                               data-bs-target="#quickView"
+                               data-bs-slide="prev"><i class="icon an-3x an an-angle-left"></i><span
+                                    class="visually-hidden">قبلی</span></a>
+                            <a class="carousel-control-next carousel-arrow" href="#quickView"
+                               data-bs-target="#quickView"
+                               data-bs-slide="next"><i class="icon an-3x an an-angle-right"></i><span
+                                    class="visually-hidden">بعدی</span></a>
+                            <!-- End Carousel arrow button -->
+                        </div>
+                        <!-- End Thumbnail image -->
+                    </div>
+                    <!--End Model thumbnail -->
+                    <div class="text-center mt-3"><a href="product-layout1.html">مشاهده جزئیات بیشتر</a></div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                    <h2 class="product-title">پنجره نمایش سریع محصول</h2>
+                    <div class="product-review d-flex-center mb-2">
+                        <div class="rating"><i class="icon an an-star"></i><i class="icon an an-star"></i><i
+                                class="icon an an-star "></i><i class="icon an an-star"></i><i
+                                class="icon an an-star-o"></i></div>
+                        <div class="reviews ms-2"><a href="#">5 نظر</a></div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-vendor">فروشنده: <span class="fw-normal"><a href="#"
+                                                                                      class="fw-normal">بهینه</a></span>
+                        </p>
+                        <p class="product-type">نوع محصول: <span class="fw-normal">برترین‌ها</span></p>
+                        <p class="product-sku">شناسه: <span class="fw-normal">50-ABC</span></p>
+                    </div>
+                    <div class="pro-stockLbl my-2">
+                    <span class="d-flex-center stockLbl instock"><i
+                            class="icon an an-check-cil"></i><span> موجود است</span></span>
+                        <span class="d-flex-center stockLbl preorder d-none"><i class="icon an an-clock-r"></i><span> اکنون پیش‌سفارش دهید</span></span>
+                        <span class="d-flex-center stockLbl outstock d-none"><i class="icon an an-times-cil"></i> <span>فروخته شد</span></span>
+                        <span class="d-flex-center stockLbl lowstock d-none" data-qty="15"><i
+                                class="icon an an-exclamation-cir"></i><span> اکنون سفارش دهید، فقط <span
+                                class="items">10</span> باقی مانده است!</span></span>
+                    </div>
+                    <div class="pricebox">
+                        <span class="price old-price">400تومان </span><span
+                            class="price product-price__sale">300تومان </span>
+                    </div>
+                    <div class="sort-description">قالب Html چندمنظوره Bootstrap 5 که به شما و مشتریان شما یک تجربه خرید
+                        روان
+                        را می دهد که می تواند برای انواع فروشگاه ها مانند مد استفاده شود.
+                    </div>
+                    <form method="post" action="#" id="product_form--option" class="product-form">
+                        <div class="product-options d-flex-wrap">
+                            <div class="swatch clearfix swatch-0 option1">
+                                <div class="product-form__item">
+                                    <label class="label d-flex">رنگ:<span class="required d-none">*</span> <span
+                                            class="slVariant ms-1 fw-bold">مشکی</span></label>
+                                    <ul class="swatches-image swatches d-flex-wrap list-unstyled clearfix">
+                                        <li data-value="Black" class="swatch-element color available active">
+                                            <label class="rounded-0 swatchLbl small color black" title="مشکی"></label>
+                                            <span class="tooltip-label top">مشکی</span>
+                                        </li>
+                                        <li data-value="Green" class="swatch-element color available">
+                                            <label class="rounded-0 swatchLbl small color green" title="سبز"></label>
+                                            <span class="tooltip-label top">سبز</span>
+                                        </li>
+                                        <li data-value="Orange" class="swatch-element color available">
+                                            <label class="rounded-0 swatchLbl small color orange"
+                                                   title="نارنجی"></label>
+                                            <span class="tooltip-label top">نارنجی</span>
+                                        </li>
+                                        <li data-value="Blue" class="swatch-element color available">
+                                            <label class="rounded-0 swatchLbl small color blue" title="آبی"></label>
+                                            <span class="tooltip-label top">آبی</span>
+                                        </li>
+                                        <li data-value="Red" class="swatch-element color available">
+                                            <label class="rounded-0 swatchLbl small color red" title="قرمز"></label>
+                                            <span class="tooltip-label top">قرمز</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="swatch clearfix swatch-1 option2">
+                                <div class="product-form__item">
+                                    <label class="label">اندازه:<span class="required d-none">*</span> <span
+                                            class="slVariant ms-1 fw-bold">XS</span></label>
+                                    <ul class="swatches-size d-flex-center list-unstyled clearfix swatch-1 option2">
+                                        <li data-value="XS" class="swatch-element xs available active">
+                                            <label class="swatchLbl rounded-0 medium" title="خیلی کوچک">XS</label>
+                                            <span class="tooltip-label">خیلی کوچک</span>
+                                        </li>
+                                        <li data-value="S" class="swatch-element s available">
+                                            <label class="swatchLbl rounded-0 medium" title="S">S</label>
+                                            <span class="tooltip-label">کوچک</span>
+                                        </li>
+                                        <li data-value="M" class="swatch-element m available">
+                                            <label class="swatchLbl rounded-0 medium" title="متوسط">M</label>
+                                            <span class="tooltip-label">متوسط</span>
+                                        </li>
+                                        <li data-value="L" class="swatch-element l available">
+                                            <label class="swatchLbl rounded-0 medium" title="L">L</label>
+                                            <span class="tooltip-label">بزرگ</span>
+                                        </li>
+                                        <li data-value="XL" class="swatch-element xl available">
+                                            <label class="swatchLbl rounded-0 medium" title="خیلی بزرگ">XL</label>
+                                            <span class="tooltip-label">خیلی بزرگ</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-action d-flex-wrap w-100 mb-3 clearfix">
+                                <div class="quantity">
+                                    <div class="qtyField rounded">
+                                        <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon an an-minus-r"
+                                                                                              aria-hidden="true"></i></a>
+                                        <input type="text" name="quantity" value="1"
+                                               class="product-form__input qty rounded-0">
+                                        <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon an an-plus-l"
+                                                                                             aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                                <div class="add-to-cart ms-3 fl-1">
+                                    <button type="button" class="btn button-cart rounded-0"><span>افزودن به سبد</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="wishlist-btn d-flex-center">
+                        <a class="add-wishlist d-flex-center text-uppercase me-3" href="my-wishlist.html"
+                           title="Add to Wishlist"><i class="icon an an-heart-l me -1"></i> <span>افزودن به لیست علاقه مندی ها</span></a>
+                        <a class="add-compare d-flex-center text-uppercase" href="compare-style1.html"
+                           title="افزودن به مقایسه"><i class="icon an an-random-r me-2"></i>
+                            <span>افزودن به مقایسه</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Quickview Popup-->
+
+        <!--Addtocart Added Popup-->
+        <div id="pro-addtocart-popup" class="mfp-with-anim mfp-hide">
+            <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+            <div class="addtocart-inner text-center clearfix">
+                <h4 class="title mb-3 text-success">با موفقیت به سبد خرید شما اضافه شد.</h4>
+                <div class="pro-img mb-3">
+                    <img class="img-fluid blur-up lazyload" src="{% static 'images/products/add-to-cart-popup.jpg' %}"
+                         data-src="{% static 'images/products/add-to-cart-popup.jpg' %}"
+                         alt="با موفقیت به سبد خرید شما اضافه شد." title="با موفقیت به سبد خرید شما اضافه شد."/>
+                </div>
+                <div class="pro-details">
+                    <h5 class="pro-name mb-0">لباس گلدار </h5>
+                    <p class="sku my-2">رنگ: خاکستری</p>
+                    <p class="mb-0 qty-total">1 X 113تومان </p>
+                    <div class="addcart-total bg-light mt-3 mb-3 p-2">
+                        مجموع: <b class="price">113تومان </b>
+                    </div>
+                    <div class="button-action">
+                        <a href="checkout-style1.html" class="btn btn-primary view-cart mx-1 rounded-0">رفتن به تسویه
+                            حساب</a>
+                        <a href="index.html" class="btn btn-secondary rounded-0">ادامه خرید</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Addtocart Added Popup-->
+
+
+        <!-- Including Jquery -->
+        <script src="{% static 'js/vendor/jquery-min.js' %}"></script>
+        <script src="{% static 'js/vendor/js.cookie.js' %}"></script>
+        <!--Including Javascript-->
+        <script src="{% static 'js/plugins.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/vendor/photoswipe.min.js' %}"></script>
+        <!-- Photoswipe Gallery -->
+        <script src="{% static 'js/vendor/photoswipe.min.js' %}"></script>
+        <script>
+            $(function () {
+                var $pswp = $('.pswp')[0],
+                    image = [],
+                    getItems = function () {
+                        var items = [];
+                        $('.lightboximages a').each(function () {
+                            var $href = $(this).attr('href'),
+                                $size = $(this).data('size').split('x'),
+                                item = {
+                                    src: $href,
+                                    w: $size[0],
+                                    h: $size[1]
+                                };
+                            items.push(item);
+                        });
+                        return items;
+                    };
+                var items = getItems();
+
+                $.each(items, function (index, value) {
+                    image[index] = new Image();
+                    image[index].src = value['src'];
+                });
+                $('.prlightbox').on('click', function (event) {
+                    event.preventDefault();
+
+                    var $index = $(".active-thumb").parent().attr('data-slick-index');
+                    $index++;
+                    $index = $index - 1;
+
+                    var options = {
+                        index: $index,
+                        bgOpacity: 0.7,
+                        showHideOpacity: true
+                    };
+                    var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
+                    lightBox.init();
+                });
+            });
+        </script>
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="pswp__bg"></div>
+            <div class="pswp__scroll-wrap">
+                <div class="pswp__container">
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                </div>
+                <div class="pswp__ui pswp__ui--hidden">
+                    <div class="pswp__top-bar">
+                        <div class="pswp__counter"></div>
+                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                        <button class="pswp__button pswp__button--share" title="Share"></button>
+                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                        <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                                <div class="pswp__preloader__cut">
+                                    <div class="pswp__preloader__donut"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </form>
-                <div class="wishlist-btn d-flex-center">
-                    <a class="add-wishlist d-flex-center text-uppercase me-3" href="my-wishlist.html"
-                       title="Add to Wishlist"><i class="icon an an-heart-l me -1"></i> <span>افزودن به لیست علاقه مندی ها</span></a>
-                    <a class="add-compare d-flex-center text-uppercase" href="compare-style1.html"
-                       title="افزودن به مقایسه"><i class="icon an an-random-r me-2"></i>
-                        <span>افزودن به مقایسه</span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--End Quickview Popup-->
-
-    <!--Addtocart Added Popup-->
-    <div id="pro-addtocart-popup" class="mfp-with-anim mfp-hide">
-        <button title="Close (Esc)" type="button" class="mfp-close">×</button>
-        <div class="addtocart-inner text-center clearfix">
-            <h4 class="title mb-3 text-success">با موفقیت به سبد خرید شما اضافه شد.</h4>
-            <div class="pro-img mb-3">
-                <img class="img-fluid blur-up lazyload" src="{% static 'images/products/add-to-cart-popup.jpg' %}"
-                     data-src="{% static 'images/products/add-to-cart-popup.jpg' %}"
-                     alt="با موفقیت به سبد خرید شما اضافه شد." title="با موفقیت به سبد خرید شما اضافه شد."/>
-            </div>
-            <div class="pro-details">
-                <h5 class="pro-name mb-0">لباس گلدار </h5>
-                <p class="sku my-2">رنگ: خاکستری</p>
-                <p class="mb-0 qty-total">1 X 113تومان </p>
-                <div class="addcart-total bg-light mt-3 mb-3 p-2">
-                    مجموع: <b class="price">113تومان </b>
-                </div>
-                <div class="button-action">
-                    <a href="checkout-style1.html" class="btn btn-primary view-cart mx-1 rounded-0">رفتن به تسویه
-                        حساب</a>
-                    <a href="index.html" class="btn btn-secondary rounded-0">ادامه خرید</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Addtocart Added Popup-->
-
-
-    <!-- Including Jquery -->
-    <script src="{% static 'js/vendor/jquery-min.js' %}"></script>
-    <script src="{% static 'js/vendor/js.cookie.js' %}"></script>
-    <!--Including Javascript-->
-    <script src="{% static 'js/plugins.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-    <script src="{% static 'js/vendor/photoswipe.min.js' %}"></script>
-    <!-- Photoswipe Gallery -->
-    <script src="{% static 'js/vendor/photoswipe.min.js' %}"></script>
-    <script>
-        $(function () {
-            var $pswp = $('.pswp')[0],
-                image = [],
-                getItems = function () {
-                    var items = [];
-                    $('.lightboximages a').each(function () {
-                        var $href = $(this).attr('href'),
-                            $size = $(this).data('size').split('x'),
-                            item = {
-                                src: $href,
-                                w: $size[0],
-                                h: $size[1]
-                            };
-                        items.push(item);
-                    });
-                    return items;
-                };
-            var items = getItems();
-
-            $.each(items, function (index, value) {
-                image[index] = new Image();
-                image[index].src = value['src'];
-            });
-            $('.prlightbox').on('click', function (event) {
-                event.preventDefault();
-
-                var $index = $(".active-thumb").parent().attr('data-slick-index');
-                $index++;
-                $index = $index - 1;
-
-                var options = {
-                    index: $index,
-                    bgOpacity: 0.7,
-                    showHideOpacity: true
-                };
-                var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
-                lightBox.init();
-            });
-        });
-    </script>
-    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="pswp__bg"></div>
-        <div class="pswp__scroll-wrap">
-            <div class="pswp__container">
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-            </div>
-            <div class="pswp__ui pswp__ui--hidden">
-                <div class="pswp__top-bar">
-                    <div class="pswp__counter"></div>
-                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                    <button class="pswp__button pswp__button--share" title="Share"></button>
-                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                    <div class="pswp__preloader">
-                        <div class="pswp__preloader__icn">
-                            <div class="pswp__preloader__cut">
-                                <div class="pswp__preloader__donut"></div>
-                            </div>
-                        </div>
+                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                        <div class="pswp__share-tooltip"></div>
+                    </div>
+                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                    <div class="pswp__caption">
+                        <div class="pswp__caption__center"></div>
                     </div>
                 </div>
-                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                    <div class="pswp__share-tooltip"></div>
-                </div>
-                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-                <div class="pswp__caption">
-                    <div class="pswp__caption__center"></div>
-                </div>
             </div>
         </div>
     </div>
-
 </div>
 </body>
 <!--End Page Wrapper-->
