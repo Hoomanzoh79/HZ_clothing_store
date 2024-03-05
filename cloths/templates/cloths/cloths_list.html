@@ -1,119 +1,177 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en" dir="rtl">
 {% extends '_base.html' %}
+{% load static %}
 {% load i18n %}
 {% load comment_tags %}
+{% load cloth_tags %}
 {% load persian_number_translate %}
 {% load humanize %}
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>{% block page_title %}Cloths List{% endblock %}</title>
+    <!--Required Meta Tags-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="description">
+    <title>{% block page_title %}صفحه ی محصولات{% endblock %}</title>
 </head>
 <body>
-{% block content %}
 
-    <div class="product-lists-top">
-        <div class="product__filter-wrap">
-            <div class="row align-items-center">
-                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                    <div class="product__filter d-sm-flex align-items-center">
-                        <div class="product__col">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="FourCol-tab" data-bs-toggle="tab"
-                                            data-bs-target="#FourCol" type="button" role="tab" aria-controls="FourCol"
-                                            aria-selected="true">
-                                        <i class="fal fa-th"></i>
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="FiveCol-tab" data-bs-toggle="tab"
-                                            data-bs-target="#FiveCol" type="button" role="tab" aria-controls="FiveCol"
-                                            aria-selected="false">
-                                        <i class="fal fa-list"></i>
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="product__result pl-60">
-                            <p>نمایش 1-20 از 29 نتیجه</p>
+{% block content %}
+    <!--Body Container-->
+    <div id="page-content">
+        <!--Collection Banner-->
+        <div class="collection-header">
+            <div class="collection-hero">
+                <div class="collection-hero__image"></div>
+                <div class="collection-hero__title-wrapper container">
+                    <h1 class="collection-hero__title">خرید تمام عرض</h1>
+                    <div class="breadcrumbs text-uppercase mt-1 mt-lg-2"><a href="index.html"
+                                                                            title="Back to the home page">خانه</a><span>|</span><span
+                            class="fw-bold">فروشگاه تمام عرض</span></div>
+                </div>
+            </div>
+        </div>
+        <!--End Collection Banner-->
+
+        <div class="container-fluid">
+            <div class="row">
+                <!--Main Content-->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                    <!--Active Filters-->
+                    <ul class="active-filters d-flex flex-wrap align-items-center m-0 list-unstyled d-none">
+                        <li><a href="#">پاک کردن همه</a></li>
+                        <li><a href="#">مردان <i class="an an-times-l"></i></a></li>
+                        <li><a href="#">گردن بند <i class="an an-times-l"></i></a></li>
+                        <li><a href="#">لوازم جانبی <i class="an an-times-l"></i></a></li>
+                    </ul>
+                    <!--End Active Filters-->
+                    <!--Product Grid-->
+                    <div class="grid-products grid--view-items shop-grid-5 prd-grid">
+                        <div class="row">
+                            {% for cloth in cloths|only_recent_cloths %}
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 item">
+                                <!--Start Product Image-->
+                                <div class="product-image">
+                                    <!--Start Product Image-->
+                                    <a href="{{ cloth.get_absolute_url }}" class="product-img">
+                                        <!-- image -->
+                                        <img class="primary blur-up lazyload"
+                                             data-src="{{ cloth.cover.url }}"
+                                             src="{{ cloth.cover.url }}" alt="image" title="">
+                                        <!-- End image -->
+                                        <!-- Hover image -->
+                                        <img class="hover blur-up lazyload"
+                                             data-src="{{ cloth.cover.url }}"
+                                             src="{{ cloth.cover.url }}" alt="image" title="">
+                                        <!-- End hover image -->
+                                    </a>
+                                    <!--End Product Image-->
+
+                                    <!--Countdown Timer-->
+                                    <div class="saleTime" data-countdown="2024/10/01"></div>
+                                    <!--End Countdown Timer-->
+
+                                    <!--Product Button-->
+                                    <div class="button-set style0 d-none d-md-block">
+                                        <ul>
+                                            <!--Cart Button-->
+                                            <li><a class="btn-icon btn cartIcon pro-addtocart-popup"
+                                                   href="#pro-addtocart-popup"><i class="icon an an-cart-l"></i> <span
+                                                    class="tooltip-label top">به سبد خرید اضافه کنید</span></a></li>
+                                            <!--End Cart Button-->
+                                            <!--مشاهده سریع Button-->
+                                            <li><a class="btn-icon quick-view-popup quick-view"
+                                                   href="javascript:void(0)" data-toggle="modal"
+                                                   data-target="#content_quickview"><i class="icon an an-search-l"></i>
+                                                <span class="tooltip-label top">مشاهده سریع</span></a></li>
+                                            <!--End مشاهده سریع Button-->
+                                            <!--Wishlist Button-->
+                                            <li><a class="btn-icon wishlist add-to-wishlist" href="my-wishlist.html"><i
+                                                    class="icon an an-heart-l"></i> <span class="tooltip-label top">افزودن به علاقه مندی</span></a>
+                                            </li>
+                                            <!--End Wishlist Button-->
+                                            <!--Compare Button-->
+                                            <li><a class="btn-icon compare add-to-compare" href="compare-style2.html"><i
+                                                    class="icon an an-sync-ar"></i> <span class="tooltip-label top">افزودن برای مقایسه</span></a>
+                                            </li>
+                                            <!--End Compare Button-->
+                                        </ul>
+                                    </div>
+                                    <!--End Product Button-->
+                                </div>
+                                <!--End Product Image-->
+                                <!--Start Product Details-->
+                                <div class="product-details text-center">
+                                    <!--Product Name-->
+                                    <div class="product-name text-uppercase">
+                                        <a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a>
+                                    </div>
+                                    <!--End Product Name-->
+                                    <!--Product Price-->
+                                    <div class="product-price">
+                                        <span class="price">{{ cloth.price|translate_number }} {% trans '$' %}</span>
+                                    </div>
+                                    <!--End Product Price-->
+                                    <!--Product Review-->
+                                    <div class="product-review d-flex align-items-center justify-content-center">
+                                        <i class="an an-star"></i><i class="an an-star"></i><i class="an an-star"></i><i
+                                            class="an an-star"></i><i class="an an-star-o"></i>
+                                        <span class="caption hidden ms-2">3 نظرات</span>
+                                    </div>
+                                    <!--End Product Review-->
+                                    <!-- Product Button -->
+                                    <div class="button-action d-flex">
+                                        <div class="addtocart-btn">
+                                            <form class="addtocart" action="#" method="post">
+                                                <a class="btn pro-addtocart-popup" href="#pro-addtocart-popup"><i
+                                                        class="icon hidden an an-cart-l"></i>به سبد خرید اضافه کنید</a>
+                                            </form>
+                                        </div>
+                                        <div class="quickview-btn">
+                                            <a class="btn btn-icon quick-view quick-view-popup"
+                                               href="javascript:void(0)" data-toggle="modal"
+                                               data-target="#content_quickview"><i class="icon an an-search-l"></i>
+                                                <span class="tooltip-label top">مشاهده سریع</span></a>
+                                        </div>
+                                        <div class="wishlist-btn">
+                                            <a class="btn btn-icon wishlist add-to-wishlist" href="my-wishlist.html"><i
+                                                    class="icon an an-heart-l"></i> <span class="tooltip-label top">افزودن به علاقه مندی</span></a>
+                                        </div>
+                                        <div class="compare-btn">
+                                            <a class="btn btn-icon compare add-to-compare" href="compare.html"><i
+                                                    class="icon an an-sync-ar"></i> <span class="tooltip-label top">افزودن برای مقایسه</span></a>
+                                        </div>
+                                    </div>
+                                    <!-- End Product Button -->
+                                </div>
+                                <!--End Product Details-->
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
-                </div>
-                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                    <div class="product__filter-right d-flex align-items-center justify-content-md-end">
-                        <div class="product__sorting product__show-no">
-                            <select>
-                                <option>10</option>
-                                <option>20</option>
-                                <option>30</option>
-                                <option>40</option>
-                            </select>
-                        </div>
-                        <div class="product__sorting product__show-position ml-20">
-                            <select>
-                                <option>آخرین</option>
-                                <option>جدید</option>
-                                <option>آینده</option>
-                            </select>
-                        </div>
+                    <!--End Product Grid-->
+
+                    <!--Pagination Classic-->
+                    <hr class="clear">
+                    <div class="pagination">
+                        <ul>
+                            <li class="prev"><a href="#"><i class="icon align-middle an an-caret-left"
+                                                            aria-hidden="true"></i></a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">...</a></li>
+                            <li><a href="#">5</a></li>
+                            <li class="next"><a href="#"><i class="icon align-middle an an-caret-right"
+                                                            aria-hidden="true"></i></a></li>
+                        </ul>
                     </div>
+                    <!--End Pagination Classic-->
                 </div>
+                <!--End Main Content-->
             </div>
         </div>
     </div>
-    <div class="tab-content" id="productGridTabContent">
-    <div class="tab-pane fade  show active" id="FourCol" role="tabpanel" aria-labelledby="FourCol-tab">
-    <div class="tp-wrapper">
-    <div class="row g-0">
-    {% for cloth in cloths %}
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-            <div class="product__item product__item-d">
-                <div class="product__thumb fix">
-                    {% if cloth.cover %}
-                        <div class="product-image w-img">
-                            <a href="{{ cloth.get_absolute_url }}">
-                                <img src="{{ cloth.cover.url }}" alt="product" width="300" height="300">
-                            </a>
-                        </div>
-                    {% endif %}
-                    <div class="product-action">
-                        <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId">
-                            <i class="fal fa-eye"></i>
-                            <i class="fal fa-eye"></i>
-                        </a>
-                        <a href="#" class="icon-box icon-box-1">
-                            <i class="fal fa-heart"></i>
-                            <i class="fal fa-heart"></i>
-                        </a>
-                        <a href="#" class="icon-box icon-box-1">
-                            <i class="fal fa-layer-group"></i>
-                            <i class="fal fa-layer-group"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="product__content-3 ">
-                    <h6><a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a></h6>
-                    <div class="rating mb-5">
-                        <span>({{ cloth.comments.all|only_active_comments|length|translate_number }} نظر)</span>
-                    </div>
-                    <div class="price mb-10">
-                        <span>{{ cloth.price|intcomma:False|translate_number }} تومان</span>
-                    </div>
-                </div>
-                <div class="product__add-cart-s text-center">
-                    <button type="button" class="cart-btn d-flex mb-10 align-items-center justify-content-center w-100">
-                        افزودن به سبد
-                    </button>
-                    <a href="{{ cloth.get_absolute_url }}">
-                        <button type="button" class="wc-checkout d-flex align-items-center justify-content-center w-100"
-                                data-bs-toggle="modal" data-bs-target="#productModalId">
-                            مشاهده ی محصول
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
 {% endblock %}
+</body>
 </html>

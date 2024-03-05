@@ -34,7 +34,7 @@ def add_to_cart_view(request, cloth_id):
             return redirect('cart:cart_detail')
         else:
            messages.warning(request, _('Sorry! The chosen size is not available right now'))
-    return redirect('cloth_detail',pk=cloth_id)
+    return redirect('cloth_detail', pk=cloth_id)
 
 def remove_from_cart_view(request,cloth_id):
     cart = Cart(request)
