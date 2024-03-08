@@ -3,6 +3,7 @@ from django.views import generic
 from .models import Cloth,Comment
 from .forms import CommentForm
 from cart.forms import AddToCartForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class IndexView(generic.ListView):
@@ -29,7 +30,7 @@ class ClothDetailView(generic.DetailView):
         return context
 
 
-class CommentCreateView(generic.CreateView):
+class CommentCreateView(LoginRequiredMixin,generic.CreateView):
     model = Comment
     form_class = CommentForm
 
