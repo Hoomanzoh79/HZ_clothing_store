@@ -32,6 +32,7 @@
                 <div class="row">
                     <div class="col-lg-7 col-md-6 col-sm-12 col-12">
                         <div class="product-details-img product-horizontal-style clearfix mb-3 mb-md-0">
+                            {% if cloth.cover %}
                             <div class="zoompro-wrap product-zoom-right w-100 p-0">
                                 <div class="zoompro-span product-single-style2">
                                     <img id="zoompro" class="zoompro" src="{{ cloth.cover.url }}"
@@ -44,6 +45,9 @@
                                          data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
                                 </div>
                             </div>
+                                {% else %}
+                                <h1 class="product-single__title">{% trans 'No picture has been uploaded for this product !' %}</h1>
+                            {% endif %}
                         </div>
                     </div>
 
