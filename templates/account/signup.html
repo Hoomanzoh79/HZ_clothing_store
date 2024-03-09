@@ -1,14 +1,70 @@
 {% extends '_base.html' %}
+{% load widget_tweaks %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 {% block page_title %}Sign Up{% endblock %}
 
 {% block content %}
-    <h1>Signup</h1>
-    <form action="" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit" class="btn btn-success">Signup</button>
-    </form>
+    <!--Container-->
+    <div class="container">
+        <!--Main Content-->
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 box mt-2 mt-lg-5">
+                <h3 class="h4 text-uppercase mb-3">اطلاعات شخصی</h3>
+                <form method="post" action="{% url 'account_signup' %}" accept-charset="UTF-8" class="customer-form">
+                    {% csrf_token %}
+                    {{ form.non_field_errors | safe }}
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                {{ form.username.errors | safe }}
+                                <label for="username" class="d-none">{% trans 'username' %}<span
+                                        class="required">*</span></label>
+                                {% render_field form.username placeholder="نام کاربری" id="username" name="username" type="text" autocomplete="username" required=True class="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %}
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                {{ form.email.errors | safe }}
+                                <label for="email" class="d-none">email<span class="required">*</span></label>
+                                {% render_field form.email id="email" name="email" placeholder="ایمیل" type="email" autocomplete="email" required="True" class="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %}
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="h4 text-uppercase mb-3">اطلاعات ورود به سیستم</h3>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                {{ form.password1.errors | safe }}
+                                <label for="password1" class="d-none">رمز عبور <span
+                                        class="required">*</span></label>
+                                {% render_field form.password1 id="password1" name="password1" placeholder="رمز عبور" type="password" autocomplete="current-password" required="True" class="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %}
+                            </div>
+                        </div>
+{#                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">#}
+{#                            <div class="form-group">#}
+{#                                {{ form.password2.errors | safe }}#}
+{#                                <label for="password2" class="d-none">تایید رمز عبور<span#}
+{#                                        class="required">*</span></label>#}
+{#                                {% render_field form.password2 id="password2" name="password2" placeholder="رمز عبور را تایید کنید" type="password" autocomplete="current-password" required="True" class="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %}#}
+{#                            </div>#}
+{#                        </div>#}
+                    </div>
+                    <div class="row">
+                        <div class="text-left col-12 col-sm-12 col-md-6 col-lg-6">
+                            <button type="submit" class="btn rounded mb-3">ارسال</button>
+                        </div>
+                        <div class="text-right col-12 col-sm-12 col-md-6 col-lg-6">
+                            <a href="login.html"><i class="align-middle icon an an-an-double-left me-2"></i> وارد
+                                شدن</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--End Main Content-->
+    </div>
+    <!--End Container-->
 {% endblock %}
 </html>

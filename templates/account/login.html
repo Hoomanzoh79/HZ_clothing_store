@@ -5,11 +5,60 @@
 {% block page_title %}Login{% endblock %}
 
 {% block content %}
-    <h1>Login</h1>
-    <form action="" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit" class="btn btn-success">Login</button>
-    </form>
+    <!--Container-->
+    <div class="container">
+        <!--Main Content-->
+        <div class="login-register pt-2 pt-lg-5">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4 mb-md-0">
+                    <div class="inner">
+                        <form method="post" action="{% url 'account_login' %}" class="customer-form">
+                            {{ form.non_field_errors | safe }}
+                            {% csrf_token %}
+                            <h3 class="h4 text-uppercase">مشتریان ثبت نام شده</h3>
+                            <p>اگر با ما حساب کاربری دارید، لطفا وارد شوید.</p>
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        {{ form.login }}
+                                        <label for="{{form.login.id_for_label}}" class="d-none">پست الکترونیک <span
+                                                class="required">*</span></label>
+                                        {{ form.login.errors|safe }}
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        {{ form.password }}
+                                        <label for="{{form.password.id_for_label}}" class="d-none">کلمه عبور <span
+                                                class="required">*</span></label>
+                                        {{ form.password.errors|safe }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="text-left col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <p class="d-flex-center">
+                                        <button type="submit" class="btn rounded me-auto">ورود</button>
+                                        <a href="{% url 'account_reset_password' %}">رمز عبور خود را فراموش کرده اید؟</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="inner">
+                        <h3 class="h4 text-uppercase">مشتری جدید؟</h3>
+                        <p>ثبت نام در این سایت به شما امکان می دهد به وضعیت و سابقه سفارش خود دسترسی داشته باشید. ما در
+                            کمترین زمان یک حساب جدید برای شما راه اندازی خواهیم کرد. برای این فقط خواهد پرسید شما برای
+                            اطلاعات لازم برای سریعتر و آسان تر کردن فرآیند خرید</p>
+                        <a href="{% url 'account_signup' %}" class="btn rounded">یک حساب کاربری ایجاد کنید</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Main Content-->
+    </div>
+    <!--End Container-->
 {% endblock %}
 </html>
