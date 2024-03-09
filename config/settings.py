@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'multiselectfield',
     'rosetta',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

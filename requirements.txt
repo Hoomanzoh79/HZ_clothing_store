@@ -30,3 +30,4 @@ sqlparse==0.4.2
 tzdata==2021.5
 urllib3==1.26.15
 django-rosetta
+django-widget-tweaks
