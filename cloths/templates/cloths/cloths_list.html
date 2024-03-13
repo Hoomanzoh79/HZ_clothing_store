@@ -13,27 +13,15 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="description">
-    <title>{% block page_title %}صفحه ی محصولات{% endblock %}</title>
+    <title>{% block page_title %}{% trans 'All Products' %}{% endblock %}</title>
 </head>
 <body>
 
 {% block content %}
     <!--Body Container-->
     <div id="page-content">
-        <!--Collection Banner-->
-        <div class="collection-header">
-            <div class="collection-hero">
-                <div class="collection-hero__image"></div>
-                <div class="collection-hero__title-wrapper container">
-                    <h1 class="collection-hero__title">خرید تمام عرض</h1>
-                    <div class="breadcrumbs text-uppercase mt-1 mt-lg-2"><a href="{% url 'index' %}"
-                                                                            title="Back to the home page">خانه</a><span>|</span><span
-                            class="fw-bold">فروشگاه تمام عرض</span></div>
-                </div>
-            </div>
-        </div>
-        <!--End Collection Banner-->
-
+        {% translate 'All Products' as header_name_for_list %}
+        {% include 'topheader.html' with header_name=header_name_for_list %}
         <div class="container-fluid">
             <div class="row">
                 <!--Main Content-->
@@ -178,6 +166,8 @@
                                 <li class="active"><a href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
                                 <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
                                 </ul>
+                            {% else %}
+                                <li class="active"><a href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
                             {% endif %}
                     </div>
                     <!--End Pagination Classic-->

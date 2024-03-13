@@ -4,123 +4,130 @@
 {% load static %}
 {% load i18n %}
 {% load persian_number_translate %}
-{% load crispy_forms_tags %}
+
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>{% block page_title %}cart detail{% endblock %}</title>
+    <title>{% block page_title %}{% trans 'Cart Detail' %}{% endblock %}</title>
 </head>
 <body>
 {% block content %}
     <!--Main Content-->
-    <div class="container">
-        <!--Cart Page-->
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
-                <table>
-                    <thead class="cart__row cart__header small--hide">
-                    <tr>
-                        <th class="action">&nbsp;</th>
-                        <th colspan="2" class="text-start">محصول</th>
-                        <th class="text-center">قیمت</th>
-                        <th class="text-center">تعداد</th>
-                        <th class="text-center">جمع</th>
-                    </tr>
-                    </thead>
-                    {% for item in cart %}
-                        <tbody>
-                        <tr class="cart__row border-bottom line1 cart-flex border-top">
-                            <td class="cart-delete text-center small--hide"><a href="#"
-                                                                               class="btn btn--secondary cart__remove remove-icon position-static"
-                                                                               data-bs-toggle="tooltip"
-                                                                               data-bs-placement="top"
-                                                                               title="برداشتن مورد"><i
-                                    class="icon an an-times-r"></i></a></td>
-                            <td class="cart__image-wrapper cart-flex-item">
-                                <a href="{{ item.cloth_obj.get_absolute_url }}"><img
-                                        class="cart__image blur-up lazyload"
-                                        data-src="{{ item.cloth_obj.cover.url }}"
-                                        src="{{ item.cloth_obj.cover.url }}"
-                                        alt="تاپ روسری خواب غروب" width="80"/></a>
-                            </td>
-                            <td class="cart__meta small--text-left cart-flex-item">
-                                <div class="list-view-item__title">
-                                    <a href="{{ item.cloth_obj.cover.url }}">{{ item.cloth_obj.title }}</a>
-                                </div>
-                                <div class="cart__meta-text">
-                                    <br>سایز: {{ item.size }}<br> تعداد: {{ item.quantity }}
-                                </div>
-                                <div class="cart-price d-md-none">
-                                    <span class="money fw-500">{{ item.cloth_obj.price|translate_number }} {% trans '$' %} </span>
-                                </div>
-                            </td>
-                            <td class="cart__price-wrapper cart-flex-item text-center small--hide">
-                                <span class="money">{{ item.cloth_obj.price|translate_number }} {% trans '$' %} </span>
-                            </td>
-                            <td class="product-quantity">
-                                <div class="cart__qty d-flex justify-content-end justify-content-md-center">
-                                    <div class="qtyField">
-                                        <form action="{% url 'cart:cart_add' item.cloth_obj.id %}"
-                                              method="post" class="d-flex">
-                                            {% csrf_token %}
-                                            <a class="qtyBtn minus" href="javascript:void(0);"><i
-                                                    class="icon an an-minus-r" aria-hidden="true"></i></a>
-                                            <input type="number" name="quantity" value="{{ item.quantity }}" class="qty">
-                                            <a class="qtyBtn plus" href="javascript:void(0);"><i
-                                                    class="icon an an-plus-l" aria-hidden="true"></i></a>
-                                            {{ item.update_quantity_form.inplace }}
-                                            {{ item.update_quantity_form.size }}
-                                            <button type="submit"
-                                                    class="btn btn--small d-inline-flex align-items-center rounded cart-continue ml-2">
-                                                <i class="me-1 icon an an-sync-ar d-none"></i>به روز رسانی سبد خرید
-                                            </button>
-                                        </form>
+    <div id="page-content">
+        {% translate 'Cart Detail' as header_name_for_cart %}
+        {% include 'topheader.html' with header_name=header_name_for_cart %}
+        <div class="container">
+            <!--Cart Page-->
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                    <table>
+                        <thead class="cart__row cart__header small--hide">
+                        <tr>
+                            <th class="action">&nbsp;</th>
+                            <th colspan="2" class="text-start">محصول</th>
+                            <th class="text-center">قیمت</th>
+                            <th class="text-center">تعداد</th>
+                            <th class="text-center">جمع</th>
+                        </tr>
+                        </thead>
+                        {% for item in cart %}
+                            <tbody>
+                            <tr class="cart__row border-bottom line1 cart-flex border-top">
+                                <td class="cart-delete text-center small--hide"><a href="#"
+                                                                                   class="btn btn--secondary cart__remove remove-icon position-static"
+                                                                                   data-bs-toggle="tooltip"
+                                                                                   data-bs-placement="top"
+                                                                                   title="برداشتن مورد"><i
+                                        class="icon an an-times-r"></i></a></td>
+                                <td class="cart__image-wrapper cart-flex-item">
+                                    <a href="{{ item.cloth_obj.get_absolute_url }}"><img
+                                            class="cart__image blur-up lazyload"
+                                            data-src="{{ item.cloth_obj.cover.url }}"
+                                            src="{{ item.cloth_obj.cover.url }}"
+                                            alt="تاپ روسری خواب غروب" width="80"/></a>
+                                </td>
+                                <td class="cart__meta small--text-left cart-flex-item">
+                                    <div class="list-view-item__title">
+                                        <a href="{{ item.cloth_obj.cover.url }}">{{ item.cloth_obj.title }}</a>
                                     </div>
-                                </div>
-                                <a href="#" title="حذف"
-                                   class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">برداشتن</a>
-                            </td>
-                            <td class="cart-price cart-flex-item text-center small--hide">
-                                <span class="money fw-500"> {{ item.total_price|translate_number }} </span>
+                                    <div class="cart__meta-text">
+                                        <br>سایز: {{ item.size }}<br> تعداد: {{ item.quantity }}
+                                    </div>
+                                    <div class="cart-price d-md-none">
+                                        <span class="money fw-500">{{ item.cloth_obj.price|translate_number }} {% trans '$' %} </span>
+                                    </div>
+                                </td>
+                                <td class="cart__price-wrapper cart-flex-item text-center small--hide">
+                                    <span class="money">{{ item.cloth_obj.price|translate_number }} {% trans '$' %} </span>
+                                </td>
+                                <td class="product-quantity">
+                                    <div class="cart__qty d-flex justify-content-end justify-content-md-center">
+                                        <div class="qtyField">
+                                            <form action="{% url 'cart:cart_add' item.cloth_obj.id %}"
+                                                  method="post" class="d-flex">
+                                                {% csrf_token %}
+                                                <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                        class="icon an an-minus-r" aria-hidden="true"></i></a>
+                                                <input type="number" name="quantity" value="{{ item.quantity }}"
+                                                       class="qty">
+                                                <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                        class="icon an an-plus-l" aria-hidden="true"></i></a>
+                                                {{ item.update_quantity_form.inplace }}
+                                                {{ item.update_quantity_form.size }}
+                                                <button type="submit"
+                                                        class="btn btn--small d-inline-flex align-items-center rounded cart-continue ml-2">
+                                                    <i class="me-1 icon an an-sync-ar d-none"></i>به روز رسانی سبد خرید
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <a href="#" title="حذف"
+                                       class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">برداشتن</a>
+                                </td>
+                                <td class="cart-price cart-flex-item text-center small--hide">
+                                    <span class="money fw-500"> {{ item.total_price|translate_number }} {% trans '$' %} </span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-start pt-3">
+                                <a type="submit" href="{% url 'cloths_list' %}"
+                                   class="btn btn--small d-inline-flex align-items-center rounded cart-continue ml-2">
+                                    <i class="me-1 icon an an-sync-ar d-none"></i>به خرید ادامه دهید
+                                </a>
                             </td>
                         </tr>
-                    {% endfor %}
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <td colspan="3" class="text-start pt-3">
-                            <a type="submit" href="{% url 'cloths_list' %}"
-                               class="btn btn--small d-inline-flex align-items-center rounded cart-continue ml-2">
-                                <i class="me-1 icon an an-sync-ar d-none"></i>به خرید ادامه دهید
-                            </a>
-                        </td>
-                    </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
-
-        <div class="row mt-2">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-4 cart__footer">
-                <div class="solid-border">
-                    <div class="row border-bottom pb-2 pt-2">
-                        <span class="col-6 col-sm-6 cart__subtotal-title"><strong>جمع کل سبد خرید : </strong></span>
-                        <span class="col-6 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">74 تومان </span></span>
-                    </div>
-                    <p class="cart__shipping pt-0 m-0 fst-normal freeShipclaim"><i
-                            class="me-1 align-middle icon an an-truck-l"></i><b>ارسال رایگان</b> واجد شرایط</p>
-                    <div class="customCheckbox cart_tearm">
-                        <input type="checkbox" value="allen-vela" id="cart_tearm">
-                        <label for="cart_tearm">من با شرایط و ضوابط موافقم</label>
-                    </div>
-                    <a href="checkout-style1.html" id="cartCheckout" class="btn btn--small-wide rounded mt-4 checkout">به
-                        پرداخت ادامه دهید</a>
-                    <div class="paymnet-img"><img src="{% static 'images/payment-img.jpg' %}" alt="پرداخت"/></div>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
+
+            <div class="row mt-2">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 cart__footer">
+                    <div class="solid-border">
+                        <div class="row border-bottom pb-2 pt-2">
+                            <span class="col-6 col-sm-6 cart__subtotal-title"><strong>جمع کل سبد خرید : </strong></span>
+                            <span class="col-6 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span
+                                    class="money">{{ cart.get_total_price|translate_number }} {% trans '$' %} </span></span>
+                        </div>
+                        <p class="cart__shipping pt-0 m-0 fst-normal freeShipclaim"><i
+                                class="me-1 align-middle icon an an-truck-l"></i><b>ارسال رایگان</b> واجد شرایط</p>
+                        <div class="customCheckbox cart_tearm">
+                            <input type="checkbox" value="allen-vela" id="cart_tearm">
+                            <label for="cart_tearm">من با شرایط و ضوابط موافقم</label>
+                        </div>
+                        <a href="checkout-style1.html" id="cartCheckout"
+                           class="btn btn--small-wide rounded mt-4 checkout">به
+                            پرداخت ادامه دهید</a>
+                        <div class="paymnet-img"><img src="{% static 'images/payment-img.jpg' %}" alt="پرداخت"/></div>
+                    </div>
+                </div>
+            </div>
+            <!--End Cart Page-->
         </div>
-        <!--End Cart Page-->
+        <!--End Main Content-->
     </div>
-    <!--End Main Content-->
 
 {% endblock %}
 </body>

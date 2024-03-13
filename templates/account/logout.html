@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html>
 {% extends '_base.html' %}
-{% block page_title %}Login{% endblock %}
+{% load static %}
+{% load i18n %}
+{% block page_title %}{% trans 'Sign Out' %}{% endblock %}
 
 {% block content %}
-    <h1>Logout</h1>
-    <h2>Are you sure you want to log out?</h2>
-    <form action="" method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">yes I'm sure</button>
-    </form>
+
+    <!--Body Container-->
+    <div id="page-content">
+        {% translate 'Sign Out' as header_name_for_logout %}
+        {% include 'topheader.html' with header_name=header_name_for_logout %}
+
+        <!--Container-->
+        <div class="container">
+            <!--Category Empty-->
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center pt-5 pb-5">
+                    <p><img src="{% static 'images/sad-icon.png' %}" alt=""/></p>
+                    <h2 class="mt-4"><strong>آیا مطمئنید که می خواهید از حساب کاربری خارج شوید؟</strong></h2>
+                    <form method="post" action="{% url 'account_logout' %}" class="customer-form">
+                        {% csrf_token %}
+                        <button type="submit" class="btn rounded me-auto">بله مطمئنم</button>
+                    </form>
+                </div>
+            </div>
+            <!--End Category Empty-->
+        </div>
+        <!--End Container-->
+    </div>
+    <!--End Body Container-->
+
 
 {% endblock %}
 </html>
