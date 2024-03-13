@@ -13,7 +13,87 @@
 </head>
 <body>
 {% block content %}
-    {% include "topheader.html" %}
+    <!--Home slider-->
+    <section class="slideshow slideshow-wrapper">
+        <div class="home-slideshow">
+            <div class="slide">
+                <div class="lazyload">
+                    <img class="lazyload desktop-hide" data-src="{% static 'images/slideshow/demo4-banner1.jpg' %}"
+                         src="{% static 'images/slideshow/demo4-banner1.jpg' %}" alt="HIGH CONVERTING"
+                         title="HIGH CONVERTING"/>
+                    <img class="lazyload mobile-hide" data-src="{% static 'images/slideshow/demo4-banner2.jpg' %}"
+                         src="{% static 'images/slideshow/demo4-banner2.jpg' %}" alt="HIGH CONVERTING"
+                         title="HIGH CONVERTING"/>
+                    <div class=" container">
+                        <div class="slideshow-content slideshow-overlay middle-right d-flex justify-content-center align-items-center">
+                            <div class="slideshow-content-in text-left">
+                                <div class="wrap-caption style1">
+                                    <h2 class="h1 mega-title ss-mega-title fs-1 text-capitalize">بهینه زنان<br>فروشگاه
+                                        فاشیون</h2>
+                                    <span class="mega-subtitle fs-4 ss-sub-title d-md-block d-lg-block d-none">دوستش دارم، احساسش کن، از آن لذت ببر</span>
+                                    <div class="ss-btnWrap mt-3 mt-md-4 d-block">
+                                        <a class="btn btn-lg btn-primary" href="shop-top-filter.html">خرید مجموعه</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="blur-up lazyload">
+                    <img class="blur-up lazyload desktop-hide"
+                         data-src="{% static 'images/slideshow/demo4-banner2.jpg' %}"
+                         src="{% static 'images/slideshow/demo4-banner2.jpg' %}" alt="MAKING BRAND VISIBLE"
+                         title="MAKING BRAND VISIBLE"/>
+                    <img class="blur-up lazyload mobile-hide"
+                         data-src="{% static 'images/slideshow/demo4-banner2.jpg' %}"
+                         src="{% static 'images/slideshow/demo4-banner2.jpg' %}" alt="MAKING BRAND VISIBLE"
+                         title="MAKING BRAND VISIBLE"/>
+                    <div class="slideshow-content slideshow-overlay middle-left container d-flex justify-content-center align-items-center">
+                        <div class="slideshow-content-in text-left">
+                            <div class="wrap-caption style1">
+                                <p class="ss-small-title fs-4 mb-1 d-md-block d-lg-block d-none">پیشنهاد ویژه</p>
+                                <h2 class="mega-title ss-mega-title fs-1 text-capitalize">پاکسازی نهایی<br>تا 70% تخفیف
+                                </h2>
+                                <div class="ss-btnWrap mt-3 mt-md-4 d-block">
+                                    <a class="btn btn-lg btn-primary" href="shop-top-filter.html">برترین های زنانه</a>
+                                    <a class="btn btn-lg btn-primary" href="shop-top-filter.html">پایین زنان</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!--End Home slider-->
+
+    <!--Store Feature-->
+    <section class="store-features style2">
+        <div class="container">
+            <div class="row store-info">
+                <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-right mb-2 mb-md-0">
+                    <i class="an an-free-delivery"></i>
+                    <div class="detail">
+                        <h5 class="fs-6 fw-normal text-uppercase mb-0">ارسال رایگان و بازگشت</h5>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-center mb-2 mb-md-0">
+                    <i class="an an-shield"></i>
+                    <div class="detail">
+                        <h5 class="fs-6 fw-normal text-uppercase mb-0">پرداخت امن</h5>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-left mb-2 mb-md-0">
+                    <i class="an an-dollar mb-1"></i>
+                    <div class="detail">
+                        <h5 class="fs-6 fw-normal text-uppercase mb-0 ">ضمانت پول</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Store Feature-->
     <!--Best Seller With Tabs-->
     <section class="section product-slider tab-slider-product">
         <div class="container">
