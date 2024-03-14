@@ -1,0 +1,67 @@
+{% load static %}
+{% load i18n %}
+{% load persian_number_translate %}
+<!--MiniCart Drawer-->
+<div class="minicart-right-drawer modal right fade" id="minicart-drawer">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="cart-drawer" class="block block-cart">
+                <div class="minicart-header">
+                    <a href="javascript:void(0);" class="close-cart" data-bs-dismiss="modal" aria-label="Close"><i
+                            class="an an-times-r" aria-hidden="true" data-bs-toggle="tooltip"
+                            data-bs-placement="left" title="Close"></i></a>
+                    <h4 class="fs-6 text-black">{% trans "Your Cart" %} : {{ cart|length }} {% trans "product" %}</h4>
+                </div>
+                <div class="minicart-content">
+                    <ul class="clearfix">
+                        {% for item in cart %}
+                            <li class="item d-flex justify-content-center align-items-center">
+                                <a class="product-image" href="{{ item.cloth_obj.get_absolute_url }}">
+                                    <img class="blur-up lazyload"
+                                         src="{{ item.cloth_obj.cover.url }}"
+                                         data-src="{{ item.cloth_obj.cover.url }}" alt="image"
+                                         title="">
+                                </a>
+                                <div class="product-details">
+                                    <a class="product-title" href="{{ item.cloth_obj.get_absolute_url }}">{{ item.cloth_obj.title }}</a>
+                                    <div class="variant-cart mb-1">{% trans "size" %} : {{ item.size }}</div>
+                                    <div class="priceRow">
+                                        <div class="product-price">
+                                            <span class="money">{{ item.total_price|translate_number }} {% trans '$' %}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="qtyDetail text-center">
+                                    <div class="wrapQtyBtn">
+                                        <div class="qtyField">
+                                            <span type="text" name="quantity" value="1"
+                                                  class="qty rounded-0">{% trans 'Quantity' %}:{{ item.quantity }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="qtyDetail text-center">
+                                    <div class="wrapQtyBtn">
+
+                                        <a href="{% url 'cart:cart_remove' item.cloth_obj.id %}" class="remove"><i
+                                                class="an an-times-r" data-bs-toggle="tooltip"
+                                                data-bs-placement="top" title="حذف"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="minicart-bottom text-black">
+                    <div class="subtotal">
+                        <span>مجموع:</span>
+                        <span class="product-price">{{ cart.get_total_price|translate_number }} {% trans '$' %}  </span>
+                    </div>
+                    <a href="checkout-style2.html"
+                       class="w-100 p-2 my-2 btn btn-secondary progress-to-checkout">{% trans "Checkout" %}</a>
+                    <a href="{% url 'cart:cart_detail' %}" class="w-100 btn btn-outline-primary cart-btn">{% trans "Go To Cart" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End MiniCart Drawer-->
