@@ -36,8 +36,19 @@ def add_to_cart_view(request, cloth_id):
            messages.warning(request, _('Sorry! The chosen size is not available right now'))
     return redirect('cloth_detail', pk=cloth_id)
 
+
 def remove_from_cart_view(request,cloth_id):
     cart = Cart(request)
     cloth = get_object_or_404(Cloth, id=cloth_id)
     cart.remove(cloth)
     return redirect('cart:cart_detail')
+
+
+def clear_cart(request):
+    cart = Cart(request)
+    if len(cart):
+        cart.clear()
+        messages.success(request, _('Your cart has been successfully cleared '))
+    else:
+        messages.warning(request, _('Your cart is already empty'))
+    return redirect('index')
