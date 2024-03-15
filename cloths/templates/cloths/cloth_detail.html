@@ -16,14 +16,19 @@
 {% block content %}
     <!--Body Container-->
     <div id="page-content">
-        <!--Breadcrumbs-->
-        <div class="breadcrumbs-wrapper text-uppercase">
-            <div class="container">
-                <div class="breadcrumbs"><a href="index.html" title="Back to the home page"></a><span>|</span><span
-                        class="fw-bold">{{ cloth.title }}</span></div>
+        <!--Collection Banner-->
+        <div class="collection-header">
+            <div class="collection-hero">
+                <div class="collection-hero__image"></div>
+                <div class="collection-hero__title-wrapper container">
+                    <h1 class="collection-hero__title">{% trans 'Cloth Details' %}</h1>
+                    <div class="breadcrumbs text-uppercase mt-1 mt-lg-2"><a href="{% url 'index' %}"
+                                                                            title="برگشت به صفحه اصلی">{% trans 'main page' %}</a><span>|</span><span
+                            class="fw-bold">{{ cloth.title }}</span></div>
+                </div>
             </div>
         </div>
-        <!--End Breadcrumbs-->
+        <!--End Collection Banner-->
 
         <!--Main Content-->
         <div class="container">
@@ -33,19 +38,19 @@
                     <div class="col-lg-7 col-md-6 col-sm-12 col-12">
                         <div class="product-details-img product-horizontal-style clearfix mb-3 mb-md-0">
                             {% if cloth.cover %}
-                            <div class="zoompro-wrap product-zoom-right w-100 p-0">
-                                <div class="zoompro-span product-single-style2">
-                                    <img id="zoompro" class="zoompro" src="{{ cloth.cover.url }}"
-                                         data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
+                                <div class="zoompro-wrap product-zoom-right w-100 p-0">
+                                    <div class="zoompro-span product-single-style2">
+                                        <img id="zoompro" class="zoompro" src="{{ cloth.cover.url }}"
+                                             data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="product-thumb product-horizontal-thumb w-100 pt-2 mt-1">
-                                <div id="gallery" class="product-thumb-style2 overflow-hidden">
-                                    <img src="{{ cloth.cover.url }}"
-                                         data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
+                                <div class="product-thumb product-horizontal-thumb w-100 pt-2 mt-1">
+                                    <div id="gallery" class="product-thumb-style2 overflow-hidden">
+                                        <img src="{{ cloth.cover.url }}"
+                                             data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
+                                    </div>
                                 </div>
-                            </div>
-                                {% else %}
+                            {% else %}
                                 <h1 class="product-single__title">{% trans 'No picture has been uploaded for this product !' %}</h1>
                             {% endif %}
                         </div>
@@ -75,8 +80,8 @@
                                     <span class="product-price__sale--single">
                                     <span
                                             class="product-price__price product-price__sale">{{ cloth.price|translate_number }} {% trans '$' %}</span>
-                                            </span>
 
+                                    </span>
                                 </div>
                                 <!-- End Product Price -->
                             </div>
@@ -167,7 +172,7 @@
                                             class="icon an an-star fs-6"></i><i
                                             class="icon an an-star mx-1 fs-6"></i><i
                                             class="icon an an-star-o fs-6"></i></a>
-                                    <span class="spr-summary-actions-togglereviews ms-2 fw-600">بر پایه 6 نظرات 234</span>
+                                    <span class="spr-summary-actions-togglereviews ms-2 fw-600">{% trans 'comments' %} : {{ cloth.comments.count }}</span>
                                 </div>
                                 <div class="spr-summary-actions mt-3 mt-sm-0 d-none">
                                     <a href="#"
@@ -198,24 +203,28 @@
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                         <div class="spr-reviews">
-                            <h4 class="spr-form-title text-uppercase mb-3">{% trans 'customer comments on' %} {{ cloth.title }} </h4>
-                            <div class="review-inner">
-                                {% for comment in cloth.comments.all %}
-                                    <div class="spr-review">
-                                        <div class="spr-review-header">
-                                            <span class="spr-review-header-byline mb-1"><strong>{{ comment.author }}</strong> در <strong>{{ comment.datetime_created }}</strong></span>
-                                            <span class="product-review spr-starratings d-block mb-1"><span
-                                                    class="reviewLink"><i class="icon an an-star"></i><i
-                                                    class="icon an an-star mx-1"></i><i class="icon an an-star"></i><i
-                                                    class="icon an an-star mx-1"></i><i
-                                                    class="icon an an-star-o"></i></span></span>
+                            {% if cloth.comments.count == 0 %}
+                                <h4 class="spr-form-title text-uppercase mb-3">{% trans 'no comments on' %}</h4>
+                            {% else %}
+                                <h4 class="spr-form-title text-uppercase mb-3">{% trans 'customer comments on' %} {{ cloth.title }} </h4>
+                                <div class="review-inner">
+                                    {% for comment in cloth.comments.all %}
+                                        <div class="spr-review">
+                                            <div class="spr-review-header">
+                                                <span class="spr-review-header-byline mb-1"><strong>{{ comment.author }}</strong> در <strong>{{ comment.datetime_created }}</strong></span>
+                                                <span class="product-review spr-starratings d-block mb-1"><span
+                                                        class="reviewLink"><i class="icon an an-star"></i><i
+                                                        class="icon an an-star mx-1"></i><i class="icon an an-star"></i><i
+                                                        class="icon an an-star mx-1"></i><i
+                                                        class="icon an an-star-o"></i></span></span>
+                                            </div>
+                                            <div class="spr-review-content">
+                                                <p class="spr-review-content-body">{{ comment.body }}</p>
+                                            </div>
                                         </div>
-                                        <div class="spr-review-content">
-                                            <p class="spr-review-content-body">{{ comment.body }}</p>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
