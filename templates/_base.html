@@ -141,8 +141,8 @@
                         <a href="#" class="site-header__cart btn-minicart" data-bs-toggle="modal"
                            data-bs-target="#minicart-drawer">
                             <i class="icon an an-sq-bag"></i><span
-                                class="site-cart-count counter d-flex-center justify-content-center position-absolute translate-middle rounded-circle">2</span><span
-                                class="tooltip-label">سبد خرید</span>
+                                class="site-cart-count counter d-flex-center justify-content-center position-absolute translate-middle rounded-circle">{{ cart|length }}</span><span
+                                class="tooltip-label">{% trans "Your Cart" %}</span>
                         </a>
                     </div>
                     <!--End Minicart Drawer-->
