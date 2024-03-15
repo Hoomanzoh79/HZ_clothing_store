@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends '_base.html' %}
+<html lang="en">
+{% load i18n %}
+{% block page_title %}{% trans 'Profile' %}{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    {% block content %}
+
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn rounded me-auto">تغییر</button>
+    {% endblock %}
+</body>
+</html>
