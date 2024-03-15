@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .forms import CustomUserChangeForm, CustomUserCreationForm
-from .models import CustomUser
+from .models import CustomUser,Profile
 from django.contrib.auth.admin import UserAdmin
 
 
@@ -12,3 +12,8 @@ class CustomUserAdmin(UserAdmin):
     list_display = ('email', 'username',
                     'is_staff','is_superuser',
                     )
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    model = Profile
+    fields = ['user','first_name','last_name','address','phone_number','email']
