@@ -21,5 +21,4 @@ class ProfileChangeForm(forms.ModelForm):
         model = Profile
         fields = ("first_name","last_name",
                   "address","phone_number",
-                  "email",
                   )

@@ -16,4 +16,4 @@ class CustomUserAdmin(UserAdmin):
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     model = Profile
-    fields = ['user','first_name','last_name','address','phone_number','email']
+    fields = ['user','first_name','last_name','address','phone_number',]
