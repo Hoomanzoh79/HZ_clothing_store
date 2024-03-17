@@ -90,7 +90,7 @@
                                             <li><a href="my-account.html" class="site-nav">حساب من <i
                                                     class="an an-angle-right-l"></i></a>
                                                 <ul class="dropdown">
-                                                    <li><a href="my-account.html" class="site-nav">پروفایل کاربری</a>
+                                                    <li><a href="{% url 'profile_update' profile.id %}" class="site-nav">{% trans 'profile' %}</a>
                                                     </li>
                                                     <li><a href="{% url 'account_change_password' %}"
                                                            class="site-nav last">تغییر
