@@ -8,12 +8,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    {% block content %}
+{% block content %}
+    <div id="page-content">
+        {% translate 'Profile' as header_name_for_profile %}
+        {% include 'topheader.html' with header_name=header_name_for_profile %}
+        <!--Container-->
+        <!--Container-->
+        <div class="container pt-2">
+            <!--Main Content-->
+            <div class="dashboard-upper-info">
+                <div class="row align-items-center g-0">
+                    <div class="col-xl-3 col-lg-3 col-sm-6">
+                        <div class="d-single-info">
+                            <p class="user-name">سلام <span class="fw-600">اپتیمال</span></p>
+                            <p>(نه اوپتیمال ؟ <a class="link-underline fw-600" href="login.html">خروج</a>)</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-sm-6">
+                        <div class="d-single-info">
+                            <p>به کمک نیاز دارید؟ خدمات مشتری در.</p>
+                            <p><a href="mailto:admin@example.com">admin@example.com</a></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-sm-6">
+                        <div class="d-single-info">
+                            <p>به آنها ایمیل بزنید </p>
+                            <p><a href="mailto:support@example.com">support@example.com</a></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-sm-6">
+                        <div class="d-single-info text-lg-center">
+                            <a class="link-underline fw-600 view-cart" href="cart-style1.html"><i
+                                    class="icon an an-sq-bag me-2"></i>مشاهده سبد خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <form method="post" action="">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit" class="btn rounded me-auto">تغییر</button>
-    {% endblock %}
+            <div class="row mb-4 mb-lg-5 pb-lg-5">
+                <div class="col-xl-3 col-lg-2 col-md-12 mb-4 mb-lg-0">
+                    <!-- Nav tabs -->
+                    <ul class="nav flex-column bg-light h-100 dashboard-list" role="tablist">
+                        <li><a class="nav-link active" data-bs-toggle="tab" href="#dashboard">جزئیات حساب</a></li>
+                        <li><a class="nav-link" data-bs-toggle="tab" href="#orders">سفارشات</a></li>
+                        <li><a class="nav-link" href="{% url 'account_logout' %}">خروج</a></li>
+                    </ul>
+                    <!-- End Nav tabs -->
+                </div>
+
+                <div class="col-xl-9 col-lg-10 col-md-12">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard-content">
+                        <!-- Dashboard -->
+                        <div id="dashboard" class="tab-pane fade active show">
+                            <h3>جزئیات حساب </h3>
+                            <div class="account-login-form bg-light-gray padding-20px-all">
+                                <form method="post" action="">
+                                {% csrf_token %}
+                                    {{ form }}
+                                    <button type="submit" class="btn btn-primary rounded mt-3">تغییر پروفایل کاربری</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End Dashboard -->
+
+                        <!-- Orders -->
+                        <div id="orders" class="product-order tab-pane fade">
+                            <h3>سفارشات</h3>
+                            <div class="table-responsive order-table">
+                                <table class="table table-bordered table-hover align-middle text-center mb-0">
+                                    <thead class="alt-font">
+                                    <tr>
+                                        <th>سفارش</th>
+                                        <th> محصول</th>
+                                        <th>تاریخ</th>
+                                        <th>وضعیت</th>
+                                        <th>جمع</th>
+                                        <th>اقدامات</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>تی شرت های آستین بلند</td>
+                                        <td>مرداد 04, 1402</td>
+                                        <td class="text-success">تکمیل شد</td>
+                                        <td>165 تومان تومان برای 1 مورد</td>
+                                        <td><a class="link-underline view" href="cart-style1.html">چشم انداز</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>تاپ گلدار</td>
+                                        <td>ممکن است 19, 1402</td>
+                                        <td class="text-success">تکمیل شد</td>
+                                        <td>150 تومان تومان برای 1 مورد</td>
+                                        <td><a class="link-underline view" href="cart-style1.html">چشم انداز</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>بدنه مشکی</td>
+                                        <td>آبان 24, 1402</td>
+                                        <td class="text-danger">در حال پردازش</td>
+                                        <td>190 تومان تومان برای 2 مورد</td>
+                                        <td><a class="link-underline view" href="cart-style1.html">چشم انداز</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>سویشرت هودی</td>
+                                        <td>خرداد 28, 1402</td>
+                                        <td class="text-danger">در حال پردازش</td>
+                                        <td>170 تومان برای 1 مورد</td>
+                                        <td><a class="link-underline view" href="cart-style1.html">چشم انداز</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End Orders -->
+                    </div>
+                    <!-- End Tab panes -->
+                </div>
+            </div>
+            <!--End Main Content-->
+        </div>
+        <!--End Container-->
+    </div>
+    <!--End Container-->
+
+{% endblock %}
 </body>
 </html>
