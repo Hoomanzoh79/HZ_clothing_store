@@ -92,6 +92,7 @@ TEMPLATES = [
 
                 # Custom cp
                 'cart.context_processors.cart',
+                'accounts.context_processors.profile',
             ],
         },
     },
