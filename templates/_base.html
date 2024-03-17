@@ -81,25 +81,16 @@
                                     <li class="lvl1 parent dropdown">
                                         <a href="#;"> سلام {{ user.username }}<i class="an an-angle-down-l"></i></a>
                                         <ul class="dropdown">
-                                            <ul class="dropdown">
-                                                <li><a href="aboutus-style1.html" class="site-nav">درباره ما استایل
-                                                    1</a>
-                                                </li>
-                                            </ul>
+                                            <li><a href="{% url 'profile_update' %}"
+                                                   class="site-nav">{% trans 'Profile' %}</a>
                                             </li>
-                                            <li><a href="my-account.html" class="site-nav">حساب من <i
-                                                    class="an an-angle-right-l"></i></a>
-                                                <ul class="dropdown">
-                                                    <li><a href="{% url 'profile_update' %}" class="site-nav">{% trans 'Profile' %}</a>
-                                                    </li>
-                                                    <li><a href="{% url 'account_change_password' %}"
-                                                           class="site-nav last">تغییر
-                                                        رمز عبور</a>
-                                                    </li>
-                                                    <li><a href="{% url "account_logout" %}" class="site-nav last">خروج
-                                                    </a>
-                                                    </li>
-                                                </ul>
+                                            <li><a href="{% url 'account_change_password' %}"
+                                                   class="site-nav last">تغییر
+                                                رمز عبور</a>
+                                            </li>
+                                            <li><a href="{% url "account_logout" %}" class="site-nav last">خروج
+                                            </a>
+                                            </li>
                                         </ul>
                                     </ul>
                                 {% else %}
@@ -121,21 +112,15 @@
                 <!--Right Action-->
                 <div class="col-6 col-sm-6 col-md-6 col-lg-3 align-self-center icons-col d-flex justify-content-end">
                     <!--Search-->
-                    <div class="site-search iconset"><i class="icon an an-search-l d-block d-lg-none"></i><span
-                            class="text d-none d-lg-flex">جستجو</span></div>
-                    <!--End Search-->
-                    <!--Setting Dropdown-->
-                    <div class="user-link iconset"><i class="icon an an-user d-block d-lg-none"></i><span
-                            class="tooltip-label">پنل کاربری</span></div>
-                    <div id="userLinks">
-                        <ul class="user-links">
-                            <li><a href="login.html">ورود به سیستم</a></li>
-                            <li><a href="register.html">ثبت نام</a></li>
-                            <li><a href="my-wishlist.html">لیست علاقمندی</a></li>
-                            <li><a href="compare-style1.html">مقایسه</a></li>
-                        </ul>
+                    <div class="site-search iconset"><i class="icon an an-search-l"></i><span class="tooltip-label">جستجو</span>
                     </div>
+                    <!--End Search-->
+                    {% if user.is_authenticated %}
+                    <!--Setting Dropdown-->
+                    <a class="user-link iconset" href="{% url 'profile_update' %}"><i class="icon an an-user-2"></i><span class="tooltip-label">{% trans "Profile" %}</span>
+                    </a>
                     <!--End Setting Dropdown-->
+                    {% endif %}
                     <!--Minicart Drawer-->
                     <div class="header-cart iconset">
                         <a href="#" class="site-header__cart btn-minicart" data-bs-toggle="modal"
