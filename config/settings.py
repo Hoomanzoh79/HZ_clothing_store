@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'persian_translate',
     'orders',
     'payment',
+    'search',
 
 
     # third party apps
