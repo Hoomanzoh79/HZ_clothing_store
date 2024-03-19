@@ -137,37 +137,12 @@
         </div>
         <!--Search Popup-->
         <div id="search-popup" class="search-drawer">
+            <span class="closeSearch an an-times-l md-5"></span>
             <div class="container">
-                <span class="closeSearch an an-times-l"></span>
-                <form class="form minisearch" id="header-search" action="#" method="get">
-                    <label class="label"><span>جستجو</span></label>
-                    <div class="control">
-                        <div class="searchField">
-                            <div class="search-category">
-                                <select id="rgsearch-category" name="rgsearch[category]" data-default="All Categories">
-                                    <option value="00" label="همه دسته بندی ها" selected="selected">همه دسته بندی ها
-                                    </option>
-                                    <optgroup id="rgsearch-shop" label="فروشگاه">
-                                        <option value="0">- همه</option>
-                                        <option value="1">- مرد</option>
-                                        <option value="2">- زن</option>
-                                        <option value="3">- کفش</option>
-                                        <option value="4">- بلوز</option>
-                                        <option value="5">- پولیور</option>
-                                        <option value="6">- کیف</option>
-                                        <option value="7">- جواهرات</option>
-                                    </optgroup>
-                                </select>
-                            </div>
-                            <div class="input-box">
-                                <button type="submit" title="Search" class="action search" disabled=""><i
-                                        class="icon an an-search-l"></i></button>
-                                <input type="text" name="q" value="" placeholder="جستجو بر اساس کلمه کلیدی یا #"
-                                       class="input-text">
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                <form action="{% url 'search:search_results' %}" method="get">
+                    <input name="q" type="text" placeholder="Search...">
+                    <button type="submit" class="btn rounded me-auto mt-3">{% trans 'submit' %}</button>
+                  </form>
             </div>
         </div>
         <!--End Search Popup-->
