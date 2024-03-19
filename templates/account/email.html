@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+{% load widget_tweaks %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+{% block page_title %}{% trans 'change email' %}{% endblock %}
+
+{% block content %}
+    <div id="page-content">
+        {% translate 'change email' as header_name_for_email %}
+        {% include 'topheader.html' with header_name=header_name_for_email %}
+        <!--Container-->
+        <div class="container">
+            <!--Main Content-->
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 box mt-2 mt-lg-5">
+                    <h3 class="h4 text-uppercase mb-3">{% trans 'change email' %}</h3>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form }}
+                        <button type="submit" class="btn rounded me-auto mt-3">{% trans 'change email' %}</button>
+                    </form>
+                </div>
+            </div>
+            <!--End Main Content-->
+        </div>
+        <!--End Container-->
+    </div>
+{% endblock %}
+</html>
