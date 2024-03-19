@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+{% extends '_base.html' %}
+{% load static %}
+{% load i18n %}
+{% block page_title %}search results{% endblock %}
+
+{% block content %}
+
+    <!--Body Container-->
+    <div id="page-content">
+        <!--Container-->
+        <div class="container">
+            <!--Category Empty-->
+            <div class="row">
+                {% for cloth in cloths %}
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center pt-5 pb-5">
+
+                   {{cloth.title}}
+
+                </div>
+                {% endfor %}
+            </div>
+            <!--End Category Empty-->
+        </div>
+        <!--End Container-->
+    </div>
+    <!--End Body Container-->
+
+
+{% endblock %}
+</html>
