@@ -26,16 +26,16 @@
                 </div>
             </div>
         </div>
-    {% if cloths|length == 0 %}
-        <!--Category Empty-->
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center pt-5 pb-5">
-                <p><img src="{% static 'images/sad-icon.png' %}" alt=""/></p>
-                <h2 class="mt-4"><strong>{% trans 'Sorry ! no results found for your search!' %}</strong></h2>
-                <a type="submit" class="btn rounded me-auto" href="{% url 'index' %}">{% trans 'Go Shopping' %}</a>
+        {% if cloths|length == 0 %}
+            <!--Category Empty-->
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center pt-5 pb-5">
+                    <p><img src="{% static 'images/sad-icon.png' %}" alt=""/></p>
+                    <h2 class="mt-4"><strong>{% trans 'Sorry ! no results found for your search!' %}</strong></h2>
+                    <a type="submit" class="btn rounded me-auto" href="{% url 'index' %}">{% trans 'Go Shopping' %}</a>
+                </div>
             </div>
-        </div>
-    {% endif %}
+        {% endif %}
         <!--End Category Empty-->
         <!--End Collection Banner-->
         <div class="container-fluid">
