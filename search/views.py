@@ -6,7 +6,6 @@ class SearchResultsView(ListView):
     model = Cloth
     template_name = "search/search_results.html"
     context_object_name = 'cloths'
-    paginate_by = 10
 
     def get_queryset(self):  # new
         search_query = self.request.GET.get("q")
