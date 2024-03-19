@@ -137,12 +137,13 @@
         </div>
         <!--Search Popup-->
         <div id="search-popup" class="search-drawer">
-            <span class="closeSearch an an-times-l md-5"></span>
+            <span class="closeSearch an an-times-l"></span>
             <div class="container">
-                <form action="{% url 'search:search_results' %}" method="get">
-                    <input name="q" type="text" placeholder="Search...">
-                    <button type="submit" class="btn rounded me-auto mt-3">{% trans 'submit' %}</button>
-                  </form>
+                <form class="form minisearch" id="header-search" action="{% url 'search:search_results' %}" method="get">
+                    <label class="label"><span>search</span></label>
+                    <input name="q" type="text" placeholder="{% trans 'search' %} ..." required>
+                    <button type="submit" class="btn rounded me-auto mt-3">{% trans 'search' %}</button>
+                </form>
             </div>
         </div>
         <!--End Search Popup-->
