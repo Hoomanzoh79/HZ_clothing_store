@@ -26,19 +26,22 @@
                 </div>
             </div>
         </div>
+    {% if cloths|length == 0 %}
+        <!--Category Empty-->
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center pt-5 pb-5">
+                <p><img src="{% static 'images/sad-icon.png' %}" alt=""/></p>
+                <h2 class="mt-4"><strong>{% trans 'Sorry ! no results found for your search!' %}</strong></h2>
+                <a type="submit" class="btn rounded me-auto" href="{% url 'index' %}">{% trans 'Go Shopping' %}</a>
+            </div>
+        </div>
+    {% endif %}
+        <!--End Category Empty-->
         <!--End Collection Banner-->
         <div class="container-fluid">
             <div class="row">
                 <!--Main Content-->
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
-                    <!--Active Filters-->
-                    <ul class="active-filters d-flex flex-wrap align-items-center m-0 list-unstyled d-none">
-                        <li><a href="#">پاک کردن همه</a></li>
-                        <li><a href="#">مردان <i class="an an-times-l"></i></a></li>
-                        <li><a href="#">گردن بند <i class="an an-times-l"></i></a></li>
-                        <li><a href="#">لوازم جانبی <i class="an an-times-l"></i></a></li>
-                    </ul>
-                    <!--End Active Filters-->
                     <!--Product Grid-->
                     <div class="grid-products grid--view-items shop-grid-5 prd-grid">
                         <div class="row">
