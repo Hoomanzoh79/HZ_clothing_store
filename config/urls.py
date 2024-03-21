@@ -17,18 +17,26 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from allauth.account.views import signup,login,logout,email,password_change,password_reset,password_reset_done
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
-    path('accounts/', include('allauth.urls')),
     path('profile/',include('accounts.urls')),
     path('', include('cloths.urls')),
     path('cart/', include('cart.urls')),
     path('order/', include('orders.urls')),
     path('payment', include('payment.urls')),
     path('search/',include('search.urls')),
+    # All Auth
+    path("account/login/", login, name="account_login"),
+    path("account/logout/", logout, name="account_logout"),
+    path("account/signup/", signup, name="account_signup"),
+    path("account/email/", email, name="account_email"),
+    path("account/password/reset/", password_reset, name="account_reset_password"),
+    path("account/password/reset/done/", password_reset_done, name="account_reset_password_done"),
+    path("account/password/change/", password_change, name="account_change_password"),
     # Rosetta (i18n)
     path('rosetta/', include('rosetta.urls')),
 
