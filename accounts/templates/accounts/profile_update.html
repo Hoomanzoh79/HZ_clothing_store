@@ -24,6 +24,13 @@
                             <p><a href="mailto:admin@example.com">admin@example.com</a></p>
                         </div>
                     </div>
+                    <div class="col-xl-3 col-lg-3 col-sm-6">
+                        <div class="d-single-info">
+                            <p>{% trans "E-mail" %} : {{ user.email }}</p>
+                            <a class="link-underline fw-600 view-cart" href="{% url 'account_email' %}"><i
+                                    class=""></i>{% trans 'change email' %}</a>
+                        </div>
+                    </div>
                     <div class="col-xl-2 col-lg-2 col-sm-6">
                         <div class="d-single-info text-lg-center">
                             <a class="link-underline fw-600 view-cart" href="{% url 'cart:cart_detail' %}"><i
@@ -52,9 +59,10 @@
                             <h3>جزئیات حساب </h3>
                             <div class="account-login-form bg-light-gray padding-20px-all">
                                 <form method="post" action="">
-                                {% csrf_token %}
+                                    {% csrf_token %}
                                     {{ form }}
-                                    <button type="submit" class="btn btn-primary rounded mt-3">تغییر پروفایل کاربری</button>
+                                    <button type="submit" class="btn btn-primary rounded mt-3">تغییر پروفایل کاربری
+                                    </button>
                                 </form>
                             </div>
                         </div>
