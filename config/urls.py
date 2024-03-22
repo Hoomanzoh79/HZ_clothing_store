@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from allauth.account.views import signup,login,logout,email,password_change,password_reset,password_reset_done
+from allauth.account.views import (signup,login,logout,email,password_change,password_reset,password_reset_done)
 
 
 urlpatterns = [
