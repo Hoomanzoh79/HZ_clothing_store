@@ -164,6 +164,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 # Login and Logout settings
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
+LOGIN_URL = 'account_login'
 
 # crispy forms settings
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
