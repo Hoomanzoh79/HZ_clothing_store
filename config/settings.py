@@ -184,7 +184,15 @@ AUTHENTICATION_BACKENDS = [
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Email Configuration
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "hoomanemi1999@gmail.com"
+EMAIL_HOST_PASSWORD = "aygxlcpmjwmkvqrc"
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # all auth customization
 ACCOUNT_SESSION_REMEMBER = True
