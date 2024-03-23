@@ -1,71 +1,74 @@
 {% extends '_base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
+{% load i18n %}
+{% load %}
+{% load persian_number_translate %}
 
 {% block page_title %} order create {% endblock %}
 {% block content %}
-    <main>
-        <!-- checkout-area-start -->
-        <section class="checkout-area pb-85">
-            <div class="container mt-3">
-                <div class="row">
-                <div class="col-lg-6">
-                    <form action="" method="post">
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                        <button type="submit" class="btn btn-success">submit order</button>
-                    </form>
+    <div id="page-content">
+        {% translate 'Order Create' as header_name_for_order_create %}
+        {% include 'topheader.html' with header_name=header_name_for_order_create %}
+        <!--Main Content-->
+        <div class="container">
+            <div class="row billing-fields">
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-3 mb-lg-0">
+                    <div class="create-ac-content">
+                        <form method="post" action="{% url 'orders:order_create' %}" id="order">
+                            {% csrf_token %}
+                            {{ form }}
+                        </form>
+                    </div>
                 </div>
-                    <div class="col-lg-6 mt-35">
-                        <div class="your-order mb-30 ">
-                            <h3>سفارش شما</h3>
-                            <div class="your-order-table table-responsive">
-                                <table>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="your-order-payment">
+                        <div class="your-order">
+                            <h2 class="order-title mb-3">{% trans 'order details' %}</h2>
+                            <div class="table-responsive order-table style2">
+                                <table class="bg-white table table-bordered align-middle table-hover text-center mb-1">
                                     <thead>
                                     <tr>
-                                        <th class="product-name">محصول</th>
-                                        <th class="product-total">مجموع</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for item in cart %}
-                                        <tr class="cart_item">
-                                            <td class="product-name">
-                                                {{ item.cloth_obj.title }}<strong class="product-quantity">
-                                                * {{ item.quantity }}</strong>
-                                            </td>
-                                            <td class="product-total">
-                                                <span class="amount">{{ item.cloth_obj.price }}</span>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                    <tfoot>
-                                    <tr class="cart-subtotal">
-                                        <th>مجموع سبد</th>
-                                        <td><span class="amount">ت215.00</span></td>
-                                    </tr>
-                                    <tr class="order-total">
-                                        <th>مجموع سفارش</th>
-                                        <td><strong><span class="amount">ت215.00</span></strong>
-                                        </td>
+                                        <th class="text-start">{% trans 'title' %}</th>
+                                        <th>{% trans 'price' %}</th>
+                                        <th>{% trans 'size' %}</th>
+                                        <th>{% trans 'quantity' %}</th>
+                                        <th>{% trans 'total price' %}</th>
+                                        {% for item in cart %}
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td class="text-start">
+                                                    <a href="product-layout1.html">{{ item.cloth_obj.title }}</a>
+                                                    <div class="cart__meta-text">
+                                                        <br>{% trans 'size' %} : {{ item.size }}<br>
+                                                    </div>
+                                                </td>
+                                                <td>{{ item.cloth_obj.price }}</td>
+                                                <td>{{ item.size }}</td>
+                                                <td>{{ item.quantity }}</td>
+                                                <td>{{ item.total_price|translate_number }} {% trans '$' %}</td>
+                                            </tr>
+                                            </tbody>
+                                        {% endfor %}
+                                    <tfoot class="font-weight-600">
+                                    <tr>
+                                        <td colspan="4" class="text-start fw-bolder">{% trans 'total' %}</td>
+                                        <td class="fw-bolder">{{ cart.get_total_price|translate_number }} {% trans '$' %}</td>
                                     </tr>
                                     </tfoot>
                                 </table>
                             </div>
-
-                            <div class="payment-method">
-                                <div class="order-button-payment mt-20">
-                                    <button type="submit" class="tp-btn-h1">ثبت سفارش</button>
-                                </div>
-                            </div>
+                        </div>
+                        <hr>
+                        <div class="your-payment">
+                            <button class="fs-6 btn btn-lg rounded w-100 fw-600 text-white" form="order">{% trans 'order create' %}</button>
                         </div>
                     </div>
                 </div>
-                </form>
             </div>
-        </section>
-        <!-- checkout-area-end -->
+        </div>
+        <!--End Main Content-->
+    </div>
 
-    </main>
 {% endblock %}
