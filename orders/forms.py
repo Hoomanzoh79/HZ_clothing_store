@@ -11,5 +11,5 @@ class OrderForm(forms.ModelForm):
                 'rows': 3, 'placeholder': 'If you have any notes please enter,'
                                           ' otherwise leave it empty'
             }),
-            'address': forms.Textarea(attrs={'rows': 5}),
+            'address': forms.Textarea(attrs={'rows': 3}),
         }
