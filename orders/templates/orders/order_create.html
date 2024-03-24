@@ -16,7 +16,50 @@
                     <div class="create-ac-content">
                         <form method="post" action="{% url 'orders:order_create' %}" id="order">
                             {% csrf_token %}
-                            {{ form }}
+                            {% if form.errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.errors }}
+                                </div>
+                            {% endif %}
+                            <div class="form-row mb--20">
+                                <div class="form__group col-md-6 mb-sm--30">
+                                    <label for="billing_fname" class="form__label form__label--2">نام <span
+                                            class="required">*</span></label>
+                                    <input required type="text" name="first_name" id="billing_fname"
+                                           class="form__input form__input--2" value={{ first_name }}>
+                                </div>
+                                <div class="form__group col-md-6">
+                                    <label for="billing_lname" class="form__label form__label--2">نام خانوادگی <span
+                                            class="required">*</span></label>
+                                    <input required type="text" name="last_name" id="billing_lname"
+                                           class="form__input form__input--2" value={{ last_name }}>
+                                </div>
+                            </div>
+                            <div class="form-row mb--20">
+                                <div class="form__group col-12">
+                                    <label for="billing_company" class="form__label form__label--2">آدرس<span
+                                            class="required">*</span></label>
+                                    <input required type="text" name="address" id="billing_company"
+                                           class="form__input form__input--2">
+                                </div>
+                            </div>
+                            <div class="form-row mb--20">
+                                <div class="form__group col-12">
+                                    <label for="billing_phone" class="form__label form__label--2">شماره همراه <span
+                                            class="required">*</span></label>
+                                    <input required type="text" placeholder="{% trans '(Example : 09121111111 )' %}"
+                                           name="phone_number" id="billing_phone"
+                                           class="form__input form__input--2" value={{ phone_number }}>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form__group col-12">
+                                    <label for="orderNotes" class="form__label form__label--2">یادداشت شما</label>
+                                    <textarea class="form__input form__input--2 form__input--textarea"
+                                              id="orderNotes" name="order_notes"
+                                              placeholder="{% trans 'If you have any notes please enter, otherwise leave it empty' %}"></textarea>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -62,7 +105,8 @@
                         </div>
                         <hr>
                         <div class="your-payment">
-                            <button class="fs-6 btn btn-lg rounded w-100 fw-600 text-white" form="order">{% trans 'order create' %}</button>
+                            <button class="fs-6 btn btn-lg rounded w-100 fw-600 text-white"
+                                    form="order">{% trans 'order create' %}</button>
                         </div>
                     </div>
                 </div>
