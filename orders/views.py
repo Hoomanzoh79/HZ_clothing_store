@@ -3,11 +3,15 @@ from .forms import OrderForm
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 from .models import OrderItem, Order
+from accounts.models import Profile
 
 
 @login_required
 def order_create_view(request):
     order_form = OrderForm()
+    first_name = Profile.objects.get(user_id=request.user.id).first_name
+    last_name = Profile.objects.get(user_id=request.user.id).last_name
+    phone_number = Profile.objects.get(user_id=request.user.id).phone_number
     cart = Cart(request)
     if len(cart) == 0:
         return redirect('cart:cart_detail')
@@ -36,4 +40,7 @@ def order_create_view(request):
             # return index just for testing this view
             return redirect('index')
 
-    return render(request, 'orders/order_create.html', context={'form': order_form, })
+    return render(request, 'orders/order_create.html', context={'form': order_form,
+                                                                'first_name':first_name,
+                                                                'last_name':last_name,
+                                                                'phone_number':phone_number,})
