@@ -26,7 +26,7 @@ urlpatterns = [
     path('', include('cloths.urls')),
     path('cart/', include('cart.urls')),
     path('order/', include('orders.urls')),
-    path('payment', include('payment.urls')),
+    path('payment/', include('payment.urls')),
     path('search/', include('search.urls')),
     # All Auth
     path("account/login/", login, name="account_login"),

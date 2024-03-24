@@ -37,8 +37,7 @@ def order_create_view(request):
             request.user.save()
 
             request.session['order_id'] = order_obj.id
-            # return index just for testing this view
-            return redirect('index')
+            return redirect('payment:payment_process')
 
     return render(request, 'orders/order_create.html', context={'form': order_form,
                                                                 'first_name':first_name,
