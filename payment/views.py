@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.views import View
+from django.utils.translation import gettext as _
 
 from orders.models import Order
 from django.conf import settings
@@ -28,6 +29,10 @@ class PaymentProcessView(View):
         order_id = request.session.get('order_id')
         # Get order object
         order = get_object_or_404(Order, id=order_id)
+        for item in order.items.all():
+            item.cloth.sales += item.quantity
+            item.cloth.save()
+            print(item.cloth.sales)
 
         toman_total_price = order.get_total_price()
         # rial_total_price = toman_total_price * 10
@@ -35,7 +40,7 @@ class PaymentProcessView(View):
         data = {
             'MerchantID':settings.MERCHANT,
             'Amount':toman_total_price,
-            'Description':f'#{order.id}:{order.user.first_name} {order.user.last_name}',
+            'Description':_("This page is only for testing the payment feature for this website"),
             'CallbackURL':CALLBACK_URL,
         }
         data = json.dumps(data)
