@@ -1,48 +1,80 @@
-from django.shortcuts import render, get_object_or_404,redirect
 import requests
 import json
-from django.conf import settings
 from django.http import HttpResponse
+from django.views.generic import TemplateView
+
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
+from django.views import View
 
 from orders.models import Order
 
 
-def payment_process(request):
-    # Get order id from session
-    order_id = request.session.get('order_id')
-    # Get the order object
-    order = get_object_or_404(Order, id=order_id)
+# URLS 
+zp_api_url = "https://sandbox.zarinpal.com/pg/rest/WebGate/PaymentRequest.json"
+zp_api_verify_url = "https://sandbox.zarinpal.com/pg/rest/WebGate/PaymentVerification.json"
+start_pay_url = "https://sandbox.zarinpal.com/pg/StartPay/"
+callback_url = 'http://127.0.0.1:8000/payment/verify'
 
-    toman_total_price = order.get_total_price()
-    rial_total_price = toman_total_price * 10
 
-    zarinpal_request_url = 'https://sandbox.zarinpal.com/pg/v4/payment/request.json'
+class PaymentProcessView(View):
+    def get(self,request):
+        # Get order_id from session
+        order_id = request.session.get('order_id')
+        # Get order object
+        order = get_object_or_404(Order, id=order_id)
 
-    request_header = {
-        "accept": "application/json",
-        "content-type": "application/json"
-    }
+        toman_total_price = order.get_total_price()
+        # rial_total_price = toman_total_price * 10
 
-    request_data = {
-        'merchant_id': settings.ZARINPAL_MERCHANT_ID,
-        'amount': rial_total_price,
-        'description': f'#{order.id}: {order.user.first_name} {order.user.last_name}',
-        'callback_url': 'http://127.0.0.1:8000',
-        'sandbox':True,
-    }
+        data = {
+            'MerchantID':"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+            'Amount':toman_total_price,
+            'Description':f'#{order.id}:{order.user.first_name} {order.user.last_name}',
+            'CallbackURL':callback_url,
+        }
+        data = json.dumps(data)
+        headers = {
+        'content-type': 'application/json',
+        'content-length': str(len(data)),
+        }
+        res = requests.post(zp_api_url,data=data,headers=headers)
+        if res.status_code == 200:
+            response = res.json()
+            if response['Status'] == 100:
+                url = f"{start_pay_url}{response['Authority']}"
+                return redirect(url)
+            pass
+        else:
+            return HttpResponse(str(res.json()['errors']))
+    
+class PaymentVerify(View):
+    def get(self,request):
+        authority = request.GET['Authority']
+        # Get order_id from session
+        order_id = request.session.get('order_id')
+        # Get order object
+        order = get_object_or_404(Order, id=order_id)
+        toman_total_price = order.get_total_price()
 
-    res = requests.post(url=zarinpal_request_url, data=json.dumps(request_data), headers=request_header)
-
-    if res.status_code != 204:
-        return HttpResponse('Error from zarinpal')
-
-    data = res.json()['data']
-    authority = data['authority']
-    order.zarinpal_authority = authority
-    order.save()
-
-    if 'errors' not in data or len(data['errors']) == 0:
-        return redirect('https://sandbox.zarinpal.com/pg/StartPay/{authority}'.format(authority=authority))
-    else:
-        return HttpResponse('Error from zarinpal')
-
+        data = {
+            'MerchantID':"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+            'Amount':toman_total_price,
+            'Authority':authority,
+        }
+        data = json.dumps(data)
+        headers = {
+        'content-type': 'application/json',
+        'content-length': str(len(data)),
+        }
+        res = requests.post(zp_api_verify_url,data=data,headers=headers)
+        if res.status_code == 200 : 
+            response = res.json()
+            if response["Status"] == 100 :
+                content = {'RefID':response['RefID'],'type':'success','authority':authority}
+                return render(request, 'payment/payment_status.html', context=content)
+            elif response["Status"] == 101 :
+                content = {'RefID':response['RefID'],'type':'warning'}
+                return render(request, 'payment/payment_status.html', context=content,)
+            
+        return render(request, 'payment/payment_status.html')
