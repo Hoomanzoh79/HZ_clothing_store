@@ -1,20 +1,25 @@
 import requests
 import json
 from django.http import HttpResponse
-from django.views.generic import TemplateView
-
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.views import View
 
 from orders.models import Order
+from django.conf import settings
 
+
+SANDBOX = settings.SANDBOX
+if SANDBOX:
+    sandbox="sandbox"
+else:
+    sandbox="www"
 
 # URLS 
-zp_api_url = "https://sandbox.zarinpal.com/pg/rest/WebGate/PaymentRequest.json"
-zp_api_verify_url = "https://sandbox.zarinpal.com/pg/rest/WebGate/PaymentVerification.json"
-start_pay_url = "https://sandbox.zarinpal.com/pg/StartPay/"
-callback_url = 'http://127.0.0.1:8000/payment/verify'
+ZP_API_URL = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentRequest.json"
+ZP_API_VERIFY_URL = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentVerification.json"
+START_PAY_URL = f"https://{sandbox}.zarinpal.com/pg/StartPay/"
+CALLBACK_URL = 'http://127.0.0.1:8000/payment/verify'
 
 
 class PaymentProcessView(View):
@@ -28,21 +33,21 @@ class PaymentProcessView(View):
         # rial_total_price = toman_total_price * 10
 
         data = {
-            'MerchantID':"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+            'MerchantID':settings.MERCHANT,
             'Amount':toman_total_price,
             'Description':f'#{order.id}:{order.user.first_name} {order.user.last_name}',
-            'CallbackURL':callback_url,
+            'CallbackURL':CALLBACK_URL,
         }
         data = json.dumps(data)
         headers = {
         'content-type': 'application/json',
         'content-length': str(len(data)),
         }
-        res = requests.post(zp_api_url,data=data,headers=headers)
+        res = requests.post(ZP_API_URL,data=data,headers=headers)
         if res.status_code == 200:
             response = res.json()
             if response['Status'] == 100:
-                url = f"{start_pay_url}{response['Authority']}"
+                url = f"{START_PAY_URL}{response['Authority']}"
                 return redirect(url)
             pass
         else:
@@ -58,7 +63,7 @@ class PaymentVerify(View):
         toman_total_price = order.get_total_price()
 
         data = {
-            'MerchantID':"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+            'MerchantID':settings.MERCHANT,
             'Amount':toman_total_price,
             'Authority':authority,
         }
@@ -67,7 +72,7 @@ class PaymentVerify(View):
         'content-type': 'application/json',
         'content-length': str(len(data)),
         }
-        res = requests.post(zp_api_verify_url,data=data,headers=headers)
+        res = requests.post(ZP_API_VERIFY_URL,data=data,headers=headers)
         if res.status_code == 200 : 
             response = res.json()
             if response["Status"] == 100 :
