@@ -4,7 +4,7 @@
 {% load %}
 {% load persian_number_translate %}
 
-{% block page_title %} order create {% endblock %}
+{% block page_title %} {% trans "Order Create" %} {% endblock %}
 {% block content %}
     <div id="page-content">
         {% translate 'Order Create' as header_name_for_order_create %}
@@ -106,7 +106,7 @@
                         <hr>
                         <div class="your-payment">
                             <button class="fs-6 btn btn-lg rounded w-100 fw-600 text-white"
-                                    form="order">{% trans 'order create' %}</button>
+                                    form="order">{% trans 'payment' %}</button>
                         </div>
                     </div>
                 </div>
