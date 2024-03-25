@@ -63,12 +63,8 @@
                                 <h1 class="product-single__title">{{ cloth.title }}</h1>
                                 <!-- Product Reviews -->
                                 {% if cloth.comments %}
-                                    <div class="product-review mb-2"><a
-                                            class="reviewLink d-flex-center justify-content-center"
-                                            href="#reviews"><i class="an an-star"></i><i
-                                            class="an an-star mx-1"></i><i class="an an-star"></i><i
-                                            class="an an-star mx-1"></i><i class="an an-star-o"></i><span
-                                            class="spr-badge-caption ms-2"> {% trans "comments" %} : {{ cloth.comments.count }}</span></a>
+                                    <div class="product-review mb-2">
+                                            <span class="spr-badge-caption ms-2"> {% trans "comments" %} : {{ cloth.comments.count }}</span>
                                     </div>
                                 {% endif %}
                                 <!-- End Product Reviews -->
@@ -166,12 +162,6 @@
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="spr-header clearfix d-flex-center justify-content-center">
                                 <div class="product-review d-flex-center">
-                                    <a class="reviewLink d-flex-center" href="#"><i
-                                            class="icon an an-star fs-6"></i><i
-                                            class="icon an an-star mx-1 fs-6"></i><i
-                                            class="icon an an-star fs-6"></i><i
-                                            class="icon an an-star mx-1 fs-6"></i><i
-                                            class="icon an an-star-o fs-6"></i></a>
                                     <span class="spr-summary-actions-togglereviews ms-2 fw-600">{% trans 'comments' %} : {{ cloth.comments.count }}</span>
                                 </div>
                                 <div class="spr-summary-actions mt-3 mt-sm-0 d-none">
@@ -212,11 +202,6 @@
                                         <div class="spr-review">
                                             <div class="spr-review-header">
                                                 <span class="spr-review-header-byline mb-1"><strong>{{ comment.author }}</strong> در <strong>{{ comment.datetime_created }}</strong></span>
-                                                <span class="product-review spr-starratings d-block mb-1"><span
-                                                        class="reviewLink"><i class="icon an an-star"></i><i
-                                                        class="icon an an-star mx-1"></i><i class="icon an an-star"></i><i
-                                                        class="icon an an-star mx-1"></i><i
-                                                        class="icon an an-star-o"></i></span></span>
                                             </div>
                                             <div class="spr-review-content">
                                                 <p class="spr-review-content-body">{{ comment.body }}</p>
