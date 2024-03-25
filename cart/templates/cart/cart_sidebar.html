@@ -56,8 +56,10 @@
                         <span>مجموع:</span>
                         <span class="product-price">{{ cart.get_total_price|translate_number }} {% trans '$' %}  </span>
                     </div>
-                    <a href="checkout-style2.html"
+                    {% if not cart.is_empty %}
+                    <a href="{% url 'orders:order_create' %}"
                        class="w-100 p-2 my-2 btn btn-secondary progress-to-checkout">{% trans "Checkout" %}</a>
+                    {% endif %}
                     <a href="{% url 'cart:cart_detail' %}" class="w-100 btn btn-outline-primary cart-btn">{% trans "Go To Cart" %}</a>
                 </div>
             </div>
