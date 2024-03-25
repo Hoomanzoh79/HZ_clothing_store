@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+{% extends '_base.html' %}
+{% load static %}
+{% load i18n %}
+{% block page_title %}{% trans 'payment status' %}{% endblock %}
+
+{% block content %}
+
+    <!--Body Container-->
+    <div id="page-content">
+        <!--Container-->
+        <div class="container">
+            <!--Category Empty-->
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center pt-5 pb-5">
+                    {% if type == 'success' %}
+                        <p><img src="{% static 'images/check_green.png' %}" alt="" width="150" height="150"/></p>
+                        <h1 class="h3 mb-3 font-weight-normal">{% trans 'payment has been done successfully' %}</h1>
+                        <p> {% trans "your tracking code" %} : {{ authority }}</p>
+                    {% elif type == 'warning' %}
+                        <p><img src="{% static 'images/cross_yellow.png' %}" alt="" width="150" height="150"/></p>
+                        <h1 class="h3 mb-3 font-weight-normal">{% trans 'payment has already been done' %}</h1>
+                    {% else %}
+                        <p><img src="{% static 'images/cross_red.png' %}" alt="" width="150" height="150"/></p>
+                        <h1 class="h3 mb-3 font-weight-normal">{% trans 'payment failed' %}</h1>
+                    {% endif %}
+                </div>
+            </div>
+            <!--End Category Empty-->
+        </div>
+        <!--End Container-->
+    </div>
+    <!--End Body Container-->
+
+{% endblock %}
+</html>
