@@ -208,5 +208,7 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('media/'))
 MEDIA_URL = '/media/'
 
 
-# payment(it's just a random text to test sandbox)
-ZARINPAL_MERCHANT_ID="ec05e8e3-7361-4a31-9461-a83873df6bb3"
+
+# payment and zarinpal
+SANDBOX = env.bool("ZARINPAL_SANDBOX")
+MERCHANT = env("ZARINPAL_MERCHANT_ID")
