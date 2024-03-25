@@ -129,16 +129,9 @@
                                 <span class="col-6 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span
                                         class="money">{{ cart.get_total_price|translate_number }} {% trans '$' %} </span></span>
                             </div>
-                            <p class="cart__shipping pt-0 m-0 fst-normal freeShipclaim"><i
-                                    class="me-1 align-middle icon an an-truck-l"></i><b>ارسال رایگان</b> واجد شرایط</p>
-                            <div class="customCheckbox cart_tearm">
-                                <input type="checkbox" value="allen-vela" id="cart_tearm">
-                                <label for="cart_tearm">من با شرایط و ضوابط موافقم</label>
-                            </div>
-                            <a href="checkout-style1.html" id="cartCheckout"
+                            <a href="{% url 'orders:order_create' %}" id="cartCheckout"
                                class="btn btn--small-wide rounded mt-4 checkout">به
                                 پرداخت ادامه دهید</a>
-                            <div class="paymnet-img"><img src="{% static 'images/payment-img.jpg' %}" alt="پرداخت"/>
                             </div>
                         </div>
                     </div>
