@@ -3,8 +3,6 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load i18n %}
-{% load comment_tags %}
-{% load cloth_tags %}
 {% load persian_number_translate %}
 {% load humanize %}
 <head>
@@ -96,19 +94,15 @@
     <section class="section product-slider tab-slider-product">
         <div class="container">
             <div class="section-header">
-                <h2>انتخاب ویرایشگر</h2>
+                <h2>جدیدترین محصولات</h2>
             </div>
             <div class="tabs-listing">
-                <ul class="tabs clearfix tabs-style3">
-                    <li class="active" rel="tab1">زنانه</li>
-                    <li rel="tab 2">مردانه</li>
-                </ul>
                 <div class="container">
                     <div class="tab_container">
                         <div id="tab1" class="tab_content grid-products">
                             <div class="productSlider">
                                 <div class="item">
-                                    {% for cloth in cloths.all|only_recent_cloths %}
+                                    {% for cloth in cloths.all %}
                                         <!-- start product image -->
                                         <div class="product-image">
                                             <!-- start product image -->
