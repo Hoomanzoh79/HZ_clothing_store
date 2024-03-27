@@ -6,8 +6,22 @@ from cart.forms import AddToCartForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+class FemaleView(generic.ListView):
+    queryset = Cloth.objects.filter(active=True,gender='female').order_by('-datetime_created')
+    template_name = 'cloths/female_list.html'
+    context_object_name = 'cloths'
+    paginate_by = 10
+
+
+class maleView(generic.ListView):
+    queryset = Cloth.objects.filter(active=True,gender='male').order_by('-datetime_created')
+    template_name = 'cloths/male_list.html'
+    context_object_name = 'cloths'
+    paginate_by = 10
+
+
 class IndexView(generic.ListView):
-    queryset = Cloth.objects.filter(active=True)
+    queryset = Cloth.objects.filter(active=True).order_by('-datetime_created')
     template_name = "index.html"
     context_object_name = 'cloths'
 

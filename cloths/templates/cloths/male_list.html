@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en" dir="rtl">
+{% extends '_base.html' %}
+{% load static %}
+{% load i18n %}
+{% load persian_number_translate %}
+{% load humanize %}
+<head>
+    <!--Required Meta Tags-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="description">
+    <title>{% block page_title %}{% trans 'All Products' %}{% endblock %}</title>
+</head>
+<body>
+
+{% block content %}
+    <!--Body Container-->
+    <div id="page-content">
+        {% translate 'Male Products' as header_name_for_male %}
+        {% include 'topheader.html' with header_name=header_name_for_male %}
+        <div class="container-fluid">
+            <div class="row">
+                <!--Main Content-->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                    <!--Active Filters-->
+                    <ul class="active-filters d-flex flex-wrap align-items-center m-0 list-unstyled d-none">
+                        <li><a href="#">پاک کردن همه</a></li>
+                        <li><a href="#">مردان <i class="an an-times-l"></i></a></li>
+                        <li><a href="#">گردن بند <i class="an an-times-l"></i></a></li>
+                        <li><a href="#">لوازم جانبی <i class="an an-times-l"></i></a></li>
+                    </ul>
+                    <!--End Active Filters-->
+                    <!--Product Grid-->
+                    <div class="grid-products grid--view-items shop-grid-5 prd-grid">
+                        <div class="row">
+                            {% for cloth in cloths %}
+                                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 item">
+                                    <!--Start Product Image-->
+                                    <div class="product-image">
+                                        {% if cloth.cover %}
+                                            <!--Start Product Image-->
+                                            <a href="{{ cloth.get_absolute_url }}" class="product-img">
+                                                <!-- image -->
+                                                <img class="primary blur-up lazyload"
+                                                     data-src="{{ cloth.cover.url }}"
+                                                     src="{{ cloth.cover.url }}" alt="image" title="">
+                                                <!-- End image -->
+                                                <!-- Hover image -->
+                                                <img class="hover blur-up lazyload"
+                                                     data-src="{{ cloth.cover.url }}"
+                                                     src="{{ cloth.cover.url }}" alt="image" title="">
+                                                <!-- End hover image -->
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ cloth.get_absolute_url }}"><p
+                                                    class="product-single__title">{% trans 'No picture has been uploaded for this product !' %}</p>
+                                            </a>
+                                            <!--End Product Image-->
+                                        {% endif %}
+
+                                        <!--Countdown Timer-->
+                                        <div class="saleTime" data-countdown="2024/10/01"></div>
+                                        <!--End Countdown Timer-->
+
+                                        <!--Product Button-->
+                                        <div class="button-set style0 d-none d-md-block">
+                                            <ul>
+                                                <!--Cart Button-->
+                                                <li><a class="btn-icon btn cartIcon pro-addtocart-popup"
+                                                       href="#pro-addtocart-popup"><i class="icon an an-cart-l"></i>
+                                                    <span
+                                                            class="tooltip-label top">به سبد خرید اضافه کنید</span></a>
+                                                </li>
+                                                <!--End Cart Button-->
+                                                <!--مشاهده سریع Button-->
+                                                <li><a class="btn-icon quick-view-popup quick-view"
+                                                       href="javascript:void(0)" data-toggle="modal"
+                                                       data-target="#content_quickview"><i
+                                                        class="icon an an-search-l"></i>
+                                                    <span class="tooltip-label top">مشاهده سریع</span></a></li>
+                                                <!--End مشاهده سریع Button-->
+                                                <!--Wishlist Button-->
+                                                <li><a class="btn-icon wishlist add-to-wishlist"
+                                                       href="my-wishlist.html"><i
+                                                        class="icon an an-heart-l"></i> <span class="tooltip-label top">افزودن به علاقه مندی</span></a>
+                                                </li>
+                                                <!--End Wishlist Button-->
+                                                <!--Compare Button-->
+                                                <li><a class="btn-icon compare add-to-compare"
+                                                       href="compare-style2.html"><i
+                                                        class="icon an an-sync-ar"></i> <span class="tooltip-label top">افزودن برای مقایسه</span></a>
+                                                </li>
+                                                <!--End Compare Button-->
+                                            </ul>
+                                        </div>
+                                        <!--End Product Button-->
+                                    </div>
+                                    <!--End Product Image-->
+                                    <!--Start Product Details-->
+                                    <div class="product-details text-center">
+                                        <!--Product Name-->
+                                        <div class="product-name text-uppercase">
+                                            <a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a>
+                                        </div>
+                                        <!--End Product Name-->
+                                        <!--Product Price-->
+                                        <div class="product-price">
+                                            <span class="price">{{ cloth.price|translate_number }} {% trans '$' %}</span>
+                                        </div>
+                                        <!--End Product Price-->
+                                        <!--Product Review-->
+                                        <div class="product-review d-flex align-items-center justify-content-center">
+                                            <i class="an an-star"></i><i class="an an-star"></i><i
+                                                class="an an-star"></i><i
+                                                class="an an-star"></i><i class="an an-star-o"></i>
+                                            <span class="caption hidden ms-2">3 نظرات</span>
+                                        </div>
+                                        <!--End Product Review-->
+                                        <!-- Product Button -->
+                                        <div class="button-action d-flex">
+                                            <div class="addtocart-btn">
+                                                <form class="addtocart" action="#" method="post">
+                                                    <a class="btn pro-addtocart-popup" href="#pro-addtocart-popup"><i
+                                                            class="icon hidden an an-cart-l"></i>به سبد خرید اضافه کنید</a>
+                                                </form>
+                                            </div>
+                                            <div class="quickview-btn">
+                                                <a class="btn btn-icon quick-view quick-view-popup"
+                                                   href="javascript:void(0)" data-toggle="modal"
+                                                   data-target="#content_quickview"><i class="icon an an-search-l"></i>
+                                                    <span class="tooltip-label top">مشاهده سریع</span></a>
+                                            </div>
+                                            <div class="wishlist-btn">
+                                                <a class="btn btn-icon wishlist add-to-wishlist"
+                                                   href="my-wishlist.html"><i
+                                                        class="icon an an-heart-l"></i> <span class="tooltip-label top">افزودن به علاقه مندی</span></a>
+                                            </div>
+                                            <div class="compare-btn">
+                                                <a class="btn btn-icon compare add-to-compare" href="compare.html"><i
+                                                        class="icon an an-sync-ar"></i> <span class="tooltip-label top">افزودن برای مقایسه</span></a>
+                                            </div>
+                                        </div>
+                                        <!-- End Product Button -->
+                                    </div>
+                                    <!--End Product Details-->
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!--End Product Grid-->
+
+                    <!--Pagination Classic-->
+                    <hr class="clear">
+                    <div class="pagination">
+                        <ul>
+                            {% if page_obj.has_previous %}
+                                <li>
+                                    <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                                </li>
+                            {% endif %}
+                            {% if page_obj.has_next %}
+                                <li class="active"><a href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                                <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                                </ul>
+                            {% else %}
+                                <li class="active"><a href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                            {% endif %}
+                    </div>
+                    <!--End Pagination Classic-->
+                </div>
+                <!--End Main Content-->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>
