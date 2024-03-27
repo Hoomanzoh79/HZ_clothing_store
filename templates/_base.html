@@ -88,7 +88,8 @@
                                                    class="site-nav last">تغییر
                                                 رمز عبور</a>
                                             </li>
-                                            <li><a href="{% url "account_logout" %}" class="site-nav last">خروج
+                                            <li><a href="{% url "account_logout" %}"
+                                                   class="site-nav last">{% trans 'Sign Out' %}
                                             </a>
                                             </li>
                                         </ul>
@@ -116,10 +117,11 @@
                     </div>
                     <!--End Search-->
                     {% if user.is_authenticated %}
-                    <!--Setting Dropdown-->
-                    <a class="user-link iconset" href="{% url 'profile_update' %}"><i class="icon an an-user-2"></i><span class="tooltip-label">{% trans "Profile" %}</span>
-                    </a>
-                    <!--End Setting Dropdown-->
+                        <!--Setting Dropdown-->
+                        <a class="user-link iconset" href="{% url 'profile_update' %}"><i class="icon an an-user-2"></i><span
+                                class="tooltip-label">{% trans "Profile" %}</span>
+                        </a>
+                        <!--End Setting Dropdown-->
                     {% endif %}
                     <!--Minicart Drawer-->
                     <div class="header-cart iconset">
@@ -139,7 +141,8 @@
         <div id="search-popup" class="search-drawer">
             <span class="closeSearch an an-times-l"></span>
             <div class="container">
-                <form class="form minisearch" id="header-search" action="{% url 'search:search_results' %}" method="get">
+                <form class="form minisearch" id="header-search" action="{% url 'search:search_results' %}"
+                      method="get">
                     <label class="label"><span>search</span></label>
                     <input name="q" type="text" placeholder="{% trans 'search' %} ..." required>
                     <button type="submit" class="btn rounded me-auto mt-3">{% trans 'search' %}</button>
@@ -153,285 +156,55 @@
     <div class="mobile-nav-wrapper" role="navigation">
         <div class="closemobileMenu"><i class="icon an an-times-l pull-right"></i> بستن منو</div>
         <ul id="MobileNav" class="mobile-nav">
-            <li class="lvl1 parent megamenu"><a href="index.html">خانه <i class="an an-plus-l"></i></a>
+            <li class="lvl1 parent megamenu"><a href="{% url 'index' %}">خانه <i class="an an-plus-l"></i></a>
                 <ul>
-                    <li><a href="#" class="site-nav">استایل های صفحه اصلی <i class="an an-plus-l"></i></a>
-                        <ul>
-                            <li class="lvl-2"><a href="index.html" class="site-nav">صفحه اصلی 01 - پیش‌فرض</a></li>
-                            <li class="lvl-2"><a href="index-demo2.html" class="site-nav">صفحه اصلی 02 - حداقل</a></li>
-                            <li class="lvl-2"><a href="index-demo3.html" class="site-nav">صفحه اصلی 03 - رنگارنگ</a>
-                            </li>
-                            <li class="lvl-2"><a href="index-demo4.html" class="site-nav">صفحه اصلی 04 - مدرن</a></li>
-                            <li class="lvl-2"><a href="index-demo5.html" class="site-nav">خانه 05 - لباس کودکان</a></li>
-                            <li class="lvl-2"><a href="index-demo6.html" class="site-nav">صفحه اصلی 06 - تک محصول</a>
-                            </li>
-                            <li class="lvl-2"><a href="index-demo7.html" class="site-nav">صفحه اصلی 07 - زرق و برق</a>
-                            </li>
-                            <li class="lvl-2"><a href="index-demo8.html" class="site-nav">صفحه اصلی 08 - ساده</a></li>
-                            <li class="lvl-2"><a href="index-demo9.html" class="site-nav">صفحه اصلی 09 - جالب <span
-                                    class="lbl nm_label1">داغ</span></a></li>
-                            <li class="lvl-2"><a href="index-demo10.html" class="site-nav last">صفحه 10 - لوازم
-                                آرایشی</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="site-nav">سبک‌های خانگی <i class="an an-plus-l"></i></a>
-                        <ul>
-                            <li class="lvl-2"><a href="index-demo11.html" class="site-nav">خانه 11 - حیوانات خانگی <span
-                                    class="lbl nm_label3">مطرح</span></a></li>
-                            <li class="lvl-2"><a href="index-demo12.html" class="site-nav">صفحه اصلی 12 - ابزار و
-                                قطعات</a></li>
-                            <li class="lvl-2"><a href="index-demo13.html" class="site-nav">صفحه اصلی 13 - ساعت <span
-                                    class="lbl nm_label1">جدید</span></a></li>
-                            <li class="lvl-2"><a href="index-demo14.html" class="site-nav">خانه 14 - غذا</a></li>
-                            <li class="lvl-2"><a href="index-demo15.html" class="site-nav">صفحه 15 - کریسمس</a></li>
-                            <li class="lvl-2"><a href="index-demo16.html" class="site-nav">خانه 16 - استایل تلفن</a>
-                            </li>
-                            <li class="lvl-2"><a href="index-demo17.html" class="site-nav">خانه 17 - جواهرات</a></li>
-                            <li class="lvl-2"><a href="index-demo18.html" class="site-nav">خانه 18 - کیف <span
-                                    class="lbl nm_label3">مطرح</span></a></li>
-                            <li class="lvl-2"><a href="index-demo19.html" class="site-nav">خانه 19 - لباس شنا</a></li>
-                            <li class="lvl-2"><a href="index-demo20.html" class="site-nav last">خانه 20 - مبلمان <span
-                                    class="lbl nm_label2">جدید</span></a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="site-nav">سبک‌های خانگی <i class="an an-plus-l"></i></a>
-                        <ul>
-                            <li class="lvl-2"><a href="index-demo21.html" class="site-nav">خانه 21 - لوازم مهمانی</a>
-                            </li>
-                            <li class="lvl-2"><a href="index-demo22.html" class="site-nav">صفحه اصلی 22 - دیجیتال</a>
-                            </li>
-                            <li class="lvl-2"><a href="index-demo23.html" class="site-nav">صفحه 23 - فاشیون</a></li>
-                            <li class="lvl-2"><a href="index-demo24.html" class="site-nav">صفحه اصلی 24 - زرق و برق</a>
-                            </li>
-                            <li class="lvl-2"><a href="index-demo25.html" class="site-nav">خانه 25 - کفش <span
-                                    class="lbl nm_label2">جدید</span></a></li>
-                            <li class="lvl-2"><a href="index-demo26.html" class="site-nav">صفحه اصلی 26 - کتابها <span
-                                    class="lbl nm_label2">جدید</span></a></li>
-                            <li class="lvl-2"><a href="index-demo27.html" class="site-nav last">صفحه 27 - یوگا <span
-                                    class="lbl nm_label2">جدید</span></a></li>
-                        </ul>
-                    </li>
                 </ul>
             </li>
             <li class="lvl1 parent megamenu"><a href="#">فروشگاه <i class="an an-plus-l"></i></a>
                 <ul>
-                    <li><a href="#" class="site-nav">صفحه دسته <i class="an an-plus-l"></i></a>
-                        <ul>
-                            <li><a href="category-2columns.html" class="site-nav">2 ستون با استایل 1</a></li>
-                            <li><a href="category-3columns.html" class="site-nav">3 ستون با استایل 2</a></li>
-                            <li><a href="category-4columns.html" class="site-nav">4 ستون با استایل 3</a></li>
-                            <li><a href="category-5columns.html" class="site-nav">5 ستون با استایل 4</a></li>
-                            <li><a href="category-6columns.html" class="site-nav">6 ستون با پهنای کامل</a></li>
-                            <li><a href="category-7columns.html" class="site-nav">7 ستون</a></li>
-                            <li><a href="empty-category.html" class="site-nav last">دسته خالی</a></li>
-                        </ul>
+                    <li><a href="#" class="site-nav">مردانه <i class="an an-plus-l"></i></a>
                     </li>
-                    <li><a href="#" class="site-nav">صفحه خرید <i class="an an-plus-l"></i></a>
-                        <ul>
-                            <li><a href="shop-left-sidebar.html" class="site-nav">نوار کناری چپ</a></li>
-                            <li><a href="shop-right-sidebar.html" class="site-nav">نوار کناری سمت راست</a></li>
-                            <li><a href="shop-top-filter.html" class="site-nav">فیلتر برتر</a></li>
-                            <li><a href="shop-fullwidth.html" class="site-nav">تمام صفحه</a></li>
-                            <li><a href="shop-no-sidebar.html" class="site-nav">بدون فیلتر</a></li>
-                            <li><a href="shop-listview-sidebar.html" class="site-nav">نمایش فهرست</a></li>
-                            <li><a href="shop-listview-drawer.html" class="site-nav">کشو نمایش فهرست</a></li>
-                            <li><a href="shop-category-slideshow.html" class="site-nav">نمایش اسلاید دسته</a></li>
-                            <li><a href="shop-heading-with-banner.html" class="site-nav last">عنوان با بنر</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="site-nav">صفحه خرید <i class="an an-plus-l"></i></a>
-                        <ul>
-                            <li><a href="shop-sub-collections.html" class="site-nav">فهرست مجموعه‌های فرعی <span
-                                    class="lbl nm_label5"> جدید</span></a></li>
-                            <li><a href="shop-masonry-grid.html" class="site-nav">خرید شبکه بنایی</a></li>
-                            <li><a href="shop-left-sidebar.html" class="site-nav">شمارش معکوس خرید</a></li>
-                            <li><a href="shop-hover-info.html" class="site-nav">اطلاعات نشانگر فروشگاه</a></li>
-                            <li><a href="shop-right-sidebar.html" class="site-nav">پیمایش بی نهایت</a></li>
-                            <li><a href="shop-fullwidth.html" class="site-nav">صفحه‌بندی کلاسیک</a></li>
-                            <li><a href="shop-swatches-style.html" class="site-nav">استایل نمونه</a></li>
-                            <li><a href="shop-grid-style.html" class="site-nav">استایل شبکه</a></li>
-                            <li><a href="shop-search-results.html" class="site-nav last">نتایج جستجو</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="site-nav">خرید صفحه دیگر <i class="an an-plus-l"></i></a>
-                        <ul>
-                            <li><a href="my-wishlist.html" class="site-nav">استایل فهرست آرزوهای من 1</a></li>
-                            <li><a href="my-wishlist-style2.html" class="site-nav">استایل فهرست خواسته‌های من 2</a></li>
-                            <li><a href="compare-style1.html" class="site-nav">مقایسه استایل صفحه 1</a></li>
-                            <li><a href="compare-style2.html" class="site-nav">مقایسه استایل صفحه 2</a></li>
-                            <li><a href="cart-style1.html" class="site-nav">استایل صفحه سبد خرید1</a></li>
-                            <li><a href="cart-style2.html" class="site-nav">استایل صفحه سبد خرید 2</a></li>
-                            <li><a href="checkout-style1.html" class="site-nav">استایل صفحه تسویه حساب1</a></li>
-                            <li><a href="checkout-style2.html" class="site-nav">صفحه پرداخت استایل 2</a></li>
-                            <li><a href="checkout-success.html" class="site-nav last">خروج با موفقیت</a></li>
-                        </ul>
+                    <li><a href="#" class="site-nav">زنانه <i class="an an-plus-l"></i></a>
                     </li>
                 </ul>
             </li>
             <li class="lvl1 parent megamenu"><a href="#">محصولات <i class="an an-plus-l"></i></a>
                 <ul>
-                    <li><a href="product-standard.html" class="site-nav">انواع محصول<i class="an an-plus-l"></i></a>
-                        <ul>
-                            <li><a href="product-standard.html" class="site-nav">محصول ساده</a></li>
-                            <li><a href="product-variable.html" class="site-nav">محصول متغیر</a></li>
-                            <li><a href="product-grouped.html" class="site-nav">محصول گروه‌بندی‌شده</a></li>
-                            <li><a href="product-external-affiliate.html" class="site-nav">محصول خارجی / وابسته</a></li>
-                            <li><a href="product-outofstock.html" class="site-nav">محصول موجود در انبار</a></li>
-                            <li><a href="product-layout1.html" class="site-nav">محصول جدید</a></li>
-                            <li><a href="product-layout2.html" class="site-nav">محصول فروش</a></li>
-                            <li><a href="product-layout1.html" class="site-nav">تصویر متغیر</a></li>
-                            <li><a href="product-accordian.html" class="site-nav">انتخاب متغیر</a></li>
-                            <li><a href="prodcut-360-degree-view.html" class="site-nav last">نمایش 360 درجه</a></li>
-                        </ul>
+                    <li><a href="#" class="site-nav">پرفروش ترین ها <i class="an an-plus-l"></i></a>
                     </li>
-                    <li><a href="product-layout1.html" class="site-nav">انواع صفحه محصول <i
-                            class="an an-plus-l"></i></a>
-                        <ul>
-                            <li><a href="product-layout1.html" class="site-nav">طرح بندی محصول1</a></li>
-                            <li><a href="product-layout2.html" class="site-nav">طرح بندی محصول 2</a></li>
-                            <li><a href="product-layout3.html" class="site-nav">طرح بندی محصول 3</a></li>
-                            <li><a href="product-layout4.html" class="site-nav">طرح بندی محصول 4</a></li>
-                            <li><a href="product-layout5.html" class="site-nav">طرح بندی محصول 5</a></li>
-                            <li><a href="product-layout6.html" class="site-nav">طرح بندی محصول6</a></li>
-                            <li><a href="product-layout7.html" class="site-nav">طرح بندی محصول 7</a></li>
-                            <li><a href="product-accordian.html" class="site-nav">آکاردئون محصول</a></li>
-                            <li><a href="product-tabs-left.html" class="site-nav">برگه‌های محصول سمت چپ</a></li>
-                            <li><a href="product-tabs-center.html" class="site-nav last">مرکز برگه‌های محصول</a></li>
-                        </ul>
+                    <li><a href="#" class="site-nav">جدیدترین ها <i class="an an-plus-l"></i></a>
                     </li>
                 </ul>
             </li>
-            <li class="lvl1 parent megamenu"><a href="#">ویژگی ها <i class="an an-plus-l"></i><span
-                    class="lbl nm_label1">جدید</span></a>
-                <ul>
-                    <li><a href="#" class="site-nav">صفحات فروشنده <i class="an an-plus-l"></i></a>
-                        <ul>
-                            <li><a href="vendor-dashboard.html" class="site-nav">داشبورد فروشنده</a></li>
-                            <li><a href="vendor-profile.html" class="site-nav">نمایه فروشنده</a></li>
-                            <li><a href="vendor-uploads.html" class="site-nav">آپلودهای فروشنده</a></li>
-                            <li><a href="vendor-tracking.html" class="site-nav">ردیابی فروشنده</a></li>
-                            <li><a href="vendor-service.html" class="site-nav">سرویس فروشنده</a></li>
-                            <li><a href="vendor-settings.html" class="site-nav last">تنظیمات فروشنده</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="site-nav">استایل ایمیل <i class="an an-plus-l"></i></a>
-                        <ul>
-                            <li><a target="_blank" href="email-template/email-order-success1.html" class="site-nav">موفقیت
-                                سفارش 1</a></li>
-                            <li><a target="_blank" href="email-template/email-order-success2.html" class="site-nav">موفقیت
-                                سفارش 2</a></li>
-                            <li><a target="_blank" href="email-template/email-invoice-template1.html" class="site-nav">استایل
-                                فاکتور 1</a></li>
-                            <li><a target="_blank" href="email-template/email-invoice-template2.html"
-                                   class="site-nav last">استایل فاکتور 2</a></li>
-                            <li><a target="_blank" href="email-template/email-forgot-password.html" class="site-nav">بازنشانی
-                                رمز عبور ایمیل</a></li>
-                            <li><a target="_blank" href="email-template/email-confirmation.html" class="site-nav">تأیید
-                                نامه</a></li>
-                            <li><a target="_blank" href="email-template/email-promotional1.html" class="site-nav">تبلیغات
-                                ایمیل 1</a></li>
-                            <li><a target="_blank" href="email-template/email-promotional2.html" class="site-nav last">ایمیل
-                                تبلیغاتی 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="site-nav">عناصر <i class="an an-plus-l"></i></a>
-                        <ul>
-                            <li><a href="elements-typography.html" class="site-nav">تایپوگرافی</a></li>
-                            <li><a href="elements-buttons.html" class="site-nav">دکمه‌ها</a></li>
-                            <li><a href="elements-titles.html" class="site-nav">عناوین</a></li>
-                            <li><a href="elements-banner-styles.html" class="site-nav">سبک‌های بنر</a></li>
-                            <li><a href="elements-testimonial.html" class="site-nav">توصیه نامه</a></li>
-                            <li><a href="elements-accordions.html" class="site-nav">آکاردئون</a></li>
-                            <li><a href="elements-icons.html" class="site-nav">نمادها</a></li>
-                            <li><a href="elements-blog-posts.html" class="site-nav">پست های وبلاگ</a></li>
-                            <li><a href="elements-product.html" class="site-nav">محصول</a></li>
-                            <li><a href="elements-product-tab.html" class="site-nav">برگه محصول</a></li>
-                            <li><a href="elements-top-info-bar.html" class="site-nav">نوار اطلاعات برتر</a></li>
-                            <li><a href="elements-top-promo-bar.html" class="site-nav last">نوار تبلیغاتی برتر</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="lvl1 parent megamenu"><a href="#">برگه ها <i class="an an-plus-l"></i></a>
-                <ul>
-                    <li><a href="aboutus-style1.html" class="site-nav">درباره ما <i class="an an-plus-l"></i></a>
-                        <ul class="dropdown">
-                            <li><a href="aboutus-style1.html" class="site-nav">درباره ما استایل 1</a></li>
-                            <li><a href="aboutus-style2.html" class="site-nav">درباره ما استایل 2</a></li>
-                            <li><a href="aboutus-style3.html" class="site-nav last">درباره ما استایل 3</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact-style1.html" class="site-nav">تماس با ما <i class="an an-plus-l"></i></a>
-                        <ul class="dropdown">
-                            <li><a href="contact-style1.html" class="site-nav">تماس با ما استایل 1</a></li>
-                            <li><a href="contact-style2.html" class="site-nav last">تماس با ما استایل 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="lookbook-2columns.html" class="site-nav">ستون ها <i class="an an-plus-l"></i></a>
-                        <ul class="dropdown">
-                            <li><a href="lookbook-2columns.html" class="site-nav">2 ستون</a></li>
-                            <li><a href="lookbook-3columns.html" class="site-nav">3 ستون</a></li>
-                            <li><a href="lookbook-4columns.html" class="site-nav">4 ستون</a></li>
-                            <li><a href="lookbook-5columns.html" class="site-nav">5 ستون + پهنای کامل</a></li>
-                            <li><a href="lookbook-shop.html" class="site-nav last">فروشگاه با ستون</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="faqs-style1.html" class="site-nav">سؤالات متداول <i class="an an-plus-l"></i></a>
-                        <ul class="dropdown">
-                            <li><a href="faqs-style1.html" class="site-nav">سؤالات متداول استایل 1</a></li>
-                            <li><a href="faqs-style2.html" class="site-nav last">سؤالات متداول استایل 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="brands-style1.html" class="site-nav">برندها <i class="an an-plus-l"></i></a>
-                        <ul class="dropdown">
-                            <li><a href="brands-style1.html" class="site-nav">برندها استایل 1</a></li>
-                            <li><a href="brands-style2.html" class="site-nav last">برندها استایل 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="my-account.html" class="site-nav">حساب من <i class="an an-plus-l"></i></a>
-                        <ul class="dropdown">
-                            <li><a href="my-account.html" class="site-nav">حساب من</a></li>
-                            <li><a href="login-sliding-style.html" class="site-nav">نمایش اسلاید ورود به سیستم</a></li>
-                            <li><a href="login.html" class="site-nav">ورود به سیستم</a></li>
-                            <li><a href="register.html" class="site-nav">ثبت نام</a></li>
-                            <li><a href="forgot-password.html" class="site-nav">گذرواژه را فراموش کرده‌اید</a></li>
-                            <li><a href="change-password.html" class="site-nav last">تغییر رمز عبور</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="site-nav">صفحات خالی <i class="an an-plus-l"></i></a>
-                        <ul class="dropdown">
-                            <li><a href="empty-category.html" class="site-nav">دسته خالی</a></li>
-                            <li><a href="empty-cart.html" class="site-nav">سبد خالی</a></li>
-                            <li><a href="empty-compare.html" class="site-nav">مقایسه خالی</a></li>
-                            <li><a href="empty-wishlist.html" class="site-nav">فهرست تمایلات خالی</a></li>
-                            <li><a href="empty-search.html" class="site-nav last">جستجوی خالی</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="error-404.html" class="site-nav">خطای 404 </a></li>
-                    <li><a href="cms-page.html" class="site-nav">صفحه CMS</a></li>
-                    <li><a href="elements-icons.html" class="site-nav">نمادها</a></li>
-                    <li><a href="coming-soon.html" class="site-nav last">به زودی <span class="lbl nm_label2">جدید</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="lvl1 parent megamenu"><a href="blog-left-sidebar.html">وبلاگ <i class="an an-plus-l"></i></a>
-                <ul>
-                    <li><a href="blog-left-sidebar.html" class="site-nav">نوار کناری چپ</a></li>
-                    <li><a href="blog-right-sidebar.html" class="site-nav">نوار کناری سمت راست</a></li>
-                    <li><a href="blog-fullwidth.html" class="site-nav">عریض کامل</a></li>
-                    <li><a href="blog-masonry.html" class="site-nav">سبک وبلاگ سنگ تراشی</a></li>
-                    <li><a href="blog-2columns.html" class="site-nav">2 ستون</a></li>
-                    <li><a href="blog-3columns.html" class="site-nav">3 ستون</a></li>
-                    <li><a href="blog-4columns.html" class="site-nav">4 ستون</a></li>
-                    <li><a href="blog-single-post.html" class="site-nav last">صفحه مقاله</a></li>
-                </ul>
-            </li>
-            <li class="acLink"></li>
-            <li class="lvl1 bottom-link"><a href="login.html">ورود به سیستم</a></li>
-            <li class="lvl1 bottom-link"><a href="register.html">ثبت نام</a></li>
-            <li class="lvl1 bottom-link"><a href="my-wishlist.html">لیست آرزوها</a></li>
-            <li class="lvl1 bottom-link"><a href="compare-style1.html">مقایسه</a></li>
-            <li class="help bottom-link"><span>نیاز به کمک دارید؟</span><br>تماس بگیرید: 6789 345 912 98+</li>
+            {% if user.is_authenticated %}
+                <li class="lvl1 parent megamenu"><a href="#"> سلام {{ user.username }} <i class="an an-plus-l"></i></a>
+                    <ul>
+                        <li><a href="{% url 'profile_update' %}" class="site-nav">{% trans "Profile" %} <i
+                                class="an an-plus-l"></i></a>
+                        </li>
+                        <li><a href="{% url 'account_change_password' %}" class="site-nav">{% trans "Change Password" %}
+                            <i class="an an-plus-l"></i></a>
+                        </li>
+                        <li><a href="{% url 'account_logout' %}" class="site-nav">{% trans "Sign Out" %}
+                            <i class="an an-plus-l"></i></a>
+                        </li>
+                    </ul>
+                </li>
+            {% else %}
+                <li class="lvl1 parent megamenu"><a href="#">ثبت نام نکرده اید؟<i class="an an-plus-l"></i></a>
+                    <ul>
+                        <li><a href="{% url 'account_signup' %}" class="site-nav">{% trans "Signup" %} <i
+                                class="an an-plus-l"></i></a>
+                        </li>
+                        <li><a href="{% url 'account_login' %}" class="site-nav">{% trans "Sign In" %}
+                            <i class="an an-plus-l"></i></a>
+                        </li>
+                        <li><a href="{% url 'account_reset_password' %}" class="site-nav">{% trans "Forgot Password?" %}
+                            <i class="an an-plus-l"></i></a>
+                        </li>
+                    </ul>
+                </li>
+            {% endif %}
         </ul>
     </div>
     <!--End Mobile Menu-->
