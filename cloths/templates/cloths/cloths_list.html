@@ -59,41 +59,8 @@
                                             </a>
                                             <!--End Product Image-->
                                         {% endif %}
-
-                                        <!--Countdown Timer-->
-                                        <div class="saleTime" data-countdown="2024/10/01"></div>
-                                        <!--End Countdown Timer-->
-
                                         <!--Product Button-->
                                         <div class="button-set style0 d-none d-md-block">
-                                            <ul>
-                                                <!--Cart Button-->
-                                                <li><a class="btn-icon btn cartIcon pro-addtocart-popup"
-                                                       href="#pro-addtocart-popup"><i class="icon an an-cart-l"></i>
-                                                    <span
-                                                            class="tooltip-label top">به سبد خرید اضافه کنید</span></a>
-                                                </li>
-                                                <!--End Cart Button-->
-                                                <!--مشاهده سریع Button-->
-                                                <li><a class="btn-icon quick-view-popup quick-view"
-                                                       href="javascript:void(0)" data-toggle="modal"
-                                                       data-target="#content_quickview"><i
-                                                        class="icon an an-search-l"></i>
-                                                    <span class="tooltip-label top">مشاهده سریع</span></a></li>
-                                                <!--End مشاهده سریع Button-->
-                                                <!--Wishlist Button-->
-                                                <li><a class="btn-icon wishlist add-to-wishlist"
-                                                       href="my-wishlist.html"><i
-                                                        class="icon an an-heart-l"></i> <span class="tooltip-label top">افزودن به علاقه مندی</span></a>
-                                                </li>
-                                                <!--End Wishlist Button-->
-                                                <!--Compare Button-->
-                                                <li><a class="btn-icon compare add-to-compare"
-                                                       href="compare-style2.html"><i
-                                                        class="icon an an-sync-ar"></i> <span class="tooltip-label top">افزودن برای مقایسه</span></a>
-                                                </li>
-                                                <!--End Compare Button-->
-                                            </ul>
                                         </div>
                                         <!--End Product Button-->
                                     </div>
@@ -121,25 +88,36 @@
                                         <!-- Product Button -->
                                         <div class="button-action d-flex">
                                             <div class="addtocart-btn">
-                                                <form class="addtocart" action="#" method="post">
-                                                    <a class="btn pro-addtocart-popup" href="#pro-addtocart-popup"><i
-                                                            class="icon hidden an an-cart-l"></i>به سبد خرید اضافه کنید</a>
-                                                </form>
-                                            </div>
-                                            <div class="quickview-btn">
-                                                <a class="btn btn-icon quick-view quick-view-popup"
-                                                   href="javascript:void(0)" data-toggle="modal"
-                                                   data-target="#content_quickview"><i class="icon an an-search-l"></i>
-                                                    <span class="tooltip-label top">مشاهده سریع</span></a>
-                                            </div>
-                                            <div class="wishlist-btn">
-                                                <a class="btn btn-icon wishlist add-to-wishlist"
-                                                   href="my-wishlist.html"><i
-                                                        class="icon an an-heart-l"></i> <span class="tooltip-label top">افزودن به علاقه مندی</span></a>
-                                            </div>
-                                            <div class="compare-btn">
-                                                <a class="btn btn-icon compare add-to-compare" href="compare.html"><i
-                                                        class="icon an an-sync-ar"></i> <span class="tooltip-label top">افزودن برای مقایسه</span></a>
+                                                <form method="post" action="{% url "cart:cart_add" cloth.id %}"
+                                                class="addtocart"">
+                                              {% csrf_token %}
+                                              <!-- End Swatches Color -->
+                                              <!-- Swatches Size -->
+                                              <div class="swatch clearfix swatch-1 option2" data-option-index="1">
+                                                  <div class="product-form__item">
+                                                      <label class="label d-flex justify-content-center">{% trans 'size' %} : <span
+                                                              class="required d-none">*</span><span
+                                                              class="slVariant ms-1 fw-bold">{{ add_to_cart_form.size }}</span></label>
+                                                  </div>
+                                              </div>
+                                              <!-- End Swatches Size -->
+                                              <!-- Product Action -->
+                                              <div class="product-action w-100 clearfix">
+                                                  <div class="product-form__item--quantity d-flex-center justify-content-center mb-3">
+                                                      <div class="qtyField">
+                                                          <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                                  class="icon an an-minus-r"
+                                                                  aria-hidden="true"></i></a>
+                                                          <input type="number" name="quantity" value="1"
+                                                                 class="product-form__input qty rounded-0" min="1" max="30">
+                                                          <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                                  class="icon an an-plus-r"
+                                                                  aria-hidden="true"></i></a>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <!-- End Product Action -->
+                                          </form>
                                             </div>
                                         </div>
                                         <!-- End Product Button -->
