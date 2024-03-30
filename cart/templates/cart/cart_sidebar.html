@@ -16,12 +16,14 @@
                     <ul class="clearfix">
                         {% for item in cart %}
                             <li class="item d-flex justify-content-center align-items-center">
+                                {% if item.cloth_obj.cover %}
                                 <a class="product-image" href="{{ item.cloth_obj.get_absolute_url }}">
                                     <img class="blur-up lazyload"
                                          src="{{ item.cloth_obj.cover.url }}"
                                          data-src="{{ item.cloth_obj.cover.url }}" alt="image"
                                          title="">
                                 </a>
+                                {% endif %}
                                 <div class="product-details">
                                     <a class="product-title" href="{{ item.cloth_obj.get_absolute_url }}">{{ item.cloth_obj.title }}</a>
                                     <div class="variant-cart mb-1">{% trans "size" %} : {{ item.size }}</div>

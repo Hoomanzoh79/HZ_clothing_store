@@ -51,11 +51,13 @@
                                             title="برداشتن مورد"><i
                                             class="icon an an-times-r"></i></a></td>
                                     <td class="cart__image-wrapper cart-flex-item">
+                                        {% if item.cloth_obj.cover %}
                                         <a href="{{ item.cloth_obj.get_absolute_url }}"><img
                                                 class="cart__image blur-up lazyload"
                                                 data-src="{{ item.cloth_obj.cover.url }}"
                                                 src="{{ item.cloth_obj.cover.url }}"
-                                                alt="تاپ روسری خواب غروب" width="80"/></a>
+                                                alt="" width="80"/></a>
+                                        {% endif %}
                                     </td>
                                     <td class="cart__meta small--text-left cart-flex-item">
                                         <div class="list-view-item__title">
