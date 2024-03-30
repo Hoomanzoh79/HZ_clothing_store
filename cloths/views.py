@@ -1,10 +1,22 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils import timezone
+from datetime import datetime, timedelta
+
 from .models import Cloth,Comment
 from .forms import CommentForm
 from cart.forms import AddToCartForm
-from django.contrib.auth.mixins import LoginRequiredMixin
 
+class HighestSellingView(generic.ListView):
+    model = Cloth
+    template_name = 'cloths/highest_selling.html'
+    context_object_name = 'cloths'
+    paginate_by = 5
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(active=True,datetime_created__month=timezone.now().month).order_by('-sales')
+        return queryset
 
 class FemaleView(generic.ListView):
     queryset = Cloth.objects.filter(active=True,gender='female').order_by('-datetime_created')
