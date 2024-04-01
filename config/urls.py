@@ -18,6 +18,11 @@ from django.urls import path, include,re_path
 from django.conf.urls.static import static
 from django.conf import settings
 from allauth.account.views import (signup, login, logout, email, password_change, password_reset,password_reset_done, email_verification_sent,confirm_email,password_reset_from_key,password_reset_from_key_done)
+from django.conf.urls import (
+handler400, handler403, handler404, handler500
+)
+
+handler404 = 'pages.views.handler404'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
