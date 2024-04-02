@@ -36,94 +36,97 @@
                     <div class="grid-products grid--view-items shop-grid-5 prd-grid">
                         <div class="row">
                             {% for cloth in cloths %}
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 item">
-                                    <!--Start Product Image-->
-                                    <div class="product-image">
-                                        {% if cloth.cover %}
-                                            <!--Start Product Image-->
-                                            <a href="{{ cloth.get_absolute_url }}" class="product-img">
-                                                <!-- image -->
-                                                <img class="primary blur-up lazyload"
-                                                     data-src="{{ cloth.cover.url }}"
-                                                     src="{{ cloth.cover.url }}" alt="image" title="">
-                                                <!-- End image -->
-                                                <!-- Hover image -->
-                                                <img class="hover blur-up lazyload"
-                                                     data-src="{{ cloth.cover.url }}"
-                                                     src="{{ cloth.cover.url }}" alt="image" title="">
-                                                <!-- End hover image -->
-                                            </a>
-                                        {% else %}
-                                            <a href="{{ cloth.get_absolute_url }}"><p
-                                                    class="product-single__title">{% trans 'No picture has been uploaded for this product !' %}</p>
-                                            </a>
-                                            <!--End Product Image-->
-                                        {% endif %}
-                                        <!--Product Button-->
-                                        <div class="button-set style0 d-none d-md-block">
-                                        </div>
-                                        <!--End Product Button-->
-                                    </div>
-                                    <!--End Product Image-->
-                                    <!--Start Product Details-->
-                                    <div class="product-details text-center">
-                                        <!--Product Name-->
-                                        <div class="product-name text-uppercase">
-                                            <a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a>
-                                        </div>
-                                        <!--End Product Name-->
-                                        <!--Product Price-->
-                                        <div class="product-price">
-                                            <span class="price">{{ cloth.price|translate_number }} {% trans '$' %}</span>
-                                        </div>
-                                        <!--End Product Price-->
-                                        <!--Product Review-->
-                                        <div class="product-review d-flex align-items-center justify-content-center">
-                                            <i class="an an-star"></i><i class="an an-star"></i><i
-                                                class="an an-star"></i><i
-                                                class="an an-star"></i><i class="an an-star-o"></i>
-                                            <span class="caption hidden ms-2">3 نظرات</span>
-                                        </div>
-                                        <!--End Product Review-->
-                                        <!-- Product Button -->
-                                        <div class="button-action d-flex">
-                                            <div class="addtocart-btn">
-                                                <form method="post" action="{% url "cart:cart_add" cloth.id %}"
-                                                class="addtocart"">
-                                              {% csrf_token %}
-                                              <!-- End Swatches Color -->
-                                              <!-- Swatches Size -->
-                                              <div class="swatch clearfix swatch-1 option2" data-option-index="1">
-                                                  <div class="product-form__item">
-                                                      <label class="label d-flex justify-content-center">{% trans 'size' %} : <span
-                                                              class="required d-none">*</span><span
-                                                              class="slVariant ms-1 fw-bold">{{ add_to_cart_form.size }}</span></label>
-                                                  </div>
-                                              </div>
-                                              <!-- End Swatches Size -->
-                                              <!-- Product Action -->
-                                              <div class="product-action w-100 clearfix">
-                                                  <div class="product-form__item--quantity d-flex-center justify-content-center mb-3">
-                                                      <div class="qtyField">
-                                                          <a class="qtyBtn minus" href="javascript:void(0);"><i
-                                                                  class="icon an an-minus-r"
-                                                                  aria-hidden="true"></i></a>
-                                                          <input type="number" name="quantity" value="1"
-                                                                 class="product-form__input qty rounded-0" min="1" max="30">
-                                                          <a class="qtyBtn plus" href="javascript:void(0);"><i
-                                                                  class="icon an an-plus-r"
-                                                                  aria-hidden="true"></i></a>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <!-- End Product Action -->
-                                          </form>
+                                {% if cloth.active %}
+                                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 item">
+                                        <!--Start Product Image-->
+                                        <div class="product-image">
+                                            {% if cloth.cover %}
+                                                <!--Start Product Image-->
+                                                <a href="{{ cloth.get_absolute_url }}" class="product-img">
+                                                    <!-- image -->
+                                                    <img class="primary blur-up lazyload"
+                                                         data-src="{{ cloth.cover.url }}"
+                                                         src="{{ cloth.cover.url }}" alt="image" title="">
+                                                    <!-- End image -->
+                                                    <!-- Hover image -->
+                                                    <img class="hover blur-up lazyload"
+                                                         data-src="{{ cloth.cover.url }}"
+                                                         src="{{ cloth.cover.url }}" alt="image" title="">
+                                                    <!-- End hover image -->
+                                                </a>
+                                            {% else %}
+                                                <a href="{{ cloth.get_absolute_url }}"><p
+                                                        class="product-single__title">{% trans 'No picture has been uploaded for this product !' %}</p>
+                                                </a>
+                                                <!--End Product Image-->
+                                            {% endif %}
+                                            <!--Product Button-->
+                                            <div class="button-set style0 d-none d-md-block">
                                             </div>
+                                            <!--End Product Button-->
                                         </div>
-                                        <!-- End Product Button -->
+                                        <!--End Product Image-->
+                                        <!--Start Product Details-->
+                                        <div class="product-details text-center">
+                                            <!--Product Name-->
+                                            <div class="product-name text-uppercase">
+                                                <a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a>
+                                            </div>
+                                            <!--End Product Name-->
+                                            <!--Product Price-->
+                                            <div class="product-price">
+                                                <span class="price">{{ cloth.price|translate_number }} {% trans '$' %}</span>
+                                            </div>
+                                            <!--End Product Price-->
+                                        </div>
+                                        <!--End Product Details-->
                                     </div>
-                                    <!--End Product Details-->
-                                </div>
+                                {% else %}
+                                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 item">
+                                        <!--Start Product Image-->
+                                        <div class="product-image">
+                                            {% if cloth.cover %}
+                                                <!--Start Product Image-->
+                                                <a href="{{ cloth.get_absolute_url }}" class="product-img">
+                                                    <!-- image -->
+                                                    <img class="primary blur-up lazyload"
+                                                         data-src="{{ cloth.cover.url }}"
+                                                         src="{{ cloth.cover.url }}" alt="image" title="">
+                                                    <!-- End image -->
+                                                    <!-- Hover image -->
+                                                    <img class="hover blur-up lazyload"
+                                                         data-src="{{ cloth.cover.url }}"
+                                                         src="{{ cloth.cover.url }}" alt="image" title="">
+                                                    <!-- End hover image -->
+                                                </a>
+                                            {% else %}
+                                                <a href="{{ cloth.get_absolute_url }}"><p
+                                                        class="product-single__title">{% trans 'No picture has been uploaded for this product !' %}</p>
+                                                </a>
+                                                <!--End Product Image-->
+                                            {% endif %}
+                                            <!--Product Button-->
+                                            <div class="button-set style0 d-none d-md-block">
+                                            </div>
+                                            <!--End Product Button-->
+                                        </div>
+                                        <!--End Product Image-->
+                                        <!--Start Product Details-->
+                                        <div class="product-details text-center">
+                                            <!--Product Name-->
+                                            <div class="product-name text-uppercase">
+                                                <a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a>
+                                            </div>
+                                            <!--End Product Name-->
+                                            <!--Product Price-->
+                                            <div class="product-price">
+                                                <span class="product-price__price product-price__sale">{% trans "sold out" %}</span>
+                                            </div>
+                                            <!--End Product Price-->
+                                        </div>
+                                        <!--End Product Details-->
+                                    </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
