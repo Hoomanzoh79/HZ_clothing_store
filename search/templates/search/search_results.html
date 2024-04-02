@@ -8,160 +8,136 @@
 {% block page_title %}{% trans 'search results' %}{% endblock %}
 
 {% block content %}
-
     <!--Body Container-->
     <div id="page-content">
-        <!--Collection Banner-->
-        <div class="collection-header">
-            <div class="collection-hero">
-                <div class="collection-hero__image"></div>
-                <div class="collection-hero__title-wrapper container">
-                    <h1 class="collection-hero__title">{% translate 'Results for your search' %}</h1>
-                    <div class="breadcrumbs text-uppercase mt-1 mt-lg-2"><span
-                            class="fw-bold">{% trans 'search' %} : {{ search_query }}</span><span>|</span>
-                        <span
-                                class="fw-bold">{% trans 'results' %} : {{ cloths|length }} </span>
-                    </div>
+    <!--Collection Banner-->
+    <div class="collection-header">
+        <div class="collection-hero">
+            <div class="collection-hero__image"></div>
+            <div class="collection-hero__title-wrapper container">
+                <h1 class="collection-hero__title">{% translate 'Results for your search' %}</h1>
+                <div class="breadcrumbs text-uppercase mt-1 mt-lg-2"><span
+                        class="fw-bold">{% trans 'search' %} : {{ search_query }}</span><span>|</span>
+                    <span
+                            class="fw-bold">{% trans 'results' %} : {{ cloths|length }} </span>
                 </div>
-            </div>
-        </div>
-        {% if cloths|length == 0 %}
-            <!--Category Empty-->
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center pt-5 pb-5">
-                    <p><img src="{% static 'images/sad-icon.png' %}" alt=""/></p>
-                    <h2 class="mt-4"><strong>{% trans 'Sorry ! no results found for your search!' %}</strong></h2>
-                    <a type="submit" class="btn rounded me-auto" href="{% url 'index' %}">{% trans 'Go Shopping' %}</a>
-                </div>
-            </div>
-        {% endif %}
-        <!--End Category Empty-->
-        <!--End Collection Banner-->
-        <div class="container-fluid">
-            <div class="row">
-                <!--Main Content-->
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
-                    <!--Product Grid-->
-                    <div class="grid-products grid--view-items shop-grid-5 prd-grid">
-                        <div class="row">
-                            {% for cloth in cloths %}
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 item">
-                                    <!--Start Product Image-->
-                                    <div class="product-image">
-                                        {% if cloth.cover %}
-                                            <!--Start Product Image-->
-                                            <a href="{{ cloth.get_absolute_url }}" class="product-img">
-                                                <!-- image -->
-                                                <img class="primary blur-up lazyload"
-                                                     data-src="{{ cloth.cover.url }}"
-                                                     src="{{ cloth.cover.url }}" alt="image" title="">
-                                                <!-- End image -->
-                                                <!-- Hover image -->
-                                                <img class="hover blur-up lazyload"
-                                                     data-src="{{ cloth.cover.url }}"
-                                                     src="{{ cloth.cover.url }}" alt="image" title="">
-                                                <!-- End hover image -->
-                                            </a>
-                                        {% else %}
-                                            <a href="{{ cloth.get_absolute_url }}"><p
-                                                    class="product-single__title">{% trans 'No picture has been uploaded for this product !' %}</p>
-                                            </a>
-                                            <!--End Product Image-->
-                                        {% endif %}
-
-                                        <!--Product Button-->
-                                        <div class="button-set style0 d-none d-md-block">
-                                            <ul>
-                                                <!--Cart Button-->
-                                                <li><a class="btn-icon btn cartIcon pro-addtocart-popup"
-                                                       href="#pro-addtocart-popup"><i class="icon an an-cart-l"></i>
-                                                    <span
-                                                            class="tooltip-label top">به سبد خرید اضافه کنید</span></a>
-                                                </li>
-                                                <!--End Cart Button-->
-                                                <!--مشاهده سریع Button-->
-                                                <li><a class="btn-icon quick-view-popup quick-view"
-                                                       href="javascript:void(0)" data-toggle="modal"
-                                                       data-target="#content_quickview"><i
-                                                        class="icon an an-search-l"></i>
-                                                    <span class="tooltip-label top">مشاهده سریع</span></a></li>
-                                                <!--End مشاهده سریع Button-->
-                                                <!--Wishlist Button-->
-                                                <li><a class="btn-icon wishlist add-to-wishlist"
-                                                       href="my-wishlist.html"><i
-                                                        class="icon an an-heart-l"></i> <span class="tooltip-label top">افزودن به علاقه مندی</span></a>
-                                                </li>
-                                                <!--End Wishlist Button-->
-                                                <!--Compare Button-->
-                                                <li><a class="btn-icon compare add-to-compare"
-                                                       href="compare-style2.html"><i
-                                                        class="icon an an-sync-ar"></i> <span class="tooltip-label top">افزودن برای مقایسه</span></a>
-                                                </li>
-                                                <!--End Compare Button-->
-                                            </ul>
-                                        </div>
-                                        <!--End Product Button-->
-                                    </div>
-                                    <!--End Product Image-->
-                                    <!--Start Product Details-->
-                                    <div class="product-details text-center">
-                                        <!--Product Name-->
-                                        <div class="product-name text-uppercase">
-                                            <a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a>
-                                        </div>
-                                        <!--End Product Name-->
-                                        <!--Product Price-->
-                                        <div class="product-price">
-                                            <span class="price">{{ cloth.price|translate_number }} {% trans '$' %}</span>
-                                        </div>
-                                        <!--End Product Price-->
-                                        <!--Product Review-->
-                                        <div class="product-review d-flex align-items-center justify-content-center">
-                                            <i class="an an-star"></i><i class="an an-star"></i><i
-                                                class="an an-star"></i><i
-                                                class="an an-star"></i><i class="an an-star-o"></i>
-                                            <span class="caption hidden ms-2">3 نظرات</span>
-                                        </div>
-                                        <!--End Product Review-->
-                                        <!-- Product Button -->
-                                        <div class="button-action d-flex">
-                                            <div class="addtocart-btn">
-                                                <form class="addtocart" action="#" method="post">
-                                                    <a class="btn pro-addtocart-popup" href="#pro-addtocart-popup"><i
-                                                            class="icon hidden an an-cart-l"></i>به سبد خرید اضافه کنید</a>
-                                                </form>
-                                            </div>
-                                            <div class="quickview-btn">
-                                                <a class="btn btn-icon quick-view quick-view-popup"
-                                                   href="javascript:void(0)" data-toggle="modal"
-                                                   data-target="#content_quickview"><i class="icon an an-search-l"></i>
-                                                    <span class="tooltip-label top">مشاهده سریع</span></a>
-                                            </div>
-                                            <div class="wishlist-btn">
-                                                <a class="btn btn-icon wishlist add-to-wishlist"
-                                                   href="my-wishlist.html"><i
-                                                        class="icon an an-heart-l"></i> <span class="tooltip-label top">افزودن به علاقه مندی</span></a>
-                                            </div>
-                                            <div class="compare-btn">
-                                                <a class="btn btn-icon compare add-to-compare" href="compare.html"><i
-                                                        class="icon an an-sync-ar"></i> <span class="tooltip-label top">افزودن برای مقایسه</span></a>
-                                            </div>
-                                        </div>
-                                        <!-- End Product Button -->
-                                    </div>
-                                    <!--End Product Details-->
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <!--End Product Grid-->
-                </div>
-                <!--End Main Content-->
             </div>
         </div>
     </div>
+    {% if cloths|length == 0 %}
+        <!--Category Empty-->
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center pt-5 pb-5">
+                <p><img src="{% static 'images/sad-icon.png' %}" alt=""/></p>
+                <h2 class="mt-4"><strong>{% trans 'Sorry ! no results found for your search!' %}</strong></h2>
+                <a type="submit" class="btn rounded me-auto" href="{% url 'index' %}">{% trans 'Go Shopping' %}</a>
+            </div>
+        </div>
+    {% endif %}
+    <!--End Category Empty-->
+    <!--End Collection Banner-->
+    <div class="container-fluid">
+    <div class="row">
+    <!--Main Content-->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+    <!--Product Grid-->
+    <div class="grid-products grid--view-items shop-grid-5 prd-grid">
+        <div class="row">
+            {% for cloth in cloths %}
+                {% if cloth.active %}
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 item">
+                        <!--Start Product Image-->
+                        <div class="product-image">
+                            {% if cloth.cover %}
+                                <!--Start Product Image-->
+                                <a href="{{ cloth.get_absolute_url }}" class="product-img">
+                                    <!-- image -->
+                                    <img class="primary blur-up lazyload"
+                                         data-src="{{ cloth.cover.url }}"
+                                         src="{{ cloth.cover.url }}" alt="image" title="">
+                                    <!-- End image -->
+                                    <!-- Hover image -->
+                                    <img class="hover blur-up lazyload"
+                                         data-src="{{ cloth.cover.url }}"
+                                         src="{{ cloth.cover.url }}" alt="image" title="">
+                                    <!-- End hover image -->
+                                </a>
+                            {% else %}
+                                <a href="{{ cloth.get_absolute_url }}"><p
+                                        class="product-single__title">{% trans 'No picture has been uploaded for this product !' %}</p>
+                                </a>
+                                <!--End Product Image-->
+                            {% endif %}
+                            <!--Product Button-->
+                            <div class="button-set style0 d-none d-md-block">
+                            </div>
+                            <!--End Product Button-->
+                        </div>
+                        <!--End Product Image-->
+                        <!--Start Product Details-->
+                        <div class="product-details text-center">
+                            <!--Product Name-->
+                            <div class="product-name text-uppercase">
+                                <a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a>
+                            </div>
+                            <!--End Product Name-->
+                            <!--Product Price-->
+                            <div class="product-price">
+                                <span class="price">{{ cloth.price|translate_number }} {% trans '$' %}</span>
+                            </div>
+                            <!--End Product Price-->
+                        </div>
+                        <!--End Product Details-->
+                    </div>
+                {% else %}
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 item">
+                        <!--Start Product Image-->
+                        <div class="product-image">
+                            {% if cloth.cover %}
+                                <!--Start Product Image-->
+                                <a href="{{ cloth.get_absolute_url }}" class="product-img">
+                                    <!-- image -->
+                                    <img class="primary blur-up lazyload"
+                                         data-src="{{ cloth.cover.url }}"
+                                         src="{{ cloth.cover.url }}" alt="image" title="">
+                                    <!-- End image -->
+                                    <!-- Hover image -->
+                                    <img class="hover blur-up lazyload"
+                                         data-src="{{ cloth.cover.url }}"
+                                         src="{{ cloth.cover.url }}" alt="image" title="">
+                                    <!-- End hover image -->
+                                </a>
+                            {% else %}
+                                <a href="{{ cloth.get_absolute_url }}"><p
+                                        class="product-single__title">{% trans 'No picture has been uploaded for this product !' %}</p>
+                                </a>
+                                <!--End Product Image-->
+                            {% endif %}
+                            <!--Product Button-->
+                            <div class="button-set style0 d-none d-md-block">
+                            </div>
+                            <!--End Product Button-->
+                        </div>
+                        <!--End Product Image-->
+                        <!--Start Product Details-->
+                        <div class="product-details text-center">
+                            <!--Product Name-->
+                            <div class="product-name text-uppercase">
+                                <a href="{{ cloth.get_absolute_url }}">{{ cloth.title }}</a>
+                            </div>
+                            <!--End Product Name-->
+                            <!--Product Price-->
+                            <div class="product-price">
+                                <span class="product-price__price product-price__sale">{% trans "sold out" %}</span>
+                            </div>
+                            <!--End Product Price-->
+                        </div>
+                        <!--End Product Details-->
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
     <!--End Body Container-->
-
-
 {% endblock %}
 </html>
