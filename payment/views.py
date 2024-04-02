@@ -57,7 +57,8 @@ class PaymentProcessView(View):
             pass
         else:
             return HttpResponse(str(res.json()['errors']))
-    
+
+
 class PaymentVerify(View):
     def get(self,request):
         authority = request.GET['Authority']
@@ -82,6 +83,8 @@ class PaymentVerify(View):
             response = res.json()
             if response["Status"] == 100 :
                 content = {'RefID':response['RefID'],'type':'success','authority':authority}
+                order.is_paid = True
+                order.save()
                 return render(request, 'payment/payment_status.html', context=content)
             elif response["Status"] == 101 :
                 content = {'RefID':response['RefID'],'type':'warning'}
