@@ -8,25 +8,27 @@ from .models import Cloth,Comment
 from .forms import CommentForm
 from cart.forms import AddToCartForm
 
+
 class HighestSellingView(generic.ListView):
     model = Cloth
     template_name = 'cloths/highest_selling.html'
     context_object_name = 'cloths'
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self):
-        queryset = self.model.objects.filter(active=True,datetime_created__month=timezone.now().month).order_by('-sales')
+        queryset = self.model.objects.filter(datetime_created__month=timezone.now().month).order_by('-sales')
         return queryset
 
+
 class FemaleView(generic.ListView):
-    queryset = Cloth.objects.filter(active=True,gender='female').order_by('-datetime_created')
+    queryset = Cloth.objects.filter(gender='female').order_by('-datetime_created')
     template_name = 'cloths/female_list.html'
     context_object_name = 'cloths'
     paginate_by = 10
 
 
-class maleView(generic.ListView):
-    queryset = Cloth.objects.filter(active=True,gender='male').order_by('-datetime_created')
+class MaleView(generic.ListView):
+    queryset = Cloth.objects.filter(gender='male').order_by('-datetime_created')
     template_name = 'cloths/male_list.html'
     context_object_name = 'cloths'
     paginate_by = 10
