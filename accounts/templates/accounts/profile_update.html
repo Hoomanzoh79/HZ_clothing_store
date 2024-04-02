@@ -75,48 +75,30 @@
                                 <table class="table table-bordered table-hover align-middle text-center mb-0">
                                     <thead class="alt-font">
                                     <tr>
-                                        <th>سفارش</th>
                                         <th> محصول</th>
                                         <th>تاریخ</th>
                                         <th>وضعیت</th>
+                                        <th>تعداد</th>
                                         <th>جمع</th>
-                                        <th>اقدامات</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>تی شرت های آستین بلند</td>
-                                        <td>مرداد 04, 1402</td>
-                                        <td class="text-success">تکمیل شد</td>
-                                        <td>165 تومان تومان برای 1 مورد</td>
-                                        <td><a class="link-underline view" href="cart-style1.html">چشم انداز</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>تاپ گلدار</td>
-                                        <td>ممکن است 19, 1402</td>
-                                        <td class="text-success">تکمیل شد</td>
-                                        <td>150 تومان تومان برای 1 مورد</td>
-                                        <td><a class="link-underline view" href="cart-style1.html">چشم انداز</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>بدنه مشکی</td>
-                                        <td>آبان 24, 1402</td>
-                                        <td class="text-danger">در حال پردازش</td>
-                                        <td>190 تومان تومان برای 2 مورد</td>
-                                        <td><a class="link-underline view" href="cart-style1.html">چشم انداز</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>سویشرت هودی</td>
-                                        <td>خرداد 28, 1402</td>
-                                        <td class="text-danger">در حال پردازش</td>
-                                        <td>170 تومان برای 1 مورد</td>
-                                        <td><a class="link-underline view" href="cart-style1.html">چشم انداز</a></td>
-                                    </tr>
-                                    </tbody>
+                                    {% for order in orders %}
+                                        <tbody>
+                                            {% for item in order.items.all %}
+                                        <tr>
+                                                <td>{{ item.cloth.title }}</td>
+                                                <td>{{ order.datetime_created }}</td>
+                                                {% if order.is_paid %}
+                                                    <td class="text-success">{% trans "is complete" %}</td>
+                                                {% else %}
+                                                    <td class="text-danger">{% trans "is not complete" %}</td>
+                                                {% endif %}
+                                                <td>{{ item.quantity }}</td>
+                                                <td>{{ order.get_total_price }} {% trans "$" %}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    {% endfor %}
                                 </table>
                             </div>
                         </div>
