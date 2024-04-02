@@ -5,7 +5,7 @@ from django.utils.translation import gettext as _
 
 
 class Order(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name="orders")
     is_paid = models.BooleanField(default=False)
 
     first_name = models.CharField(max_length=50,verbose_name=_('First name'))
