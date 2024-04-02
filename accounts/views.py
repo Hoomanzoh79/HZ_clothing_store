@@ -23,3 +23,9 @@ class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
         except Profile.DoesNotExist:
             profile = Profile.objects.create(user=user)
         return profile
+
+    def get_context_data(self, **kwargs):
+        user = self.request.user
+        context = super().get_context_data(**kwargs)
+        context['orders'] = user.orders.all()
+        return context
