@@ -39,7 +39,7 @@ class IndexView(generic.ListView):
 
 
 class ClothsListView(generic.ListView):
-    queryset = Cloth.objects.filter(active=True).order_by('-datetime_created')
+    queryset = Cloth.objects.all().order_by('-datetime_created')
     template_name = 'cloths/cloths_list.html'
     context_object_name = 'cloths'
     paginate_by = 10
