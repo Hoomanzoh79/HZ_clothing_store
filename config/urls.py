@@ -24,6 +24,9 @@ handler400, handler403, handler404, handler500
 
 handler404 = 'pages.views.handler404'
 
+admin.site.index_title = 'Special Access'
+admin.site.site_header = 'HZ Clothing Store'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
