@@ -47,6 +47,9 @@ class Cloth(models.Model):
     
     def available_sizes(self):
         return tuple(self.sizes)
+    
+    def is_active(self,obj):
+        return obj.inventory > 0
 
 
 class ActiveCommentsManager(models.Manager):
