@@ -102,7 +102,7 @@
                         <div id="tab1" class="tab_content grid-products">
                             <div class="productSlider">
                                 <div class="item">
-                                    {% for cloth in cloths.all %}
+                                    {% for cloth in cloths %}
                                         <!-- start product image -->
                                         <div class="product-image">
                                             <!-- start product image -->
@@ -135,33 +135,12 @@
                                                 <span class="price">{{ cloth.price|translate_number }} {% trans '$' %}</span>
                                             </div>
                                             <!-- End product price -->
-                                            <!--Product Review-->
-                                            <div class="product-review"><i class="an an-star"></i> <i
-                                                    class="an an-star"></i> <i
-                                                    class="an an-star"></i> <i class="an an-star"></i> <i
-                                                    class="an an-star-o"></i></div>
-                                            <!--End Product Review-->
                                         </div>
                                         <!-- End product details -->
                                         </div>
                                         <div class="item">
                                         <!-- start product image -->
                                         <div class="product-image">
-                                            <!--Product Button-->
-                                            <div class="button-set style3">
-                                                <ul>
-                                                    <li>
-                                                        <!--Cart Button-->
-                                                        <a class="btn-icon btn btn-addto-cart pro-addtocart-popup"
-                                                           href="#pro-addtocart-popup">
-                                                            <i class="icon an an-cart-l"></i> <span
-                                                                class="tooltip-label left">افزودن به سبد خرید</span>
-                                                        </a>
-                                                        <!--end Cart Button-->
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!--End Product Button-->
                                         </div>
                                     {% endfor %}
                                     </div>
