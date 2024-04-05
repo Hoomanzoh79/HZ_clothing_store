@@ -35,7 +35,7 @@
         <!--Product Content-->
         <div class="product-single">
             <div class="row">
-                {% if cloth.active %}
+                {% if cloth.inventory > 0 %}
                 <div class="col-lg-7 col-md-6 col-sm-12 col-12">
                     <div class="product-details-img product-horizontal-style clearfix mb-3 mb-md-0">
                         {% if cloth.cover %}

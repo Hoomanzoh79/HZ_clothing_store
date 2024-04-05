@@ -36,7 +36,7 @@
                     <div class="grid-products grid--view-items shop-grid-5 prd-grid">
                         <div class="row">
                             {% for cloth in cloths %}
-                                {% if cloth.active %}
+                                {% if cloth.inventory > 0 %}
                                     <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 item">
                                         <!--Start Product Image-->
                                         <div class="product-image">
