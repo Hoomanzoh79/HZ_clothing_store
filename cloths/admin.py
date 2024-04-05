@@ -5,9 +5,9 @@ from jalali_date.admin import ModelAdminJalaliMixin
 
 @admin.register(Cloth)
 class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ['title', 'price', 'active', 'season', 'gender', 'sales',  ]
+    list_display = ['title', 'price', 'season', 'gender', 'sales','inventory',]
     list_per_page = 10
-    list_editable = ['price','active']
+    list_editable = ['price']
     ordering = ['-datetime_created']
 
 
