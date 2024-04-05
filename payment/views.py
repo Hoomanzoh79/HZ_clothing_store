@@ -29,11 +29,6 @@ class PaymentProcessView(View):
         order_id = request.session.get('order_id')
         # Get order object
         order = get_object_or_404(Order, id=order_id)
-        for item in order.items.all():
-            item.cloth.sales += item.quantity
-            item.cloth.save()
-            print(item.cloth.sales)
-
         toman_total_price = order.get_total_price()
         # rial_total_price = toman_total_price * 10
 
@@ -54,7 +49,6 @@ class PaymentProcessView(View):
             if response['Status'] == 100:
                 url = f"{START_PAY_URL}{response['Authority']}"
                 return redirect(url)
-            pass
         else:
             return HttpResponse(str(res.json()['errors']))
 
@@ -85,6 +79,10 @@ class PaymentVerify(View):
                 content = {'RefID':response['RefID'],'type':'success','authority':authority}
                 order.is_paid = True
                 order.save()
+                for item in order.items.all():
+                    item.cloth.sales += item.quantity
+                    item.cloth.inventory -= item.quantity
+                    item.cloth.save()
                 return render(request, 'payment/payment_status.html', context=content)
             elif response["Status"] == 101 :
                 content = {'RefID':response['RefID'],'type':'warning'}
