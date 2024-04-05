@@ -1,8 +1,9 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import get_object_or_404
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
-from datetime import datetime, timedelta
 
 from .models import Cloth,Comment
 from .forms import CommentForm
@@ -35,7 +36,7 @@ class MaleView(generic.ListView):
 
 
 class IndexView(generic.ListView):
-    queryset = Cloth.objects.filter(active=True).order_by('-datetime_created')
+    queryset = Cloth.objects.filter(inventory__gte=1).order_by('-datetime_created')
     template_name = "index.html"
     context_object_name = 'cloths'
 
