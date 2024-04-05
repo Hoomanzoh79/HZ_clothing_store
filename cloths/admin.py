@@ -5,10 +5,18 @@ from jalali_date.admin import ModelAdminJalaliMixin
 
 @admin.register(Cloth)
 class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ['title', 'price', 'season', 'gender', 'sales','inventory',]
+    list_display = ['title', 'price', 'season', 'gender', 'sales','inventory',"inventory_status"]
     list_per_page = 10
     list_editable = ['price','inventory']
     ordering = ['-datetime_created']
+
+    def inventory_status(self,cloth):
+        if cloth.inventory == 0 :
+            return "sold out"
+        elif cloth.inventory >= 10 :
+            return "High"
+        elif cloth.inventory < 10:
+            return "Low"
 
 
 
