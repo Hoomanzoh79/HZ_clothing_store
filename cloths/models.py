@@ -5,6 +5,7 @@ from django.utils import timezone
 from ckeditor.fields import RichTextField
 from multiselectfield import MultiSelectField
 from django.utils.translation import gettext as _
+from django.core.validators import MinValueValidator
 
 
 class Cloth(models.Model):
@@ -29,11 +30,11 @@ class Cloth(models.Model):
     title = models.CharField(max_length=50)
     description = RichTextField(blank=True)
     price = models.PositiveIntegerField(default=0)
-    active = models.BooleanField(default=True)
     season = models.CharField(max_length=6, choices=SEASON_CHOICES)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
     cover = models.ImageField(upload_to='cloth/cloth_covers', blank=True)
     sales = models.PositiveIntegerField(default=0,null=True)
+    inventory = models.IntegerField(validators=[MinValueValidator(0)],null=True)
 
     datetime_created = models.DateTimeField(default=timezone.now)
     datetime_modified = models.DateTimeField(auto_now=True)
