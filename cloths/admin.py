@@ -10,6 +10,7 @@ class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_editable = ['price','inventory']
     ordering = ['-datetime_created']
     list_filter = ['datetime_created','gender','season']
+    search_fields = ['title__istartswith']
 
     def inventory_status(self,cloth):
         if cloth.inventory == 0 :
@@ -23,7 +24,7 @@ class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['id','cloth', 'author', 'body', 'active',]
+    list_display = ['id','cloth', 'author', 'active',]
     list_per_page = 10
     list_editable = ['active']
     ordering = ['-datetime_created']
