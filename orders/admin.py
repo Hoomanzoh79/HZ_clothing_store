@@ -11,13 +11,17 @@ class OrderItemInline(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ['id','user', 'first_name', 'last_name', 'datetime_created', 'is_paid','is_active',]
+    list_display = ['id','user', 'first_name', 'last_name', 'datetime_created', 'is_paid','is_active','total_price']
     inlines = [
         OrderItemInline
     ]
     list_per_page = 10
     list_editable = ['is_active']
     ordering = ['-datetime_created']
+    list_filter = ['datetime_created','is_paid','is_active']
+
+    def total_price(self,order):
+        return sum(item.price * item.quantity for item in order.items.all())
 
 
 @admin.register(OrderItem)
