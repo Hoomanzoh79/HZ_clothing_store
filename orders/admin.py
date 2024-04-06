@@ -26,4 +26,4 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
-    list_display = ['order', 'cloth', 'quantity', 'price', ]
+    list_display = ['order', 'cloth', 'quantity','size','price']
