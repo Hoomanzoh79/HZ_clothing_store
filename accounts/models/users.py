@@ -38,6 +38,7 @@ class UserManager(BaseUserManager):
 class CustomUser(AbstractUser):
     is_staff = models.BooleanField(default=False,null=True)
     is_superuser = models.BooleanField(default=False,null=True)
+    is_active = models.BooleanField(default=True,null=True)
 
     # Manager
     objects = UserManager()
