@@ -19,7 +19,7 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_editable = ['is_active']
     ordering = ['-datetime_created']
     list_filter = ['datetime_created','is_paid','is_active']
-    search_fields = ['first_name']
+    search_fields = ['first_name__istartswith']
 
     def total_price(self,order):
         return sum(item.price * item.quantity for item in order.items.all())
