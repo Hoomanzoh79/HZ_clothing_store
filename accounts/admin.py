@@ -22,3 +22,4 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('id','user','first_name','last_name','phone_number',)
     ordering = ['-id']
     list_per_page = 10
+    list_select_related = ['user']
