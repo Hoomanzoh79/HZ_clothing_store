@@ -9,6 +9,7 @@ class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_per_page = 10
     list_editable = ['price','inventory']
     ordering = ['-datetime_created']
+    list_filter = ['datetime_created','gender','season']
 
     def inventory_status(self,cloth):
         if cloth.inventory == 0 :
@@ -26,3 +27,5 @@ class CommentAdmin(admin.ModelAdmin):
     list_per_page = 10
     list_editable = ['active']
     ordering = ['-datetime_created']
+    list_filter = ['datetime_created','active']
+    list_select_related = ['cloth']
