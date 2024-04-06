@@ -22,7 +22,7 @@ class Order(models.Model):
     datetime_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'Order {self.id}'
+        return f'Order : {self.id}'
 
     def get_total_price(self):
         return sum(item.price * item.quantity for item in self.items.all())
