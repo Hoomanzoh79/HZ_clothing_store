@@ -11,8 +11,10 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     list_display = ('id','email', 'username',
                     'is_staff','is_superuser',
+                    'is_active',
                     )
     ordering = ['-id']
+    list_editable = ['is_active']
     list_per_page = 10
 
 
