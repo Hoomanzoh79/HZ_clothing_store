@@ -21,8 +21,9 @@ class CustomUserAdmin(UserAdmin):
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     model = Profile
-    list_display = ('id','user','first_name','last_name','phone_number',)
+    list_display = ('id','user','first_name','last_name','phone_number','datetime_created')
     ordering = ['-id']
     list_per_page = 10
     search_fields = ['user']
     list_select_related = ['user']
+    list_filter = ['datetime_created']
