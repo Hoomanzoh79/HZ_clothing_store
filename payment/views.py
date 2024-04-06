@@ -49,6 +49,7 @@ class PaymentProcessView(View):
             if response['Status'] == 100:
                 url = f"{START_PAY_URL}{response['Authority']}"
                 return redirect(url)
+            pass
         else:
             return HttpResponse(str(res.json()['errors']))
 
