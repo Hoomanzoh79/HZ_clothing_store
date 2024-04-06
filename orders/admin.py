@@ -26,3 +26,5 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
     list_display = ['order', 'cloth', 'quantity','size','price']
+    list_per_page = 10
+    search_fields = ['cloth']
