@@ -77,6 +77,8 @@
                             </li>
                             <li class="lvl1 parent megamenu"><a href="{% url "cloths_list" %}">محصولات <i
                                     class="an an-angle-down-l"></i></a>
+                            <li class="lvl1 parent megamenu"><a href="{% url "about_us" %}">{% trans 'About Us' %} <i
+                                    class="an an-angle-down-l"></i></a>
                                 {% if user.is_authenticated %}
                                     <li class="lvl1 parent dropdown">
                                         <a href="#;"> سلام {{ user.username }}<i class="an an-angle-down-l"></i></a>
