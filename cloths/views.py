@@ -35,12 +35,6 @@ class MaleView(generic.ListView):
     paginate_by = 10
 
 
-class IndexView(generic.ListView):
-    queryset = Cloth.objects.filter(inventory__gte=1).order_by('-datetime_created')
-    template_name = "index.html"
-    context_object_name = 'cloths'
-
-
 class ClothsListView(generic.ListView):
     queryset = Cloth.objects.all().order_by('-datetime_created')
     template_name = 'cloths/cloths_list.html'
