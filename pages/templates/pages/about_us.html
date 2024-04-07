@@ -1,9 +1,89 @@
 {% extends '_base.html' %}
+{% load static %}
+{% load i18n %}
 
 {% block page_title %}
-    about us
+    {% trans "About Us" %}
 {% endblock %}
 
 {% block content %}
-    About us page
+    <div id="page-content">
+        {% translate 'About Us' as header_name_for_about_us %}
+        {% include 'topheader.html' with header_name=header_name_for_about_us %}
+        <!--Container-->
+        <!--What Customer Say About Us-->
+        <section class="section testimonial-slider style1">
+            <div class="container-fluid mt-3">
+                <div class="row">
+                    <div class="section-header col-12">
+                        <h2>درباره ی این وبسایت و برنامه نویس</h2>
+                    </div>
+                </div>
+                <div class="quote-wraper">
+                    <!--Testimonial Slider Items-->
+                    <div class="quotes-slider-1item">
+                        <div class="quotes-slide bg-transparent">
+                            <blockquote class="quotes-slider__text text-center">
+                                <div class="testimonial-image"><img
+                                        src="{% static 'images/logo.svg' %}"
+                                        alt="" title=""/></div>
+                                <div class="rte-setting"><p>این وب سایت صرفا به منظور نمایش مهارت های برنامه نویس مربوطه
+                                    و برای نمونه کار در رزومه ی این برنامه نویس   می باشد و هدف کاربردی و صنعتی ندارد
+                                    پس لطفا تلاشی برای خرید ازین وب سایت نکنید</p></div>
+                            </blockquote>
+                        </div>
+                        <div class="quotes-slide bg-transparent">
+                            <blockquote class="quotes-slider__text text-center">
+                                <div class="testimonial-image"><img src="{% static 'images/me.jpeg' %}"
+                                                                    alt="هومن زهره وند حصاری" title="هومن زهره وند حصاری"/>
+                                </div>
+                                <div class="rte-setting"><p>من هومن زهره وند حصاری هستم,3 سال هست که یادگیری پایتون رو
+                                    شروع کردم و از ابتدای فعالیت به وب و Django علاقه مند شدم و شروع به یادگیری و تمرین
+                                    در این زمینه کردم</p></div>
+                                <button class="btn-info"><a class="authour"
+                                                            href="{% static "Hooman-Zohrevand-CV.pdf" %}">دانلود رزومه ی
+                                    من</a></button>
+                                <a href="https://github.com/Hoomanzoh79">
+                                    <div class="testimonial-image"><img
+                                            src="{% static 'images/github-logo-vector.png' %}" alt="گیت هاب من"
+                                            title="گیت هاب من"></div>
+                                </a>
+                            </blockquote>
+                        </div>
+                        <div class="quotes-slide bg-transparent">
+                            <blockquote class="quotes-slider__text text-center">
+                                <div class="testimonial-image"><img
+                                        src="{% static 'images/me.jpeg' %}"
+                                        alt="هومن زهره وند حصاری" title="هومن زهره وند حصاری"/></div>
+                                <div class="rte-setting"><p>من یک برنامه نویس بک اند هستم و همیشه علاقه مند به یادگیری
+                                    مداوم و بهبود عملکرد خودم در
+                                    زمینه ی برنامه نویسی و مایل به فعالیت در یک تیم منسجم هستم </p></div>
+                                <button class="btn-info"><a class="authour"
+                                                            href="{% static "Hooman-Zohrevand-CV.pdf" %}">دانلود رزومه ی
+                                    من</a></button>
+                                <a href="https://github.com/Hoomanzoh79">
+                                    <div class="testimonial-image"><img
+                                            src="{% static 'images/github-logo-vector.png' %}" alt="گیت هاب من"
+                                            title="گیت هاب من"></div>
+                                </a>
+                            </blockquote>
+                        </div>
+                        <div class="quotes-slide bg-transparent">
+                            <blockquote class="quotes-slider__text text-center">
+                                <div class="rte-setting"><p>تکنولوژی ها و زبان های استفاده شده برای پیاده سازی این وب
+                                    سایت</p></div>
+                                <img
+                                        src="{% static 'images/languages.png' %}"
+                                        alt="" title=""/>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <!--Testimonial Slider Items-->
+                </div>
+            </div>
+        </section>
+        <!--End What Customer Say About Us-->
+    </div>
+    </div>
+
 {% endblock %}
