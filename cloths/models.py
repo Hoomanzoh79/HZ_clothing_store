@@ -61,7 +61,7 @@ class Comment(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments')
     cloth = models.ForeignKey(Cloth, on_delete=models.CASCADE, related_name='comments')
     body = models.TextField()
-    active = models.BooleanField(default=True)
+    active = models.BooleanField(default=False)
 
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
