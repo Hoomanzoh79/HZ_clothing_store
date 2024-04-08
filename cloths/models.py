@@ -60,7 +60,7 @@ class ActiveCommentsManager(models.Manager):
 class Comment(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments')
     cloth = models.ForeignKey(Cloth, on_delete=models.CASCADE, related_name='comments')
-    body = models.TextField(verbose_name=_('please write your opinion here'))
+    body = models.TextField()
     active = models.BooleanField(default=True)
 
     datetime_created = models.DateTimeField(auto_now_add=True)
