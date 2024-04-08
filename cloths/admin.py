@@ -1,16 +1,27 @@
 from django.contrib import admin
-from .models import Cloth, Comment
 from jalali_date.admin import ModelAdminJalaliMixin
+from django.utils.html import format_html
+from django.utils.http import urlencode
+from django.urls import reverse
+from django.db.models import Count
 
+from .models import Cloth, Comment
 
 @admin.register(Cloth)
 class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ['id','title', 'price', 'season', 'gender', 'sales','inventory',"inventory_status"]
+    list_display = ['id','title', 'price', 'season', 'gender', 'sales','inventory',"inventory_status","comments_count"]
     list_per_page = 10
     list_editable = ['price','inventory']
     ordering = ['-datetime_created']
     list_filter = ['datetime_created','gender','season']
     search_fields = ['title__istartswith']
+    list_display_links = ['id','title']
+
+    def get_queryset(self, request):
+        return super().get_queryset(request)\
+        .prefetch_related('comments') \
+        .annotate(comments_count=Count('comments'),
+                  )
 
     def inventory_status(self,cloth):
         if cloth.inventory == 0 :
@@ -19,12 +30,23 @@ class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
             return "High"
         elif cloth.inventory < 10:
             return "Low"
+    
+    @admin.display(description='comments')
+    def comments_count(self,cloth):
+        url = (
+            reverse('admin:cloths_comment_changelist') 
+            + '?'
+            + urlencode({
+                'cloth__id': cloth.id,
+            })
+        )
+        return format_html('<a href="{}">{}</a>', url, cloth.comments_count)
 
 
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['id','cloth', 'author', 'active',]
+    list_display = ['id','cloth', 'author', 'active','body']
     list_per_page = 10
     list_editable = ['active']
     ordering = ['-datetime_created']
