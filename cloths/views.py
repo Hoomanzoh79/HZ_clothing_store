@@ -1,9 +1,9 @@
-from typing import Any
-from django.db.models.query import QuerySet
 from django.shortcuts import get_object_or_404
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
+from django.contrib import messages
+from django.utils.translation import gettext as _
 
 from .models import Cloth,Comment
 from .forms import CommentForm
@@ -65,5 +65,7 @@ class CommentCreateView(LoginRequiredMixin,generic.CreateView):
         cloth_id = int(self.kwargs['cloth_id'])
         cloth = get_object_or_404(Cloth, id=cloth_id)
         obj.cloth = cloth
+        if not obj.author.is_superuser :
+            messages.success(self.request, _("Your comment has been sent and it will show after we've checked it"))
         
         return super().form_valid(form)
