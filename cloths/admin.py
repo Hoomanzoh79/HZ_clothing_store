@@ -46,7 +46,7 @@ class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['id','cloth', 'author', 'active','body']
+    list_display = ['id','cloth', 'author', 'active','body','datetime_created']
     list_per_page = 10
     list_editable = ['active']
     ordering = ['-datetime_created']
