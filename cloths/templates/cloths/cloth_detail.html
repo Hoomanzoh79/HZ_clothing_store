@@ -252,7 +252,7 @@
                                 {% else %}
                                     <h4 class="spr-form-title text-uppercase mb-3">{% trans 'customer comments on' %} {{ cloth.title }} </h4>
                                     <div class="review-inner">
-                                        {% for comment in cloth.comments.all %}
+                                        {% for comment in cloth.comments.all|only_active_comments %}
                                             <div class="spr-review">
                                                 <div class="spr-review-header">
                                                     <span class="spr-review-header-byline mb-1"><strong>{{ comment.author }}</strong> در <strong>{{ comment.datetime_created }}</strong></span>
