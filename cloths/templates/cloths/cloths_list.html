@@ -33,6 +33,27 @@
                     </ul>
                     <!--End Active Filters-->
                     <!--Product Grid-->
+                    <form class="form minisearch" id="header-search" action="{% url 'search:filter_results' %}"
+                          method="get">
+                        <div class="control">
+                            <div class="searchField">
+                                <div class="search-category">
+                                    <select id="q" name="q"
+                                            data-default="All Categories">
+                                        <optgroup id="rgsearch-shop" label="دسته بندی ها">
+                                            <option value="tshirt">{% trans 'tshirt' %}</option>
+                                            <option value="pants">{% trans 'pants' %}</option>
+                                            <option value="jacket">{% trans 'jacket' %}</option>
+                                            <option value="suit">{% trans 'suit' %}</option>
+                                            <option value="others">{% trans 'others' %}</option>
+                                        </optgroup>
+                                    </select>
+                                    <button type="submit"
+                                            class="btn rounded me-auto mt-3">{% trans 'filter' %}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     <div class="grid-products grid--view-items shop-grid-5 prd-grid">
                         <div class="row">
                             {% for cloth in cloths %}
