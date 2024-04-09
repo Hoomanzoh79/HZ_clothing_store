@@ -65,7 +65,7 @@
                             <!-- Product Reviews -->
                             {% if cloth.comments %}
                                 <div class="product-review mb-2">
-                                    <span class="spr-badge-caption ms-2"> {% trans "comments" %} : {{ cloth.comments.count }}</span>
+                                    <span class="spr-badge-caption ms-2"> {% trans "comments" %} : {{ cloth.comments|only_active_comments|length }}</span>
                                 </div>
                             {% endif %}
                             <!-- End Product Reviews -->
@@ -157,7 +157,7 @@
                                 <!-- Product Reviews -->
                                 {% if cloth.comments %}
                                     <div class="product-review mb-2">
-                                        <span class="spr-badge-caption ms-2"> {% trans "comments" %} : {{ cloth.comments.count }}</span>
+                                        <span class="spr-badge-caption ms-2"> {% trans "comments" %} : {{ cloth.comments|only_active_comments|length }}</span>
                                     </div>
                                 {% endif %}
                                 <!-- End Product Reviews -->
@@ -216,7 +216,7 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="spr-header clearfix d-flex-center justify-content-center">
                                     <div class="product-review d-flex-center">
-                                        <span class="spr-summary-actions-togglereviews ms-2 fw-600">{% trans 'comments' %} : {{ cloth.comments.count }}</span>
+                                        <span class="spr-summary-actions-togglereviews ms-2 fw-600">{% trans 'comments' %} : {{ cloth.comments|only_active_comments|length}}</span>
                                     </div>
                                     <div class="spr-summary-actions mt-3 mt-sm-0 d-none">
                                         <a href="#"
@@ -246,7 +246,7 @@
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                             <div class="spr-reviews">
-                                {% if cloth.comments.count == 0 %}
+                                {% if cloth.comments|only_active_comments|length == 0 %}
                                     <h4 class="spr-form-title text-uppercase mb-3">{% trans 'no comments on' %}</h4>
                                 {% else %}
                                     <h4 class="spr-form-title text-uppercase mb-3">{% trans 'customer comments on' %} {{ cloth.title }} </h4>
