@@ -9,9 +9,9 @@ from .models import Cloth, Comment
 
 @admin.register(Cloth)
 class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ['id','title', 'price', 'season', 'gender', 'sales','inventory',"inventory_status","comments_count"]
+    list_display = ['id','title', 'price','category','season', 'gender', 'sales','inventory',"inventory_status","comments_count"]
     list_per_page = 10
-    list_editable = ['price','inventory']
+    list_editable = ['price','inventory','category']
     ordering = ['-datetime_created']
     list_filter = ['datetime_created','gender','season']
     search_fields = ['title__istartswith']

@@ -9,6 +9,14 @@ from django.core.validators import MinValueValidator
 
 
 class Cloth(models.Model):
+    CATEGORIES = [
+        ('tshirt',_('tshirt')),
+        ('pants',_('pants')),
+        ('jacket',_('jacket')),
+        ('suit',_('suit')),
+        ('others', _('others')),
+    ]
+
     SEASON_CHOICES = [('winter', 'winter'),
                        ('summer', 'summer'),
                        ('fall', 'fall'), ]
@@ -35,6 +43,7 @@ class Cloth(models.Model):
     cover = models.ImageField(upload_to='cloth/cloth_covers', blank=True)
     sales = models.PositiveIntegerField(default=0,null=True)
     inventory = models.IntegerField(validators=[MinValueValidator(0)],null=True)
+    category = models.CharField(max_length=10, choices=CATEGORIES,null=True,blank=True)
 
     datetime_created = models.DateTimeField(default=timezone.now)
     datetime_modified = models.DateTimeField(auto_now=True)
