@@ -24,3 +24,19 @@ class SearchResultsView(ListView):
             'search_query': self.request.GET.get("q"),
         })
         return context
+
+
+class FilterResultsView(ListView):
+    model = Cloth
+    template_name = "search/filter_results.html"
+    context_object_name = 'cloths'
+
+    def get_queryset(self):  # new
+        filter_query = self.request.GET.get("q")
+        if not filter_query:
+            filter_query = ""
+        object_list = self.model.objects.filter(
+            category=filter_query
+        )
+        print(filter_query)
+        return object_list
