@@ -158,51 +158,49 @@
     <div class="mobile-nav-wrapper" role="navigation">
         <div class="closemobileMenu"><i class="icon an an-times-l pull-right"></i> بستن منو</div>
         <ul id="MobileNav" class="mobile-nav">
-            <li class="lvl1 parent megamenu"><a href="{% url 'index' %}">خانه <i class="an an-plus-l"></i></a>
+            <li class="lvl1 parent megamenu"><a href="{% url 'index' %}">خانه</a>
+                <ul>
+                </ul>
+            </li>
+            <li class="lvl1 parent megamenu"><a href="{% url 'about_us' %}">درباره ی ما</i></a>
                 <ul>
                 </ul>
             </li>
             <li class="lvl1 parent megamenu"><a href="#">فروشگاه <i class="an an-plus-l"></i></a>
                 <ul>
-                    <li><a href="#" class="site-nav">مردانه <i class="an an-plus-l"></i></a>
+                    <li><a href="{% url 'male_list' %}" class="site-nav">مردانه <i class="an an-plus-l"></i></a>
                     </li>
-                    <li><a href="#" class="site-nav">زنانه <i class="an an-plus-l"></i></a>
+                    <li><a href="{% url 'female_list' %}" class="site-nav">زنانه <i class="an an-plus-l"></i></a>
                     </li>
                 </ul>
             </li>
             <li class="lvl1 parent megamenu"><a href="#">محصولات <i class="an an-plus-l"></i></a>
                 <ul>
-                    <li><a href="#" class="site-nav">پرفروش ترین ها <i class="an an-plus-l"></i></a>
+                    <li><a href="{% url 'highest_selling' %}" class="site-nav">پرفروش ترین ها</a>
                     </li>
-                    <li><a href="#" class="site-nav">جدیدترین ها <i class="an an-plus-l"></i></a>
-                    </li>
+                    <!-- <li><a href="#" class="site-nav">جدیدترین ها <i class="an an-plus-l"></i></a>
+                    </li> -->
                 </ul>
             </li>
             {% if user.is_authenticated %}
                 <li class="lvl1 parent megamenu"><a href="#"> سلام {{ user.username }} <i class="an an-plus-l"></i></a>
                     <ul>
-                        <li><a href="{% url 'profile_update' %}" class="site-nav">{% trans "Profile" %} <i
-                                class="an an-plus-l"></i></a>
+                        <li><a href="{% url 'profile_update' %}" class="site-nav">{% trans "Profile" %}</a>
                         </li>
-                        <li><a href="{% url 'account_change_password' %}" class="site-nav">{% trans "Change Password" %}
-                            <i class="an an-plus-l"></i></a>
+                        <li><a href="{% url 'account_change_password' %}" class="site-nav">{% trans "Change Password" %}</a>
                         </li>
-                        <li><a href="{% url 'account_logout' %}" class="site-nav">{% trans "Sign Out" %}
-                            <i class="an an-plus-l"></i></a>
+                        <li><a href="{% url 'account_logout' %}" class="site-nav">{% trans "Sign Out" %}</a>
                         </li>
                     </ul>
                 </li>
             {% else %}
                 <li class="lvl1 parent megamenu"><a href="#">ثبت نام نکرده اید؟<i class="an an-plus-l"></i></a>
                     <ul>
-                        <li><a href="{% url 'account_signup' %}" class="site-nav">{% trans "Signup" %} <i
-                                class="an an-plus-l"></i></a>
+                        <li><a href="{% url 'account_signup' %}" class="site-nav">{% trans "Signup" %}</a>
                         </li>
-                        <li><a href="{% url 'account_login' %}" class="site-nav">{% trans "Sign In" %}
-                            <i class="an an-plus-l"></i></a>
+                        <li><a href="{% url 'account_login' %}" class="site-nav">{% trans "Sign In" %}</a>
                         </li>
-                        <li><a href="{% url 'account_reset_password' %}" class="site-nav">{% trans "Forgot Password?" %}
-                            <i class="an an-plus-l"></i></a>
+                        <li><a href="{% url 'account_reset_password' %}" class="site-nav">{% trans "Forgot Password?" %}</a>
                         </li>
                     </ul>
                 </li>
