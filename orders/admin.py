@@ -25,6 +25,7 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     def total_price(self,order):
         return sum(item.price * item.quantity for item in order.items.all())
     
+    @admin.action(description='deactive orders')
     def deactive_orders(self,request,queryset):
         queryset.update(is_active=False)
 
