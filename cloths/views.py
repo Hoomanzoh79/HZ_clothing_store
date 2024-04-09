@@ -65,7 +65,10 @@ class CommentCreateView(LoginRequiredMixin,generic.CreateView):
         cloth_id = int(self.kwargs['cloth_id'])
         cloth = get_object_or_404(Cloth, id=cloth_id)
         obj.cloth = cloth
-        if not obj.author.is_superuser :
+
+        if obj.author.is_superuser and obj.author.is_staff:
+            obj.active = True
+        else :
             messages.success(self.request, _("Your comment has been sent and it will show after we've checked it"))
         
         return super().form_valid(form)
