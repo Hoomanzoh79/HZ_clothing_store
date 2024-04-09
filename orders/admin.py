@@ -20,9 +20,16 @@ class OrderAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     ordering = ['-datetime_created']
     list_filter = ['datetime_created','is_paid','is_active']
     search_fields = ['first_name__istartswith']
+    actions = ['deactive_orders']
 
     def total_price(self,order):
         return sum(item.price * item.quantity for item in order.items.all())
+    
+    def deactive_orders(self,request,queryset):
+        queryset.update(is_active=False)
+
+
+
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
     list_display = ['order', 'cloth', 'quantity','size','price']
