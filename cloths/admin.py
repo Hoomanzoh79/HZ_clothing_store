@@ -43,7 +43,6 @@ class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
         return format_html('<a href="{}">{}</a>', url, cloth.comments_count)
 
 
-
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ['id','cloth', 'author', 'active','body','datetime_created']
@@ -52,3 +51,8 @@ class CommentAdmin(admin.ModelAdmin):
     ordering = ['-datetime_created']
     list_filter = ['datetime_created','active']
     list_select_related = ['cloth']
+    actions = ['active_comments']
+
+    @admin.action(description='active comments')
+    def active_comments(self,request,queryset):
+        queryset.update(active=True)
