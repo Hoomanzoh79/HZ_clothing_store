@@ -90,6 +90,4 @@ class Comment(models.Model):
     active_comments_manager = ActiveCommentsManager()
 
     def get_absolute_url(self):
-        return reverse('cloth_detail', args=[self.cloth.id])
-
-
+        return reverse("cloth_detail", kwargs={"slug": self.cloth.slug})
