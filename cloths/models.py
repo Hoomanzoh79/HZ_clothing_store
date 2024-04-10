@@ -6,6 +6,7 @@ from ckeditor.fields import RichTextField
 from multiselectfield import MultiSelectField
 from django.utils.translation import gettext as _
 from django.core.validators import MinValueValidator
+from django.template.defaultfilters import slugify
 
 
 class Cloth(models.Model):
@@ -36,15 +37,15 @@ class Cloth(models.Model):
                              max_length=17,null=True)
 
     title = models.CharField(max_length=50)
-    slug = models.SlugField(null=True,unique=True,allow_unicode=True)
+    slug = models.SlugField(blank=False,unique=True,allow_unicode=True)
     description = RichTextField(blank=True)
     price = models.PositiveIntegerField(default=0)
     season = models.CharField(max_length=6, choices=SEASON_CHOICES)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
     cover = models.ImageField(upload_to='cloth/cloth_covers', blank=True)
     sales = models.PositiveIntegerField(default=0,null=True)
-    inventory = models.IntegerField(validators=[MinValueValidator(0)],null=True)
-    category = models.CharField(max_length=10, choices=CATEGORIES,null=True,blank=True)
+    inventory = models.IntegerField(validators=[MinValueValidator(0)],default=0)
+    category = models.CharField(max_length=10, choices=CATEGORIES,null=True)
 
     datetime_created = models.DateTimeField(default=timezone.now)
     datetime_modified = models.DateTimeField(auto_now=True)
@@ -53,7 +54,12 @@ class Cloth(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('cloth_detail', args=[self.id])
+        return reverse("cloth_detail", kwargs={"slug": self.slug})
+    
+    def save(self, *args, **kwargs): 
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
     
     def available_sizes(self):
         return tuple(self.sizes)
