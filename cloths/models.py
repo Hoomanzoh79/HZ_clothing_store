@@ -36,6 +36,7 @@ class Cloth(models.Model):
                              max_length=17,null=True)
 
     title = models.CharField(max_length=50)
+    slug = models.SlugField(null=True,unique=True,allow_unicode=True)
     description = RichTextField(blank=True)
     price = models.PositiveIntegerField(default=0)
     season = models.CharField(max_length=6, choices=SEASON_CHOICES)
