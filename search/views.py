@@ -40,3 +40,10 @@ class FilterResultsView(ListView):
         )
         print(filter_query)
         return object_list
+
+    def get_context_data(self, **kwargs):
+        context = super(FilterResultsView, self).get_context_data(**kwargs)
+        context.update({
+            'filter_query': self.request.GET.get("q"),
+        })
+        return context
