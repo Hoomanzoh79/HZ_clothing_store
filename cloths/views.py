@@ -63,8 +63,8 @@ class CommentCreateView(LoginRequiredMixin,generic.CreateView):
         obj = form.save(commit=False)
         obj.author = self.request.user
 
-        cloth_id = int(self.kwargs['cloth_id'])
-        cloth = get_object_or_404(Cloth, id=cloth_id)
+        cloth_slug = self.kwargs.get("slug")
+        cloth = get_object_or_404(Cloth, slug=cloth_slug)
         obj.cloth = cloth
 
         if obj.author.is_superuser and obj.author.is_staff:

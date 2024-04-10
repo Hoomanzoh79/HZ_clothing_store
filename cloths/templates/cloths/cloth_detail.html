@@ -226,7 +226,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                                <form method="POST" action="{% url 'comment_create' cloth.id %}"
+                                <form method="POST" action="{% url 'comment_create' cloth.slug %}"
                                       class="product-review-form new-review-form mb-4 d-block">
                                     {% csrf_token %}
                                     <h4 class="spr-form-title text-uppercase">یک بررسی بنویسید</h4>
