@@ -115,12 +115,40 @@
                 <!--Right Action-->
                 <div class="col-6 col-sm-6 col-md-6 col-lg-3 align-self-center icons-col d-flex justify-content-end">
                     <!--Search-->
+                    <!--Setting Dropdown-->
+                    <div class="setting-link iconset pe-0"><i class="icon an an-right-bar-s"></i><span
+                            class="tooltip-label">{% trans 'filter' %}</span></div>
+                    <div id="settingsBox">
+                        <form class="form minisearch" id="header-search" action="{% url 'search:filter_results' %}"
+                              method="get">
+                            <div class="control">
+                                <div class="searchField">
+                                    <div class="search-category">
+                                        <select id="q" name="q"
+                                                data-default="All Categories">
+                                            <optgroup id="rgsearch-shop" label="دسته بندی ها">
+                                                <option value="tshirt">{% trans 'tshirt' %}</option>
+                                                <option value="pants">{% trans 'pants' %}</option>
+                                                <option value="jacket">{% trans 'jacket' %}</option>
+                                                <option value="suit">{% trans 'suit' %}</option>
+                                                <option value="others">{% trans 'others' %}</option>
+                                            </optgroup>
+                                        </select>
+                                        <button type="submit"
+                                                class="btn rounded me-auto mt-3">{% trans 'filter' %}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--End Setting Dropdown-->
                     <div class="site-search iconset"><i class="icon an an-search-l"></i><span class="tooltip-label">جستجو</span>
                     </div>
                     <!--End Search-->
                     {% if user.is_authenticated %}
                         <!--Setting Dropdown-->
-                        <a class="user-link iconset" href="{% url 'profile_update' %}"><i class="icon an an-user-2"></i><span
+                        <a class="user-link iconset" href="{% url 'profile_update' %}"><i
+                                class="icon an an-user-2"></i><span
                                 class="tooltip-label">{% trans "Profile" %}</span>
                         </a>
                         <!--End Setting Dropdown-->
@@ -151,7 +179,6 @@
                 </form>
             </div>
         </div>
-        <!--End Search Popup-->
     </header>
     <!--End Header-->
     <!--Mobile Menu-->
@@ -187,7 +214,8 @@
                     <ul>
                         <li><a href="{% url 'profile_update' %}" class="site-nav">{% trans "Profile" %}</a>
                         </li>
-                        <li><a href="{% url 'account_change_password' %}" class="site-nav">{% trans "Change Password" %}</a>
+                        <li><a href="{% url 'account_change_password' %}"
+                               class="site-nav">{% trans "Change Password" %}</a>
                         </li>
                         <li><a href="{% url 'account_logout' %}" class="site-nav">{% trans "Sign Out" %}</a>
                         </li>
@@ -200,7 +228,8 @@
                         </li>
                         <li><a href="{% url 'account_login' %}" class="site-nav">{% trans "Sign In" %}</a>
                         </li>
-                        <li><a href="{% url 'account_reset_password' %}" class="site-nav">{% trans "Forgot Password?" %}</a>
+                        <li><a href="{% url 'account_reset_password' %}"
+                               class="site-nav">{% trans "Forgot Password?" %}</a>
                         </li>
                     </ul>
                 </li>
