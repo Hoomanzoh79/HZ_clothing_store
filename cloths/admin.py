@@ -9,16 +9,17 @@ from .models import Cloth, Comment
 
 @admin.register(Cloth)
 class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ['id','title','slug','brand','price','category','season', 'gender', 'sales','inventory',"inventory_status","comments_count"]
+    list_display = ['id','title','brand','price','category','season', 'gender', 'sales','inventory',"inventory_status","comments_count"]
     list_per_page = 10
     list_editable = ['price','inventory','category']
     ordering = ['-datetime_created']
-    list_filter = ['datetime_created','gender','season']
+    list_filter = ['datetime_created','gender','season','category']
     search_fields = ['title__istartswith','brand__istartswith']
     list_display_links = ['id','title']
     prepopulated_fields = {
         'slug' : ['title',]
     }
+    readonly_fields = ['sales']
 
     def get_queryset(self, request):
         return super().get_queryset(request)\
@@ -55,6 +56,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_filter = ['datetime_created','active']
     list_select_related = ['cloth']
     actions = ['active_comments']
+    autocomplete_fields = ['cloth',]
 
     @admin.action(description='active comments')
     def active_comments(self,request,queryset):
