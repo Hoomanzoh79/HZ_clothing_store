@@ -26,13 +26,36 @@ class SearchResultsView(ListView):
         return context
 
 
+class CategoryFilterResultsView(ListView):
+    model = Cloth
+    template_name = "search/category_filter_results.html"
+    context_object_name = 'cloths'
+
+    def get_queryset(self):  # new
+        filter_query = self.request.GET.get("q")
+        if not filter_query:
+            filter_query = ""
+        object_list = self.model.objects.filter(
+            category=filter_query
+        )
+        print(filter_query)
+        return object_list
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryFilterResultsView, self).get_context_data(**kwargs)
+        context.update({
+            'filter_query': self.request.GET.get("q"),
+        })
+        return context
+
+
 class FilterResultsView(ListView):
     model = Cloth
     template_name = "search/filter_results.html"
     context_object_name = 'cloths'
 
     def get_queryset(self):  # new
-        filter_query = self.request.GET.get("q")
+        filter_query = self.request.GET.post("q")
         if not filter_query:
             filter_query = ""
         object_list = self.model.objects.filter(
