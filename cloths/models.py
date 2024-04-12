@@ -18,12 +18,14 @@ class Cloth(models.Model):
         ('others', _('others')),
     ]
 
-    SEASON_CHOICES = [('winter', 'winter'),
-                       ('summer', 'summer'),
-                       ('fall', 'fall'), ]
+    SEASON_CHOICES = [('winter', _('winter')),
+                      ('summer', _('summer')),
+                       ('fall', _('fall')), 
+                    ]
     
-    GENDER_CHOICES = [('male', 'male'),
-                      ('female', 'female'), ]
+    GENDER_CHOICES = [('male', _('male')),
+                      ('female', _('female')), 
+                      ]
     
     SIZE_CHOICES = (
                     ('S', 'S'),
@@ -40,7 +42,7 @@ class Cloth(models.Model):
     slug = models.SlugField(blank=False,unique=True,allow_unicode=True)
     description = RichTextField(blank=True)
     price = models.PositiveIntegerField(validators=[MinValueValidator(50000)],default=0)
-    season = models.CharField(max_length=6, choices=SEASON_CHOICES)
+    season = models.CharField(max_length=6, choices=SEASON_CHOICES,blank=True)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
     cover = models.ImageField(upload_to='cloth/cloth_covers', blank=True)
     sales = models.PositiveIntegerField(default=0,null=True)
