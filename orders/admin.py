@@ -1,11 +1,14 @@
+from typing import Any
 from django.contrib import admin
+from django.db.models.query import QuerySet
+from django.http import HttpRequest
 from .models import Order, OrderItem
 from jalali_date.admin import ModelAdminJalaliMixin
 
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
-    list_display = ['order', 'cloth', 'quantity', 'price', ]
+    list_display = ['order', 'cloth','size','quantity', 'price', ]
     extra = 1
 
 
@@ -36,3 +39,4 @@ class OrderItemAdmin(admin.ModelAdmin):
     list_display = ['order', 'cloth', 'quantity','size','price']
     list_per_page = 10
     search_fields = ['cloth']
+    autocomplete_fields = ['cloth']
