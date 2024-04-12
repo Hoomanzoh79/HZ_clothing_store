@@ -32,28 +32,136 @@
                         <li><a href="#">لوازم جانبی <i class="an an-times-l"></i></a></li>
                     </ul>
                     <!--End Active Filters-->
-                    <!--Product Grid-->
-                    <form class="form minisearch" id="header-search" action="{% url 'search:filter_results' %}"
-                          method="get">
-                        <div class="control">
-                            <div class="searchField">
-                                <div class="search-category">
-                                    <select id="q" name="q"
-                                            data-default="All Categories">
-                                        <optgroup id="rgsearch-shop" label="دسته بندی ها">
-                                            <option value="tshirt">{% trans 'tshirt' %}</option>
-                                            <option value="pants">{% trans 'pants' %}</option>
-                                            <option value="jacket">{% trans 'jacket' %}</option>
-                                            <option value="suit">{% trans 'suit' %}</option>
-                                            <option value="others">{% trans 'others' %}</option>
-                                        </optgroup>
-                                    </select>
-                                    <button type="submit"
-                                            class="btn rounded me-auto mt-3">{% trans 'filter' %}</button>
+                    <!--Collection top filters-->
+                    <div class="collection-top-filters filterbar">
+                        <div class="closeFilter d-block d-lg-none"><i class="icon icon an an-times-r"></i></div>
+                        <div class="filters-toolbar-wrapper sidebar_tags m-0 d-flex flex-wrap align-items-center">
+                            <label class="flby mb-3 m-lg-0">بر اساس</label>
+                            <form class="d-flex flex-wrap" action="{% url 'search:filter_results' %}" method="post">
+                                {% csrf_token %}
+                                <div class="btn-group filterBox filter-widget ">
+                                    <div class="filterDD dropdown-menu">
+                                        <div class="bxTtl d-none d-lg-flex justify-content-between"><span
+                                                class="selected">0 انتخاب شده</span><a href="#"
+                                                                                       class="reset text-decoration-underline">تنظیم
+                                            مجدد </a></div>
+                                    </div>
                                 </div>
+                                <div class="btn-group filterBox filter-widget size-swacthes product-type">
+                                    <button type="button" class="flTtl dropdown-toggle" data-bs-toggle="dropdown"
+                                            aria-expanded="false">نوع محصول<span
+                                            class="count-bubble text-center rounded-circle"></span></button>
+                                    <div class="filterDD dropdown-menu">
+                                        <div class="bxTtl d-none d-lg-flex justify-content-between">
+                                            <span class="selected">0 انتخاب شده</span><a href="#"
+                                                                                         class="reset text-decoration-underline">ریست</a>
+                                        </div>
+                                        <div class="filter-size swacth-list clearfix">
+                                            <ul class="clearfix">
+                                                <li><input type="checkbox" value="tshirt" id="tshirt"><label
+                                                        for="tshirt"><span></span>{% trans 'tshirt' %} </label></li>
+                                                <li><input type="checkbox" value="pants" id="pants"><label
+                                                        for="pants"><span></span>{% trans 'pants' %}</label></li>
+                                                <li><input type="checkbox" value="jacket" id="jacket"><label
+                                                        for="jacket"><span></span>{% trans 'jacket' %}</label></li>
+                                                <li><input type="checkbox" value="suit" id="suit"><label
+                                                        for="suit"><span></span>{% trans 'suit' %}</label></li>
+                                                <li><input type="checkbox" value="others" id="others"><label
+                                                        for="others"><span></span>{% trans 'others' %}</label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-group filterBox filter-widget size-swacthes brand-filter">
+                                    <button type="button" class="flTtl dropdown-toggle" data-bs-toggle="dropdown"
+                                            aria-expanded="false">برند ها<span
+                                            class="count-bubble text-center rounded-circle"></span></button>
+                                    <div class="filterDD dropdown-menu">
+                                        <div class="bxTtl d-none d-lg-flex justify-content-between">
+                                            <span class="selected">0 انتخاب شده</span><a href="#"
+                                                                                         class="reset text-decoration-underline">ریست</a>
+                                        </div>
+                                        <div class="filter-size swacth-list clearfix">
+                                            <ul class="clearfix">
+                                                <li><input type="checkbox" value="adidas" id="adidas"><label
+                                                        for="adidas"><span></span>عادی داس</label></li>
+                                                <li><input type="checkbox" value="baggit" id="baggit"><label
+                                                        for="baggit"><span></span>باگت</label></li>
+                                                <li><input type="checkbox" value="campus" id="campus"><label
+                                                        for="campus"><span></span>کامپوس</label></li>
+                                                <li><input type="checkbox" value="caprese" id="caprese"><label
+                                                        for="caprese"><span></span>کاپرس</label></li>
+                                                <li><input type="checkbox" value="elle" id="elle"><label
+                                                        for="elle"><span></span>الی</label></li>
+                                                <li><input type="checkbox" value="diva" id="diva"><label
+                                                        for="diva"><span></span>دیوا</label></li>
+                                                <li><input type="checkbox" value="optimal" id="optimal"><label
+                                                        for="optimal"><span></span>اپتیمال</label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-group filterBox filter-widget size-swacthes availability">
+                                    <button type="button" class="flTtl dropdown-toggle" data-bs-toggle="dropdown"
+                                            aria-expanded="false">در دسترس<span
+                                            class="count-bubble text-center rounded-circle"></span></button>
+                                    <div class="filterDD dropdown-menu">
+                                        <div class="bxTtl d-none d-lg-flex justify-content-between">
+                                            <span class="selected">0 انتخاب شده</span><a href="#"
+                                                                                         class="reset text-decoration-underline">ریست</a>
+                                        </div>
+                                        <div class="filter-size swacth-list clearfix">
+                                            <ul class="clearfix">
+                                                <li><input type="checkbox" value="instock" id="instock"><label
+                                                        for="instock"><span></span>موجود است</label></li>
+                                                <li><input type="checkbox" value="outofstock" id="outofstock"><label
+                                                        for="outofstock"><span></span>موجود نیست</label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-group filterBox filter-widget size-swacthes">
+                                    <button type="button" class="flTtl dropdown-toggle" data-bs-toggle="dropdown"
+                                            aria-expanded="false">قیمت<span
+                                            class="count-bubble text-center rounded-circle"></span></button>
+                                    <div class="filterDD dropdown-menu">
+                                        <div class="bxTtl d-none d-lg-flex justify-content-between">
+                                            <span class="selected">بالاترین قیمت 599 تومان است</span><a href="#"
+                                                                                                        class="reset text-decoration-underline">تنظیم
+                                            مجدد </a>
+                                        </div>
+                                        <div class="filter-size swacth-list clearfix">
+                                            <div class="price-filter">
+                                                <div id="slider-range"></div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <p class="no-margin"><input id="amount" type="text"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 text-right margin-25px-top">
+                                        <button class="btn btn--small rounded">فیلتر</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="filters-toolbar__item filters-sort d-none d-lg-flex align-items-center ms-auto">
+                                <label for="SortBy" class="text-nowrap mb-0 me-2">بر اساس:</label>
+                                <select name="SortBy" id="SortBy"
+                                        class="filters-toolbar__input filters-toolbar__input--sort border-0 bg-transparent">
+                                    <option value="best-selling">برترین فروش ها</option>
+                                    <option value="title-ascending">بر اساس حروف الفبا، A-Z</option>
+                                    <option value="title-descending">به ترتیب حروف الفبا، Z-A</option>
+                                    <option value="price-ascending">قیمت، کم به بالا</option>
+                                    <option value="price-descending">قیمت، بالا به پایین</option>
+                                    <option value="created-ascending">تاریخ، قدیم به جدید</option>
+                                    <option value="created-descending">تاریخ، جدید به قدیم</option>
+                                </select>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <!--End Collection top filters-->
                     <div class="grid-products grid--view-items shop-grid-5 prd-grid">
                         <div class="row">
                             {% for cloth in cloths %}
