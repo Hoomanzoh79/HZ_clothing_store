@@ -119,7 +119,8 @@
                     <div class="setting-link iconset pe-0"><i class="icon an an-right-bar-s"></i><span
                             class="tooltip-label">{% trans 'filter' %}</span></div>
                     <div id="settingsBox">
-                        <form class="form minisearch" id="header-search" action="{% url 'search:filter_results' %}"
+                        <form class="form minisearch" id="header-search"
+                              action="{% url 'search:category_filter_results' %}"
                               method="get">
                             <div class="control">
                                 <div class="searchField">
