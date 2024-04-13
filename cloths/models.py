@@ -3,10 +3,32 @@ from django.shortcuts import reverse
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from ckeditor.fields import RichTextField
-from multiselectfield import MultiSelectField
 from django.utils.translation import gettext as _
 from django.core.validators import MinValueValidator
 from django.template.defaultfilters import slugify
+from multiselectfield import MultiSelectField as MSField
+
+class MultiSelectField(MSField):
+    """
+    Custom Implementation of MultiSelectField to achieve Django 5.0 compatibility
+
+    See: https://github.com/goinnn/django-multiselectfield/issues/141#issuecomment-1911731471
+    """
+
+    def _get_flatchoices(self):
+        flat_choices = super(models.CharField, self).flatchoices
+
+        class MSFFlatchoices(list):
+            # Used to trick django.contrib.admin.utils.display_for_field into not treating the list of values as a
+            # dictionary key (which errors out)
+            def __bool__(self):
+                return False
+
+            __nonzero__ = __bool__
+
+        return MSFFlatchoices(flat_choices)
+
+    flatchoices = property(_get_flatchoices)
 
 
 class Cloth(models.Model):
