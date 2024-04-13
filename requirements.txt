@@ -1,11 +1,11 @@
-asgiref==3.5.0
+asgiref
 certifi==2022.12.7
 cffi==1.15.1
 charset-normalizer==3.1.0
 crispy-bootstrap4==2022.1
 cryptography==39.0.2
 defusedxml==0.7.1
-Django==4.0.2
+Django==5.0.4
 django-allauth==0.53.1
 django-ckeditor==6.5.1
 django-crispy-forms==2.0
@@ -31,4 +31,4 @@ tzdata==2021.5
 urllib3==1.26.15
 django-rosetta
 django-widget-tweaks
-zeep
+django-filter
