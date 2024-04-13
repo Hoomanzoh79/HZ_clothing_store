@@ -22,7 +22,9 @@ class SearchResultsView(ListView):
             title__icontains=search_query
         ) | self.model.objects.filter(
             description__icontains=search_query
-        )
+        ) | self.model.objects.filter(
+            brand__icontains=search_query
+        ).order_by('-datetime_created')
         return object_list
 
     def get_context_data(self, **kwargs):
@@ -44,8 +46,8 @@ class CategoryFilterResultsView(ListView):
             filter_query = ""
         object_list = self.model.objects.filter(
             category=filter_query
-        )
-        print(filter_query)
+        ).order_by('-datetime_created')
+
         return object_list
 
     def get_context_data(self, **kwargs):
@@ -67,7 +69,7 @@ class FilterResultsView(FormMixin,ListView):
         self.season = self.request.GET.get("season")
         self.gender = self.request.GET.get("gender")
         print(self.category)
-        cloths = self.model.objects.filter(category=self.category)
+        cloths = self.model.objects.filter(category=self.category).order_by('-datetime_created')
         return render(request,template_name=self.template_name,context={'cloths':cloths})
 
     def post(self, request, *args, **kwargs):
