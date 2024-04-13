@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'multiselectfield',
     'rosetta',
     'widget_tweaks',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
