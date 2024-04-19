@@ -59,6 +59,7 @@ class ClothDetailView(generic.DetailView):
 class CommentCreateView(LoginRequiredMixin,generic.CreateView):
     model = Comment
     form_class = CommentForm
+    redirect_field_name = ""
 
     def form_valid(self, form):
         obj = form.save(commit=False)
