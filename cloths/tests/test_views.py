@@ -1,8 +1,9 @@
 from django.test import TestCase
+from django.test import Client
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
-from cloths.models import Cloth
+from cloths.models import Cloth,Comment
 from accounts.models import CustomUser
 
 CLOTH_VALID_DATA =  {
@@ -26,7 +27,6 @@ class TestClothView(TestCase):
         url = reverse("cloths_list")
         response = self.client.get(url)
         self.assertEquals(response.status_code,200)
-        self.assertNotEquals(response.status_code,404)
         self.assertContains(response,self.cloth.title)
         self.assertTemplateUsed("cloths/cloths_list.html")
     
@@ -34,7 +34,6 @@ class TestClothView(TestCase):
         url = reverse("cloth_detail",kwargs={"slug":self.cloth.slug})
         response = self.client.get(url)
         self.assertEquals(response.status_code,200)
-        self.assertNotEquals(response.status_code,404)
         self.assertContains(response,self.cloth.title)
         self.assertTemplateUsed("cloths/cloths_detail.html")
 
@@ -42,4 +41,49 @@ class TestClothView(TestCase):
         url = reverse("cloth_detail",kwargs={"slug":"-invalid-slug"})
         response = self.client.get(url)
         self.assertEquals(response.status_code,404)
-        self.assertNotEquals(response.status_code,200)
+    
+    def test_female_list_view(self):
+        url = reverse("female_list")
+        response = self.client.get(url)
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed("cloths/female_list.html")
+    
+    def test_male_list_view(self):
+        url = reverse("male_list")
+        response = self.client.get(url)
+        self.assertEquals(response.status_code,200)
+        self.assertContains(response,self.cloth.title)
+        self.assertTemplateUsed("cloths/male_list.html")
+    
+    def test_highest_selling_view(self):
+        url = reverse("highest_selling")
+        response = self.client.get(url)
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed("cloths/highest_selling.html")
+
+
+class CommentView(TestCase):
+    def setUp(self):
+        self.cloth = Cloth.objects.create(**CLOTH_VALID_DATA)
+        # self.comment = Comment.objects.create(cloth=self.cloth,
+        #                                       author=self.author,
+        #                                       body="test comment",
+        #                                       active=True,
+        #                                       )
+        
+    def test_comment_create_view_unauthorized(self):
+        """user is not logged in therefore we get 302 status code and redirect to login"""
+        url = reverse("comment_create",kwargs={"slug":self.cloth.slug})
+        response = self.client.post(url,data={"body":"test comment"})
+        self.assertEquals(response.status_code,302)
+        self.assertRedirects(response,reverse("account_login"))
+    
+    def test_comment_create_view_authorized(self):
+        """user is logged in therefore we get 302 status code and redirect to cloth_detail"""
+        author = CustomUser.objects.create(email="test email",password="*7S^dasadDSA1")
+        url = reverse("comment_create",kwargs={"slug":self.cloth.slug})
+        self.client.force_login(user=author)
+        response = self.client.post(url,data={"body":"test comment"})
+        self.assertTrue(author.is_authenticated)
+        self.assertEquals(response.status_code,302)
+        self.assertRedirects(response,reverse("cloth_detail",kwargs={"slug":self.cloth.slug}))
