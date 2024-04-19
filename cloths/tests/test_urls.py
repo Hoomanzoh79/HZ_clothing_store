@@ -1,6 +1,5 @@
-from django.test import TestCase,SimpleTestCase
-from django.urls import reverse,resolve,resolvers
-from django.template.defaultfilters import slugify
+from django.test import TestCase
+from django.urls import reverse,resolve
 
 from cloths.views import (ClothsListView,
                           ClothDetailView,
@@ -9,7 +8,7 @@ from cloths.views import (ClothsListView,
                           HighestSellingView,
                           CommentCreateView)
 
-class ClothUrl(SimpleTestCase):
+class TestClothUrl(TestCase):
     def test_cloths_list_url_resolve(self):
         url = reverse("cloths_list")
         self.assertEquals(resolve(url).func.view_class,ClothsListView)
@@ -30,4 +29,8 @@ class ClothUrl(SimpleTestCase):
         url = reverse("highest_selling")
         self.assertEquals(resolve(url).func.view_class,HighestSellingView)
     
+class TestCommentUrl(TestCase):
+    def test_comment_create_url_resolve(self):
+        url = (r'/cloths/list/comment/cloth-title[0-9]+/')
+        self.assertEquals(resolve(url).func.view_class,CommentCreateView)
     
