@@ -30,16 +30,11 @@ class TestClothModel(TestCase):
 class TestCommentModel(TestCase):
     def setUp(self):
         self.cloth = Cloth.objects.create(**CLOTH_VALID_DATA)
-        self.author = CustomUser.objects.create(email="test email",password="*7S^dasadDSA1")
-        self.valid_data = {
-            "author":self.author,
-            "cloth":self.cloth,
-            "body":"test comment",
-            "active":True,
-        }
+        self.author = CustomUser.objects.create(email="testemail@email.com",password="*7S^dasadDSA1")
+        self.comment = Comment.objects.create(author=self.author,cloth=self.cloth,body="test comment")
     
     def test_create_comment(self):
-        comment = Comment.objects.create(**self.valid_data)
         self.assertEquals(Comment.objects.count(),1)
-        self.assertTrue(Comment.objects.filter(pk=comment.id).exists())
-        self.assertEquals(comment.body,"test comment")
+        self.assertTrue(Comment.objects.filter(pk=self.comment.id).exists())
+        self.assertTrue(Comment.objects.filter(cloth=self.cloth).exists())
+        self.assertEquals(self.comment.body,"test comment")
