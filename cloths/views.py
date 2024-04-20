@@ -14,7 +14,7 @@ class HighestSellingView(generic.ListView):
     model = Cloth
     template_name = 'cloths/highest_selling.html'
     context_object_name = 'cloths'
-    paginate_by = 10
+    paginate_by = 5
 
     def get_queryset(self):
         queryset = self.model.objects.filter(datetime_created__month=timezone.now().month).order_by('-sales')
