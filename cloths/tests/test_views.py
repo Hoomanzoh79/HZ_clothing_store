@@ -64,12 +64,13 @@ class TestClothView(TestCase):
 
 class CommentView(TestCase):
     def setUp(self):
+        self.author = CustomUser.objects.create(email="testemail@email.com",password="*7S^dasadDSA1")
         self.cloth = Cloth.objects.create(**CLOTH_VALID_DATA)
-        # self.comment = Comment.objects.create(cloth=self.cloth,
-        #                                       author=self.author,
-        #                                       body="test comment",
-        #                                       active=True,
-        #                                       )
+        self.comment = Comment.objects.create(cloth=self.cloth,
+                                              author=self.author,
+                                              body="test comment",
+                                              active=True,
+                                              )
         
     def test_comment_create_view_unauthorized(self):
         """user is not logged in therefore we get 302 status code and redirect to login"""
@@ -80,10 +81,15 @@ class CommentView(TestCase):
     
     def test_comment_create_view_authorized(self):
         """user is logged in therefore we get 302 status code and redirect to cloth_detail"""
-        author = CustomUser.objects.create(email="test email",password="*7S^dasadDSA1")
+        author = self.author
         url = reverse("comment_create",kwargs={"slug":self.cloth.slug})
         self.client.force_login(user=author)
         response = self.client.post(url,data={"body":"test comment"})
         self.assertTrue(author.is_authenticated)
         self.assertEquals(response.status_code,302)
         self.assertRedirects(response,reverse("cloth_detail",kwargs={"slug":self.cloth.slug}))
+    
+    def test_comment_exists_in_cloth_detail(self):
+        url = reverse("cloth_detail",kwargs={"slug":self.cloth.slug})
+        response = self.client.get(url)
+        self.assertContains(response,self.comment.body)
