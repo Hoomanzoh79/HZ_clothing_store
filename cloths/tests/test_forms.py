@@ -1,6 +1,5 @@
 from django.test import TestCase
 
-from accounts.models import CustomUser
 from cloths.forms import CommentForm
 
 class TestCommentForm(TestCase):
