@@ -1,7 +1,6 @@
-from cloths.models import Cloth
-from django.contrib import messages
 from django.utils.translation import gettext as _
 
+from cloths.models import Cloth
 
 class Cart:
     def __init__(self, request):
@@ -33,7 +32,6 @@ class Cart:
             self.cart[cloth_id]['quantity'] += quantity
 
         self.cart[cloth_id]['size'] = size
-        messages.success(self.request, _('Product has been added successfully to the cart'))
 
         self.save()
 
@@ -45,7 +43,6 @@ class Cart:
 
         if cloth_id in self.cart:
             del self.cart[cloth_id]
-            messages.success(self.request, _('Product has been removed successfully from the cart'))
             self.save()
 
     def save(self):
@@ -60,8 +57,6 @@ class Cart:
         cart = self.cart.copy()
         for cloth in cloths:
             cart[str(cloth.id)]['cloth_obj'] = cloth
-            # print(cart.values())
-            # print(cart.keys())
         for item in self.cart.values():
             item['total_price'] = item['cloth_obj'].price * item['quantity']
             yield item
