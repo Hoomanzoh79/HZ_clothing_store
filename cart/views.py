@@ -31,6 +31,7 @@ def add_to_cart_view(request, cloth_id):
         size = cleaned_data['size']
         if size in cloth.available_sizes():
             cart.add(cloth, size ,quantity, replace_current_quantity=cleaned_data['inplace'])
+            messages.success(request, _('Product has been added successfully to the cart'))
             return redirect('cart:cart_detail')
         else:
            messages.warning(request, _('Sorry! The chosen size is not available right now'))
@@ -41,6 +42,7 @@ def remove_from_cart_view(request,cloth_id):
     cart = Cart(request)
     cloth = get_object_or_404(Cloth, id=cloth_id)
     cart.remove(cloth)
+    messages.success(request, _('Product has been removed successfully from the cart'))
     return redirect('cart:cart_detail')
 
 
