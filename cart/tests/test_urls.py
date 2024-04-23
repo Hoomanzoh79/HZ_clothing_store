@@ -8,7 +8,7 @@ from cart.views import (add_to_cart_view,
                         remove_from_cart_view)
 
 
-class CartUrl(TestCase):
+class TestCartUrl(TestCase):
     def test_add_to_cart_url_resolve(self):
         url = reverse("cart:cart_add",args=[1])
         self.assertEquals(resolve(url).func,add_to_cart_view)
