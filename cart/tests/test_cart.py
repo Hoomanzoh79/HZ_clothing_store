@@ -1,8 +1,6 @@
-from django.test import TestCase
+from django.test import TestCase,Client,RequestFactory
 from django.template.defaultfilters import slugify
-from django.test import TestCase, RequestFactory, Client
-from django.contrib.auth.models import User, AnonymousUser
-from django.urls import reverse
+from django.http import HttpRequest
 
 from cloths.models import Cloth
 from cart.cart import Cart
@@ -37,6 +35,7 @@ CLOTH_VALID_DATA2 = {
 
 class TestCart(TestCase):
     def setUp(self):
+        self.client = Client()
         self.cloth1 = Cloth.objects.create(**CLOTH_VALID_DATA1)
         self.cloth2 = Cloth.objects.create(**CLOTH_VALID_DATA2)
         self.factory = RequestFactory()
@@ -64,9 +63,8 @@ class TestCart(TestCase):
         self.assertEquals(len(cart), 0)
     
     # def test_clear_cart(self):
-    #     url = reverse("cart:cart_detail")
-    #     cart = Cart(self.client.get(url))
+    #     cart = Cart(self.client)
     #     cart.add(self.cloth1,quantity=1,size="XL")
     #     cart.add(self.cloth2, quantity=2,size="L")
-    #     cart.clear()
+    #     cart.clear(self.client)
     #     self.assertEquals(len(cart),0)
