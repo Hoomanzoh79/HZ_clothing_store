@@ -1,10 +1,6 @@
 from django.test import TestCase
 
-
 from orders.forms import OrderForm
-from cloths.forms import CommentForm
-from accounts.models import CustomUser
-
 
 class TestOrderForm(TestCase):
     def test_order_form_valid_data(self):
