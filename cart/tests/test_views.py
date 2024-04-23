@@ -18,7 +18,7 @@ CLOTH_VALID_DATA =  {
             "brand":"adidas",
         }
 
-class CartView(TestCase):
+class TestCartView(TestCase):
     def setUp(self):
         self.cloth = Cloth.objects.create(**CLOTH_VALID_DATA)
     
