@@ -61,7 +61,7 @@ class TestClothView(TestCase):
         self.assertTemplateUsed("cloths/highest_selling.html")
 
 
-class CommentView(TestCase):
+class TestCommentView(TestCase):
     def setUp(self):
         self.author = CustomUser.objects.create(email="testemail@email.com",password="*7S^dasadDSA1")
         self.cloth = Cloth.objects.create(**CLOTH_VALID_DATA)
