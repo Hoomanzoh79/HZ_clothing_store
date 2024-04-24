@@ -1,4 +1,5 @@
 from django.utils.translation import gettext as _
+from django.conf import settings
 
 from cloths.models import Cloth
 
@@ -11,10 +12,11 @@ class Cart:
 
         self.session = request.session
 
-        cart = self.session.get('cart')
+        cart = self.session.get(settings.CART_SESSION_ID)
 
         if not cart:
-            cart = self.session['cart'] = {}
+            # save an empty cart in the session
+            cart = self.session[settings.CART_SESSION_ID] = {}
 
         self.cart = cart
 
@@ -65,7 +67,11 @@ class Cart:
         return sum(item['quantity'] for item in self.cart.values())
 
     def clear(self):
-        del self.session['cart']
+        """
+        Remove all items from the cart.
+        """
+        for key in list(self.cart.keys()): 
+            del self.cart[key]
         self.save()
 
     def get_total_price(self):
