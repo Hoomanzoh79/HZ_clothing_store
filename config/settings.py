@@ -214,3 +214,6 @@ MEDIA_URL = '/media/'
 # payment and zarinpal
 SANDBOX = env.bool("ZARINPAL_SANDBOX",default=True)
 MERCHANT = env("ZARINPAL_MERCHANT_ID",default="test marchant")
+
+# cart
+CART_SESSION_ID = 'cart'
