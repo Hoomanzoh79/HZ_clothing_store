@@ -15,9 +15,8 @@ def order_create_view(request):
     phone_number = profile.phone_number
     address = profile.address
     cart = Cart(request)
-    if len(cart) == 0:
-        return redirect('cart:cart_detail')
-
+    
+    
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         if order_form.is_valid():
@@ -41,7 +40,11 @@ def order_create_view(request):
 
             request.session['order_id'] = order_obj.id
             return redirect('payment:payment_process')
-
+        
+    if request.method == "GET":
+        if len(cart) == 0:
+            return redirect('cart:cart_detail')
+        
     return render(request, 'orders/order_create.html', context={'form': order_form,
                                                                 'first_name':first_name,
                                                                 'last_name':last_name,
