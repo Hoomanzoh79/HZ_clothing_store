@@ -62,9 +62,9 @@ class TestCart(TestCase):
         cart.remove(self.cloth1)
         self.assertEquals(len(cart), 0)
     
-    # def test_clear_cart(self):
-    #     cart = Cart(self.client)
-    #     cart.add(self.cloth1,quantity=1,size="XL")
-    #     cart.add(self.cloth2, quantity=2,size="L")
-    #     cart.clear(self.client)
-    #     self.assertEquals(len(cart),0)
+    def test_clear_cart(self):
+        cart = Cart(self.client)
+        cart.add(self.cloth1,quantity=1,size="XL")
+        cart.add(self.cloth2, quantity=2,size="L")
+        cart.clear()
+        self.assertEquals(len(cart),0)
