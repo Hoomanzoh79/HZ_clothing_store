@@ -6,7 +6,7 @@ from .models import OrderItem
 from accounts.models import Profile
 
 
-@login_required
+@login_required(redirect_field_name="")
 def order_create_view(request):
     order_form = OrderForm()
     profile = Profile.objects.get(user_id=request.user.id)
