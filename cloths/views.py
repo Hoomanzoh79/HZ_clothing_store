@@ -8,6 +8,7 @@ from django.utils.translation import gettext as _
 from .models import Cloth,Comment
 from .forms import CommentForm
 from cart.forms import AddToCartForm
+from .filters import ClothFilter
 
 
 class HighestSellingView(generic.ListView):
@@ -40,6 +41,18 @@ class ClothsListView(generic.ListView):
     template_name = 'cloths/cloths_list.html'
     context_object_name = 'cloths'
     paginate_by = 10
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        filter = ClothFilter(self.request.GET, queryset)
+        return filter.qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        queryset = self.get_queryset()
+        filter = ClothFilter(self.request.GET, queryset)
+        context["filter"] = filter
+        return context
 
 
 class ClothDetailView(generic.DetailView):
