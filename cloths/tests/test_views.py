@@ -27,14 +27,14 @@ class TestClothView(TestCase):
         response = self.client.get(url)
         self.assertEquals(response.status_code,200)
         self.assertContains(response,self.cloth.title)
-        self.assertTemplateUsed("cloths/cloths_list.html")
+        self.assertTemplateUsed(response,"cloths/cloths_list.html")
     
     def test_cloth_detail_view_valid_slug(self):
         url = reverse("cloth_detail",kwargs={"slug":self.cloth.slug})
         response = self.client.get(url)
         self.assertEquals(response.status_code,200)
         self.assertContains(response,self.cloth.title)
-        self.assertTemplateUsed("cloths/cloths_detail.html")
+        self.assertTemplateUsed(response,"cloths/cloth_detail.html")
 
     def test_cloth_detail_view_invalid_slug(self):
         url = reverse("cloth_detail",kwargs={"slug":"-invalid-slug"})
@@ -45,20 +45,20 @@ class TestClothView(TestCase):
         url = reverse("female_list")
         response = self.client.get(url)
         self.assertEquals(response.status_code,200)
-        self.assertTemplateUsed("cloths/female_list.html")
+        self.assertTemplateUsed(response,"cloths/female_list.html")
     
     def test_male_list_view(self):
         url = reverse("male_list")
         response = self.client.get(url)
         self.assertEquals(response.status_code,200)
         self.assertContains(response,self.cloth.title)
-        self.assertTemplateUsed("cloths/male_list.html")
+        self.assertTemplateUsed(response,"cloths/male_list.html")
     
     def test_highest_selling_view(self):
         url = reverse("highest_selling")
         response = self.client.get(url)
         self.assertEquals(response.status_code,200)
-        self.assertTemplateUsed("cloths/highest_selling.html")
+        self.assertTemplateUsed(response,"cloths/highest_selling.html")
 
 
 class TestCommentView(TestCase):
@@ -92,3 +92,4 @@ class TestCommentView(TestCase):
         url = reverse("cloth_detail",kwargs={"slug":self.cloth.slug})
         response = self.client.get(url)
         self.assertContains(response,self.comment.body)
+        self.assertTemplateUsed(response,"cloths/cloth_detail.html")
