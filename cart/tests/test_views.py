@@ -31,6 +31,7 @@ class TestCartView(TestCase):
         url = reverse("cart:cart_detail")
         response = self.client.get(url)
         self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response,"cart/cart_detail.html")
     
     def test_cart_clear_view(self):
         url = reverse("cart:cart_clear")
