@@ -48,3 +48,4 @@ class TestOrderView(TestCase):
         url = reverse('orders:order_create')
         response = self.client.post(url)
         self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response,"orders/order_create.html")
