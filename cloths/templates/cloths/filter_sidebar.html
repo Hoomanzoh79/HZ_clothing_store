@@ -1,0 +1,18 @@
+<!--Sidebar-->
+<div class="col-12 col-sm-12 col-md-12 col-lg-3 sidebar filterbar">
+    <div class="closeFilter d-block d-lg-none"><i class="icon icon an an-times-r"></i></div>
+    <div class="sidebar_tags">
+        <!--Categories-->
+        <div class="sidebar_widget categories filterBox filter-widget">
+            <form method="get" action="">
+                {{ filter.form.as_p }}
+                <input type="submit" class="btn rounded me-auto mt-3" value="فیلتر" />
+            </form>
+            {% for obj in filter.qs %}
+            {{ obj.name }}
+            {% endfor %}
+        </div>
+        <!--Categories-->
+    </div>
+</div>
+<!--End Sidebar-->
