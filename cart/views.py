@@ -10,7 +10,6 @@ from django.utils.translation import gettext as _
 
 def cart_detail_view(request):
     cart = Cart(request)
-
     return render(request, 'cart/cart_detail.html', {'cart': cart})
 
 
