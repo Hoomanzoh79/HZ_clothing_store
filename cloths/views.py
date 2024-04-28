@@ -62,10 +62,11 @@ class ClothDetailView(generic.DetailView):
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
         context['comment_form'] = CommentForm()
-        context['add_to_cart_form'] = AddToCartForm()
+        cloth = Cloth.objects.get(slug=self.kwargs['slug'])
+        context['add_to_cart_form'] = AddToCartForm(pk=cloth.id)
         return context
 
 
