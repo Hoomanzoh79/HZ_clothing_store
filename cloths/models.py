@@ -31,6 +31,12 @@ class MultiSelectField(MSField):
     flatchoices = property(_get_flatchoices)
 
 
+class Color(models.Model):
+    color_name = models.CharField(max_length=25)
+
+    def __str__(self):
+        return self.color_name
+    
 class Cloth(models.Model):
     CATEGORIES = [
         ('tshirt',_('tshirt')),
@@ -59,6 +65,7 @@ class Cloth(models.Model):
     sizes = MultiSelectField(choices=SIZE_CHOICES,
                              max_choices=6,
                              max_length=17,null=True)
+    colors = models.ManyToManyField(Color,related_name="colors", blank=True)
 
     title = models.CharField(max_length=50)
     slug = models.SlugField(blank=False,unique=True,allow_unicode=True)

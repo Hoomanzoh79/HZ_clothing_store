@@ -5,7 +5,7 @@ from django.utils.http import urlencode
 from django.urls import reverse
 from django.db.models import Count
 
-from .models import Cloth, Comment
+from .models import Cloth, Comment,Color
 
 @admin.register(Cloth)
 class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
@@ -61,3 +61,8 @@ class CommentAdmin(admin.ModelAdmin):
     @admin.action(description='active comments')
     def active_comments(self,request,queryset):
         queryset.update(active=True)
+
+
+@admin.register(Color)
+class ColorAdmin(admin.ModelAdmin):
+    list_display = ['color_name']
