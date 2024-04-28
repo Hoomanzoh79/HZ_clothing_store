@@ -20,7 +20,7 @@ class Cart:
 
         self.cart = cart
 
-    def add(self, cloth, size, quantity=1, replace_current_quantity=False):
+    def add(self, cloth, size,color,quantity=1, replace_current_quantity=False):
         """
         Add the specified product to the cart if it exists
         """
@@ -34,6 +34,7 @@ class Cart:
             self.cart[cloth_id]['quantity'] += quantity
 
         self.cart[cloth_id]['size'] = size
+        self.cart[cloth_id]['color'] = color
 
         self.save()
 
