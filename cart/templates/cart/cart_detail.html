@@ -69,7 +69,7 @@
                                         <span class="money fw-500">{% trans 'total' %} : {{ item.total_price|translate_number }} {% trans '$' %} </span>
                                     </div>
                                     <div class="cart__meta-text">
-                                        <br>سایز: {{ item.size }}<br> تعداد: {{ item.quantity }}
+                                        <br>{% trans 'size' %}: {{ item.size }}<br> {% trans 'quantity' %}: {{ item.quantity }}<br>{% trans 'color' %}: {{ item.color }} 
                                     </div>
                                 </td>
                                 <td class="cart__price-wrapper cart-flex-item text-center small--hide">
