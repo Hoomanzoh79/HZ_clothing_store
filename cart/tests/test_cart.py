@@ -1,6 +1,5 @@
 from django.test import TestCase,Client,RequestFactory
 from django.template.defaultfilters import slugify
-from django.http import HttpRequest
 
 from cloths.models import Cloth
 from cart.cart import Cart
