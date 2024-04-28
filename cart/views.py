@@ -24,7 +24,8 @@ def add_to_cart_view(request, cloth_id):
         cleaned_data = form.cleaned_data
         quantity = cleaned_data['quantity']
         size = cleaned_data['sizes']
-        cart.add(cloth, size ,quantity, replace_current_quantity=cleaned_data['inplace'])
+        color = cleaned_data['colors']
+        cart.add(cloth, size, color ,quantity, replace_current_quantity=cleaned_data['inplace'])
         messages.success(request, _('Product has been added successfully to the cart'))
         return redirect('cart:cart_detail')
 
