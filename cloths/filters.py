@@ -6,11 +6,11 @@ from django.utils.translation import gettext as _
 from .models import Cloth
 
 EXAMPLE_BRANDS = [
-        ('nike',_('nike')),
-        ('adidas',_('adidas')),
-        ('jeanwest',_('jeanwest')),
-        ('body spinner',_('body spinner')),
-        ('LC MAN', _('lc man')),
+        (_('nike'),_('nike')),
+        (_('adidas'),_('adidas')),
+        (_('jeanwest'),_('jeanwest')),
+        (_('body spinner'),_('body spinner')),
+        (_('lc man'), _('lc man')),
     ]
 class ClothFilter(django_filters.FilterSet):
     brand = django_filters.CharFilter(label=_('search brand'),
