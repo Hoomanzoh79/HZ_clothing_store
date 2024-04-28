@@ -31,6 +31,7 @@ def order_create_view(request):
                     cloth=cloth,
                     quantity=item['quantity'],
                     size=item['size'],
+                    color=item['color'],
                     price=cloth.price,
                 )
             cart.clear()
