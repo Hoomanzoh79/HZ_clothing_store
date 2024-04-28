@@ -29,19 +29,12 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    SIZE_CHOICES = (
-                    ('S', 'S'),
-                    ('M', 'M'),
-                    ('L','L'),
-                    ('XL', 'XL'),
-                    ('XXL', 'XXL'),
-                    )
-
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
     cloth = models.ForeignKey('cloths.Cloth', on_delete=models.CASCADE, related_name='order_items')
     price = models.PositiveIntegerField()
     quantity = models.PositiveIntegerField(default=1)
-    size = models.CharField(max_length=3,choices=SIZE_CHOICES)
+    size = models.CharField(max_length=3)
+    color = models.CharField(max_length=25,null=True)
 
     def __str__(self):
         return f'OrderItem {self.id}: {self.cloth} x {self.quantity} (price:{self.price})'
