@@ -10,14 +10,19 @@ class AddToCartForm(forms.ModelForm):
 
     class Meta:
         model = Cloth
-        fields = ['sizes']
+        fields = ['sizes','colors']
     
     
     def __init__(self, pk, *args, **kwargs):
             super(AddToCartForm, self).__init__(*args, **kwargs)
             sizes = tuple(Cloth.objects.get(pk=pk).sizes)
+            colors = Cloth.objects.get(pk=pk).available_colors()
             sizes_list = []
+            colors_list = []
             for item in sizes:
                 sizes_list.append((item, item))
+            for item in colors:
+                colors_list.append((item, item))
             self.fields['sizes'] = forms.ChoiceField(choices=sizes_list)
+            self.fields['colors'] = forms.ChoiceField(choices=colors_list)
     
