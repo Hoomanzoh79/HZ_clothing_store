@@ -51,9 +51,9 @@
                                             class="icon an an-times-r"></i></a></td>
                                 <td class="cart__image-wrapper cart-flex-item">
                                     <a href="{% url 'cart:cart_remove' item.cloth_obj.id %}"
-                                    class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title="برداشتن مورد"><i
-                                        class="icon an an-times-r"></i></a>
+                                        class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="برداشتن مورد"><i
+                                            class="icon an an-times-r"></i></a>
                                     {% if item.cloth_obj.cover %}
                                     <a href="{{ item.cloth_obj.get_absolute_url }}"><img
                                             class="cart__image blur-up lazyload"
@@ -65,74 +65,75 @@
                                     <div class="list-view-item__title">
                                         <a href="{{ item.cloth_obj.get_absolute_url }}">{{ item.cloth_obj.title }}</a>
                                     </div>
+                                    <div class="cart-price d-md-none">
+                                        <span class="money fw-500">{% trans 'total' %} : {{ item.total_price|translate_number }} {% trans '$' %} </span>
+                                    </div>
                                     <div class="cart__meta-text">
                                         <br>سایز: {{ item.size }}<br> تعداد: {{ item.quantity }}
-                                    </div>
-                                    <div class="cart-price d-md-none">
-                                        <span class="money fw-500">{{ item.cloth_obj.price|translate_number }} {% trans '$' %} </span>
                                     </div>
                                 </td>
                                 <td class="cart__price-wrapper cart-flex-item text-center small--hide">
                                     <span class="money">{{ item.cloth_obj.price|translate_number }} {% trans '$' %}
                                     </span>
                                 </td>
-                                <td class="product-quantity">
+                                <td class="product-quantity small--hide">
                                     <div class="cart__qty d-flex justify-content-end justify-content-md-center">
                                         <div class="qtyField">
                                             <input type="number" name="quantity" value="{{ item.quantity }}" class="qty"
                                                 min="1" max="20" readonly>
-                                            <td class="cart-price cart-flex-item text-center small--hide">
-                                                <span class="money fw-500"> {{ item.total_price|translate_number }} {% trans '$' %}
-                                                </span>
-                                            </td>
-                                        </div>
-                                    </div>
+                                <td class="cart-price cart-flex-item text-center small--hide">
+                                    <span class="money fw-500"> {{ item.total_price|translate_number }} {% trans '$' %}
+                                    </span>
                                 </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="3" class="text-start pt-3">
-                                </td>
-                                <td colspan="3" class="text-end pt-3">
-                                    <a type="submit" href="{% url 'index' %}"
-                                        class="btn btn--small d-inline-flex align-items-center rounded cart-continue ml-2">
-                                        <i class="me-1 icon an an-sync-ar d-none"></i>{% trans 'Go Shopping More' %}
-                                    </a>
-                            </tr>
-                            <tr>
-                                <td colspan="3" class="text-start pt-3">
-                                </td>
-                                <td colspan="3" class="text-end pt-3">
-                                    <a type="submit" href="{% url 'cart:cart_clear' %}"
-                                        class="btn btn--small d-inline-flex align-items-center rounded cart-continue ml-2">
-                                        <i class="me-1 icon an an-sync-ar d-none"></i>{% trans 'Clear Cart' %}
-                                    </a>
-                            </tr>
-                        </tfoot>
-                    </table>
                 </div>
             </div>
+            </td>            
+        </div>
+        </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-start pt-3">
+                </td>
+                <td colspan="3" class="text-end pt-3">
+                    <a type="submit" href="{% url 'index' %}"
+                        class="btn btn--small d-inline-flex align-items-center rounded cart-continue ml-2">
+                        <i class="me-1 icon an an-sync-ar d-none"></i>{% trans 'Go Shopping More' %}
+                    </a>
+            </tr>
+            <tr>
+                <td colspan="3" class="text-start pt-3">
+                </td>
+                <td colspan="3" class="text-end pt-3">
+                    <a type="submit" href="{% url 'cart:cart_clear' %}"
+                        class="btn btn--small d-inline-flex align-items-center rounded cart-continue ml-2">
+                        <i class="me-1 icon an an-sync-ar d-none"></i>{% trans 'Clear Cart' %}
+                    </a>
+            </tr>
+        </tfoot>
+        </table>
+    </div>
+    </div>
 
-            <div class="row mt-2">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-4 cart__footer">
-                    <div class="solid-border">
-                        <div class="row border-bottom pb-2 pt-2">
-                            <span class="col-6 col-sm-6 cart__subtotal-title"><strong>جمع کل سبد خرید : </strong></span>
-                            <span class="col-6 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span
-                                    class="money">{{ cart.get_total_price|translate_number }} {% trans '$' %}
-                                </span></span>
-                        </div>
-                        <a href="{% url 'orders:order_create' %}" id="cartCheckout"
-                            class="btn btn--small-wide rounded mt-4 checkout">به
-                            پرداخت ادامه دهید</a>
-                    </div>
+    <div class="row mt-2">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 cart__footer">
+            <div class="solid-border">
+                <div class="row border-bottom pb-2 pt-2">
+                    <span class="col-6 col-sm-6 cart__subtotal-title"><strong>جمع کل سبد خرید : </strong></span>
+                    <span class="col-6 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">{{cart.get_total_price|translate_number }} {% trans '$' %}
+                        </span></span>
                 </div>
+                <a href="{% url 'orders:order_create' %}" id="cartCheckout"
+                    class="btn btn--small-wide rounded mt-4 checkout">به
+                    پرداخت ادامه دهید</a>
             </div>
         </div>
-        <!--End Cart Page-->
-        {% endif %}
+    </div>
+    </div>
+    <!--End Cart Page-->
+    {% endif %}
     </div>
     <!--End Main Content-->
     </div>
