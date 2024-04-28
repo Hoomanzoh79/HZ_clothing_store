@@ -95,6 +95,9 @@ class Cloth(models.Model):
     
     def available_sizes(self):
         return tuple(self.sizes)
+
+    def available_colors(self):
+        return tuple(self.colors.all())
     
     def is_active(self,obj):
         return obj.inventory > 0
