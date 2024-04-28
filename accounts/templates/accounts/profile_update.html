@@ -86,7 +86,10 @@
                                         <tbody>
                                             {% for item in order.items.all %}
                                         <tr>
-                                                <td>{{ item.cloth.title }}</td>
+                                                <td>{{ item.cloth.title }}
+                                                    <br>{% trans 'size' %} : {{ item.size }}<br>
+                                                    <br>{% trans 'color' %} : {{ item.color }}<br>
+                                                </td>
                                                 <td>{{ order.datetime_created }}</td>
                                                 {% if order.is_paid %}
                                                     <td class="text-success">{% trans "is complete" %}</td>
