@@ -27,6 +27,7 @@
                                 <div class="product-details">
                                     <a class="product-title" href="{{ item.cloth_obj.get_absolute_url }}">{{ item.cloth_obj.title }}</a>
                                     <div class="variant-cart mb-1">{% trans "size" %} : {{ item.size }}</div>
+                                    <div class="variant-cart mb-1">{% trans "color" %} : {{ item.color }}</div>
                                     <div class="priceRow">
                                         <div class="product-price">
                                             <span class="money">{{ item.total_price|translate_number }} {% trans '$' %}</span>
