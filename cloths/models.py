@@ -126,3 +126,8 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return reverse("cloth_detail", kwargs={"slug": self.cloth.slug})
+
+
+class Image(models.Model):
+    cloth = models.ForeignKey(Cloth,on_delete=models.CASCADE,related_name='images')
+    image = models.ImageField(upload_to='cloth/cloth_covers',verbose_name='image')
