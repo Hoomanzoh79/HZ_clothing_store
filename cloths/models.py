@@ -102,6 +102,10 @@ class Cloth(models.Model):
     def is_active(self,obj):
         return obj.inventory > 0
 
+    def hover_image(self):
+        """returns the first value of cloth images as the hover image"""
+        for file in self.images.all():
+            return file.image
 
 class ActiveCommentsManager(models.Manager):
     def get_queryset(self):
