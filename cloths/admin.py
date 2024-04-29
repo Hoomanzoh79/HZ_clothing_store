@@ -5,10 +5,19 @@ from django.utils.http import urlencode
 from django.urls import reverse
 from django.db.models import Count
 
-from .models import Cloth, Comment,Color
+from .models import Cloth, Comment,Color,Image
+
+
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ['cloth','image']
+
+class ImageInline(admin.TabularInline):
+    model = Image
 
 @admin.register(Cloth)
 class ClothAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
+    inlines = [ImageInline]
     list_display = ['id','title','brand','price','category','season', 'gender', 'sales','inventory',"inventory_status","comments_count"]
     list_per_page = 10
     list_editable = ['price','inventory','category']
