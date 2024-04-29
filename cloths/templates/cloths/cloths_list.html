@@ -65,9 +65,14 @@
                                             src="{{ cloth.cover.url }}" alt="image" title="">
                                         <!-- End image -->
                                         <!-- Hover image -->
+                                        {% if  cloth.images.all|length > 0 %}
+                                        <img class="hover blur-up lazyload" data-src="{{ cloth.hover_image.url }}"
+                                        src="{{ cloth.hover_image.url }}" alt="image" title="">
+                                        {% else %}
                                         <img class="hover blur-up lazyload" data-src="{{ cloth.cover.url }}"
-                                            src="{{ cloth.cover.url }}" alt="image" title="">
+                                        src="{{ cloth.cover.url }}" alt="image" title="">
                                         <!-- End hover image -->
+                                        {% endif %}
                                     </a>
                                     <!--End Product Image-->
 
