@@ -41,14 +41,28 @@
                         {% if cloth.cover %}
                             <div class="zoompro-wrap product-zoom-right w-100 p-0">
                                 <div class="zoompro-span product-single-style2">
-                                    <img id="zoompro" class="zoompro" src="{{ cloth.cover.url }}"
-                                         data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
+                                    <img id="zoompro" class="zoompro" src="{{ cloth.cover.url }}" data-zoom-image="{{ cloth.cover.url }}" alt="product" />
+                                    {% for file in cloth.images.all %}
+                                    <img src="{{ file.image.url }}" data-zoom-image="{{ file.image.url }}" alt="product" />
+                                    {% endfor %}
+                                        </div>
+                                        <div class="product-buttons">
+                                            <a href="#" class="btn rounded-0 prlightbox"><i class="icon an an-expand-l-arrows"></i><span class="tooltip-label">زوم عکس</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-thumb product-horizontal-thumb w-100 pt-2 mt-1">
+                                        <div id="gallery" class="product-thumb-style2 overflow-hidden">
+                                            <img src="{{ cloth.cover.url }}"
+                                            data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
+                                            {% for file in cloth.images.all %}
+                                            <img src="{{ file.image.url }}" data-zoom-image="{{ file.image.url }}" alt="product" />
+                                            {% endfor %}
                                 </div>
-                            </div>
-                            <div class="product-thumb product-horizontal-thumb w-100 pt-2 mt-1">
-                                <div id="gallery" class="product-thumb-style2 overflow-hidden">
-                                    <img src="{{ cloth.cover.url }}"
-                                         data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
+                                <div class="lightboximages">
+                                    <a href="{{ cloth.cover.url }}" data-size="1000x1280"></a>
+                                    {% for file in cloth.images.all %}
+                                    <a href="{{ file.image.url }}" data-size="1000x1280"></a>
+                                    {% endfor %}
                                 </div>
                             </div>
                         {% else %}
@@ -160,14 +174,28 @@
                             {% if cloth.cover %}
                                 <div class="zoompro-wrap product-zoom-right w-100 p-0">
                                     <div class="zoompro-span product-single-style2">
-                                        <img id="zoompro" class="zoompro" src="{{ cloth.cover.url }}"
-                                             data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
+                                        <img id="zoompro" class="zoompro" src="{{ cloth.cover.url }}" data-zoom-image="{{ cloth.cover.url }}" alt="product" />
+                                        {% for file in cloth.images.all %}
+                                        <img src="{{ file.image.url }}" data-zoom-image="{{ file.image.url }}" alt="product" />
+                                        {% endfor %}
+                                            </div>
+                                            <div class="product-buttons">
+                                                <a href="#" class="btn rounded-0 prlightbox"><i class="icon an an-expand-l-arrows"></i><span class="tooltip-label">زوم عکس</span></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-thumb product-horizontal-thumb w-100 pt-2 mt-1">
+                                            <div id="gallery" class="product-thumb-style2 overflow-hidden">
+                                                <img src="{{ cloth.cover.url }}"
+                                                data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
+                                                {% for file in cloth.images.all %}
+                                                <img src="{{ file.image.url }}" data-zoom-image="{{ file.image.url }}" alt="product" />
+                                                {% endfor %}
                                     </div>
-                                </div>
-                                <div class="product-thumb product-horizontal-thumb w-100 pt-2 mt-1">
-                                    <div id="gallery" class="product-thumb-style2 overflow-hidden">
-                                        <img src="{{ cloth.cover.url }}"
-                                             data-zoom-image="{{ cloth.cover.url }}" alt="product"/>
+                                    <div class="lightboximages">
+                                        <a href="{{ cloth.cover.url }}" data-size="1000x1280"></a>
+                                        {% for file in cloth.images.all %}
+                                        <a href="{{ file.image.url }}" data-size="1000x1280"></a>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             {% else %}
