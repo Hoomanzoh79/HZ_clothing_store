@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 
-from cloths.models import Cloth, Comment
+from cloths.models import Cloth
 
 
 class AboutUsPageView(generic.TemplateView):
