@@ -10,12 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from environs import Env
+from decouple import config
 from pathlib import Path
 import os
-# for environment variables
-env = Env()
-env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,11 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('DJANGO_SECRET_KEY',default="test secret key")
+SECRET_KEY = config("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False # to test 404 template
-DEBUG = env("DJANGO_DEBUG",default=True)
+DEBUG = config("DJANGO_DEBUG", cast=bool)
+
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com']
 
 
@@ -212,8 +209,8 @@ MEDIA_URL = '/media/'
 
 
 # payment and zarinpal
-SANDBOX = env.bool("ZARINPAL_SANDBOX",default=True)
-MERCHANT = env("ZARINPAL_MERCHANT_ID",default="test marchant")
+SANDBOX = config("ZARINPAL_SANDBOX", cast=bool)
+MERCHANT = config("ZARINPAL_MERCHANT_ID",default="test marchant")
 
 # cart
 CART_SESSION_ID = 'cart'
