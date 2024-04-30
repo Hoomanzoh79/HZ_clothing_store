@@ -20,11 +20,13 @@ CLOTH_VALID_DATA = {
 class TestCartForm(TestCase):
     def setUp(self):
         self.cloth = Cloth.objects.create(**CLOTH_VALID_DATA)
+        self.color = self.cloth.colors.create(color_name="red")
 
     def test_add_to_cart_form_valid_data(self):
         add_to_cart_form = AddToCartForm(pk=self.cloth.id,data={
             'quantity' : 2,
             'sizes': "XL",
+            'colors':'red',
         })
         self.assertTrue(add_to_cart_form.is_valid())
     
@@ -32,6 +34,15 @@ class TestCartForm(TestCase):
         add_to_cart_form = AddToCartForm(pk=self.cloth.id,data={
             'quantity' : 2,
             'sizes': "S",
+            'colors':'red',
+        })
+        self.assertFalse(add_to_cart_form.is_valid())
+    
+    def test_add_to_cart_form_invalid_color(self):
+        add_to_cart_form = AddToCartForm(pk=self.cloth.id,data={
+            'quantity' : 2,
+            'sizes': "XL",
+            'colors':'cyan',
         })
         self.assertFalse(add_to_cart_form.is_valid())
     

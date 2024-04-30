@@ -1,7 +1,7 @@
 from django.test import TestCase,Client,RequestFactory
 from django.template.defaultfilters import slugify
 
-from cloths.models import Cloth,Color
+from cloths.models import Cloth
 from cart.cart import Cart
 
 
