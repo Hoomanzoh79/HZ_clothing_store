@@ -23,6 +23,7 @@ class TestOrderView(TestCase):
     def setUp(self):
         self.user = CustomUser.objects.create(email="testorder@gmail.com",password="*7S^dasadDSA1")
         self.cloth = Cloth.objects.create(**CLOTH_VALID_DATA)
+        self.color = self.cloth.colors.create(color_name="red")
     
     def test_order_create_view_unauthorized(self):
         """redirects the user to login page,POST request or GET request doesn't matter"""
@@ -44,7 +45,7 @@ class TestOrderView(TestCase):
         """cart is not empty and user is authenticated"""
         self.client.force_login(user=self.user)
         cart = Cart(self.client)
-        cart.add(self.cloth,quantity=2,size="S")
+        cart.add(self.cloth,quantity=2,size="S",color=self.color)
         url = reverse('orders:order_create')
         response = self.client.post(url)
         self.assertEquals(response.status_code,200)
