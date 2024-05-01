@@ -3,18 +3,16 @@ version: '3.9'
 services:
   web1:
     build: .
-    command: python /code/manage.py runserver 0.0.0.0:8000
+    command: sh -c "yes | python manage.py makemigrations  && yes | python manage.py migrate  && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
       - 8000:8000
+    restart: always
     depends_on:
         - db
-    environment:
-       - "DJANGO_SECRET_KEY=${DOCKER_COMPOSE_DJANGO_SECRET_KEY}"
-       - "DJANGO_DEBUG=${DOCKER_COMPOSE_DJANGO_DEBUG}"
-       - "ZARINPAL_SANDBOX=${DOCKER_COMPOSE_ZARINPAL_SANDBOX}"
-       - "ZARINPAL_MERCHANT_ID=${DOCKER_COMPOSE_ZARINPAL_MERCHANT_ID}"
+    env_file:
+      - /envs/django/.env
 
 
   db:
