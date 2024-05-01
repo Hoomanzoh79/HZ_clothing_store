@@ -14,6 +14,7 @@ def order_create_view(request):
     last_name = profile.last_name
     phone_number = profile.phone_number
     address = profile.address
+    postal_code = profile.postal_code
     cart = Cart(request)
     
     
@@ -51,4 +52,5 @@ def order_create_view(request):
                                                                 'last_name':last_name,
                                                                 'phone_number':phone_number,
                                                                 'address':address,
+                                                                'postal_code':postal_code,
                                                                 })
