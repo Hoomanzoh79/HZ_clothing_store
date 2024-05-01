@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+{% extends '_base.html' %}
+{% load static %}
+{% load i18n %}
+{% block page_title %}{% trans 'Internal Server Error' %}{% endblock %}
+
+{% block content %}
+    <div id="page-content">
+        <!--Main Content-->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="error-content py-4">
+                        <div class="page-title"><h1>{% trans 'Internal Server Error' %}</h1></div>
+                        <p>{% trans "It looks like we can't find your requested page" %}</p>
+                        <p><a href="{% url 'index' %}"
+                              class="btn btn-outline-primary rounded text-capitalize mb-2 me-2">{% trans 'return' %}</a><a
+                                href="{% url 'cloths_list' %}"
+                                class="btn rounded mb-2 text-capitalize">{% trans 'keep shopping' %}</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Main Content-->
+    </div>
+    <!--End Body Container-->
+    <!--End Container-->
+{% endblock %}
+</html>
