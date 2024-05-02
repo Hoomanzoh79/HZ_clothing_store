@@ -6,8 +6,8 @@ from django.utils.translation import gettext as _
 from .models import Cloth
 
 EXAMPLE_BRANDS = [
-        (_('nike'),_('nike')),
-        (_('adidas'),_('adidas')),
+        (_('hakopian'),_('hakopian')),
+        (_('patan jame'),_('patan jame')),
         (_('jeanwest'),_('jeanwest')),
         (_('body spinner'),_('body spinner')),
         (_('lc man'), _('lc man')),
