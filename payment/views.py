@@ -20,7 +20,7 @@ else:
 ZP_API_URL = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentRequest.json"
 ZP_API_VERIFY_URL = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentVerification.json"
 START_PAY_URL = f"https://{sandbox}.zarinpal.com/pg/StartPay/"
-CALLBACK_URL = 'http://127.0.0.1:8000/payment/verify'
+CALLBACK_URL = 'https://hz-clothing-store.liara.run/payment/verify'
 
 
 class PaymentProcessView(View):
