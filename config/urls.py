@@ -28,7 +28,7 @@ admin.site.index_title = 'Special Access'
 admin.site.site_header = 'HZ Clothing Store'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('hz-admin/', admin.site.urls),
     path('', include('pages.urls')),
     path('profile/', include('accounts.urls')),
     path('cloths/', include('cloths.urls')),
