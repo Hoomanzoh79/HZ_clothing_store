@@ -1,18 +1,22 @@
 {
-  "platform": "docker",
-  "app": "hz-clothing-store",
-  "port": 8000,
-  "build": {
-    "dockerfile": "./Dockerfile"
+  "platform": "django",
+  "django": {
+    "pythonVersion": "3.10",
+    "collectStatic": false,
+    "compileMessages": true,
+    "modifySettings": true,
+    "timezone": "Asia/Tehran"
+    
   },
+  "app": "hz-clothing-store",
   "disks": [
     {
-      "name": "static",
-      "mountTo": "/code/static"
+      "name": "staticfiles",
+      "mountTo": "staticfiles"
     },
     {
       "name": "media",
-      "mountTo": "/code/media"
+      "mountTo": "media"
     }
   ]
 }

@@ -2,17 +2,19 @@ version: '3.9'
 
 services:
   web1:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     command: sh -c "yes | python manage.py makemigrations  && yes | python manage.py migrate  && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
       - 8000:8000
     restart: always
-    depends_on:
-        - db
     env_file:
       - /envs/django/.env
+    depends_on:
+        - db
 
 
   db:
