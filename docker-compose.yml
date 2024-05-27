@@ -11,10 +11,10 @@ services:
     depends_on:
         - db
     environment:
-       - "DJANGO_SECRET_KEY=${DOCKER_COMPOSE_DJANGO_SECRET_KEY}"
-       - "DJANGO_DEBUG=${DOCKER_COMPOSE_DJANGO_DEBUG}"
-       - "ZARINPAL_SANDBOX=${DOCKER_COMPOSE_ZARINPAL_SANDBOX}"
-       - "ZARINPAL_MERCHANT_ID=${DOCKER_COMPOSE_ZARINPAL_MERCHANT_ID}"
+       - DJANGO_SECRET_KEY=test
+       - DJANGO_DEBUG=true
+       - ZARINPAL_SANDBOX=true
+       - ZARINPAL_MERCHANT_ID=test
 
 
   db:
