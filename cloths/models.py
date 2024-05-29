@@ -36,43 +36,47 @@ class Color(models.Model):
 
     def __str__(self):
         return self.color_name
-
-class Size(models.Model):
-    size_name = models.CharField(max_length=5)
-
-    def __str__(self):
-        return self.color_name
-
-class Category(models.Model):
-    category_name = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.category_name
     
-class Season(models.Model):
-    season_name  = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.season_name
-
 class Cloth(models.Model):
+    CATEGORIES = [
+        ('tshirt',_('tshirt')),
+        ('pants',_('pants')),
+        ('jacket',_('jacket')),
+        ('suit',_('suit')),
+        ('others', _('others')),
+    ]
+
+    SEASON_CHOICES = [('winter', _('winter')),
+                      ('summer', _('summer')),
+                       ('fall', _('fall')), 
+                    ]
+    
     GENDER_CHOICES = [('male', _('male')),
                       ('female', _('female')), 
                       ]
     
-    sizes = models.ManyToManyField(Size,related_name="sizes")
-    colors = models.ManyToManyField(Color,related_name="colors")
-    categories = models.ManyToManyField(Category,related_name="categories")
-    seasons = models.ManyToManyField(Season,related_name="seasons")
+    SIZE_CHOICES = (
+                    ('S', 'S'),
+                    ('M', 'M'),
+                    ('L','L'),
+                    ('XL', 'XL'),
+                    ('XXL', 'XXL'))
+    
+    sizes = MultiSelectField(choices=SIZE_CHOICES,
+                             max_choices=6,
+                             max_length=17,null=True)
+    colors = models.ManyToManyField(Color,related_name="colors", blank=True)
 
     title = models.CharField(max_length=50)
     slug = models.SlugField(blank=False,unique=True,allow_unicode=True)
     description = RichTextField(blank=True)
     price = models.PositiveIntegerField(validators=[MinValueValidator(50000)],default=0,verbose_name=_("price"))
+    season = models.CharField(max_length=6, choices=SEASON_CHOICES,blank=True,verbose_name=_("season"))
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES,verbose_name=_("gender"))
     cover = models.ImageField(upload_to='cloth/cloth_covers', blank=True)
     sales = models.PositiveIntegerField(default=0,null=True)
     inventory = models.IntegerField(validators=[MinValueValidator(0)],default=0)
+    category = models.CharField(max_length=10, choices=CATEGORIES,null=True,verbose_name=_("category"))
     brand = models.CharField(max_length=100,null=True,verbose_name=_("brand"))
 
     datetime_created = models.DateTimeField(default=timezone.now)
