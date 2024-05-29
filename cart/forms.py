@@ -15,7 +15,7 @@ class AddToCartForm(forms.ModelForm):
     
     def __init__(self, pk, *args, **kwargs):
             super(AddToCartForm, self).__init__(*args, **kwargs)
-            sizes = tuple(Cloth.objects.get(pk=pk).sizes)
+            sizes = Cloth.objects.get(pk=pk).available_sizes()
             colors = Cloth.objects.get(pk=pk).available_colors()
             sizes_list = []
             colors_list = []
