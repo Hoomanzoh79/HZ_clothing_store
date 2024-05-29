@@ -36,6 +36,12 @@ class Color(models.Model):
 
     def __str__(self):
         return self.color_name
+
+class Size(models.Model):
+    size_name = models.CharField(max_length=5)
+
+    def __str__(self):
+        return self.size_name
     
 class Cloth(models.Model):
     CATEGORIES = [
@@ -55,16 +61,7 @@ class Cloth(models.Model):
                       ('female', _('female')), 
                       ]
     
-    SIZE_CHOICES = (
-                    ('S', 'S'),
-                    ('M', 'M'),
-                    ('L','L'),
-                    ('XL', 'XL'),
-                    ('XXL', 'XXL'))
-    
-    sizes = MultiSelectField(choices=SIZE_CHOICES,
-                             max_choices=6,
-                             max_length=17,null=True)
+    sizes = models.ManyToManyField(Size,related_name="sizes")
     colors = models.ManyToManyField(Color,related_name="colors", blank=True)
 
     title = models.CharField(max_length=50)
@@ -94,7 +91,7 @@ class Cloth(models.Model):
         return super().save(*args, **kwargs)
     
     def available_sizes(self):
-        return tuple(self.sizes)
+        return tuple(self.sizes.all())
 
     def available_colors(self):
         return tuple(self.colors.all())
