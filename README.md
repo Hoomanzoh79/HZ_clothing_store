@@ -35,21 +35,28 @@ Languages and tools <img src="https://raw.githubusercontent.com/Tarikul-Islam-An
 
 <space>
 
+<space>
+<h2 align="center">
+Some of the main django libraries used for this project :
+</h2>
+
+<space>
+	
 <p align="center">
-some of the main libraries that are used for this project are:
+django-allauth(authentication)
 </p>
 <p align="center">
-django-allauth -------> authentication
+django-rosetta(translation)
 </p>
 <p align="center">
-django-rosetta --------> translation
-</p>
-<p align="center">
-django-filter ---------> filter products
+django-filter(filter products)
 </p>
 
+
+<space>
+
 <h3 align="center">
-you can visit the list of all the libraries in the file "requirements.txt".
+you can also visit the full list of the libraries in the file "requirements.txt".
 </h3>
 
 
