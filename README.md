@@ -41,4 +41,6 @@ This project is online right now and you can visit it at:
 
 <space>
 
+<p align="center">
 	https://hz-clothing-store.liara.run/
+</p>
