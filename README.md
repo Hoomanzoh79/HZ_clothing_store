@@ -1,5 +1,5 @@
 <h1 align="center">
-Django Chatapp
+HZ Clothing Store
 </h1>
 
 <space>
