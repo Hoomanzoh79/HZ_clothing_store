@@ -11,12 +11,12 @@ This is a clothing store project using django framework
 <space>
 
 <p align="center">
-some of the main features of this project: user authentication,reset password,change profile,
+some of the main features of this project are: user authentication,reset and change password,change profile,
 comment section,cart,order and payment,search filter for products,
 and also a multiple input filter for products based on brand,gender,category,season and price.
 The cloth model is designed to have different colors/sizes,and the admin panel is highly customized.
+(There is no business purpose with this project,it's only designed to showcase my skills as a django programmer.)
 </p>
-
 
 <space>
 <h2 align="center">
@@ -32,6 +32,18 @@ Languages and tools <img src="https://raw.githubusercontent.com/Tarikul-Islam-An
   <img src="https://skillicons.dev/icons?i=css"/>
  <img src="https://skillicons.dev/icons?i=javascript"/>
 </div>
+
+<space>
+
+<p>
+	some of the main libraries that are used for this project:
+	django-allauth -------> authentication
+	django-rosetta --------> translation
+	django-filter ---------> filter products
+	you can visit the list of all the libraries in the file "requirements.txt".
+</p>
+
+
 
 <space>
 	
