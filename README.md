@@ -43,20 +43,14 @@ Some of the main django libraries used for this project :
 <space>
 	
 <p align="center">
-django-allauth(authentication)
-</p>
-<p align="center">
-django-rosetta(translation)
-</p>
-<p align="center">
-django-filter(filter products)
+django-allauth(authentication), django-rosetta(translation), django-filter(filter products)
 </p>
 
 
 <space>
 
 <h3 align="center">
-you can also visit the full list of the libraries in the file "requirements.txt".
+you can also visit the full list of the libraries in the file "requirements.txt"
 </h3>
 
 
