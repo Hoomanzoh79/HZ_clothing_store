@@ -36,21 +36,21 @@ Languages and tools <img src="https://raw.githubusercontent.com/Tarikul-Islam-An
 <space>
 
 <p align="center">
-	<p>
-	some of the main libraries that are used for this project are:
-	</p>
-	<p>
-	django-allauth -------> authentication
-	</p>
- 	<p>
-	django-rosetta --------> translation
-	</p>
- 	<p>
-	django-filter ---------> filter products
-	</p>
-	you can visit the list of all the libraries in the file "requirements.txt".
+some of the main libraries that are used for this project are:
+</p>
+<p align="center">
+django-allauth -------> authentication
+</p>
+<p align="center">
+django-rosetta --------> translation
+</p>
+<p align="center">
+django-filter ---------> filter products
 </p>
 
+<h3 align="center">
+you can visit the list of all the libraries in the file "requirements.txt".
+</h3>
 
 
 <space>
