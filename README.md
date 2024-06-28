@@ -32,3 +32,12 @@ Languages and tools <img src="https://raw.githubusercontent.com/Tarikul-Islam-An
   <img src="https://skillicons.dev/icons?i=css"/>
  <img src="https://skillicons.dev/icons?i=javascript"/>
 </div>
+
+<space>
+	
+<h3 align="center">
+This project is online right now and you can visit it at: 
+	https://hz-clothing-store.liara.run/
+</h3>
+
+<space>
