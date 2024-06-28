@@ -11,7 +11,8 @@ This is a clothing store project using django framework
 <space>
 
 <p align="center">
-some of the main features of this project: user authentication,reset password,change profile,comment section,cart,order and payment,search filter for products
+some of the main features of this project: user authentication,reset password,change profile,
+comment section,cart,order and payment,search filter for products,
 and also a multiple input filter for products based on brand,gender,category,season and price.
 The cloth model is designed to have different colors/sizes,and the admin panel is highly customized.
 </p>
