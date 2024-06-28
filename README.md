@@ -37,7 +37,8 @@ Languages and tools <img src="https://raw.githubusercontent.com/Tarikul-Islam-An
 	
 <h3 align="center">
 This project is online right now and you can visit it at: 
-	https://hz-clothing-store.liara.run/
 </h3>
 
 <space>
+
+	https://hz-clothing-store.liara.run/
