@@ -38,7 +38,7 @@ class OrderItem(models.Model):
     cloth = models.ForeignKey('cloths.Cloth', on_delete=models.CASCADE, related_name='order_items')
     price = models.PositiveIntegerField()
     quantity = models.PositiveIntegerField(default=1)
-    size = models.CharField(max_length=3)
+    size = models.CharField(max_length=10)
     color = models.CharField(max_length=25,null=True)
 
     def __str__(self):

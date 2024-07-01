@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.contrib.auth.mixins import LoginRequiredMixin
+from orders.models import Order,OrderItem
 
 
 class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -27,5 +28,5 @@ class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
     def get_context_data(self, **kwargs):
         user = self.request.user
         context = super().get_context_data(**kwargs)
-        context['orders'] = user.orders.all()
+        context['orders'] = Order.objects.prefetch_related('items').select_related('user').filter(user=user)
         return context
