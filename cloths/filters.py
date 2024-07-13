@@ -3,26 +3,20 @@ from django import forms
 from django.forms.widgets import NumberInput
 from django.utils.translation import gettext as _
 
-from .models import Cloth
+from .models import Cloth,Category,Brand
 
-EXAMPLE_BRANDS = [
-        (_('nike'),_('nike')),
-        (_('adidas'),_('adidas')),
-        (_('jeanwest'),_('jeanwest')),
-        (_('body spinner'),_('body spinner')),
-        (_('lc man'), _('lc man')),
-    ]
+
 class ClothFilter(django_filters.FilterSet):
     brand = django_filters.CharFilter(label=_('search brand'),
                                       widget=forms.TextInput(attrs={'placeholder': _('type the brand name')})
                                       )
-    popular_brands = django_filters.MultipleChoiceFilter(field_name='brand',
+    popular_brands = django_filters.ModelMultipleChoiceFilter(field_name='brand',
         label=_('popular brands'),                                           
-        choices=EXAMPLE_BRANDS,
+        queryset=Brand.objects.all(),
         widget=forms.CheckboxSelectMultiple()
     )
-    category = django_filters.MultipleChoiceFilter(
-        choices=Cloth.CATEGORIES,
+    category = django_filters.ModelMultipleChoiceFilter(
+        queryset=Category.objects.all(),
         widget=forms.CheckboxSelectMultiple()
     )
     gender = django_filters.MultipleChoiceFilter(

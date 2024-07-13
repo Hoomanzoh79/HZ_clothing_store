@@ -43,15 +43,19 @@ class Size(models.Model):
     def __str__(self):
         return self.size_name
     
-class Cloth(models.Model):
-    CATEGORIES = [
-        ('tshirt',_('tshirt')),
-        ('pants',_('pants')),
-        ('jacket',_('jacket')),
-        ('suit',_('suit')),
-        ('others', _('others')),
-    ]
+class Category(models.Model):
+    category_name = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.category_name
+    
+
+class Brand(models.Model):
+    brand_name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.brand_name
+class Cloth(models.Model):
     SEASON_CHOICES = [('winter', _('winter')),
                       ('summer', _('summer')),
                        ('fall', _('fall')), 
@@ -73,8 +77,8 @@ class Cloth(models.Model):
     cover = models.ImageField(upload_to='cloth/cloth_covers', blank=True)
     sales = models.PositiveIntegerField(default=0,null=True)
     inventory = models.IntegerField(validators=[MinValueValidator(0)],default=0)
-    category = models.CharField(max_length=10, choices=CATEGORIES,null=True,verbose_name=_("category"))
-    brand = models.CharField(max_length=100,null=True,verbose_name=_("brand"))
+    category = models.ForeignKey(Category,verbose_name=_("category"),null=True,on_delete=models.CASCADE,related_name='category')
+    brand = models.ForeignKey(Brand,verbose_name=_("brand"),null=True,on_delete=models.CASCADE,related_name='brand')
 
     datetime_created = models.DateTimeField(default=timezone.now)
     datetime_modified = models.DateTimeField(auto_now=True)

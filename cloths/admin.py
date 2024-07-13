@@ -5,7 +5,7 @@ from django.utils.http import urlencode
 from django.urls import reverse
 from django.db.models import Count
 
-from .models import Cloth, Comment,Color,Image,Size
+from .models import Cloth,Comment,Color,Image,Size,Brand,Category
 
 
 @admin.register(Image)
@@ -79,3 +79,11 @@ class ColorAdmin(admin.ModelAdmin):
 @admin.register(Size)
 class SizeAdmin(admin.ModelAdmin):
     list_display = ['size_name']
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ['brand_name']
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['category_name']
