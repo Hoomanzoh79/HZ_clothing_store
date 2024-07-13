@@ -68,9 +68,13 @@ This project is online right now and you can visit it at:
 
 <space>
 
-<h3 align="center">
-Database Schema: 
-</h3>
-
+<space>
+<h2 align="center">
+ Database Schema
+</h2>
+<space>
+<p align="center">
+This schema is the main database of this project based on the models I have used 
+</p>
 
 ![db-schema](https://github.com/user-attachments/assets/be28d63c-f099-4609-bd3a-bc13a6d5c27e)
