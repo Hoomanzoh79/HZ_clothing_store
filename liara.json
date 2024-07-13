@@ -17,6 +17,10 @@
     {
       "name": "media",
       "mountTo": "media"
+    },
+    {
+      "name": "hz-media",
+      "mountTo": "hz-media"
     }
   ]
 }
