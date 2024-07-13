@@ -15,7 +15,7 @@
       "mountTo": "staticfiles"
     },
     {
-      "name": "hz-media",
+      "name": "media",
       "mountTo": "media"
     }
   ]
