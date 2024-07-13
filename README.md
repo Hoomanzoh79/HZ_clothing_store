@@ -65,3 +65,12 @@ This project is online right now and you can visit it at:
 <p align="center">
 	https://hz-clothing-store.liara.run/
 </p>
+
+<space>
+
+<h3 align="center">
+Database Schema: 
+</h3>
+
+
+![db-schema](https://github.com/user-attachments/assets/be28d63c-f099-4609-bd3a-bc13a6d5c27e)
