@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import get_object_or_404
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -18,26 +20,26 @@ class HighestSellingView(generic.ListView):
     paginate_by = 5
 
     def get_queryset(self):
-        queryset = self.model.objects.filter(datetime_created__month=timezone.now().month).order_by('-sales')
+        queryset = self.model.objects.prefetch_related('colors').filter(datetime_created__month=timezone.now().month).order_by('-sales')
         return queryset
 
 
 class FemaleView(generic.ListView):
-    queryset = Cloth.objects.filter(gender='female').order_by('-datetime_created')
+    queryset = Cloth.objects.prefetch_related('colors').filter(gender='female').order_by('-datetime_created')
     template_name = 'cloths/female_list.html'
     context_object_name = 'cloths'
     paginate_by = 10
 
 
 class MaleView(generic.ListView):
-    queryset = Cloth.objects.filter(gender='male').order_by('-datetime_created')
+    queryset = Cloth.objects.prefetch_related('colors').filter(gender='male').order_by('-datetime_created')
     template_name = 'cloths/male_list.html'
     context_object_name = 'cloths'
     paginate_by = 10
 
 
 class ClothsListView(generic.ListView):
-    queryset = Cloth.objects.all().order_by('-datetime_created')
+    queryset = Cloth.objects.prefetch_related('colors').all().order_by('-datetime_created')
     template_name = 'cloths/cloths_list.html'
     context_object_name = 'cloths'
     paginate_by = 10

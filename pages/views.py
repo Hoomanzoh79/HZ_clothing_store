@@ -23,6 +23,6 @@ def handler500(request, exception):
 
 
 class IndexView(generic.ListView):
-    queryset = Cloth.objects.filter(inventory__gte=1).order_by('-datetime_created')
+    queryset = Cloth.objects.prefetch_related('colors').filter(inventory__gte=1).order_by('-datetime_created')
     template_name = "index.html"
     context_object_name = 'cloths'
