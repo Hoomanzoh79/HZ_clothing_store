@@ -57,4 +57,11 @@ urlpatterns = [
     path("account/confirm-email/",email_verification_sent,name="account_email_verification_sent"),
     re_path(r"^confirm-email/(?P<key>[-:\w]+)/$",confirm_email,name="account_confirm_email"),
     # Rosetta (i18n)
-    path('rosetta/', include('rosetta.urls')),] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('rosetta/', include('rosetta.urls')),
+    path("__debug__/", include("debug_toolbar.urls")),
+    ] 
+
+# Serving static and media for development
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

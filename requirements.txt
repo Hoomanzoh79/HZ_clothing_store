@@ -33,3 +33,4 @@ django-rosetta
 django-widget-tweaks
 django-filter
 python-decouple
+django-debug-toolbar
