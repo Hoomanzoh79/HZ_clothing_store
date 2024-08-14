@@ -190,7 +190,7 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "hoomanemi1999@gmail.com"
-EMAIL_HOST_PASSWORD = "aygxlcpmjwmkvqrc"
+EMAIL_HOST_PASSWORD = "ukjb gkny igzw blzg"
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # all auth customization
