@@ -56,11 +56,6 @@ you can also visit the full list of the libraries in the file "requirements.txt"
 
 <space>
 	
-<h3 align="center">
-This project is online right now and you can visit it at: 
-</h3>
-
-<space>
 
 <p align="center">
 	https://hz-clothing-store.liara.run/
